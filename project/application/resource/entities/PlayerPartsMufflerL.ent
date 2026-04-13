@@ -1,0 +1,175 @@
+{
+    "Components": {
+        "Material": [
+            {
+                "Handle": "08c66710-e2cf-4c86-b87f-996028a63d96",
+                "color": [
+                    0.18143457174301147,
+                    0.18143457174301147,
+                    0.18143457174301147,
+                    1.0
+                ],
+                "enableLighting": true,
+                "environmentCoefficient": 0.009999999776482582,
+                "shininess": 80.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "ModelMeshRenderer": [
+            {
+                "Handle": "97f918c9-17df-4b5d-830c-fa2e3d152952",
+                "blendMode": 1,
+                "directory": "./application/resource/Models\\player\\parts",
+                "fileName": "Muffler_L01.obj",
+                "isRender": true,
+                "materialIndexDatas": [
+                    {
+                        "Handle": "08c66710-e2cf-4c86-b87f-996028a63d96"
+                    }
+                ],
+                "textureFilePath": [
+                    ""
+                ],
+                "transformBufferDatas": [
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            -0.6299999952316284,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "Rigidbody": [
+            {
+                "Handle": "3d91963b-168e-4968-9d0c-e51b9b0a1b0a",
+                "acceleration": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "isActive": true,
+                "isUsingLocalDeltaTime": false,
+                "localDeltaTimeName": "",
+                "mass": 0.4000000059604645,
+                "maxFallSpeed": 32.0,
+                "maxXZSpeed": 100.0,
+                "restitution": 0.0,
+                "useGravity": true,
+                "velocity": [
+                    0.0,
+                    128.0,
+                    0.0
+                ]
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "e53aed8d-5de1-4b5a-88cd-27906a2286b3",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "TransformRateAnimation": [
+            {
+                "Handle": "be41737c-941f-4b53-9b89-310c7764a3bb",
+                "isPlay": false,
+                "rotateRate": {
+                    "acceleration": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "velocity": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "scaleRate": {
+                    "acceleration": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "velocity": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "targetTransformIndex": -1,
+                "translateRate": {
+                    "acceleration": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "velocity": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "ac7ff100-1562-4383-a3cb-8abc39cac9a0"
+    },
+    "Name": "PlayerPartsMufflerL",
+    "Systems": [
+        {
+            "SystemCategory": 3,
+            "SystemName": "MoveSystemByRigidBody"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "TransformRateAnimationWorkSystem"
+        }
+    ],
+    "isUnique": false
+}

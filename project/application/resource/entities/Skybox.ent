@@ -1,0 +1,47 @@
+{
+    "Components": {
+        "SkyboxRenderer": [
+            {
+                "Handle": "1b05a4c0-1fbd-4b3d-a785-f94d61439623",
+                "filePath": "application/resource/Texture/output_skybox.dds",
+                "materialBuff": {
+                    "color": [
+                        0.47679322957992554,
+                        0.3178621232509613,
+                        0.3178621232509613,
+                        1.0
+                    ]
+                },
+                "transformBuff": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "afe89376-45cc-4916-ba38-eaf35ffe8ed7"
+    },
+    "Name": "Skybox",
+    "Systems": [
+        {
+            "SystemCategory": 6,
+            "SystemName": "SkyboxRender"
+        }
+    ],
+    "isUnique": true
+}

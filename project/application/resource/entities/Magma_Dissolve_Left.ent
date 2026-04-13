@@ -1,0 +1,87 @@
+{
+    "Components": {
+        "DistortionEffectParam": [
+            {
+                "Handle": "62033f25-9367-4f71-8911-91769555b3fd",
+                "distortionBias": [
+                    0.0,
+                    0.0
+                ],
+                "distortionStrength": [
+                    0.10999999940395355,
+                    -0.18000000715255737
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "texturePath": "./application/resource/Texture/Perlin7-256x256.png",
+                "use3dObjectList": false
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "742e98ca-b006-4733-a72a-d73ecce0317a",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    2.0,
+                    1.4500000476837158
+                ],
+                "uvTranslate": [
+                    0.2724415957927704,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "f0625310-4983-4ba1-963f-67ad53defd6b",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 16.799999237060547,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 16.799999237060547,
+                        "value": [
+                            1.0,
+                            0.0
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "9e254a66-30a7-40e2-a5ea-0a774b7d3957"
+    },
+    "Name": "Magma_Dissolve_Left",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        }
+    ],
+    "isUnique": false
+}

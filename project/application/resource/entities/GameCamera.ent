@@ -1,0 +1,234 @@
+{
+    "Components": {
+        "CameraController": [
+            {
+                "Handle": "bcc6aef7-8b4a-44dd-a721-4639d89f68ff",
+                "dashParams": {
+                    "interLookAtTargetInterpolation": [
+                        32.0,
+                        53.400001525878906,
+                        12.0
+                    ],
+                    "interTargetInterpolation": [
+                        52.0,
+                        9.119999885559082,
+                        8.979999542236328
+                    ],
+                    "offset": [
+                        0.0,
+                        4.510000228881836,
+                        -5.050000190734863
+                    ],
+                    "targetOffset": [
+                        0.0,
+                        -1.8300000429153442,
+                        8.329999923706055
+                    ]
+                },
+                "fixForForwardSpeed": 0.33000001311302185,
+                "fovEaseType": 5,
+                "fovMax": 1.937999963760376,
+                "fovMaxSpeed": 100.0,
+                "fovMin": 0.7839999794960022,
+                "fovMinSpeed": 28.399999618530273,
+                "fovYInterpolate": 0.11400000005960464,
+                "idleParams": {
+                    "interLookAtTargetInterpolation": [
+                        32.0,
+                        47.13999938964844,
+                        12.0
+                    ],
+                    "interTargetInterpolation": [
+                        52.0,
+                        11.680000305175781,
+                        12.149999618530273
+                    ],
+                    "offset": [
+                        0.0,
+                        2.5199999809265137,
+                        -5.599999904632568
+                    ],
+                    "targetOffset": [
+                        0.0,
+                        0.1899999976158142,
+                        2.930000066757202
+                    ]
+                },
+                "maxRollAngleOnFollow": 0.5600000023841858,
+                "maxRotateX": 0.5270000100135803,
+                "minRotateX": -0.296999990940094,
+                "minTargetOffsetXOnWallRun": -2.2899999618530273,
+                "rotateSensitivity": 86.0,
+                "rotateSpeedMouse": 0.0,
+                "rotateSpeedPadStick": 0.0,
+                "tiltDotOnFollow": 0.6000000238418579,
+                "wallRunParams": {
+                    "interLookAtTargetInterpolation": [
+                        86.0,
+                        86.0,
+                        256.0
+                    ],
+                    "interTargetInterpolation": [
+                        86.0,
+                        86.0,
+                        256.0
+                    ],
+                    "offset": [
+                        -2.5999999046325684,
+                        0.550000011920929,
+                        5.329999923706055
+                    ],
+                    "targetOffset": [
+                        0.12999999523162842,
+                        0.009999999776482582,
+                        9.550000190734863
+                    ]
+                }
+            }
+        ],
+        "CameraMotionBob": [
+            {
+                "Handle": "69e464b3-40ef-4f77-97c4-ecb454526ca7",
+                "cameraShakeSourceComponentId": 0,
+                "maxAmplitude": [
+                    0.30000001192092896,
+                    0.1899999976158142,
+                    0.07000000029802322
+                ],
+                "maxFrequency": [
+                    6.0,
+                    8.0,
+                    2.0
+                ],
+                "minAmplitude": [
+                    0.11999999731779099,
+                    0.07999999821186066,
+                    0.0
+                ],
+                "minFrequency": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "thresholdGearLevel": 3
+            }
+        ],
+        "CameraShakeSourceComponent": [
+            {
+                "Handle": "386b47fe-452d-4443-a7e7-ea7d46ba74e0",
+                "X_Parameter_Amplitude": 0.36000001430511475,
+                "X_Parameter_DampingRatio": 0.30000001192092896,
+                "X_Parameter_Frequency": 9.930000305175781,
+                "Y_Parameter_Amplitude": 0.4300000071525574,
+                "Y_Parameter_DampingRatio": 0.30000001192092896,
+                "Y_Parameter_Frequency": 8.119999885559082,
+                "Z_Parameter_Amplitude": 0.46000000834465027,
+                "Z_Parameter_DampingRatio": 0.30000001192092896,
+                "Z_Parameter_Frequency": 1.0,
+                "cameraTransformIndex": 0,
+                "duration": 1.0,
+                "isActive": false,
+                "isLoop": true,
+                "type": 1
+            },
+            {
+                "Handle": "2ef489cf-93a2-474d-b83a-4df1829c6816",
+                "X_Parameter_Amplitude": 0.0,
+                "X_Parameter_DampingRatio": 0.0,
+                "X_Parameter_Frequency": 0.0,
+                "Y_Parameter_Amplitude": 3.759999990463257,
+                "Y_Parameter_DampingRatio": 0.5400000214576721,
+                "Y_Parameter_Frequency": 2.450000047683716,
+                "Z_Parameter_Amplitude": 0.0,
+                "Z_Parameter_DampingRatio": 0.0,
+                "Z_Parameter_Frequency": 0.0,
+                "cameraTransformIndex": 0,
+                "duration": 1.0,
+                "isActive": false,
+                "isLoop": false,
+                "type": 2
+            },
+            {
+                "Handle": "a400ca33-659d-4a2b-98b0-518d263010d6",
+                "X_Parameter_Amplitude": 3.4000000953674316,
+                "X_Parameter_DampingRatio": 0.25,
+                "X_Parameter_Frequency": 1.0399999618530273,
+                "Y_Parameter_Amplitude": 3.3499999046325684,
+                "Y_Parameter_DampingRatio": 0.3799999952316284,
+                "Y_Parameter_Frequency": 1.940000057220459,
+                "Z_Parameter_Amplitude": 0.0,
+                "Z_Parameter_DampingRatio": 0.0,
+                "Z_Parameter_Frequency": 0.0,
+                "cameraTransformIndex": 0,
+                "duration": 1.5399999618530273,
+                "isActive": false,
+                "isLoop": false,
+                "type": 2
+            }
+        ],
+        "CameraTransform": [
+            {
+                "Handle": "531cb81d-82fd-40ed-8670-a9646f2eafce",
+                "aspectRatio": 1.7777777910232544,
+                "farZ": 2000.0,
+                "fovAngleY": 0.7850000262260437,
+                "nearZ": 0.10000000149011612,
+                "rotate": [
+                    0.0,
+                    0.019996998831629753,
+                    0.0,
+                    0.9998000264167786
+                ],
+                "translate": [
+                    0.0,
+                    4.0,
+                    -5.0
+                ]
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "cec2bdbb-a110-4f90-9374-015af32ba4c7",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "47d0f2fa-dbce-4f61-8e51-af3e08b9310a"
+    },
+    "Name": "GameCamera",
+    "Systems": [
+        {
+            "SystemCategory": 2,
+            "SystemName": "CameraMotionBobSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "CameraShake"
+        },
+        {
+            "SystemCategory": 1,
+            "SystemName": "CameraInputSystem"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "FollowCameraUpdateSystem"
+        }
+    ],
+    "isUnique": true
+}

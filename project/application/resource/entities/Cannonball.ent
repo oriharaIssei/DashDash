@@ -1,0 +1,185 @@
+{
+    "Components": {
+        "Material": [
+            {
+                "Handle": "7a38fbdf-4013-419d-b86b-532c7f913f7c",
+                "color": [
+                    0.11392402648925781,
+                    0.11392402648925781,
+                    0.11392402648925781,
+                    1.0
+                ],
+                "enableLighting": true,
+                "environmentCoefficient": 0.0,
+                "shininess": 1.7300000190734863,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "ModelMeshRenderer": [
+            {
+                "Handle": "b8272094-4b78-4abe-b0ed-25b6c4b00882",
+                "blendMode": 1,
+                "directory": "./application/resource/Models\\Ball",
+                "fileName": "ball.obj",
+                "isRender": true,
+                "materialIndexDatas": [
+                    {
+                        "Handle": "7a38fbdf-4013-419d-b86b-532c7f913f7c"
+                    }
+                ],
+                "textureFilePath": [
+                    ""
+                ],
+                "transformBufferDatas": [
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "Obstacle": [
+            {
+                "Handle": "97a3406b-78e7-4c7d-934d-976c4ce04f37",
+                "invincibilityTimeOnCollision": 1.0,
+                "penaltyTime": 1.5
+            }
+        ],
+        "Rigidbody": [
+            {
+                "Handle": "2fa18a74-32a7-43b7-9409-04daf632bfc7",
+                "acceleration": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "isActive": true,
+                "isUsingLocalDeltaTime": false,
+                "localDeltaTimeName": "",
+                "mass": 1.0,
+                "maxFallSpeed": 1000.0,
+                "maxXZSpeed": 100.0,
+                "restitution": 0.0,
+                "useGravity": false,
+                "velocity": [
+                    0.0,
+                    0.0,
+                    8.0
+                ]
+            }
+        ],
+        "SphereCollider": [
+            {
+                "Handle": "5c465a10-6aac-4c90-b2e3-124072f9d51c",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "collisionCategory": "StageObject",
+                "isActive": true,
+                "radius": 0.9900000095367432,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "TimerComponent": [
+            {
+                "Handle": "9cce5d1d-0651-4125-b5c8-0e12abfdc44c",
+                "isStarted": true,
+                "maxTime": 20.0
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "37167cd5-b204-4dd4-ab76-aace84ed2eec",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "ad814c49-4173-4394-b977-71b11edd80b7"
+    },
+    "Name": "Cannonball",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "MoveSystemByRigidBody"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "TimerCountDown"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "TimerAutoDestroySystem"
+        }
+    ],
+    "isUnique": false
+}

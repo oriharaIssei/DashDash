@@ -1,0 +1,378 @@
+{
+    "Components": {
+        "CylinderRenderer": [
+            {
+                "Handle": "63bf9dfa-a6b5-49db-98c3-aabf3ae75bc1",
+                "blendMode": 1,
+                "bottomRadius": [
+                    0.07999999821186066,
+                    0.07999999821186066
+                ],
+                "height": 1.0,
+                "heightDivisions": 8,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radialDivisions": 36,
+                "radiusEaseType": 0,
+                "textureFilePath": "",
+                "topRadius": [
+                    0.30000001192092896,
+                    0.30000001192092896
+                ],
+                "transform": {
+                    "rotate": [
+                        -0.01200204249471426,
+                        0.0,
+                        -0.23457865417003632,
+                        0.972023069858551
+                    ],
+                    "scale": [
+                        0.6600000262260437,
+                        0.25999999046325684,
+                        0.6600000262260437
+                    ],
+                    "translate": [
+                        0.7099999785423279,
+                        1.4199999570846558,
+                        0.23999999463558197
+                    ]
+                }
+            },
+            {
+                "Handle": "c338fb89-c91c-494e-aa19-fe1b23f1e0ff",
+                "blendMode": 1,
+                "bottomRadius": [
+                    0.09000000357627869,
+                    0.09000000357627869
+                ],
+                "height": 1.340000033378601,
+                "heightDivisions": 8,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radialDivisions": 36,
+                "radiusEaseType": 0,
+                "textureFilePath": "",
+                "topRadius": [
+                    0.3799999952316284,
+                    0.3799999952316284
+                ],
+                "transform": {
+                    "rotate": [
+                        -0.1121334433555603,
+                        0.0,
+                        -0.16789141297340393,
+                        0.9794072508811951
+                    ],
+                    "scale": [
+                        0.6600000262260437,
+                        0.25999999046325684,
+                        0.6600000262260437
+                    ],
+                    "translate": [
+                        0.7799999713897705,
+                        1.3899999856948853,
+                        -0.28999999165534973
+                    ]
+                }
+            },
+            {
+                "Handle": "4b74abc8-8c16-4327-a8b1-360d677d5388",
+                "blendMode": 1,
+                "bottomRadius": [
+                    0.10999999940395355,
+                    0.10999999940395355
+                ],
+                "height": 1.8799999952316284,
+                "heightDivisions": 8,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radialDivisions": 36,
+                "radiusEaseType": 0,
+                "textureFilePath": "",
+                "topRadius": [
+                    0.47999998927116394,
+                    0.47999998927116394
+                ],
+                "transform": {
+                    "rotate": [
+                        -0.23151399195194244,
+                        0.0,
+                        -0.1587504893541336,
+                        0.9597914218902588
+                    ],
+                    "scale": [
+                        0.6600000262260437,
+                        0.25999999046325684,
+                        0.6600000262260437
+                    ],
+                    "translate": [
+                        0.8799999952316284,
+                        1.2699999809265137,
+                        -0.8199999928474426
+                    ]
+                }
+            },
+            {
+                "Handle": "fb42b715-7cae-4e90-824f-943616314c82",
+                "blendMode": 1,
+                "bottomRadius": [
+                    0.07999999821186066,
+                    0.07999999821186066
+                ],
+                "height": 1.0,
+                "heightDivisions": 8,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radialDivisions": 36,
+                "radiusEaseType": 0,
+                "textureFilePath": "",
+                "topRadius": [
+                    0.30000001192092896,
+                    0.30000001192092896
+                ],
+                "transform": {
+                    "rotate": [
+                        0.005932819098234177,
+                        0.0,
+                        0.16927504539489746,
+                        0.9855509996414185
+                    ],
+                    "scale": [
+                        0.6600000262260437,
+                        0.25999999046325684,
+                        0.6600000262260437
+                    ],
+                    "translate": [
+                        -0.699999988079071,
+                        1.3899999856948853,
+                        0.23000000417232513
+                    ]
+                }
+            },
+            {
+                "Handle": "bf163e19-915e-4cc9-b346-9d1ec9fd3ce1",
+                "blendMode": 1,
+                "bottomRadius": [
+                    0.09000000357627869,
+                    0.09000000357627869
+                ],
+                "height": 1.340000033378601,
+                "heightDivisions": 8,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radialDivisions": 36,
+                "radiusEaseType": 0,
+                "textureFilePath": "",
+                "topRadius": [
+                    0.3799999952316284,
+                    0.3799999952316284
+                ],
+                "transform": {
+                    "rotate": [
+                        -0.06104053556919098,
+                        0.0,
+                        0.20736859738826752,
+                        0.9763566851615906
+                    ],
+                    "scale": [
+                        0.6600000262260437,
+                        0.25999999046325684,
+                        0.6600000262260437
+                    ],
+                    "translate": [
+                        -0.7599999904632568,
+                        1.3799999952316284,
+                        -0.28999999165534973
+                    ]
+                }
+            },
+            {
+                "Handle": "7bb2197f-011c-41d1-b8d5-eb1e3a084f21",
+                "blendMode": 1,
+                "bottomRadius": [
+                    0.14000000059604645,
+                    0.14000000059604645
+                ],
+                "height": 1.8799999952316284,
+                "heightDivisions": 8,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radialDivisions": 36,
+                "radiusEaseType": 0,
+                "textureFilePath": "",
+                "topRadius": [
+                    0.47999998927116394,
+                    0.47999998927116394
+                ],
+                "transform": {
+                    "rotate": [
+                        -0.26847535371780396,
+                        0.0,
+                        0.13681679964065552,
+                        0.9535209536552429
+                    ],
+                    "scale": [
+                        0.6600000262260437,
+                        0.25999999046325684,
+                        0.6600000262260437
+                    ],
+                    "translate": [
+                        -0.8799999952316284,
+                        1.2699999809265137,
+                        -0.8199999928474426
+                    ]
+                }
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "eca17d3e-3f9f-4215-a44a-b420915c05c8",
+                "color": [
+                    0.08431697636842728,
+                    0.44282761216163635,
+                    0.6244726181030273,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    0.6700000166893005,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "bb0825ef-b486-4c7d-9262-e2571e846be8",
+                "InterpolationType": 0,
+                "colorCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.6000000238418579
+                        ]
+                    },
+                    {
+                        "time": 0.17240260541439056,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.18039216101169586
+                        ]
+                    },
+                    {
+                        "time": 0.21769481897354126,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.5529412031173706
+                        ]
+                    },
+                    {
+                        "time": 0.30000001192092896,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ],
+                "duration": 0.30000001192092896,
+                "isLoop": false,
+                "isPlay": false,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": []
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "Handle": "ea2ee49d-80ab-4bf5-b0d4-88c71953ba59",
+                "baseTexturePath": "./application/resource/Texture/white1x1.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 0,
+                        "handle": {
+                            "uuid": "ce60e708-89e6-4eb2-b0a3-94e5def385f4"
+                        }
+                    },
+                    {
+                        "effectType": 2,
+                        "handle": {
+                            "uuid": "3f8575ac-ee57-41c5-a7c0-9cf5a55e648f"
+                        }
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 5
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "ff19f9cc-1f2b-414c-a41e-0106d707a66c",
+                "rotate": [
+                    -0.19664624333381653,
+                    0.0,
+                    0.0,
+                    0.9804745316505432
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "53ba3e5e-5351-48aa-a7de-d04fe975ba6e"
+    },
+    "Name": "BackFire",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        },
+        {
+            "SystemCategory": 0,
+            "SystemName": "BackFireInitialize"
+        }
+    ],
+    "isUnique": true
+}

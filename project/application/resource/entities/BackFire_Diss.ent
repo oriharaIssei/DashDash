@@ -1,0 +1,75 @@
+{
+    "Components": {
+        "DissolveEffectParam": [
+            {
+                "Handle": "5963deaa-d808-4965-b105-672ed9be3ffe",
+                "edgeWidth": 0.006000000052154064,
+                "isActive": true,
+                "materialIndex": 0,
+                "outLineColor": [
+                    0.28270041942596436,
+                    0.28270041942596436,
+                    0.28270041942596436,
+                    1.0
+                ],
+                "textureFilePath": "",
+                "threshold": 0.008999999612569809
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "4b3c6d88-f596-4660-9107-b8251da82722",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.7929423451423645,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "Handle": "0a3cb768-ea58-41ba-9e3b-e48f6e55fdba",
+                "baseTexturePath": "./application/resource/Texture/waveMask.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 1,
+                        "handle": {
+                            "uuid": "d6b00b02-5812-4d6a-936b-68c6cce952ad"
+                        }
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 0
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "ce60e708-89e6-4eb2-b0a3-94e5def385f4"
+    },
+    "Name": "BackFire_Diss",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        }
+    ],
+    "isUnique": true
+}

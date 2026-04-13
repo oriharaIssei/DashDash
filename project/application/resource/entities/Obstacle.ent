@@ -1,0 +1,140 @@
+{
+    "Components": {
+        "AABBCollider": [
+            {
+                "Handle": "7b0d7880-8ecc-404a-85a7-342db9ab448d",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "halfSize": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "BoxRenderer": [
+            {
+                "Handle": "f16f47df-12f3-4b03-98fd-520601e10560",
+                "blendMode": 1,
+                "isCulling": true,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "size": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "textureFilePath": "./application/resource/Texture/Obstacle.png",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "796f186f-2eb8-4424-b43d-db82cd1743fd",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "Obstacle": [
+            {
+                "Handle": "5eaf1c16-ce4e-4b6b-955a-bada486ceb73",
+                "invincibilityTimeOnCollision": 1.0,
+                "penaltyTime": 1.5
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "5e78a81c-cf1d-42b0-8fb8-233c490b6d37",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    2.990410327911377,
+                    2.199272394180298,
+                    1.0
+                ],
+                "translate": [
+                    -0.33762454986572266,
+                    2.407261610031128,
+                    18.597822189331055
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "3cf6d9ec-59f7-455e-ad53-11f136529015"
+    },
+    "Name": "Obstacle",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": false
+}

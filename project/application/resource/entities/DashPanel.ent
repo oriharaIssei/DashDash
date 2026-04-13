@@ -1,0 +1,197 @@
+{
+    "Components": {
+        "AABBCollider": [
+            {
+                "Handle": "2665d3ef-9b80-4c4a-a884-3b3bf16ff10b",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "collisionCategory": "StageObject",
+                "halfSize": [
+                    1.0,
+                    0.10000000149011612,
+                    1.0
+                ],
+                "isActive": true,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.10000000149011612,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "b41dfcb6-3d41-44fa-9618-1716dc3d0165",
+                "color": [
+                    0.16578538715839386,
+                    0.7111458778381348,
+                    0.8185653686523438,
+                    1.0
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    4.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.5254517793655396
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "c064da23-21ab-45a4-b9bf-cc2c74f38502",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 1.2999999523162842,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 1.2999999523162842,
+                        "value": [
+                            0.0,
+                            3.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "PlaneRenderer": [
+            {
+                "Handle": "843e7bef-680b-4351-8947-81fe5b2f7577",
+                "blendMode": 1,
+                "isCulling": true,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureFilePath": "./application/resource/Texture/arrow.png",
+                "transform": {
+                    "rotate": [
+                        0.7065556049346924,
+                        0.0,
+                        0.0,
+                        0.7076575756072998
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "SpeedModifiers": [
+            {
+                "Handle": "ab166d63-fbff-4285-9c5e-82ef38377334",
+                "additiveAxisX": true,
+                "additiveAxisY": false,
+                "additiveAxisZ": true,
+                "additiveDuration": 1.0,
+                "additiveFadeInDuration": 0.11999999731779099,
+                "additiveFadeOutDuration": 0.07000000029802322,
+                "additiveFadeOutEaseType": 0,
+                "additiveLerpEaseType": 10,
+                "additiveTarget": 32.0,
+                "axesSpace": 0,
+                "isAutoDestroyed": true,
+                "multiplierAxisX": true,
+                "multiplierAxisY": false,
+                "multiplierAxisZ": false,
+                "multiplierDuration": 0.0,
+                "multiplierFadeInDuration": 0.0,
+                "multiplierFadeOutDuration": 0.0,
+                "multiplierFadeOutEaseType": 0,
+                "multiplierLerpEaseType": 0,
+                "multiplierTarget": 1.0,
+                "restoreSpeed": 68.0
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "cfe1459b-f499-4278-9fc4-b82809854aad",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    24.0,
+                    8.0,
+                    12.0
+                ],
+                "translate": [
+                    -0.43187522888183594,
+                    8.100000381469727,
+                    1481.4879150390625
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "24f07598-a90b-4fba-b1da-f831026ab362"
+    },
+    "Name": "DashPanel",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "ApplyAddForceSystem"
+        },
+        {
+            "SystemCategory": 4,
+            "SystemName": "OnCollisionModifierTargetSystem"
+        }
+    ],
+    "isUnique": false
+}

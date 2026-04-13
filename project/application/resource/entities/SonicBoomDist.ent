@@ -1,0 +1,82 @@
+{
+    "Components": {
+        "DissolveEffectParam": [],
+        "DistortionEffectParam": [
+            {
+                "distortionBias": [
+                    0.25,
+                    0.23000000417232513
+                ],
+                "distortionStrength": [
+                    0.6000000238418579,
+                    4.489999771118164
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "textuerPath": "./application/resource/Texture/waveNoise.png",
+                "use3dObjectList": false
+            }
+        ],
+        "Material": [
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.8674507737159729
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 1.7999999523162842,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 1.7999999523162842,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "Name": "SonicBoomDist",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        }
+    ],
+    "isUnique": true
+}

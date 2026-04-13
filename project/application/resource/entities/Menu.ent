@@ -1,0 +1,204 @@
+{
+    "Components": {
+        "Button": [
+            {
+                "Handle": "9f9546c7-9ee4-49a6-b458-b0fbfa224eb4",
+                "hoverColor": [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1.0
+                ],
+                "normalColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "pressColor": [
+                    0.6000000238418579,
+                    0.6000000238418579,
+                    0.6000000238418579,
+                    1.0
+                ],
+                "releaseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "shortKeys": [
+                    1
+                ],
+                "shortcutGamepadButton": [
+                    16
+                ]
+            }
+        ],
+        "SpriteRenderer": [
+            {
+                "Handle": "04c193ed-ab6b-484a-9aba-ef5d7fec53e6",
+                "anchorPoint": [
+                    0.0,
+                    0.0
+                ],
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "defaultWindowSize": [
+                    1920.0,
+                    1080.0
+                ],
+                "isFlipX": false,
+                "isFlipY": false,
+                "isRender": true,
+                "renderingPriority": 1,
+                "rotate": 0.0,
+                "scale": [
+                    1.0,
+                    1.0
+                ],
+                "size": [
+                    72.0,
+                    72.0
+                ],
+                "textureLeftTop": [
+                    0.0,
+                    0.0
+                ],
+                "texturePath": "./application/resource/Texture/menuButtonKey.png",
+                "textureSize": [
+                    16.0,
+                    16.0
+                ],
+                "translate": [
+                    109.44000244140625,
+                    46.44000244140625
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ],
+                "windowRatioPos": [
+                    0.05700000002980232,
+                    0.0430000014603138
+                ],
+                "windowRatioSize": [
+                    0.03750000149011612,
+                    0.06666667014360428
+                ]
+            },
+            {
+                "Handle": "800aa8b5-c07e-46a5-90e9-9db0f80d0b4b",
+                "anchorPoint": [
+                    0.0,
+                    0.0
+                ],
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "defaultWindowSize": [
+                    1920.0,
+                    1080.0
+                ],
+                "isFlipX": false,
+                "isFlipY": false,
+                "isRender": true,
+                "renderingPriority": 1,
+                "rotate": 0.0,
+                "scale": [
+                    1.0,
+                    1.0
+                ],
+                "size": [
+                    72.0,
+                    72.0
+                ],
+                "textureLeftTop": [
+                    0.0,
+                    0.0
+                ],
+                "texturePath": "./application/resource/Texture/menuButtonGamePadButton.png",
+                "textureSize": [
+                    16.0,
+                    16.0
+                ],
+                "translate": [
+                    109.44000244140625,
+                    46.44000244140625
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ],
+                "windowRatioPos": [
+                    0.05700000002980232,
+                    0.0430000014603138
+                ],
+                "windowRatioSize": [
+                    0.03750000149011612,
+                    0.06666667014360428
+                ]
+            }
+        ],
+        "SubScene": [
+            {
+                "Handle": "3363d445-9e06-4b50-b406-91d772ed9d12",
+                "isActive": false,
+                "renderingPriority": 1,
+                "sceneName": "menu"
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "cb93bc5c-d429-4e5c-ae1a-f68d9c43369f"
+    },
+    "Name": "Menu",
+    "Systems": [
+        {
+            "SystemCategory": 1,
+            "SystemName": "ButtonInputSystem"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "ShowGameUIByInputDevice"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "SpriteRenderSystem"
+        },
+        {
+            "SystemCategory": 7,
+            "SystemName": "SubSceneRender"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "SubSceneActivateByButton"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "SubSceneUpdate"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "PauseMainSceneSystem"
+        }
+    ],
+    "isUnique": false
+}

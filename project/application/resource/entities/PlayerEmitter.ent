@@ -1,0 +1,300 @@
+{
+    "Components": {
+        "Emitter": [
+            {
+                "EmitterShape": {
+                    "max": [
+                        1.5,
+                        2.0,
+                        1.5
+                    ],
+                    "min": [
+                        -1.5,
+                        0.0,
+                        -1.5
+                    ],
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "spawnType": 0
+                },
+                "activeTime": 5.0,
+                "blendMode": 2,
+                "colorCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.0,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.5215686559677124
+                        ]
+                    },
+                    {
+                        "time": 0.11077440530061722,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 0.9960333704948425,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 1.2999999523162842,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.0
+                        ]
+                    }
+                ],
+                "colorInterpolationType": 0,
+                "isActive": false,
+                "isLoop": false,
+                "originPos": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "particleColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "particleIsBillBoard": true,
+                "particleLifeTime": 1.2999999523162842,
+                "particleUvRotate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "particleUvScale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "particleUvTranslate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "randMass": [
+                    1.0,
+                    1.0
+                ],
+                "shapeType": 1,
+                "spawnCoolTime": 0.20100000500679016,
+                "spawnParticleVal": 5,
+                "startParticleRotateMax": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "startParticleRotateMin": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "startParticleScaleMax": [
+                    0.6000000238418579,
+                    0.6000000238418579,
+                    0.6000000238418579
+                ],
+                "startParticleScaleMin": [
+                    0.20000000298023224,
+                    0.20000000298023224,
+                    0.20000000298023224
+                ],
+                "startParticleVelocityMax": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "startParticleVelocityMin": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "textureFileName": "./application/resource/Texture/circle.png",
+                "transformInterpolationType": 0,
+                "updateParticleRotateMax": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "updateParticleRotateMin": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "updateParticleScaleMax": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "updateParticleScaleMin": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "updateParticleVelocityMax": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "updateParticleVelocityMin": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "updateSettings": 4352,
+                "uvInterpolationType": 0
+            }
+        ],
+        "Material": [],
+        "Transform": [
+            {
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Name": "PlayerEmitter",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "ParticleSystemWorkSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "ParticleRenderSystem"
+        }
+    ],
+    "isUnique": true
+}

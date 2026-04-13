@@ -1,0 +1,81 @@
+{
+    "Components": {
+        "DistortionEffectParam": [
+            {
+                "distortionBias": [
+                    0.0,
+                    0.0
+                ],
+                "distortionStrength": [
+                    0.1899999976158142,
+                    0.5600000023841858
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "textuerPath": "./application/resource/Texture/bioNoise.png",
+                "use3dObjectList": false
+            }
+        ],
+        "Material": [
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": -0.5799999833106995,
+                "uvScale": [
+                    0.6800000071525574,
+                    0.6200000047683716
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.769457995891571
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 7.199999809265137,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 7.199999809265137,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "Name": "GoalShellEffectDist",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        }
+    ],
+    "isUnique": true
+}

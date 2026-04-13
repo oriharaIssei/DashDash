@@ -1,0 +1,75 @@
+{
+    "Components": {
+        "DissolveEffectParam": [
+            {
+                "Handle": "8e7932cd-aa15-44e9-8aa1-577d7ce02b0b",
+                "edgeWidth": 0.032999999821186066,
+                "isActive": true,
+                "materialIndex": 0,
+                "outLineColor": [
+                    0.5105485320091248,
+                    0.5105485320091248,
+                    0.5105485320091248,
+                    1.0
+                ],
+                "textureFilePath": "./application/resource/Texture/circle.png",
+                "threshold": 0.06300000101327896
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "7be61220-50c7-42a7-958e-71aca4b42f48",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "Handle": "761c9b56-ddc8-436c-8c38-852c509b35b8",
+                "baseTexturePath": "./application/resource/Texture/bioNoise.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 1,
+                        "handle": {
+                            "uuid": "f9609fd3-0d97-455f-9367-24e613394d13"
+                        }
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 0
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "417e3581-06fb-4e80-8ef9-32aad987a1a7"
+    },
+    "Name": "trailDissolve",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        }
+    ],
+    "isUnique": true
+}

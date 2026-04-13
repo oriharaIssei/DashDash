@@ -1,0 +1,155 @@
+{
+    "Components": {
+        "Material": [
+            {
+                "Handle": "664d587c-bea2-4a7d-bfba-73e5f7d12289",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": true,
+                "environmentCoefficient": 0.009999999776482582,
+                "shininess": 119.9000015258789,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            },
+            {
+                "Handle": "762ec447-8ab1-4f6f-8374-5b032a96cc75",
+                "color": [
+                    0.9620253443717957,
+                    0.19484056532382965,
+                    0.19484056532382965,
+                    1.0
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "ModelMeshRenderer": [
+            {
+                "Handle": "0d40f3f4-9578-4a3c-9597-8926d616725f",
+                "blendMode": 1,
+                "directory": "./application/resource/Models\\FlyingRobot",
+                "fileName": "FlyingRobot.obj",
+                "isRender": true,
+                "materialIndexDatas": [
+                    {
+                        "Handle": "664d587c-bea2-4a7d-bfba-73e5f7d12289"
+                    }
+                ],
+                "textureFilePath": [
+                    "./application/resource/Texture/Robot.png"
+                ],
+                "transformBufferDatas": [
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            2.0,
+                            2.0,
+                            2.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "PlaneRenderer": [
+            {
+                "Handle": "93eaa1f9-0d79-4017-863c-ec45d2672378",
+                "blendMode": 1,
+                "isCulling": true,
+                "isRenderer": true,
+                "materialIndex": 1,
+                "textureFilePath": "",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.15000000596046448,
+                        0.15000000596046448,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        -0.36000001430511475
+                    ]
+                }
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "c8c10efa-c3a2-4f79-8408-8752ae84a49d",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "0c69fe40-2cc9-46d5-b3f8-7b513de25c36"
+    },
+    "Name": "Robot",
+    "Systems": [
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": false
+}

@@ -1,0 +1,25 @@
+{
+    "Components": {
+        "EntityReferenceList": [
+            {
+                "entityFileList": [
+                    [
+                        "./application/resource/entities",
+                        "GoalShellEffect"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "GoalShellEffectDiss"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "GoalShellEffectDist"
+                    ]
+                ]
+            }
+        ]
+    },
+    "Name": "GoalShellEffectRecipe",
+    "Systems": [],
+    "isUnique": true
+}

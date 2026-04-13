@@ -1,0 +1,56 @@
+{
+    "Components": {
+        "GradationComponent": [
+            {
+                "Handle": "d36970f9-6906-4956-ba2e-1abd2f8e5975",
+                "centerUv": [
+                    0.0,
+                    0.05000000074505806
+                ],
+                "colorChannel": 3,
+                "direction": [
+                    0.0,
+                    1.0
+                ],
+                "gradationType": 0,
+                "isActive": true,
+                "materialIndex": 0,
+                "pow": 0.7200000286102295,
+                "scale": 0.3199999928474426
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "c62a1f8d-f0f4-446e-a826-c05b3ab738f5",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "3f8575ac-ee57-41c5-a7c0-9cf5a55e648f"
+    },
+    "Name": "BackFire_Grad",
+    "Systems": [],
+    "isUnique": true
+}

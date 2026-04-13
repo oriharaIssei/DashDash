@@ -1,0 +1,186 @@
+{
+    "Components": {
+        "AABBCollider": [
+            {
+                "Handle": "241c3c9b-01c8-4b3a-9abd-85b9d3a151df",
+                "center": [
+                    0.0,
+                    16.0,
+                    0.0
+                ],
+                "collisionCategory": "StageObject",
+                "halfSize": [
+                    48.0,
+                    64.0,
+                    48.0
+                ],
+                "isActive": true,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "cb853a0a-83af-4a97-a826-7e23d82d9450",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "de609d21-c24b-4da3-8a04-276a649bad17",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 2.0,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 2.0,
+                        "value": [
+                            0.0,
+                            2.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "PlaneRenderer": [
+            {
+                "Handle": "112c3a35-8cd2-4a4e-bdaa-b6fa159482fd",
+                "blendMode": 1,
+                "isCulling": true,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureFilePath": "./application/resource/Texture/lazer.png",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        11.0,
+                        512.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "PointLight": [
+            {
+                "Handle": "96b76c4d-b870-4de4-879b-d6758820a009",
+                "angularRadius": 0.03999999910593033,
+                "color": [
+                    0.16824226081371307,
+                    0.7861244082450867,
+                    0.8860759735107422
+                ],
+                "decay": 0.9900000095367432,
+                "intensity": 1.850000023841858,
+                "isActive": true,
+                "pos": [
+                    0.0,
+                    66.06553649902344,
+                    981.1402587890625
+                ],
+                "radius": 100.0
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "20a587a6-581c-49e5-b30d-214f42f3fef5",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    66.06553649902344,
+                    981.1402587890625
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "0defcba7-47f8-4544-89a0-b589035812c3"
+    },
+    "Name": "Goal",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 0,
+            "SystemName": "TakeToGoalPosition"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "ParticleRenderSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": true
+}

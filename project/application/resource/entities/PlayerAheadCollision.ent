@@ -1,0 +1,81 @@
+{
+    "Components": {
+        "CollisionPushBackInfo": [
+            {
+                "Handle": "d49177d1-4cee-4fc2-9511-e805abda3435",
+                "pushBackType": 1
+            }
+        ],
+        "SphereCollider": [
+            {
+                "Handle": "68729c0e-6fbb-4303-ab87-083d60c04d5e",
+                "center": [
+                    0.0,
+                    0.75,
+                    0.0
+                ],
+                "collisionCategory": "Player",
+                "isActive": true,
+                "radius": 8.630000114440918,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "0d27c770-4440-4d6a-a8d1-5b38350ad90c",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "5997add9-528f-43e4-8eeb-ed1cb19eb952"
+    },
+    "Name": "PlayerAheadCollision",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 4,
+            "SystemName": "PlayerAheadCollisionReactionSystem"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "PlayerFollowSystem"
+        }
+    ],
+    "isUnique": false
+}

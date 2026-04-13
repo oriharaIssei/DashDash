@@ -1,0 +1,7 @@
+{
+    "Collision": {
+        "Categories": "Default,Player,StageObject",
+        "Masks": "Default=0xFFFFFFFF;Player=0xFFFFFFFD;StageObject=0xFFFFFFFB",
+        "SpatialHashCellSize": 120.0
+    }
+}

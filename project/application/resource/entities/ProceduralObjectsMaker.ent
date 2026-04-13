@@ -1,0 +1,66 @@
+{
+    "Components": {
+        "PointPlacementParams": [
+            {
+                "Handle": "80a24972-f6dd-4274-8365-3552a88e97f9",
+                "collisionRadius": 0.20000000298023224,
+                "defaultScale": [
+                    218.0,
+                    456.0,
+                    218.0
+                ],
+                "densityThreshold": 0.12399999797344208,
+                "maskThreshold": 0.11299999803304672,
+                "originalEntityDirectory": "./application/resource/entities",
+                "originalEntityFileName": "Floor",
+                "placementResolution": 10,
+                "pointDensityTexturePath": "./application/resource/Texture/bioNoise.png",
+                "pointMaskTexturePath": "./application/resource/Texture/Turbulence_11_-_256x256.png",
+                "pointVolumeTexturePath": "./application/resource/Texture/waveNoise.png",
+                "sampleCount": 3,
+                "seed": 6,
+                "volumeThreshold": 0.03799999877810478,
+                "worldMaxXZ": [
+                    3000.0,
+                    3000.0
+                ],
+                "worldMinXZ": [
+                    -3000.0,
+                    -3000.0
+                ]
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "a42fc6ae-fe53-43f9-bac7-5daa237304e9",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "b06d6c87-8b4d-450d-81f4-83b092d7eb40"
+    },
+    "Name": "ProceduralObjectsMaker",
+    "Systems": [
+        {
+            "SystemCategory": 0,
+            "SystemName": "PlacementEntityByProcedural"
+        }
+    ],
+    "isUnique": false
+}

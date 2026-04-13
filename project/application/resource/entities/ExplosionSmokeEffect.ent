@@ -1,0 +1,312 @@
+{
+    "Components": {
+        "DissolveEffectParam": [
+            {
+                "Handle": "5aee5058-60c3-407d-a832-f617fc911f22",
+                "edgeWidth": 0.0,
+                "isActive": true,
+                "materialIndex": 1,
+                "outLineColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "textureFilePath": "./application/resource/Texture/waveNoise.png",
+                "threshold": 0.0689999982714653
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "bd7fca4c-43de-4958-a0c3-7e810864cbc5",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.17000000178813934,
+                "uvScale": [
+                    0.33000001311302185,
+                    2.7100000381469727
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.050321247428655624
+                ]
+            },
+            {
+                "Handle": "2511dc6d-0b76-44d9-8746-482833b3e1fa",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    0.9764705896377563
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            },
+            {
+                "Handle": "48b6b16a-1b80-426e-9ca6-9fdb94373e7e",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.04131661355495453,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "c2ccb28b-e65d-45c9-9b53-3a07544dd0d5",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 0.800000011920929,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.800000011920929,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ]
+            },
+            {
+                "Handle": "b5bd2c79-faf0-4d5a-9380-f84796e53586",
+                "InterpolationType": 0,
+                "colorCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.054901961237192154
+                        ]
+                    },
+                    {
+                        "time": 0.31388330459594727,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.21176470816135406
+                        ]
+                    },
+                    {
+                        "time": 0.3887324333190918,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 1.0044265985488892,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 1.0551308393478394,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.6117647290229797
+                        ]
+                    },
+                    {
+                        "time": 1.101006031036377,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.29075080156326294
+                        ]
+                    },
+                    {
+                        "time": 1.142052412033081,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.19011402130126953
+                        ]
+                    },
+                    {
+                        "time": 1.2000000476837158,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.0
+                        ]
+                    }
+                ],
+                "duration": 1.2000000476837158,
+                "isLoop": false,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": []
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "Handle": "5f6cbc76-4b3c-4bff-8b40-27b938d12bf5",
+                "baseTexturePath": "./application/resource/Texture/white1x1.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 0,
+                        "handle": {
+                            "uuid": "8e857a78-717d-4b42-ae4b-1c73865f336a"
+                        }
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 0
+            }
+        ],
+        "SphereRenderer": [
+            {
+                "Handle": "9e8c2367-929b-4da5-9084-6b6236bd1b46",
+                "blendMode": 1,
+                "divisionLatitude": 16,
+                "divisionLongitude": 16,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radius": 1.0,
+                "textureFilePath": "",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "6498ea64-975c-4304-b761-f64e3ba39766",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    3.0,
+                    3.0,
+                    3.0
+                ],
+                "translate": [
+                    0.12698277831077576,
+                    0.0,
+                    6.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "8e857a78-717d-4b42-ae4b-1c73865f336a"
+    },
+    "Name": "ExplosionSmokeEffect",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "TransformAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "DissolveAnimationSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "EffectAutoDestroySystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": false
+}

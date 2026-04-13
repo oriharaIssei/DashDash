@@ -1,0 +1,61 @@
+{
+    "Components": {
+        "ButtonGroup": [
+            {
+                "buttonNumbers": [
+                    {
+                        "buttonNumber": 0,
+                        "entityID": 0
+                    },
+                    {
+                        "buttonNumber": 1,
+                        "entityID": 4
+                    },
+                    {
+                        "buttonNumber": 2,
+                        "entityID": 5
+                    }
+                ],
+                "decideKeys": [
+                    28,
+                    57
+                ],
+                "decidePadButtons": [
+                    4096,
+                    8192
+                ],
+                "selectAddKeys": [
+                    208,
+                    205,
+                    31,
+                    32
+                ],
+                "selectAddPadButtons": [
+                    2,
+                    8,
+                    512
+                ],
+                "selectSubKeys": [
+                    200,
+                    203,
+                    17,
+                    30
+                ],
+                "selectSubPadButtons": [
+                    1,
+                    4,
+                    256
+                ],
+                "startButtonNumber": 0
+            }
+        ]
+    },
+    "Name": "buttonGroup",
+    "Systems": [
+        {
+            "SystemCategory": 2,
+            "SystemName": "ButtonGroupSystem"
+        }
+    ],
+    "isUnique": false
+}

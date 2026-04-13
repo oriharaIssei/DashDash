@@ -1,0 +1,60 @@
+{
+    "Components": {
+        "EntitySpawner": [
+            {
+                "Handle": "735223b6-fdb1-43a4-a7cb-6071d125ad64",
+                "emitter": {
+                    "EmitterShape": {
+                        "radius": 1.2599999904632568,
+                        "spawnType": 0
+                    },
+                    "activeTime": 1.399999976158142,
+                    "interpolateSpawnPos": false,
+                    "isActive": true,
+                    "isLoop": true,
+                    "originPos": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "shapeType": 0,
+                    "spawnCoolTime": 0.05999999865889549,
+                    "spawnCount": 4
+                },
+                "templateTypeName": "TimeStop"
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "358abe1b-c9f1-4641-8f21-597df07819f2",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    -11.94140911102295,
+                    3.7919931411743164,
+                    54.525535583496094
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "1818663a-69de-4cb2-8189-58c7f3969a51"
+    },
+    "Name": "EntitySpawn",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "EntitySpawnerWorkSystem"
+        }
+    ],
+    "isUnique": false
+}

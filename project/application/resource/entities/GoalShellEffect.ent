@@ -1,0 +1,108 @@
+{
+    "Components": {
+        "Material": [
+            {
+                "color": [
+                    0.70960533618927,
+                    0.05098040774464607,
+                    0.8901960849761963,
+                    0.21960784494876862
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [],
+        "MaterialEffectPipeLine": [
+            {
+                "baseTexturePath": "./application/resource/Texture/lazer.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 0,
+                        "entityID": 2
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 0
+            }
+        ],
+        "SphereRenderer": [
+            {
+                "blendMode": 1,
+                "divisionLatitude": 16,
+                "divisionLongitude": 16,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radius": 8.850000381469727,
+                "textureDirectory": "./application/resource/Texture",
+                "textureFileName": "waveMask.png",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Transform": [
+            {
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    20.0
+                ]
+            }
+        ]
+    },
+    "Name": "GoalShellEffect",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": true
+}

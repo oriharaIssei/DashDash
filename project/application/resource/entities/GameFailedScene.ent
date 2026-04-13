@@ -1,0 +1,35 @@
+{
+    "Components": {
+        "SubScene": [
+            {
+                "Handle": "84a16cd5-1e9f-4ddf-b213-1c65cb6bf92d",
+                "isActive": false,
+                "renderingPriority": 1,
+                "sceneName": "GameFailed"
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "dbf7560d-330e-4e39-b724-d84f1376543e"
+    },
+    "Name": "GameFailedScene",
+    "Systems": [
+        {
+            "SystemCategory": 7,
+            "SystemName": "SubSceneRender"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "SubSceneUpdate"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "PauseMainSceneSystem"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "GameFailedSceneLaunchSystem"
+        }
+    ],
+    "isUnique": false
+}

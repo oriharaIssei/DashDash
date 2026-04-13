@@ -1,0 +1,86 @@
+{
+    "Components": {
+        "DissolveEffectParam": [
+            {
+                "Handle": "189a8b17-9188-4a45-9356-9bc246dee9cb",
+                "edgeWidth": 0.0010000000474974513,
+                "isActive": true,
+                "materialIndex": 0,
+                "outLineColor": [
+                    0.01687765121459961,
+                    0.7635530233383179,
+                    1.0,
+                    1.0
+                ],
+                "textureFilePath": "./application/resource/Texture/waveNoise.png",
+                "threshold": 0.0
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "ba772259-7bc4-4b27-aa0d-84dcae2fd4c5",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "5c95e89d-9c0e-4834-ae3a-7d1d69112f71",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 1.600000023841858,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 1.600000023841858,
+                        "value": [
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "9ad3a205-f3cd-4a53-bdac-ba459a21e713"
+    },
+    "Name": "EnterScene",
+    "Systems": [
+        {
+            "SystemCategory": 7,
+            "SystemName": "DissolveEffect"
+        }
+    ],
+    "isUnique": true
+}

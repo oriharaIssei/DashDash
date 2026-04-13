@@ -1,0 +1,53 @@
+{
+    "Components": {
+        "DissolveEffectParam": [
+            {
+                "Handle": "a52577a8-3712-4b14-853f-275a5b120ad5",
+                "edgeWidth": 0.04500000178813934,
+                "isActive": true,
+                "materialIndex": 0,
+                "outLineColor": [
+                    0.594936728477478,
+                    0.594936728477478,
+                    0.594936728477478,
+                    1.0
+                ],
+                "textureFilePath": "./application/resource/Texture/Voronoi 3 - 256x256.png",
+                "threshold": 0.17499999701976776
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "0952defa-4d73-4012-8f12-99edb88b59a6",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    3.0,
+                    2.2699999809265137
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "ee9befd0-c2c6-45c7-a974-49282bcb99a0"
+    },
+    "Name": "Magma_Dissolve",
+    "Systems": [],
+    "isUnique": false
+}

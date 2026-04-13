@@ -1,0 +1,131 @@
+{
+    "Components": {
+        "CylinderRenderer": [
+            {
+                "blendMode": 1,
+                "bottomRadius": [
+                    2.4800000190734863,
+                    2.4800000190734863
+                ],
+                "height": 1.0299999713897705,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureDirectory": "./application/resource/Texture",
+                "textureFileName": "gradationLine.png",
+                "topRadius": [
+                    0.3400000035762787,
+                    0.3400000035762787
+                ],
+                "transform": {
+                    "rotate": [
+                        0.7075288891792297,
+                        0.0,
+                        0.0,
+                        0.7066844701766968
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Material": [
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    2.0,
+                    4.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    1.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 0.20000000298023224,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 0.20000000298023224,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "MaterialEffectPipeLine": [],
+        "Transform": [
+            {
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0000239610671997,
+                    1.0000240802764893,
+                    1.0000205039978027
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Name": "impactWave",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": false
+}

@@ -1,0 +1,221 @@
+{
+    "Components": {
+        "Button": [
+            {
+                "Handle": "067dd90e-e8d1-45fe-80a8-9c7adca87054",
+                "hoverColor": [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1.0
+                ],
+                "normalColor": [
+                    0.3199999928474426,
+                    0.3199999928474426,
+                    0.3199999928474426,
+                    1.0
+                ],
+                "pressColor": [
+                    0.6000000238418579,
+                    0.6000000238418579,
+                    0.6000000238418579,
+                    1.0
+                ],
+                "releaseColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "shortKeys": [
+                    57,
+                    28
+                ],
+                "shortcutGamepadButton": [
+                    4096,
+                    8192
+                ]
+            }
+        ],
+        "SpriteAnimation": [
+            {
+                "Handle": "3f247a13-616f-434c-93d0-0582c1b9faa3",
+                "colorAnimationState": {
+                    "isLoop": true,
+                    "isPlay": false
+                },
+                "colorCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.09803921729326248
+                        ]
+                    },
+                    {
+                        "time": 0.2490842491388321,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 0.8296703100204468,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 1.0,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.09803921729326248
+                        ]
+                    }
+                ],
+                "colorInterpolationType": 0,
+                "duration": 1.0,
+                "rotateCurve": [],
+                "scaleCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.11538461595773697,
+                        "value": [
+                            0.5833333134651184,
+                            0.5833333134651184
+                        ]
+                    },
+                    {
+                        "time": 0.28205129504203796,
+                        "value": [
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 0.8299999833106995,
+                        "value": [
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 1.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ],
+                "spriteComponentHandle": "00000000-0000-0000-0000-000000000000",
+                "transformAnimationState": {
+                    "isLoop": true,
+                    "isPlay": false
+                },
+                "transformInterpolationType": 0,
+                "translateCurve": [],
+                "uvAnimationState": {
+                    "isLoop": false,
+                    "isPlay": false
+                },
+                "uvInterpolationType": 0,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": []
+            }
+        ],
+        "TimerComponent": [
+            {
+                "Handle": "5f2b442e-eee9-40ca-9b13-7d43c52e4c8a",
+                "isStarted": true,
+                "maxTime": 3.0
+            }
+        ],
+        "TimerForSpriteComponent": [
+            {
+                "Handle": "2bbff1e9-4d6d-451f-b08b-48f4e247ee40",
+                "anchorOnWindow": [
+                    0.5,
+                    0.5
+                ],
+                "digitDecimal": 0,
+                "digitInteger": 1,
+                "marginBetweenIntegerAndDecimal": [
+                    0.0,
+                    0.0
+                ],
+                "numbersTexturePath": "./application/resource/Texture//timerNumbers.png",
+                "offset": [
+                    0.0,
+                    0.0
+                ],
+                "spriteMarginDecimal": [
+                    0.0,
+                    0.0
+                ],
+                "spriteMarginInteger": [
+                    0.0,
+                    0.0
+                ],
+                "spriteSizeDecimal": [
+                    256.0,
+                    256.0
+                ],
+                "spriteSizeInteger": [
+                    256.0,
+                    256.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "7e7887e4-24d1-43fc-b6e0-0e3134176cd3"
+    },
+    "Name": "StartTimer",
+    "Systems": [
+        {
+            "SystemCategory": 1,
+            "SystemName": "ButtonInputSystem"
+        },
+        {
+            "SystemCategory": 0,
+            "SystemName": "CreateSpriteFromTimer"
+        },
+        {
+            "SystemCategory": 0,
+            "SystemName": "StartTimerInitialize"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "SpriteAnimationSystem"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "StartSequenceSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "TimerForSprite"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "TimerCountDown"
+        }
+    ],
+    "isUnique": true
+}

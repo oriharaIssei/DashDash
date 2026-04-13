@@ -1,0 +1,125 @@
+{
+    "Components": {
+        "CylinderRenderer": [
+            {
+                "blendMode": 1,
+                "bottomRadius": [
+                    5.53000020980835,
+                    5.53000020980835
+                ],
+                "height": 4.150000095367432,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureDirectory": "./application/resource/Texture",
+                "textureFileName": "gradationLine.png",
+                "topRadius": [
+                    0.7799999713897705,
+                    0.7799999713897705
+                ],
+                "transform": {
+                    "rotate": [
+                        0.7076468467712402,
+                        0.0,
+                        0.0,
+                        0.7065663933753967
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        1.5099999904632568
+                    ]
+                }
+            }
+        ],
+        "Material": [
+            {
+                "color": [
+                    0.10588235408067703,
+                    0.3529411852359772,
+                    1.0,
+                    0.32156863808631897
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    -1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 0.0,
+                "isLoop": false,
+                "isPlay": false,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": []
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "baseTexturePath": "./application/resource/Texture/Liner.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 1,
+                        "entityID": 3
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 0
+            }
+        ],
+        "Transform": [
+            {
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0000001192092896,
+                    1.0000001192092896,
+                    1.0000001192092896
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    -5.050000190734863
+                ]
+            }
+        ]
+    },
+    "Name": "SonicBoom",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": true
+}

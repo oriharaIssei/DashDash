@@ -1,0 +1,4 @@
+[submodule "project/engine"]
+	path = project/engine
+	url = https://github.com/oriharaIssei/OriGine.git
+	branch = main

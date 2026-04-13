@@ -1,0 +1,42 @@
+{
+    "Components": {
+        "DirectionalLight": [
+            {
+                "Handle": "4fb902ce-3ce3-42ae-9cc7-e4e66194af8b",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "direction": [
+                    0.29789629578590393,
+                    -0.4279320240020752,
+                    0.8533065319061279
+                ],
+                "intensity": 0.05000000074505806,
+                "isActive": true
+            },
+            {
+                "Handle": "02cec807-88d2-4870-8b89-eea8047ebf4d",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "direction": [
+                    -0.3258640170097351,
+                    -0.4278682470321655,
+                    0.8430548310279846
+                ],
+                "intensity": 0.11999999731779099,
+                "isActive": true
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "1d35826d-ae0b-49a7-a4a9-044d1a3baf34"
+    },
+    "Name": "directionalLight",
+    "Systems": [],
+    "isUnique": false
+}

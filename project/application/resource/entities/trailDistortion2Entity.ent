@@ -1,0 +1,81 @@
+{
+    "Components": {
+        "DistortionEffectParam": [
+            {
+                "distortionBias": [
+                    0.0,
+                    0.0
+                ],
+                "distortionStrength": [
+                    1.1699999570846558,
+                    3.859999895095825
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "textuerPath": "./application/resource/Texture/waveNoise.png",
+                "use3dObjectList": false
+            }
+        ],
+        "Material": [
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    0.5299999713897705,
+                    0.6800000071525574
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.9178479313850403
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 7.099999904632568,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 7.099999904632568,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "Name": "trailDistortion2Entity",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        }
+    ],
+    "isUnique": true
+}

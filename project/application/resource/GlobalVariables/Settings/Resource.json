@@ -1,0 +1,11 @@
+{
+    "Resource": {
+        "RTVSize": 5.00000000,
+        "RTVShaderVisible": false,
+        "SRVSize": 126.00000000,
+        "SRVShaderVisible": true,
+        "DSVSize": 1.00000000,
+        "DSVShaderVisible": false
+
+    }
+}

@@ -1,0 +1,259 @@
+{
+    "Components": {
+        "AABBCollider": [
+            {
+                "max": [
+                    8.0,
+                    30.0,
+                    0.0
+                ],
+                "min": [
+                    -8.0,
+                    0.0,
+                    0.0
+                ],
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "SpriteAnimation": [
+            {
+                "colorAnimationState": {
+                    "isLoop": false,
+                    "isPlay": true
+                },
+                "colorCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.11003344506025314,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.6943010687828064
+                        ]
+                    },
+                    {
+                        "time": 0.1755852848291397,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.7016102075576782
+                        ]
+                    },
+                    {
+                        "time": 0.46120402216911316,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.8127090334892273
+                        ]
+                    },
+                    {
+                        "time": 0.699999988079071,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ],
+                "colorInterpolationType": 0,
+                "duration": 0.699999988079071,
+                "rotateCurve": [],
+                "scaleCurve": [],
+                "transformAnimationState": {
+                    "isLoop": false,
+                    "isPlay": false
+                },
+                "transformInterpolationType": 0,
+                "translateCurve": [],
+                "uvAnimationState": {
+                    "isLoop": false,
+                    "isPlay": false
+                },
+                "uvInterpolationType": 0,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": []
+            },
+            {
+                "colorAnimationState": {
+                    "isLoop": false,
+                    "isPlay": true
+                },
+                "colorCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 0.2130434662103653,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.49302905797958374
+                        ]
+                    },
+                    {
+                        "time": 0.45886287093162537,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.27904778718948364
+                        ]
+                    },
+                    {
+                        "time": 0.699999988079071,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.01568627543747425
+                        ]
+                    }
+                ],
+                "colorInterpolationType": 0,
+                "duration": 0.699999988079071,
+                "rotateCurve": [],
+                "scaleCurve": [],
+                "transformAnimationState": {
+                    "isLoop": false,
+                    "isPlay": false
+                },
+                "transformInterpolationType": 0,
+                "translateCurve": [],
+                "uvAnimationState": {
+                    "isLoop": false,
+                    "isPlay": false
+                },
+                "uvInterpolationType": 0,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": []
+            }
+        ],
+        "SpriteRenderer": [
+            {
+                "anchorPoint": [
+                    0.0,
+                    0.0
+                ],
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "isFlipX": false,
+                "isFlipY": false,
+                "renderingPriority": 1,
+                "rotate": 0.0,
+                "scale": [
+                    1.0,
+                    1.0
+                ],
+                "size": [
+                    0.0,
+                    0.0
+                ],
+                "textureLeftTop": [
+                    0.0,
+                    0.0
+                ],
+                "texturePath": "",
+                "textureSize": [
+                    0.0,
+                    0.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "Transform": [
+            {
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Name": "tutorialCollider",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionPushBackSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "SpriteAnimationSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "SpriteRenderSystem"
+        }
+    ],
+    "isUnique": false
+}

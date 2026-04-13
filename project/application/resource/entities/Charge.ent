@@ -1,0 +1,373 @@
+{
+    "Components": {
+        "Material": [
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    0.4208085238933563
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    2.0,
+                    0.46000000834465027
+                ],
+                "uvTranslate": [
+                    0.0,
+                    1.7142422199249268
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "InterpolationType": 0,
+                "colorCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.16078431904315948
+                        ]
+                    },
+                    {
+                        "time": 0.057337887585163116,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 0.257999986410141,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.12941177189350128
+                        ]
+                    },
+                    {
+                        "time": 0.3849829435348511,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.12941177189350128
+                        ]
+                    },
+                    {
+                        "time": 0.4505119323730469,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.5215686559677124
+                        ]
+                    },
+                    {
+                        "time": 0.7480000257492065,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 0.8129692673683167,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.686274528503418
+                        ]
+                    },
+                    {
+                        "time": 1.2000000476837158,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.0
+                        ]
+                    }
+                ],
+                "duration": 1.2000000476837158,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.20000000298023224
+                        ]
+                    },
+                    {
+                        "time": 0.22662115097045898,
+                        "value": [
+                            0.0,
+                            -0.800000011920929
+                        ]
+                    },
+                    {
+                        "time": 0.3849829435348511,
+                        "value": [
+                            0.0,
+                            -0.800000011920929
+                        ]
+                    },
+                    {
+                        "time": 0.48327645659446716,
+                        "value": [
+                            0.0,
+                            -0.0021917223930358887
+                        ]
+                    },
+                    {
+                        "time": 0.6491467356681824,
+                        "value": [
+                            0.0,
+                            0.6949999928474426
+                        ]
+                    },
+                    {
+                        "time": 0.7515358924865723,
+                        "value": [
+                            0.0,
+                            1.4600000381469727
+                        ]
+                    },
+                    {
+                        "time": 1.2000000476837158,
+                        "value": [
+                            0.0,
+                            2.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "PrimitiveNodeAnimation": [],
+        "RingRenderer": [
+            {
+                "InnerRadius": 0.75,
+                "OuterRadius": 1.0,
+                "blendMode": 1,
+                "division": 16,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureFilePath": "./application/resource/Texture/Liner.png",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            {
+                "InnerRadius": 0.5,
+                "OuterRadius": 1.0,
+                "blendMode": 1,
+                "division": 16,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureFilePath": "./application/resource/Texture/gradationLine.png",
+                "transform": {
+                    "rotate": [
+                        0.6026386618614197,
+                        0.0,
+                        0.0,
+                        0.7980141639709473
+                    ],
+                    "scale": [
+                        1.7999999523162842,
+                        1.7999999523162842,
+                        1.7999999523162842
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            {
+                "InnerRadius": 0.3199999928474426,
+                "OuterRadius": 1.0,
+                "blendMode": 1,
+                "division": 16,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureFilePath": "./application/resource/Texture/Liner.png",
+                "transform": {
+                    "rotate": [
+                        0.27917400002479553,
+                        0.6494956612586975,
+                        -0.7072554230690002,
+                        0.002669784240424633
+                    ],
+                    "scale": [
+                        1.2100000381469727,
+                        1.2100000381469727,
+                        1.2100000381469727
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Transform": [
+            {
+                "rotate": [
+                    5.241751477313983e-09,
+                    3.480047357530265e-15,
+                    2.9906594609357528e-15,
+                    1.0
+                ],
+                "scale": [
+                    2.7150611877441406,
+                    2.7150611877441406,
+                    2.1926732063293457
+                ],
+                "translate": [
+                    -6.826000213623047,
+                    0.3427062928676605,
+                    -5.019999980926514
+                ]
+            }
+        ],
+        "TransformAnimation": [
+            {
+                "InterpolationType": 0,
+                "duration": 1.2000000476837158,
+                "isLoop": true,
+                "isPlay": true,
+                "rotateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.5912815928459167,
+                            0.5081316232681274,
+                            0.6262494325637817
+                        ]
+                    },
+                    {
+                        "time": 0.33766233921051025,
+                        "value": [
+                            5.241751477313983e-09,
+                            3.480047357530265e-15,
+                            2.9906594609357528e-15,
+                            -1.0
+                        ]
+                    },
+                    {
+                        "time": 0.41363632678985596,
+                        "value": [
+                            5.241751477313983e-09,
+                            3.480047357530265e-15,
+                            2.9906594609357528e-15,
+                            1.0
+                        ]
+                    }
+                ],
+                "scaleCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            1.8300000429153442,
+                            1.8300000429153442,
+                            1.8300000429153442
+                        ]
+                    },
+                    {
+                        "time": 0.25999999046325684,
+                        "value": [
+                            0.25999999046325684,
+                            0.25999999046325684,
+                            0.25999999046325684
+                        ]
+                    },
+                    {
+                        "time": 0.46700000762939453,
+                        "value": [
+                            0.25999999046325684,
+                            0.25999999046325684,
+                            0.25999999046325684
+                        ]
+                    },
+                    {
+                        "time": 0.7480519413948059,
+                        "value": [
+                            3.0,
+                            3.0,
+                            3.0
+                        ]
+                    },
+                    {
+                        "time": 1.2000000476837158,
+                        "value": [
+                            2.4000000953674316,
+                            2.4000000953674316,
+                            1.2999999523162842
+                        ]
+                    }
+                ],
+                "targetTransformIndex": 0,
+                "translateCurve": []
+            }
+        ]
+    },
+    "Name": "Charge",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "OverlayRenderSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "TransformAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "EffectAutoDestroySystem"
+        }
+    ],
+    "isUnique": false
+}

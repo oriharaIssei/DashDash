@@ -1,0 +1,722 @@
+{
+    "CategoryActivity": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+    ],
+    "Entities": [
+        {
+            "Components": {
+                "Button": [
+                    {
+                        "Handle": "52bba0e0-1b33-4714-a051-c92937a81492",
+                        "hoverColor": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "normalColor": [
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            1.0
+                        ],
+                        "pressColor": [
+                            0.501960813999176,
+                            0.501960813999176,
+                            0.501960813999176,
+                            1.0
+                        ],
+                        "releaseColor": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "shortKeys": [],
+                        "shortcutGamepadButton": []
+                    }
+                ],
+                "SpriteRenderer": [
+                    {
+                        "Handle": "5e73dd67-13f9-4bb5-a4e6-1d26e2d689e2",
+                        "anchorPoint": [
+                            0.5,
+                            0.5
+                        ],
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "defaultWindowSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "isFlipX": false,
+                        "isFlipY": false,
+                        "isRender": true,
+                        "renderingPriority": 1,
+                        "rotate": 0.0,
+                        "scale": [
+                            1.5299999713897705,
+                            1.5299999713897705
+                        ],
+                        "size": [
+                            256.0,
+                            32.0
+                        ],
+                        "textureLeftTop": [
+                            0.0,
+                            0.0
+                        ],
+                        "texturePath": "./application/resource/Texture/ResumeButtonUI.png",
+                        "textureSize": [
+                            512.0,
+                            64.0
+                        ],
+                        "translate": [
+                            1593.5999755859375,
+                            820.7999877929688
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ],
+                        "windowRatioPos": [
+                            0.8299999833106995,
+                            0.7599999904632568
+                        ],
+                        "windowRatioSize": [
+                            0.13333334028720856,
+                            0.029629629105329514
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "b77544cd-66e6-471b-bd7d-8a7ca3957016"
+            },
+            "Name": "Resume",
+            "Systems": [
+                {
+                    "SystemCategory": 1,
+                    "SystemName": "ButtonInputSystem"
+                },
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "SpriteRenderSystem"
+                },
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "SubSceneDeactivateByButton"
+                },
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "UpdateButtonColorByState"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "Button": [
+                    {
+                        "Handle": "eaea9a17-0b6a-4ba9-9cae-501c4fe36532",
+                        "hoverColor": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "normalColor": [
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            1.0
+                        ],
+                        "pressColor": [
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            1.0
+                        ],
+                        "releaseColor": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "shortKeys": [],
+                        "shortcutGamepadButton": []
+                    }
+                ],
+                "SceneChanger": [
+                    {
+                        "Handle": "19bce330-7b24-420a-bdd3-9e0cedfb713c",
+                        "nextSceneName": "StageSelect"
+                    }
+                ],
+                "SpriteRenderer": [
+                    {
+                        "Handle": "5a238f17-3f83-45e8-8155-86e3a65c1081",
+                        "anchorPoint": [
+                            0.5,
+                            0.5
+                        ],
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "defaultWindowSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "isFlipX": false,
+                        "isFlipY": false,
+                        "isRender": true,
+                        "renderingPriority": 1,
+                        "rotate": 0.0,
+                        "scale": [
+                            1.5299999713897705,
+                            1.5299999713897705
+                        ],
+                        "size": [
+                            256.0,
+                            32.0
+                        ],
+                        "textureLeftTop": [
+                            0.0,
+                            0.0
+                        ],
+                        "texturePath": "./application/resource/Texture/BackSelectButtonUI.png",
+                        "textureSize": [
+                            512.0,
+                            64.0
+                        ],
+                        "translate": [
+                            1593.5999755859375,
+                            885.5999755859375
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ],
+                        "windowRatioPos": [
+                            0.8299999833106995,
+                            0.8199999928474426
+                        ],
+                        "windowRatioSize": [
+                            0.13333334028720856,
+                            0.029629629105329514
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "2585560b-2406-48c6-8cdf-900fddc28370"
+            },
+            "Name": "BackToStageSelect",
+            "Systems": [
+                {
+                    "SystemCategory": 3,
+                    "SystemName": "SceneTransitionRequestSenderSystem"
+                },
+                {
+                    "SystemCategory": 1,
+                    "SystemName": "ButtonInputSystem"
+                },
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "ChangeSceneByButton"
+                },
+                {
+                    "SystemCategory": 7,
+                    "SystemName": "DissolveEffect"
+                },
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "SpriteRenderSystem"
+                },
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "UpdateButtonColorByState"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "SpriteAnimation": [
+                    {
+                        "Handle": "03a9a12f-f8d7-498d-852a-057a948a7bc2",
+                        "colorAnimationState": {
+                            "isLoop": false,
+                            "isPlay": false
+                        },
+                        "colorCurve": [
+                            {
+                                "time": 0.0,
+                                "value": [
+                                    1.0,
+                                    1.0,
+                                    1.0,
+                                    1.0
+                                ]
+                            }
+                        ],
+                        "colorInterpolationType": 0,
+                        "duration": 6.199999809265137,
+                        "rotateCurve": [],
+                        "scaleCurve": [],
+                        "spriteComponentHandle": "00000000-0000-0000-0000-000000000000",
+                        "transformAnimationState": {
+                            "isLoop": false,
+                            "isPlay": false
+                        },
+                        "transformInterpolationType": 0,
+                        "translateCurve": [],
+                        "uvAnimationState": {
+                            "isLoop": true,
+                            "isPlay": true
+                        },
+                        "uvInterpolationType": 0,
+                        "uvRotateCurve": [],
+                        "uvScaleCurve": [],
+                        "uvTranslateCurve": [
+                            {
+                                "time": 0.0,
+                                "value": [
+                                    0.0,
+                                    0.0
+                                ]
+                            },
+                            {
+                                "time": 6.199999809265137,
+                                "value": [
+                                    1.0,
+                                    0.0
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "SpriteRenderer": [
+                    {
+                        "Handle": "cf1dc712-3e5f-4e23-9fc8-70f9a8b52fa4",
+                        "anchorPoint": [
+                            0.5,
+                            0.5
+                        ],
+                        "color": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.48235294222831726
+                        ],
+                        "defaultWindowSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "isFlipX": false,
+                        "isFlipY": false,
+                        "isRender": true,
+                        "renderingPriority": 1,
+                        "rotate": 0.0,
+                        "scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "size": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "textureLeftTop": [
+                            0.0,
+                            0.0
+                        ],
+                        "texturePath": "./application/resource/Texture/black1x1.png",
+                        "textureSize": [
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            960.0,
+                            540.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.7563585638999939,
+                            0.0
+                        ],
+                        "windowRatioPos": [
+                            0.5,
+                            0.5
+                        ],
+                        "windowRatioSize": [
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "e955be45-6aa9-4e0f-bf96-c0de60832862"
+            },
+            "Name": "BG",
+            "Systems": [
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "BackGroundSpriteRenderSystem"
+                },
+                {
+                    "SystemCategory": 5,
+                    "SystemName": "SpriteAnimationSystem"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "MouseCondition": [
+                    {
+                        "Handle": "5158e61b-4b09-46b8-b65e-e9abf2607404",
+                        "fixCursorPos": [
+                            0.0,
+                            0.0
+                        ],
+                        "isActive": true,
+                        "isFixCursor": false,
+                        "isShowCursor": true
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "f2e1acba-0961-44d1-9a5b-3c519841e8bb"
+            },
+            "Name": "mouseCondition",
+            "Systems": [
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "ApplyMouseConditionSystem"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "ButtonGroup": [
+                    {
+                        "Handle": "8b943c0d-dc63-46fe-a6b7-b77788ae50f4",
+                        "buttonNumbers": [
+                            {
+                                "entityHandle": {
+                                    "uuid": "b77544cd-66e6-471b-bd7d-8a7ca3957016"
+                                }
+                            },
+                            {
+                                "entityHandle": {
+                                    "uuid": "2585560b-2406-48c6-8cdf-900fddc28370"
+                                }
+                            }
+                        ],
+                        "decideGamepadButtons": [
+                            4096,
+                            8192
+                        ],
+                        "decideKeys": [
+                            28,
+                            57
+                        ],
+                        "selectAddGamepadButtons": [
+                            2,
+                            8,
+                            512,
+                            524288,
+                            2097152,
+                            131072
+                        ],
+                        "selectAddKeys": [
+                            31,
+                            32,
+                            205,
+                            208
+                        ],
+                        "selectSubGamepadButtons": [
+                            1,
+                            4,
+                            256,
+                            262144,
+                            1048576,
+                            65536
+                        ],
+                        "selectSubKeys": [
+                            17,
+                            30,
+                            200,
+                            203
+                        ],
+                        "startButtonNumber": 0
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "5dd12a4a-7dea-4185-8610-cad5b8c62e27"
+            },
+            "Name": "ButtonGroup",
+            "Systems": [
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "ButtonGroupSystem"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "SpriteRenderer": [
+                    {
+                        "Handle": "a66d39f6-8781-460a-8fa1-2b581bff8a48",
+                        "anchorPoint": [
+                            0.5,
+                            0.5
+                        ],
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "defaultWindowSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "isFlipX": false,
+                        "isFlipY": false,
+                        "isRender": true,
+                        "renderingPriority": 10,
+                        "rotate": 0.0,
+                        "scale": [
+                            1.3600000143051147,
+                            1.3600000143051147
+                        ],
+                        "size": [
+                            512.0,
+                            380.0
+                        ],
+                        "textureLeftTop": [
+                            0.0,
+                            0.0
+                        ],
+                        "texturePath": "./application/resource/Texture/KeyOperationMap.png",
+                        "textureSize": [
+                            256.0,
+                            190.0
+                        ],
+                        "translate": [
+                            960.0,
+                            540.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ],
+                        "windowRatioPos": [
+                            0.5,
+                            0.5
+                        ],
+                        "windowRatioSize": [
+                            0.2666666805744171,
+                            0.35185185074806213
+                        ]
+                    },
+                    {
+                        "Handle": "08f9dd98-fc23-4e94-88ce-4f7fea8ce2ce",
+                        "anchorPoint": [
+                            0.5,
+                            0.5
+                        ],
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "defaultWindowSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "isFlipX": false,
+                        "isFlipY": false,
+                        "isRender": true,
+                        "renderingPriority": 10,
+                        "rotate": 0.0,
+                        "scale": [
+                            1.3600000143051147,
+                            1.3600000143051147
+                        ],
+                        "size": [
+                            512.0,
+                            380.0
+                        ],
+                        "textureLeftTop": [
+                            0.0,
+                            0.0
+                        ],
+                        "texturePath": "./application/resource/Texture/PadOperationMap.png",
+                        "textureSize": [
+                            256.0,
+                            190.0
+                        ],
+                        "translate": [
+                            960.0,
+                            540.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ],
+                        "windowRatioPos": [
+                            0.5,
+                            0.5
+                        ],
+                        "windowRatioSize": [
+                            0.2666666805744171,
+                            0.35185185074806213
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "53cc281c-3fb2-479f-a046-9943632577d8"
+            },
+            "Name": "OperationMap",
+            "Systems": [
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "ShowGameUIByInputDevice"
+                },
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "SpriteRenderSystem"
+                }
+            ],
+            "isUnique": false
+        }
+    ],
+    "Systems": [
+        {
+            "ApplyMouseConditionSystem": {
+                "Priority": 0
+            }
+        },
+        {
+            "SceneTransitionRequestSenderSystem": {
+                "Priority": 0
+            }
+        },
+        {
+            "BackGroundSpriteRenderSystem": {
+                "Priority": 0
+            }
+        },
+        {
+            "ButtonGroupSystem": {
+                "Priority": -1
+            }
+        },
+        {
+            "ButtonInputSystem": {
+                "Priority": 0
+            }
+        },
+        {
+            "ChangeSceneByButton": {
+                "Priority": 0
+            }
+        },
+        {
+            "DissolveEffect": {
+                "Priority": 10
+            }
+        },
+        {
+            "SceneTransition": {
+                "Priority": 0
+            }
+        },
+        {
+            "RegisterWindowResizeEvent": {
+                "Priority": 0
+            }
+        },
+        {
+            "ShowGameUIByInputDevice": {
+                "Priority": 0
+            }
+        },
+        {
+            "SpriteRenderSystem": {
+                "Priority": 1
+            }
+        },
+        {
+            "SubSceneDeactivateByButton": {
+                "Priority": 2
+            }
+        },
+        {
+            "UpdateButtonColorByState": {
+                "Priority": 2
+            }
+        },
+        {
+            "GrayscaleEffect": {
+                "Priority": 1
+            }
+        },
+        {
+            "GradationEffect": {
+                "Priority": 0
+            }
+        },
+        {
+            "SpriteAnimationSystem": {
+                "Priority": 0
+            }
+        }
+    ]
+}

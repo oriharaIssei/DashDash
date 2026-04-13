@@ -1,0 +1,87 @@
+{
+    "Components": {
+        "DistortionEffectParam": [
+            {
+                "Handle": "181b9ea4-cfac-4dfb-9358-27629df2658b",
+                "distortionBias": [
+                    0.0,
+                    0.0
+                ],
+                "distortionStrength": [
+                    0.0,
+                    0.6399999856948853
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "textuerPath": "./application/resource/Texture/bioNoise.png",
+                "use3dObjectList": false
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "81328ca9-d58d-4c4d-afea-384a8475a9e5",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0499999523162842,
+                    1.0700000524520874
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.18476709723472595
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "8f493b43-6542-4c8f-b63e-08248bf8c726",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 3.0999999046325684,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 3.0999999046325684,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "f9609fd3-0d97-455f-9367-24e613394d13"
+    },
+    "Name": "trailDistortion1Entity",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        }
+    ],
+    "isUnique": true
+}

@@ -1,0 +1,169 @@
+{
+    "Components": {
+        "AABBCollider": [
+            {
+                "Handle": "2ae2f1ad-0f41-4eaf-99e1-7fd430ae8734",
+                "center": [
+                    0.0,
+                    1.4900000095367432,
+                    0.25
+                ],
+                "collisionCategory": "StageObject",
+                "halfSize": [
+                    1.399999976158142,
+                    1.4900000095367432,
+                    1.940000057220459
+                ],
+                "isActive": true,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "BulletSpawner": [
+            {
+                "Handle": "ae257211-4413-4173-8128-8d1b20fc393f",
+                "emitter": {
+                    "EmitterShape": {
+                        "radius": 0.0010000000474974513,
+                        "spawnType": 0
+                    },
+                    "activeTime": 30.0,
+                    "interpolateSpawnPos": true,
+                    "isActive": false,
+                    "isLoop": true,
+                    "originPos": [
+                        0.0,
+                        1.4019999504089355,
+                        1.00600004196167
+                    ],
+                    "parentHandle": "cc8f5419-7e80-4fa2-ae72-92431120f75e",
+                    "shapeType": 0,
+                    "spawnCoolTime": 1.100000023841858,
+                    "spawnCount": 1
+                },
+                "templateTypeName": "Cannonball"
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "d812a792-a656-4c35-b540-5d25bee8da32",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": true,
+                "environmentCoefficient": 0.0,
+                "shininess": 9.5,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "ModelMeshRenderer": [
+            {
+                "Handle": "08b91fae-c58e-4d46-ad2e-5279638d9021",
+                "blendMode": 1,
+                "directory": "./application/resource/Models\\Cannon",
+                "fileName": "Cannon.obj",
+                "isRender": true,
+                "materialIndexDatas": [
+                    {
+                        "Handle": "d812a792-a656-4c35-b540-5d25bee8da32"
+                    }
+                ],
+                "textureFilePath": [
+                    "./application/resource/Texture/cannon.png"
+                ],
+                "transformBufferDatas": [
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            3.0,
+                            3.0,
+                            3.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "cc8f5419-7e80-4fa2-ae72-92431120f75e",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    -18.405902862548828,
+                    0.0,
+                    22.190000534057617
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "94ebd646-0fce-48d3-b917-3a66a7e3da00"
+    },
+    "Name": "Cannon",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "BulletSpawnerWorkSystem"
+        }
+    ],
+    "isUnique": false
+}

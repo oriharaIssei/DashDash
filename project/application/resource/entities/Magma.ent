@@ -1,0 +1,170 @@
+{
+    "Components": {
+        "DirectionalLight": [
+            {
+                "Handle": "6fa0c2f5-0a87-43bf-91dd-1f4a292b2a4f",
+                "angularRadius": 0.0020000000949949026,
+                "color": [
+                    0.700421929359436,
+                    0.9279496073722839,
+                    1.0
+                ],
+                "direction": [
+                    0.0,
+                    1.0,
+                    0.0
+                ],
+                "intensity": 0.1599999964237213,
+                "isActive": true
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "b5aba305-a739-4114-ab35-1dc254337707",
+                "color": [
+                    0.7238156199455261,
+                    0.8889438509941101,
+                    0.9746835231781006,
+                    1.0
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 12.329999923706055,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    42.869998931884766,
+                    30.190000534057617
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.5531753301620483
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "3a4e9a0f-81a3-44b1-988a-cb9f97f9fbac",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 39.20000076293945,
+                "isLoop": true,
+                "isPlay": true,
+                "materialIndex": 0,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 39.20000076293945,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "Handle": "11ddb139-15b7-4c16-aad2-572bce5266ee",
+                "baseTexturePath": "./application/resource/Texture/Voronoi3-256x256.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 1,
+                        "handle": {
+                            "uuid": "9e254a66-30a7-40e2-a5ea-0a774b7d3957"
+                        }
+                    },
+                    {
+                        "effectType": 1,
+                        "handle": {
+                            "uuid": "061048fb-012c-4a49-8332-b0d28a26c648"
+                        }
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 0
+            }
+        ],
+        "PlaneRenderer": [
+            {
+                "Handle": "17f57aec-b522-4225-a10a-a65e974a596a",
+                "blendMode": 0,
+                "isCulling": true,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureFilePath": "./application/resource/Texture/Swirl_6_-_256x256.png",
+                "transform": {
+                    "rotate": [
+                        0.7068910002708435,
+                        0.0,
+                        0.0,
+                        0.7073224782943726
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "0d25b574-aecf-4d1f-9047-c6f93045c1d9",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    10000.0,
+                    1.0,
+                    10000.0
+                ],
+                "translate": [
+                    0.2946128845214844,
+                    -50.0,
+                    500.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "b70cdac2-4c1c-47c8-8fc6-402d59767bbf"
+    },
+    "Name": "Magma",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": false
+}

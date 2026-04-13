@@ -1,0 +1,107 @@
+{
+    "Components": {
+        "DissolveEffectParam": [
+            {
+                "Handle": "984a4041-594c-43cd-bba7-b0368db87310",
+                "edgeWidth": 0.020999999716877937,
+                "isActive": true,
+                "materialIndex": 0,
+                "outLineColor": [
+                    0.4135020971298218,
+                    0.4135020971298218,
+                    0.4135020971298218,
+                    0.4274509847164154
+                ],
+                "textureFilePath": "./application/resource/Texture/Electric.png",
+                "threshold": 0.02500000037252903
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "255c711a-d283-49b2-b12a-fac34e079273",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": -0.33000001311302185,
+                "uvScale": [
+                    1.0099999904632568,
+                    0.46000000834465027
+                ],
+                "uvTranslate": [
+                    0.7971183657646179,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "b462f5b2-d86c-4290-adf6-395c03ba116a",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 3.9000000953674316,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 3.9000000953674316,
+                        "value": [
+                            1.0,
+                            0.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "Handle": "e32ce637-d734-4b5a-a217-47872516a577",
+                "baseTexturePath": "./application/resource/Texture/waveNoise.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 1,
+                        "handle": {
+                            "uuid": "d6b00b02-5812-4d6a-936b-68c6cce952ad"
+                        }
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 0
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "18f872e5-06af-45b2-98f3-f1f8de67bb81"
+    },
+    "Name": "BackFireSparks_Diss",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        }
+    ],
+    "isUnique": true
+}

@@ -1,0 +1,93 @@
+{
+    "Components": {
+        "DissolveEffectParam": [
+            {
+                "edgeWidth": 0.17499999701976776,
+                "isActive": true,
+                "materialIndex": 0,
+                "outLineColor": [
+                    0.0,
+                    1.0,
+                    0.43037962913513184,
+                    1.0
+                ],
+                "textureFilePath": "./application/resource/Texture/gradationLine.png",
+                "threshold": 0.19099999964237213
+            }
+        ],
+        "Material": [
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    0.6899999976158142
+                ],
+                "uvTranslate": [
+                    0.32433098554611206,
+                    0.3199999928474426
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 5.800000190734863,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.3199999928474426
+                        ]
+                    },
+                    {
+                        "time": 5.800000190734863,
+                        "value": [
+                            1.0,
+                            0.3199999928474426
+                        ]
+                    }
+                ]
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "baseTexturePath": "./application/resource/Texture/waveMask.png",
+                "effectEntityIdList": [],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 0
+            }
+        ]
+    },
+    "Name": "GoalShellEffectDiss",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        }
+    ],
+    "isUnique": true
+}

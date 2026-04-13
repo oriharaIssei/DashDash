@@ -1,0 +1,203 @@
+{
+    "Components": {
+        "FollowTransformComponent": [
+            {
+                "Handle": "c79a71f4-e4e9-4196-9c95-753a45c288d3",
+                "offset": [
+                    1.7100000381469727,
+                    3.0,
+                    -1.090000033378601
+                ],
+                "sensitivity": 12.0
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "27a2e953-9ef7-49e6-9248-60472e83f54b",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": true,
+                "environmentCoefficient": 0.009999999776482582,
+                "shininess": 32.36000061035156,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "ModelMeshRenderer": [
+            {
+                "Handle": "d2bafe53-bf1a-4625-9015-f210e99a00bf",
+                "blendMode": 1,
+                "directory": "./application/resource/Models\\Shield",
+                "fileName": "Shield.obj",
+                "isRender": true,
+                "materialIndexDatas": [
+                    {
+                        "Handle": "27a2e953-9ef7-49e6-9248-60472e83f54b"
+                    }
+                ],
+                "textureFilePath": [
+                    "./application/resource/Texture/Shield.png"
+                ],
+                "transformBufferDatas": [
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            -0.25999999046325684
+                        ]
+                    }
+                ]
+            }
+        ],
+        "ObstacleShieldComponent": [
+            {
+                "Handle": "b0c48918-9bc8-4e71-817b-6bd99d2f7bb3"
+            }
+        ],
+        "SphereCollider": [
+            {
+                "Handle": "bf0758dc-6f52-4dad-885c-2c6c25071cb2",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "collisionCategory": "Default",
+                "isActive": true,
+                "radius": 1.0,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "cf4713bf-4078-4d78-bf85-0f8da2ce1997",
+                "rotate": [
+                    0.0,
+                    0.12949545681476593,
+                    0.0,
+                    -0.991580069065094
+                ],
+                "scale": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "translate": [
+                    -0.17416557669639587,
+                    1.6005408763885498,
+                    40.625999450683594
+                ]
+            }
+        ],
+        "TransformRateAnimation": [
+            {
+                "Handle": "4fe859a5-90f1-40d3-8c73-4863f459667c",
+                "isPlay": true,
+                "rotateRate": {
+                    "acceleration": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "velocity": [
+                        0.0,
+                        3.7699999809265137,
+                        0.0
+                    ]
+                },
+                "scaleRate": {
+                    "acceleration": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "velocity": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "targetTransformIndex": 0,
+                "translateRate": {
+                    "acceleration": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "velocity": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "a49a5a9b-5209-486d-9f8d-f1242edb099b"
+    },
+    "Name": "Shield",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "FollowTransformSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "TransformRateAnimationWorkSystem"
+        }
+    ],
+    "isUnique": false
+}

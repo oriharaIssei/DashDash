@@ -1,0 +1,82 @@
+{
+    "Components": {
+        "EntityReferenceList": [
+            {
+                "entityFileList": [
+                    [
+                        "./application/resource/entities",
+                        "Player"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "GameCamera"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "EnterScene"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "PlayerShockWave"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Speedline"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Timer"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Trail"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Skybox"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Goal"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "PenaltyTimerForSprite"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "StartTimer"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "ShadowPlane"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "PlayerTireTrail"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "GameFailedScene"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Menu"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "ChargeEffect"
+                    ]
+                ]
+            }
+        ]
+    },
+    "Name": "EntityRef",
+    "Systems": [
+        {
+            "SystemCategory": 0,
+            "SystemName": "ResolveEntityReferences"
+        }
+    ],
+    "isUnique": false
+}

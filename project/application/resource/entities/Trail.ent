@@ -1,0 +1,234 @@
+{
+    "Components": {
+        "Material": [
+            {
+                "Handle": "70a3c3eb-ae0b-4579-8051-03f0ccf5084d",
+                "color": [
+                    0.08431697636842728,
+                    0.44282761216163635,
+                    0.6244726181030273,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "b591fc54-0e7a-4b18-ac6c-7d6819da99ac",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 2.5999999046325684,
+                "isLoop": true,
+                "isPlay": false,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 2.5999999046325684,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ]
+            },
+            {
+                "Handle": "7c068c80-148c-4157-abd2-ec7cc87e09ac",
+                "InterpolationType": 0,
+                "colorCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.5137255191802979
+                        ]
+                    },
+                    {
+                        "time": 0.0875251516699791,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.12941177189350128
+                        ]
+                    },
+                    {
+                        "time": 0.1321931630373001,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            0.5490196347236633
+                        ]
+                    },
+                    {
+                        "time": 0.30000001192092896,
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ],
+                "duration": 0.30000001192092896,
+                "isLoop": false,
+                "isPlay": false,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": []
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "Handle": "95f7be89-3f01-49a6-8444-d75028a15254",
+                "baseTexturePath": "./application/resource/Texture/lazer.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 0,
+                        "handle": {
+                            "uuid": "417e3581-06fb-4e80-8ef9-32aad987a1a7"
+                        }
+                    },
+                    {
+                        "effectType": 2,
+                        "handle": {
+                            "uuid": "4c74b4d3-a643-4e2d-90bc-3659cb9bc1a4"
+                        }
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 10
+            }
+        ],
+        "PlaneRenderer": [
+            {
+                "Handle": "bf6bd98b-52f9-48d5-a9ae-55c305fb2a30",
+                "blendMode": 1,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureFilePath": "./application/resource/Texture/gradation.png",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "SplinePoints": [
+            {
+                "Handle": "0475e424-397d-46d1-bd16-a2389b7b9f57",
+                "capacity": 36,
+                "endUv": [
+                    0.6000000238418579,
+                    1.0
+                ],
+                "endWidth": 0.3499999940395355,
+                "fadeoutTime": 0.029999999329447746,
+                "isCrossMesh": true,
+                "isUvLoopEnable": false,
+                "segmentDivide": 16,
+                "segmentLength": 0.8299999833106995,
+                "startUv": [
+                    0.30000001192092896,
+                    0.0
+                ],
+                "startWidth": 2.140000104904175,
+                "uvEaseType": 4,
+                "uvLoopLength": 1.0,
+                "widthEaseType": 10
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "b97674b4-2d93-414f-89e7-781996766d64",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    -0.44999998807907104,
+                    0.25
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "d521e390-d5b8-4e8c-bc8f-27b06303c56f"
+    },
+    "Name": "Trail",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "CreateMeshFromSpline"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "PlayerPathSplineGenerator"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        },
+        {
+            "SystemCategory": 0,
+            "SystemName": "TrailEffectInitialize"
+        }
+    ],
+    "isUnique": true
+}

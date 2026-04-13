@@ -1,0 +1,127 @@
+{
+    "Components": {
+        "DissolveEffectParam": [
+            {
+                "Handle": "ae2441cf-8497-460f-bfdc-7dc2adf3159a",
+                "edgeWidth": 0.00800000037997961,
+                "isActive": false,
+                "materialIndex": 0,
+                "outLineColor": [
+                    0.1314782202243805,
+                    0.6885846257209778,
+                    0.8902953863143921,
+                    1.0
+                ],
+                "textureFilePath": "./application/resource/Texture/waveNoise.png",
+                "threshold": 0.0
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "8fe875ab-8057-4fa4-b454-df2265f7e24b",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "SceneChanger": [
+            {
+                "Handle": "f377d22c-67f4-456e-879c-59171ad4e029",
+                "nextSceneName": "Result"
+            }
+        ],
+        "TimerComponent": [
+            {
+                "Handle": "c8daac07-ed8b-4a1b-871f-9354818c352c",
+                "isStarted": false,
+                "maxTime": 999.0
+            }
+        ],
+        "TimerForSpriteComponent": [
+            {
+                "Handle": "7a6a6064-1eba-40fd-a524-6eab5a3fc9eb",
+                "anchorOnWindow": [
+                    0.5,
+                    0.11999999731779099
+                ],
+                "digitDecimal": 2,
+                "digitInteger": 3,
+                "marginBetweenIntegerAndDecimal": [
+                    0.0,
+                    10.0
+                ],
+                "numbersTexturePath": "./application/resource/Texture//NumbersUI.png",
+                "offset": [
+                    0.0,
+                    0.0
+                ],
+                "spriteMarginDecimal": [
+                    -3.0,
+                    0.0
+                ],
+                "spriteMarginInteger": [
+                    0.0,
+                    0.0
+                ],
+                "spriteSizeDecimal": [
+                    32.0,
+                    32.0
+                ],
+                "spriteSizeInteger": [
+                    58.0,
+                    58.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "ff2ce015-4c2c-4a85-a509-11f355f00906"
+    },
+    "Name": "Timer",
+    "Systems": [
+        {
+            "SystemCategory": 2,
+            "SystemName": "TimeLimitJudgeSystem"
+        },
+        {
+            "SystemCategory": 0,
+            "SystemName": "CreateSpriteFromTimer"
+        },
+        {
+            "SystemCategory": 7,
+            "SystemName": "DissolveEffect"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "SceneTransition"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "TimerForSprite"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "TimerCountUp"
+        }
+    ],
+    "isUnique": true
+}

@@ -1,0 +1,645 @@
+{
+    "Components": {
+        "CollisionPushBackInfo": [
+            {
+                "Handle": "08c7991a-86ca-4950-86e1-f23ba303de4b",
+                "pushBackType": 0
+            }
+        ],
+        "DissolveEffectParam": [
+            {
+                "Handle": "33e475a6-a286-44e8-9f4c-d1114c671c15",
+                "edgeWidth": 0.0010000000474974513,
+                "isActive": false,
+                "materialIndex": 0,
+                "outLineColor": [
+                    0.01568627543747425,
+                    0.7647058963775635,
+                    1.0,
+                    1.0
+                ],
+                "textureFilePath": "./application/resource/Texture/bioNoise.png",
+                "threshold": 0.0
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "1fbfa405-96a4-4206-a463-c3133d97c0f3",
+                "color": [
+                    0.05063289403915405,
+                    0.05063289403915405,
+                    0.05063289403915405,
+                    1.0
+                ],
+                "enableLighting": true,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 100.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            },
+            {
+                "Handle": "dbf453e8-b47b-46ee-9c36-4575ac6d5139",
+                "color": [
+                    0.9578059315681458,
+                    0.9578059315681458,
+                    0.9578059315681458,
+                    1.0
+                ],
+                "enableLighting": true,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 28.190000534057617,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "ModelMeshRenderer": [
+            {
+                "Handle": "d7b453a5-d405-4c14-a885-935484291edc",
+                "blendMode": 1,
+                "directory": "./application/resource/Models\\player",
+                "fileName": "Player.obj",
+                "isRender": true,
+                "materialIndexDatas": [
+                    {
+                        "Handle": "1fbfa405-96a4-4206-a463-c3133d97c0f3"
+                    },
+                    {
+                        "Handle": "dbf453e8-b47b-46ee-9c36-4575ac6d5139"
+                    },
+                    {
+                        "Handle": "dbf453e8-b47b-46ee-9c36-4575ac6d5139"
+                    },
+                    {
+                        "Handle": "dbf453e8-b47b-46ee-9c36-4575ac6d5139"
+                    },
+                    {
+                        "Handle": "dbf453e8-b47b-46ee-9c36-4575ac6d5139"
+                    },
+                    {
+                        "Handle": "dbf453e8-b47b-46ee-9c36-4575ac6d5139"
+                    },
+                    {
+                        "Handle": "dbf453e8-b47b-46ee-9c36-4575ac6d5139"
+                    }
+                ],
+                "textureFilePath": [
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                "transformBufferDatas": [
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "PlayerEffectControlParam": [
+            {
+                "Handle": "eba370f8-fa85-4975-83cf-21231ea46835",
+                "aheadCollisionTiltAngle": 0.4230000078678131,
+                "aheadCollisionTiltSpeed": 1.4390000104904175,
+                "invincibleBlinkBaseAmplitude": 8.0,
+                "invincibleBlinkMaxAmplitude": 40.0,
+                "maxTiltOnRailRun": -0.7300000190734863,
+                "maxWheelSpinSpeed": 0.18700000643730164,
+                "maxWheelTiltAngle": 0.6679999828338623,
+                "rotateOffsetOnWallRun": 0.5699999928474426,
+                "thresholdSpeedlineParticle": 0.0,
+                "tiltSpeedOnRailRun": 12.0,
+                "trailColorByGearLevel": [
+                    [
+                        0.1051647737622261,
+                        0.5330854654312134,
+                        0.7552742958068848,
+                        1.0
+                    ],
+                    [
+                        0.6244726181030273,
+                        0.6039603352546692,
+                        0.08431697636842728,
+                        1.0
+                    ],
+                    [
+                        0.700421929359436,
+                        0.31712207198143005,
+                        0.05615197494626045,
+                        1.0
+                    ],
+                    [
+                        0.8185653686523438,
+                        0.15489915013313293,
+                        0.058715660125017166,
+                        1.0
+                    ],
+                    [
+                        0.07991262525320053,
+                        0.03916754573583603,
+                        0.8438818454742432,
+                        1.0
+                    ],
+                    [
+                        0.09513881802558899,
+                        0.05118482932448387,
+                        0.48523205518722534,
+                        1.0
+                    ]
+                ],
+                "wheelTiltAngleMaxAccel": 1.434999942779541,
+                "wheelTiltAngleRate": 0.4429999887943268
+            }
+        ],
+        "PlayerInput": [
+            {
+                "Handle": "a14788e9-c13b-4e02-a9d1-1e81778534c0",
+                "MaxJumpInputTime": 0.10999999940395355
+            }
+        ],
+        "PlayerState": [
+            {
+                "Handle": "73df4981-c798-492d-b904-949af8ef9225"
+            }
+        ],
+        "PlayerStatus": [
+            {
+                "Handle": "9019fc49-7907-42b3-a079-2e17c8536a2b",
+                "baseDirectionalSpeed": [
+                    27.649999618530273,
+                    30.75
+                ],
+                "baseSpeed": 27.649999618530273,
+                "coolTimeAddRateBase": 1.9299999475479126,
+                "coolTimeAddRateCommonRate": -0.09000000357627869,
+                "decelerationFactor": 0.1599999964237213,
+                "defaultMass": 0.09000000357627869,
+                "directionInterpolateRate": 16.25,
+                "directionalSpeedUpRateBase": [
+                    -0.6600000262260437,
+                    8.510000228881836
+                ],
+                "directionalSpeedUpRateCommonRate": [
+                    -0.5600000023841858,
+                    -0.07999999821186066
+                ],
+                "gearUpCoolTime": 0.5699999928474426,
+                "gravityApplyDelayOnWallRun": 0.5799999833106995,
+                "groundCheckThreshold": 0.699999988079071,
+                "jumpChargeRateEaseType": 11,
+                "jumpHoldVelocityEaseType": 7,
+                "massOnWallRun": 0.05000000074505806,
+                "maxJumpChargeRate": 120.0,
+                "maxJumpHoldVelocity": 11.430000305175781,
+                "maxLimitDirectionalAccel": [
+                    16.799999237060547,
+                    100.0
+                ],
+                "maxSmoothTime": [
+                    0.23999999463558197,
+                    0.1599999964237213
+                ],
+                "minJumpChargeRate": 62.0,
+                "minJumpHoldVelocity": 8.0,
+                "minLimitDirectionalAccel": [
+                    30.0,
+                    100.0000991821289
+                ],
+                "minSmoothTime": [
+                    0.05000000074505806,
+                    0.05000000074505806
+                ],
+                "minWallJumpOffsetX": 0.20999999344348907,
+                "railInterval": 0.17000000178813934,
+                "railJumpOffset": [
+                    0.7460753917694092,
+                    0.29185834527015686,
+                    0.5984899401664734
+                ],
+                "railRampUpTime": 0.25,
+                "railSpeedRate": 1.2200000286102295,
+                "speedUpRateBase": 8.510000228881836,
+                "speedUpRateCommonRate": -0.1599999964237213,
+                "wallCheckThreshold": 0.12999999523162842,
+                "wallJumpOffset": [
+                    0.5490399599075317,
+                    0.33290305733680725,
+                    0.7666359543800354
+                ],
+                "wallRunDetachSpeed": -15.0,
+                "wallRunInterval": 0.5600000023841858,
+                "wallRunRampUpTime": 0.6200000047683716,
+                "wallRunRate": 1.25
+            }
+        ],
+        "Rigidbody": [
+            {
+                "Handle": "99e7403c-a9e2-4627-a632-034dcbffc104",
+                "acceleration": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "isActive": true,
+                "isUsingLocalDeltaTime": true,
+                "localDeltaTimeName": "Player",
+                "mass": 0.07999999821186066,
+                "maxFallSpeed": 100.0,
+                "maxXZSpeed": 200.0,
+                "restitution": 0.0,
+                "useGravity": true,
+                "velocity": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "SceneChanger": [
+            {
+                "Handle": "9363c418-7679-44d5-977f-3114446ab178",
+                "nextSceneName": "Result"
+            }
+        ],
+        "SphereCollider": [
+            {
+                "Handle": "73fa22d4-e033-499e-8f32-1162d7612b84",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "collisionCategory": "Player",
+                "isActive": true,
+                "radius": 1.0700000524520874,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "SquashStretchComponent": [
+            {
+                "Handle": "96de778c-d953-4b83-bfbe-4fd5d2501bf8",
+                "accelSquashInfluence": 2.569999933242798,
+                "accelSquashThresholdEnter": 16.049999237060547,
+                "accelSquashThresholdExit": 12.0,
+                "baseScale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "damping": [
+                    40.0,
+                    32.0,
+                    40.0
+                ],
+                "maxSquash": 0.9599999785423279,
+                "maxStretch": 0.49000000953674316,
+                "preVelocity": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "scaleVelocity": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "stiffness": [
+                    160.0,
+                    260.0,
+                    160.0
+                ],
+                "velocityStretchInfluence": 0.07999999821186066,
+                "velocityStretchThresholdEnter": 52.0,
+                "velocityStretchThresholdExit": 46.0
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "4c36da63-90da-4e36-86db-99a9c8ba2518",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    2.0,
+                    0.0
+                ]
+            }
+        ],
+        "TransformAnimation": [
+            {
+                "Handle": "cd6a486c-8510-4046-81b8-072d2ba15244",
+                "InterpolationType": 0,
+                "duration": 0.4000000059604645,
+                "isLoop": false,
+                "isPlay": false,
+                "rotateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.5703774094581604,
+                            0.8213828206062317
+                        ]
+                    },
+                    {
+                        "time": 0.09870129823684692,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "time": 0.23376622796058655,
+                        "value": [
+                            0.0,
+                            0.0,
+                            -1.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.3298701345920563,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.5432038903236389,
+                            0.8396008610725403
+                        ]
+                    },
+                    {
+                        "time": 0.4000000059604645,
+                        "value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ],
+                "rotateFlip": [
+                    false,
+                    false,
+                    false
+                ],
+                "scaleCurve": [],
+                "scaleFlip": [
+                    false,
+                    false,
+                    false
+                ],
+                "targetTransformIndex": 0,
+                "translateCurve": [],
+                "translateFlip": [
+                    false,
+                    false,
+                    false
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "798ccd3a-79db-403d-9534-2acf2e5aaba7"
+    },
+    "Name": "Player",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionPushBackSystem"
+        },
+        {
+            "SystemCategory": 0,
+            "SystemName": "TakePlayerToStartPosition"
+        },
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 7,
+            "SystemName": "DissolveEffect"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "EffectOnPlayerRun"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "MoveSystemByRigidBody"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        },
+        {
+            "SystemCategory": 4,
+            "SystemName": "PlayerOnCollision"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "TransitionPlayerState"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "SceneTransition"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "TransformAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "ScaleDeformSystem"
+        },
+        {
+            "SystemCategory": 1,
+            "SystemName": "PlayerInputSystem"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "PlayerMoveSystem"
+        },
+        {
+            "SystemCategory": 2,
+            "SystemName": "PenaltySystem"
+        }
+    ],
+    "isUnique": true
+}

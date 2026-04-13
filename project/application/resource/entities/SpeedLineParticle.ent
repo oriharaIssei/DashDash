@@ -1,0 +1,140 @@
+{
+    "Components": {
+        "CylinderRenderer": [
+            {
+                "Handle": "4e0aff1a-8671-4b60-aafe-66e646162bc5",
+                "blendMode": 1,
+                "bottomRadius": [
+                    2.0,
+                    2.0
+                ],
+                "height": 3.4100000858306885,
+                "heightDivisions": 8,
+                "isCulling": true,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radialDivisions": 36,
+                "radiusEaseType": 0,
+                "textureFilePath": "./application/resource/Texture/VerticalParticles.png",
+                "topRadius": [
+                    0.11999999731779099,
+                    0.11999999731779099
+                ],
+                "transform": {
+                    "rotate": [
+                        0.706572949886322,
+                        0.0,
+                        0.0,
+                        0.7076402902603149
+                    ],
+                    "scale": [
+                        -1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "f8a4c753-de2b-488e-902b-d1843346950d",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    0.07058823853731155
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.7142857313156128
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "7c61ff54-6cf5-491a-904f-871ca6f16196",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 0.699999988079071,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 0.699999988079071,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "96c51790-c9a6-4168-bf40-930b718ff374",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.28999999165534973
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "394b8ba1-bf73-46f9-9ddc-c15ad12972e7"
+    },
+    "Name": "SpeedLineParticle",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "OverlayRenderSystem"
+        },
+        {
+            "SystemCategory": 0,
+            "SystemName": "Ui3dObjectInitialize"
+        }
+    ],
+    "isUnique": true
+}

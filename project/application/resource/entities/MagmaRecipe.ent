@@ -1,0 +1,34 @@
+{
+    "Components": {
+        "EntityReferenceList": [
+            {
+                "Handle": "cab45c3b-5eb1-42ce-99fd-2c1f26b3c001",
+                "entityFileList": [
+                    [
+                        "./application/resource/entities",
+                        "Magma"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Magma_Dissolve_Left"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Magma_Dissolve_Right"
+                    ]
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "5dfc630a-148d-4740-aa50-e511e50bd9be"
+    },
+    "Name": "MagmaRecipe",
+    "Systems": [
+        {
+            "SystemCategory": 0,
+            "SystemName": "ResolveEntityReferences"
+        }
+    ],
+    "isUnique": false
+}

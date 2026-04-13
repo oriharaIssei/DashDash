@@ -1,0 +1,10 @@
+{
+    "Editor": {
+        "DebugReplayWindow": false,
+        "ECSEditor": true,
+        "GlobalVariablesEditor": false,
+        "SceneEditorWindow": false,
+        "SettingWindow": false,
+        "StageEditorWindow": false
+    }
+}

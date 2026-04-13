@@ -1,0 +1,86 @@
+{
+    "Components": {
+        "AABBCollider": [
+            {
+                "Handle": "5bce64ce-b932-4aac-8b89-516461f2631f",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "collisionCategory": "StageObject",
+                "halfSize": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "isActive": true,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "AddForceComponent": [
+            {
+                "Handle": "f21286ef-7587-42db-9288-484a6062f83c",
+                "addForce": [
+                    12.0,
+                    0.0,
+                    0.0
+                ],
+                "triggerMode": 1
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "c297f1cb-f1d0-4db7-a954-03b3cd44fed0",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    20.0,
+                    20.0,
+                    20.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    149.80136108398438
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "98322b39-dddf-450f-9ac6-1d96f80b9ed6"
+    },
+    "Name": "AddForceArea",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 4,
+            "SystemName": "AddForceTriggerSystem"
+        }
+    ],
+    "isUnique": false
+}

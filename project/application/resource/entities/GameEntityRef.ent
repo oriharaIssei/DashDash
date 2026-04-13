@@ -1,0 +1,50 @@
+{
+    "Components": {
+        "EntityReferenceList": [
+            {
+                "entityFileList": [
+                    [
+                        "./application/resource/entities",
+                        "Player"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "GameCamera"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "EnterScene"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "PlayerShockWave"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Speedline"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Timer"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "Trail"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "PlayerEmitter"
+                    ]
+                ]
+            }
+        ]
+    },
+    "Name": "GameEntityRef",
+    "Systems": [
+        {
+            "SystemCategory": 0,
+            "SystemName": "ResolveEntityReferences"
+        }
+    ],
+    "isUnique": false
+}

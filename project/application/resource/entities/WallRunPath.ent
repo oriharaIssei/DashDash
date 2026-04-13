@@ -1,0 +1,124 @@
+{
+    "Components": {
+        "Material": [
+            {
+                "Handle": "298fc061-6a97-4ee5-8d64-134d079b0642",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "PlaneRenderer": [
+            {
+                "Handle": "0d093af7-0f4b-41cf-817c-d7f4ec82696d",
+                "blendMode": 1,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureFilePath": "",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "SplinePoints": [
+            {
+                "Handle": "e34919cb-4160-44be-87db-dfab8d862b5b",
+                "capacity": 100,
+                "endUv": [
+                    1.0,
+                    1.0
+                ],
+                "endWidth": 0.6499999761581421,
+                "fadeoutTime": 0.5,
+                "isCrossMesh": false,
+                "isUvLoopEnable": true,
+                "segmentDivide": 16,
+                "segmentLength": 0.5,
+                "startUv": [
+                    0.0,
+                    0.0
+                ],
+                "startWidth": 0.18000000715255737,
+                "upVector": [
+                    0.0,
+                    1.0,
+                    0.0
+                ],
+                "uvEaseType": 3,
+                "uvLoopLength": 1.0,
+                "widthEaseType": 2
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "df9a2ef7-e2dc-4f76-962d-60a874f54a09",
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "c2113412-1971-4abf-bc23-041ccfdb042c"
+    },
+    "Name": "WallRunPath",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "CreateMeshFromSpline"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": false
+}

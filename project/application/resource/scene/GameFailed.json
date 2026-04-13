@@ -1,0 +1,1065 @@
+{
+    "CategoryActivity": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+    ],
+    "Entities": [
+        {
+            "Components": {
+                "SpriteRenderer": [
+                    {
+                        "Handle": "51022fb6-515d-4a04-9445-1fe82d6a6872",
+                        "anchorPoint": [
+                            0.5,
+                            0.5
+                        ],
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "defaultWindowSize": [
+                            1280.0,
+                            720.0
+                        ],
+                        "isFlipX": false,
+                        "isFlipY": false,
+                        "isRender": true,
+                        "renderingPriority": 1,
+                        "rotate": 0.0,
+                        "scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "size": [
+                            505.6000061035156,
+                            87.84000396728516
+                        ],
+                        "textureLeftTop": [
+                            0.0,
+                            0.0
+                        ],
+                        "texturePath": "./application/resource/Texture/Failed.png",
+                        "textureSize": [
+                            512.0,
+                            128.0
+                        ],
+                        "translate": [
+                            640.0,
+                            120.23999786376953
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ],
+                        "windowRatioPos": [
+                            0.5,
+                            0.16699999570846558
+                        ],
+                        "windowRatioSize": [
+                            0.39500001072883606,
+                            0.12200000137090683
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "f3ad4152-9495-48fa-ba51-68eb960f35e7"
+            },
+            "Name": "Entity",
+            "Systems": [
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "SpriteRenderSystem"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "Button": [
+                    {
+                        "Handle": "02cec75c-e346-4cb6-a5b0-28dc55d8efff",
+                        "hoverColor": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "normalColor": [
+                            0.3199999928474426,
+                            0.3199999928474426,
+                            0.3199999928474426,
+                            1.0
+                        ],
+                        "pressColor": [
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            1.0
+                        ],
+                        "releaseColor": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "shortKeys": [],
+                        "shortcutGamepadButton": []
+                    }
+                ],
+                "SpriteRenderer": [
+                    {
+                        "Handle": "10f5ca23-da0d-4799-a779-bf301436970e",
+                        "anchorPoint": [
+                            0.5,
+                            0.5
+                        ],
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "defaultWindowSize": [
+                            1280.0,
+                            720.0
+                        ],
+                        "isFlipX": false,
+                        "isFlipY": false,
+                        "isRender": true,
+                        "renderingPriority": 1,
+                        "rotate": 0.0,
+                        "scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "size": [
+                            328.447998046875,
+                            58.0
+                        ],
+                        "textureLeftTop": [
+                            0.0,
+                            0.0
+                        ],
+                        "texturePath": "./application/resource/Texture/Restart.png",
+                        "textureSize": [
+                            512.0,
+                            128.0
+                        ],
+                        "translate": [
+                            348.2879943847656,
+                            360.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ],
+                        "windowRatioPos": [
+                            0.2721000015735626,
+                            0.5
+                        ],
+                        "windowRatioSize": [
+                            0.2565999925136566,
+                            0.08055555820465088
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "1fc98605-15c4-46ca-b1db-d893a85497d7"
+            },
+            "Name": "Restart",
+            "Systems": [
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "SpriteRenderSystem"
+                },
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "RestartOnButtonPressSystem"
+                },
+                {
+                    "SystemCategory": 1,
+                    "SystemName": "ButtonInputSystem"
+                },
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "UpdateButtonColorByState"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "Button": [
+                    {
+                        "Handle": "e875f6f4-5ee3-49e9-a5c0-fa7dc6c66408",
+                        "hoverColor": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "normalColor": [
+                            0.3199999928474426,
+                            0.3199999928474426,
+                            0.3199999928474426,
+                            1.0
+                        ],
+                        "pressColor": [
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            1.0
+                        ],
+                        "releaseColor": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "shortKeys": [
+                            1
+                        ],
+                        "shortcutGamepadButton": [
+                            16
+                        ]
+                    }
+                ],
+                "SceneChanger": [
+                    {
+                        "Handle": "e7c673fe-af71-4480-8daa-f3abe27c1310",
+                        "nextSceneName": "StageSelect"
+                    }
+                ],
+                "SpriteRenderer": [
+                    {
+                        "Handle": "6b1bb38c-305b-42c4-a4ea-beea125b5f8c",
+                        "anchorPoint": [
+                            0.5,
+                            0.5
+                        ],
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "defaultWindowSize": [
+                            1280.0,
+                            720.0
+                        ],
+                        "isFlipX": false,
+                        "isFlipY": false,
+                        "isRender": true,
+                        "renderingPriority": 1,
+                        "rotate": 0.0,
+                        "scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "size": [
+                            396.0,
+                            45.0
+                        ],
+                        "textureLeftTop": [
+                            0.0,
+                            0.0
+                        ],
+                        "texturePath": "./application/resource/Texture/BackSelectButtonUI.png",
+                        "textureSize": [
+                            512.0,
+                            64.0
+                        ],
+                        "translate": [
+                            960.0,
+                            360.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ],
+                        "windowRatioPos": [
+                            0.75,
+                            0.5
+                        ],
+                        "windowRatioSize": [
+                            0.30937498807907104,
+                            0.0625
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "a420de39-efe2-4822-a974-10cd2d11b3ea"
+            },
+            "Name": "toSelect",
+            "Systems": [
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "SpriteRenderSystem"
+                },
+                {
+                    "SystemCategory": 3,
+                    "SystemName": "SceneTransitionRequestSenderSystem"
+                },
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "ChangeSceneByButton"
+                },
+                {
+                    "SystemCategory": 1,
+                    "SystemName": "ButtonInputSystem"
+                },
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "UpdateButtonColorByState"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "ButtonGroup": [
+                    {
+                        "Handle": "a4f4b8d7-0993-408b-9f2b-86ed9e9e239c",
+                        "buttonNumbers": [
+                            {
+                                "entityHandle": {
+                                    "uuid": "1fc98605-15c4-46ca-b1db-d893a85497d7"
+                                }
+                            },
+                            {
+                                "entityHandle": {
+                                    "uuid": "a420de39-efe2-4822-a974-10cd2d11b3ea"
+                                }
+                            }
+                        ],
+                        "decideGamepadButtons": [
+                            4096,
+                            8192
+                        ],
+                        "decideKeys": [
+                            28,
+                            57
+                        ],
+                        "selectAddGamepadButtons": [
+                            1,
+                            4,
+                            256,
+                            65536,
+                            262144,
+                            1048576
+                        ],
+                        "selectAddKeys": [
+                            31,
+                            32,
+                            205,
+                            208
+                        ],
+                        "selectSubGamepadButtons": [
+                            2,
+                            8,
+                            512,
+                            131072,
+                            524288,
+                            2097152
+                        ],
+                        "selectSubKeys": [
+                            17,
+                            30,
+                            200,
+                            203
+                        ],
+                        "startButtonNumber": 0
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "0222431d-f046-4510-a0fd-e7868c9f1c8d"
+            },
+            "Name": "ButtonGroup",
+            "Systems": [
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "SpriteRenderSystem"
+                },
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "ButtonGroupSystem"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "MouseCondition": [
+                    {
+                        "Handle": "242f4738-15fb-4034-8614-2b55fe4dde1d",
+                        "fixCursorPos": [
+                            0.0,
+                            0.0
+                        ],
+                        "isActive": true,
+                        "isFixCursor": false,
+                        "isShowCursor": true
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "8c6c694f-1754-477e-9343-062ed2194c4e"
+            },
+            "Name": "MouseCondition",
+            "Systems": [
+                {
+                    "SystemCategory": 2,
+                    "SystemName": "ApplyMouseConditionSystem"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "DissolveAnimation": [
+                    {
+                        "Handle": "660c1016-559d-400a-a86f-3da36d4205f8",
+                        "InterpolationType": 0,
+                        "duration": 1.7000000476837158,
+                        "edgeWidthCurve": [],
+                        "isLoop": false,
+                        "isPlay": false,
+                        "outLineColorCurve": [],
+                        "thresholdCurve": [
+                            {
+                                "time": 0.8885529637336731,
+                                "value": 0.6000000238418579
+                            },
+                            {
+                                "time": 1.7000000476837158,
+                                "value": 0.0
+                            }
+                        ]
+                    }
+                ],
+                "DissolveEffectParam": [
+                    {
+                        "Handle": "439872ec-9998-4666-8749-df8238223622",
+                        "edgeWidth": 0.008999999612569809,
+                        "isActive": true,
+                        "materialIndex": 0,
+                        "outLineColor": [
+                            0.09350351244211197,
+                            0.8427155017852783,
+                            0.852320671081543,
+                            1.0
+                        ],
+                        "textureFilePath": "./application/resource/Texture/waveNoise.png",
+                        "threshold": 0.0
+                    }
+                ],
+                "Material": [
+                    {
+                        "Handle": "0d598acd-2e6d-4040-a7f8-bacd834a07da",
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "enableLighting": false,
+                        "environmentCoefficient": 0.10000000149011612,
+                        "shininess": 0.0,
+                        "specularColor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "4874c32a-5a1b-4e6f-b228-bdc391840316"
+            },
+            "Name": "Dissolve",
+            "Systems": [
+                {
+                    "SystemCategory": 5,
+                    "SystemName": "DissolveAnimationSystem"
+                },
+                {
+                    "SystemCategory": 7,
+                    "SystemName": "DissolveEffect"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "SpriteRenderer": [
+                    {
+                        "Handle": "1c1a8060-0b23-4263-a5ac-502acfd951fa",
+                        "anchorPoint": [
+                            0.0,
+                            0.0
+                        ],
+                        "color": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "defaultWindowSize": [
+                            1280.0,
+                            720.0
+                        ],
+                        "isFlipX": false,
+                        "isFlipY": false,
+                        "isRender": true,
+                        "renderingPriority": -1,
+                        "rotate": 0.0,
+                        "scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "size": [
+                            1280.0,
+                            720.0
+                        ],
+                        "textureLeftTop": [
+                            0.0,
+                            0.0
+                        ],
+                        "texturePath": "",
+                        "textureSize": [
+                            0.0,
+                            0.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ],
+                        "windowRatioPos": [
+                            0.0,
+                            0.0
+                        ],
+                        "windowRatioSize": [
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "68c2d7c7-0cf5-49c1-bb3a-c00985776ba2"
+            },
+            "Name": "BG",
+            "Systems": [
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "BackGroundSpriteRenderSystem"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "Material": [
+                    {
+                        "Handle": "dd267806-0634-4bb0-a3bb-0442a7c369e0",
+                        "color": [
+                            0.3375527262687683,
+                            0.029909739270806313,
+                            0.029909739270806313,
+                            1.0
+                        ],
+                        "enableLighting": false,
+                        "environmentCoefficient": 0.10000000149011612,
+                        "shininess": 0.0,
+                        "specularColor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ],
+                "MaterialEffectPipeLine": [
+                    {
+                        "Handle": "d246d924-e14a-4623-879b-18b53c36fa79",
+                        "baseTexturePath": "",
+                        "effectEntityIdList": [
+                            {
+                                "effectType": 0,
+                                "handle": {
+                                    "uuid": "72fb9f3b-27e8-45ea-97cf-c502538f6a92"
+                                }
+                            },
+                            {
+                                "effectType": 2,
+                                "handle": {
+                                    "uuid": "549230da-098e-4013-afff-ce4aa34b4255"
+                                }
+                            }
+                        ],
+                        "isActive": true,
+                        "materialIndex": 0,
+                        "priority": 0
+                    }
+                ],
+                "PlaneRenderer": [
+                    {
+                        "Handle": "34efac4b-adf4-41ee-b74b-9edeaf99c8f7",
+                        "blendMode": 1,
+                        "isCulling": true,
+                        "isRenderer": true,
+                        "materialIndex": 0,
+                        "textureFilePath": "",
+                        "transform": {
+                            "rotate": [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ],
+                            "translate": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ]
+                        }
+                    }
+                ],
+                "Transform": [
+                    {
+                        "Handle": "bf1c871f-9db5-4998-888e-8942187cc72d",
+                        "rotate": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            2.0,
+                            2.0,
+                            1.0
+                        ],
+                        "translate": [
+                            0.0,
+                            -0.009999999776482582,
+                            2.3499999046325684
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "15c2b940-c3c8-493d-9f03-c5a32560f31b"
+            },
+            "Name": "Effect",
+            "Systems": [
+                {
+                    "SystemCategory": 6,
+                    "SystemName": "TexturedMeshRenderSystem"
+                },
+                {
+                    "SystemCategory": 5,
+                    "SystemName": "MaterialEffect"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "DissolveEffectParam": [
+                    {
+                        "Handle": "86b1b924-e551-4773-98ea-45dc51bd9731",
+                        "edgeWidth": 0.007000000216066837,
+                        "isActive": true,
+                        "materialIndex": 0,
+                        "outLineColor": [
+                            0.10126584768295288,
+                            0.10126584768295288,
+                            0.10126584768295288,
+                            1.0
+                        ],
+                        "textureFilePath": "./application/resource/Texture/bioNoise.png",
+                        "threshold": 0.05000000074505806
+                    }
+                ],
+                "Material": [
+                    {
+                        "Handle": "d04299bb-4ea6-474a-805b-3e3f7d49899e",
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "enableLighting": false,
+                        "environmentCoefficient": 0.10000000149011612,
+                        "shininess": 0.0,
+                        "specularColor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            2.0,
+                            2.0
+                        ],
+                        "uvTranslate": [
+                            -0.08096732944250107,
+                            0.0
+                        ]
+                    }
+                ],
+                "MaterialAnimation": [
+                    {
+                        "Handle": "6d81b87b-cf24-49ff-8ed5-2f455b963e9c",
+                        "InterpolationType": 0,
+                        "colorCurve": [],
+                        "duration": 15.300000190734863,
+                        "isLoop": true,
+                        "isPlay": true,
+                        "uvRotateCurve": [],
+                        "uvScaleCurve": [],
+                        "uvTranslateCurve": [
+                            {
+                                "time": 0.0,
+                                "value": [
+                                    0.0,
+                                    0.0
+                                ]
+                            },
+                            {
+                                "time": 15.300000190734863,
+                                "value": [
+                                    -1.0,
+                                    0.0
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "MaterialEffectPipeLine": [
+                    {
+                        "Handle": "e6887ada-bc4a-417b-9e80-dce3d24ecd96",
+                        "baseTexturePath": "./application/resource/Texture/bioNoise.png",
+                        "effectEntityIdList": [
+                            {
+                                "effectType": 1,
+                                "handle": {
+                                    "uuid": "901d19b7-602e-4b64-8bee-38992f11d335"
+                                }
+                            }
+                        ],
+                        "isActive": true,
+                        "materialIndex": 0,
+                        "priority": 0
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "72fb9f3b-27e8-45ea-97cf-c502538f6a92"
+            },
+            "Name": "BG_Dissolve",
+            "Systems": [
+                {
+                    "SystemCategory": 5,
+                    "SystemName": "MaterialAnimationWorkSystem"
+                },
+                {
+                    "SystemCategory": 5,
+                    "SystemName": "MaterialEffect"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "DistortionEffectParam": [
+                    {
+                        "Handle": "309c9309-682f-4177-b292-c851c99d1c1b",
+                        "distortionBias": [
+                            0.550000011920929,
+                            0.5299999713897705
+                        ],
+                        "distortionStrength": [
+                            1.850000023841858,
+                            2.6700000762939453
+                        ],
+                        "isActive": true,
+                        "materialIndex": 0,
+                        "texturePath": "./application/resource/Texture/waveNoise.png",
+                        "use3dObjectList": false
+                    }
+                ],
+                "Material": [
+                    {
+                        "Handle": "1413684f-6872-4b09-8669-69e121796f1d",
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "enableLighting": false,
+                        "environmentCoefficient": 0.10000000149011612,
+                        "shininess": 0.0,
+                        "specularColor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            -0.48239025473594666
+                        ]
+                    }
+                ],
+                "MaterialAnimation": [
+                    {
+                        "Handle": "3af5fa6a-219e-44cc-be3d-26621c0f6e89",
+                        "InterpolationType": 0,
+                        "colorCurve": [],
+                        "duration": 4.699999809265137,
+                        "isLoop": true,
+                        "isPlay": true,
+                        "uvRotateCurve": [],
+                        "uvScaleCurve": [],
+                        "uvTranslateCurve": [
+                            {
+                                "time": 0.0,
+                                "value": [
+                                    0.0,
+                                    0.0
+                                ]
+                            },
+                            {
+                                "time": 4.699999809265137,
+                                "value": [
+                                    0.0,
+                                    -1.0
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "901d19b7-602e-4b64-8bee-38992f11d335"
+            },
+            "Name": "BG_Distortion",
+            "Systems": [
+                {
+                    "SystemCategory": 5,
+                    "SystemName": "MaterialAnimationWorkSystem"
+                }
+            ],
+            "isUnique": false
+        },
+        {
+            "Components": {
+                "GradationComponent": [
+                    {
+                        "Handle": "9c4181ec-3a99-4077-81ed-451d07f94264",
+                        "centerUv": [
+                            0.5,
+                            0.5
+                        ],
+                        "colorChannel": 3,
+                        "direction": [
+                            0.0,
+                            1.0
+                        ],
+                        "gradationType": 1,
+                        "isActive": true,
+                        "materialIndex": 0,
+                        "pow": 1.25,
+                        "scale": 1.9900000095367432
+                    }
+                ],
+                "Material": [
+                    {
+                        "Handle": "bf2b4980-70d2-40a0-abc2-e60a95a7af8f",
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "enableLighting": false,
+                        "environmentCoefficient": 0.10000000149011612,
+                        "shininess": 0.0,
+                        "specularColor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "uvRotate": 0.0,
+                        "uvScale": [
+                            1.0,
+                            1.0
+                        ],
+                        "uvTranslate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ]
+            },
+            "Handle": {
+                "uuid": "549230da-098e-4013-afff-ce4aa34b4255"
+            },
+            "Name": "BG_Gradation",
+            "Systems": [],
+            "isUnique": false
+        }
+    ],
+    "Systems": [
+        {
+            "SpriteRenderSystem": {
+                "Priority": 10
+            }
+        },
+        {
+            "BackGroundSpriteRenderSystem": {
+                "Priority": 0
+            }
+        },
+        {
+            "SceneTransitionRequestSenderSystem": {
+                "Priority": 0
+            }
+        },
+        {
+            "DissolveAnimationSystem": {
+                "Priority": 1
+            }
+        },
+        {
+            "ButtonGroupSystem": {
+                "Priority": 0
+            }
+        },
+        {
+            "RestartOnButtonPressSystem": {
+                "Priority": 1
+            }
+        },
+        {
+            "ChangeSceneByButton": {
+                "Priority": 1
+            }
+        },
+        {
+            "ButtonInputSystem": {
+                "Priority": 0
+            }
+        },
+        {
+            "SceneTransition": {
+                "Priority": 1
+            }
+        },
+        {
+            "DistortionEffect": {
+                "Priority": 0
+            }
+        },
+        {
+            "UpdateButtonColorByState": {
+                "Priority": 1
+            }
+        },
+        {
+            "ApplyMouseConditionSystem": {
+                "Priority": 1
+            }
+        },
+        {
+            "TexturedMeshRenderSystem": {
+                "Priority": 5
+            }
+        },
+        {
+            "MaterialAnimationWorkSystem": {
+                "Priority": 0
+            }
+        },
+        {
+            "MaterialEffect": {
+                "Priority": 0
+            }
+        },
+        {
+            "DissolveEffect": {
+                "Priority": 0
+            }
+        },
+        {
+            "CameraInitialize": {
+                "Priority": 0
+            }
+        }
+    ]
+}

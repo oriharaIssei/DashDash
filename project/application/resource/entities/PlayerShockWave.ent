@@ -1,0 +1,116 @@
+{
+    "Components": {
+        "DistortionEffectParam": [
+            {
+                "Handle": "a0a783bf-d4b8-4ea6-8ad6-861fbab3cb69",
+                "distortionBias": [
+                    0.0,
+                    0.0
+                ],
+                "distortionObjects": [
+                    {
+                        "objectData": {
+                            "InnerRadius": 0.5,
+                            "OuterRadius": 5.550000190734863,
+                            "blendMode": 1,
+                            "division": 16,
+                            "isCulling": true,
+                            "isRenderer": true,
+                            "materialIndex": 0,
+                            "textureFilePath": "./application/resource/Texture/waveNoise.png",
+                            "transform": {
+                                "rotate": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ],
+                                "scale": [
+                                    1.0,
+                                    1.0,
+                                    1.0
+                                ],
+                                "translate": [
+                                    0.0,
+                                    -10000.0,
+                                    0.0
+                                ]
+                            }
+                        },
+                        "objectType": 1
+                    }
+                ],
+                "distortionStrength": [
+                    1.1100000143051147,
+                    2.5399999618530273
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "use3dObjectList": true
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "8173b945-d815-4b31-abaf-401808febfda",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "9976daa7-2170-4601-aeb4-fd923b427514",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "61e5895d-f89e-4d21-9949-4972b4094911"
+    },
+    "Name": "PlayerShockWave",
+    "Systems": [
+        {
+            "SystemCategory": 7,
+            "SystemName": "DistortionEffect"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "EffectOnPlayerGearup"
+        }
+    ],
+    "isUnique": false
+}

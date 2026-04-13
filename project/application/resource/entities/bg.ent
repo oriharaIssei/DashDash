@@ -1,0 +1,107 @@
+{
+    "Components": {
+        "Material": [
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    0.2549019753932953
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ],
+        "MaterialEffectPipeLine": [
+            {
+                "baseTexturePath": "./application/resource/Texture/bioNoise.png",
+                "effectEntityIdList": [
+                    {
+                        "effectType": 0,
+                        "entityID": 10
+                    },
+                    {
+                        "effectType": 2,
+                        "entityID": 12
+                    }
+                ],
+                "isActive": true,
+                "materialIndex": 0,
+                "priority": 5
+            }
+        ],
+        "PlaneRenderer": [
+            {
+                "blendMode": 1,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "textureDirectory": "",
+                "textureFileName": "",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Transform": [
+            {
+                "rotate": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "translate": [
+                    0.0,
+                    -0.1599999964237213,
+                    1.2300000190734863
+                ]
+            }
+        ]
+    },
+    "Name": "bg",
+    "Systems": [
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialEffect"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": false
+}

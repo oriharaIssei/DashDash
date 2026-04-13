@@ -1,0 +1,247 @@
+{
+    "Components": {
+        "AABBCollider": [
+            {
+                "Handle": "21d3846f-ee6c-40cb-a464-52f6ec237186",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "collisionCategory": "StageObject",
+                "halfSize": [
+                    1.0,
+                    1.0,
+                    0.20000000298023224
+                ],
+                "isActive": true,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "CylinderRenderer": [
+            {
+                "Handle": "fedaafa8-984e-4573-b896-fbea2b7422ab",
+                "blendMode": 1,
+                "bottomRadius": [
+                    1.0,
+                    1.0
+                ],
+                "height": 0.38999998569488525,
+                "heightDivisions": 4,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radialDivisions": 32,
+                "radiusEaseType": 0,
+                "textureFilePath": "./application/resource/Texture/arrow.png",
+                "topRadius": [
+                    0.800000011920929,
+                    0.800000011920929
+                ],
+                "transform": {
+                    "rotate": [
+                        0.7065556049346924,
+                        0.0,
+                        0.0,
+                        0.7076575756072998
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            {
+                "Handle": "8e55ada5-a8b4-49cd-a681-272227ac6698",
+                "blendMode": 1,
+                "bottomRadius": [
+                    1.0,
+                    1.0
+                ],
+                "height": 0.38999998569488525,
+                "heightDivisions": 4,
+                "isCulling": false,
+                "isRenderer": true,
+                "materialIndex": 0,
+                "radialDivisions": 32,
+                "radiusEaseType": 0,
+                "textureFilePath": "./application/resource/Texture/arrow.png",
+                "topRadius": [
+                    0.800000011920929,
+                    0.800000011920929
+                ],
+                "transform": {
+                    "rotate": [
+                        0.7066552042961121,
+                        0.0,
+                        0.0,
+                        0.7075580954551697
+                    ],
+                    "scale": [
+                        -1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "689b9a11-e996-4cd1-9842-ed5ca26bca0a",
+                "color": [
+                    0.16578538715839386,
+                    0.7111458778381348,
+                    0.8185653686523438,
+                    1.0
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    12.0,
+                    -2.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    1.076923131942749
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "1696d4cc-052b-4a6d-bb9d-322254fc52ed",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 1.2999999523162842,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 1.2999999523162842,
+                        "value": [
+                            0.0,
+                            3.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "SpeedModifiers": [
+            {
+                "Handle": "79d2f1a5-0ad1-4dbb-82bc-a2e85ec7bfca",
+                "additiveAxisX": true,
+                "additiveAxisY": false,
+                "additiveAxisZ": true,
+                "additiveDuration": 1.0,
+                "additiveFadeInDuration": 0.11999999731779099,
+                "additiveFadeOutDuration": 0.07000000029802322,
+                "additiveFadeOutEaseType": 0,
+                "additiveLerpEaseType": 10,
+                "additiveTarget": 32.0,
+                "axesSpace": 0,
+                "isAutoDestroyed": true,
+                "multiplierAxisX": true,
+                "multiplierAxisY": false,
+                "multiplierAxisZ": true,
+                "multiplierDuration": 0.0,
+                "multiplierFadeInDuration": 0.0,
+                "multiplierFadeOutDuration": 0.0,
+                "multiplierFadeOutEaseType": 0,
+                "multiplierLerpEaseType": 0,
+                "multiplierTarget": 1.0,
+                "restoreSpeed": 68.0
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "98348815-a3c0-4c43-83f0-0e780b4cb95b",
+                "rotate": [
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    1.0
+                ],
+                "scale": [
+                    24.0,
+                    24.0,
+                    12.0
+                ],
+                "translate": [
+                    0.15000000596046448,
+                    169.77867126464844,
+                    2947.88671875
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "b4d54e8b-2753-4a60-8e3e-1be69683b94a"
+    },
+    "Name": "SpeedRing",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        },
+        {
+            "SystemCategory": 3,
+            "SystemName": "ApplyAddForceSystem"
+        },
+        {
+            "SystemCategory": 4,
+            "SystemName": "OnCollisionModifierTargetSystem"
+        }
+    ],
+    "isUnique": false
+}

@@ -1,0 +1,337 @@
+{
+    "Components": {
+        "AABBCollider": [
+            {
+                "Handle": "1e3aac8e-5ea0-465e-80fc-a119f7011d61",
+                "center": [
+                    0.0,
+                    2.5999999046325684,
+                    0.0
+                ],
+                "collisionCategory": "StageObject",
+                "halfSize": [
+                    2.0,
+                    2.5999999046325684,
+                    1.0
+                ],
+                "isActive": true,
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "translate": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "41d1ee02-460c-4b33-8dd2-5e2d1bf7e883",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": true,
+                "environmentCoefficient": 0.009999999776482582,
+                "shininess": 17.59000015258789,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            },
+            {
+                "Handle": "a4a67fdf-ecc5-4782-82af-785a670b0ebb",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    0.5764706134796143
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": -1.5,
+                "uvScale": [
+                    0.7599999904632568,
+                    2.700000047683716
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.4222222864627838
+                ]
+            },
+            {
+                "Handle": "0657d178-d373-4841-85c8-177eb4584aad",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    0.4941176474094391
+                ],
+                "enableLighting": false,
+                "environmentCoefficient": 0.10000000149011612,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": -1.5,
+                "uvScale": [
+                    0.7099999785423279,
+                    2.700000047683716
+                ],
+                "uvTranslate": [
+                    0.5,
+                    0.4222222864627838
+                ]
+            }
+        ],
+        "MaterialAnimation": [
+            {
+                "Handle": "0d487716-4093-4836-8c8b-8a9ff24bbb6f",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 1.5,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 1.5,
+                        "value": [
+                            0.0,
+                            1.0
+                        ]
+                    }
+                ]
+            },
+            {
+                "Handle": "22c06250-c382-4f18-b1a4-6ba58249eb4d",
+                "InterpolationType": 0,
+                "colorCurve": [],
+                "duration": 1.5,
+                "isLoop": true,
+                "isPlay": true,
+                "uvRotateCurve": [],
+                "uvScaleCurve": [],
+                "uvTranslateCurve": [
+                    {
+                        "time": 0.0,
+                        "value": [
+                            0.5,
+                            0.0
+                        ]
+                    },
+                    {
+                        "time": 1.5,
+                        "value": [
+                            0.5,
+                            1.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "ModelMeshRenderer": [
+            {
+                "Handle": "f6a45dd2-6db1-49c8-9c9d-b460447f0016",
+                "blendMode": 1,
+                "directory": "./application/resource/Models\\DescFan",
+                "fileName": "DescFan.obj",
+                "isRender": true,
+                "materialIndexDatas": [
+                    {
+                        "Handle": "41d1ee02-460c-4b33-8dd2-5e2d1bf7e883"
+                    }
+                ],
+                "textureFilePath": [
+                    "./application/resource/Texture/descFan.png"
+                ],
+                "transformBufferDatas": [
+                    {
+                        "rotate": [
+                            0.0,
+                            -0.9937974810600281,
+                            0.0,
+                            0.11120554059743881
+                        ],
+                        "scale": [
+                            20.0,
+                            20.0,
+                            20.0
+                        ],
+                        "translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                ]
+            }
+        ],
+        "Obstacle": [
+            {
+                "Handle": "18794b1e-305e-4bcc-98fc-8168f528175c",
+                "invincibilityTimeOnCollision": 1.0,
+                "penaltyTime": 1.5
+            }
+        ],
+        "PlaneRenderer": [
+            {
+                "Handle": "dc2d80d7-665a-447a-8619-8a449ffa304f",
+                "blendMode": 1,
+                "isCulling": true,
+                "isRenderer": true,
+                "materialIndex": 1,
+                "textureFilePath": "./application/resource/Texture/VerticalParticles.png",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.7065556049346924,
+                        0.0,
+                        0.7076575756072998
+                    ],
+                    "scale": [
+                        18.579999923706055,
+                        8.0,
+                        12.0
+                    ],
+                    "translate": [
+                        6.369999885559082,
+                        0.7200000286102295,
+                        -18.579999923706055
+                    ]
+                }
+            },
+            {
+                "Handle": "df0bf480-8e88-4348-b3f4-98ed7eb29248",
+                "blendMode": 1,
+                "isCulling": true,
+                "isRenderer": true,
+                "materialIndex": 1,
+                "textureFilePath": "./application/resource/Texture/VerticalParticles.png",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.7066552042961121,
+                        0.0,
+                        0.7075580954551697
+                    ],
+                    "scale": [
+                        18.579999923706055,
+                        8.0,
+                        12.0
+                    ],
+                    "translate": [
+                        -5.429999828338623,
+                        0.0,
+                        -18.579999923706055
+                    ]
+                }
+            },
+            {
+                "Handle": "98435f9d-a41a-4dbf-87e6-ffac7f67951e",
+                "blendMode": 1,
+                "isCulling": true,
+                "isRenderer": true,
+                "materialIndex": 2,
+                "textureFilePath": "./application/resource/Texture/VerticalParticles.png",
+                "transform": {
+                    "rotate": [
+                        0.0,
+                        0.7066552042961121,
+                        0.0,
+                        0.7075580954551697
+                    ],
+                    "scale": [
+                        18.579999923706055,
+                        8.0,
+                        12.0
+                    ],
+                    "translate": [
+                        0.07999999821186066,
+                        0.0,
+                        -18.579999923706055
+                    ]
+                }
+            }
+        ],
+        "Transform": [
+            {
+                "Handle": "da8b3aa0-9fcd-4b4d-bfaa-23e00286dc98",
+                "rotate": [
+                    -0.0,
+                    -0.7067780494689941,
+                    -0.0,
+                    0.7074354290962219
+                ],
+                "scale": [
+                    3.0,
+                    3.0,
+                    3.0
+                ],
+                "translate": [
+                    -59.638999938964844,
+                    44.02000045776367,
+                    406.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "10098a18-ae77-4105-978a-6ffd892a25ef"
+    },
+    "Name": "Fan",
+    "Systems": [
+        {
+            "SystemCategory": 4,
+            "SystemName": "CollisionCheckSystem"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "MaterialAnimationWorkSystem"
+        },
+        {
+            "SystemCategory": 6,
+            "SystemName": "TexturedMeshRenderSystem"
+        }
+    ],
+    "isUnique": false
+}

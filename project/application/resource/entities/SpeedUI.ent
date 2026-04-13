@@ -1,0 +1,53 @@
+{
+    "Components": {
+        "SpeedFor3dUIComponent": [
+            {
+                "digitDecimal": 2,
+                "digitInteger": 3,
+                "marginBetweenIntegerAndDecimal": [
+                    0.0,
+                    -0.30000001192092896
+                ],
+                "numbersTexturePath": "./application/resource/Texture//timerNumbers.png",
+                "offset": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "planeMarginDecimal": [
+                    0.2800000011920929,
+                    0.0
+                ],
+                "planeMarginInteger": [
+                    0.6000000238418579,
+                    0.0
+                ],
+                "planeScaleDecimal": [
+                    0.6000000238418579,
+                    0.6000000238418579
+                ],
+                "planeScaleInteger": [
+                    1.0,
+                    1.0
+                ],
+                "worldPosition": [
+                    7.21999979019165,
+                    -3.75,
+                    14.270000457763672
+                ]
+            }
+        ]
+    },
+    "Name": "SpeedUI",
+    "Systems": [
+        {
+            "SystemCategory": 0,
+            "SystemName": "CreatePlaneFromSpeed"
+        },
+        {
+            "SystemCategory": 5,
+            "SystemName": "PlayerSpeedFor3dUI"
+        }
+    ],
+    "isUnique": false
+}

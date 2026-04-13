@@ -1,0 +1,42 @@
+{
+    "Components": {
+        "EntityReferenceList": [
+            {
+                "entityFileList": [
+                    [
+                        "./application/resource/entities",
+                        "BackFire"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "BackFire_Diss"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "BackFire_Dist"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "BackFire_Grad"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "BackFireSparks"
+                    ],
+                    [
+                        "./application/resource/entities",
+                        "BackFireSparks_Diss"
+                    ]
+                ]
+            }
+        ]
+    },
+    "Name": "BackFireRecipe",
+    "Systems": [
+        {
+            "SystemCategory": 0,
+            "SystemName": "ResolveEntityReferences"
+        }
+    ],
+    "isUnique": true
+}

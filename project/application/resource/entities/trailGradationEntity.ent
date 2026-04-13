@@ -1,0 +1,56 @@
+{
+    "Components": {
+        "GradationComponent": [
+            {
+                "Handle": "54ea66b3-95f9-46e4-9f87-02dc27e9718b",
+                "centerUv": [
+                    0.0,
+                    0.5400000214576721
+                ],
+                "colorChannel": 3,
+                "direction": [
+                    0.0,
+                    1.0
+                ],
+                "gradationType": 0,
+                "isActive": true,
+                "materialIndex": 0,
+                "pow": 3.7799999713897705,
+                "scale": 1.0499999523162842
+            }
+        ],
+        "Material": [
+            {
+                "Handle": "5de0d628-ff01-4cef-81a2-4d16b0c69760",
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "enableLighting": false,
+                "shininess": 0.0,
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "uvRotate": 0.0,
+                "uvScale": [
+                    1.0,
+                    1.0
+                ],
+                "uvTranslate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        ]
+    },
+    "Handle": {
+        "uuid": "4c74b4d3-a643-4e2d-90bc-3659cb9bc1a4"
+    },
+    "Name": "trailGradationEntity",
+    "Systems": [],
+    "isUnique": true
+}
