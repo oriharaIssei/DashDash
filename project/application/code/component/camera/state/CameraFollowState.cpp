@@ -40,28 +40,28 @@ void CameraFollowState::Update() {
 
     // ギアレベルに応じて目標パラメータを決定
     const CameraStateParams& target =
-        (state->GetGearLevel() >= kThresholdGearLevel_) ? cc->dashParams : cc->idleParams;
+        (state->GetGearLevel() >= kThresholdGearLevel_) ? cc->GetDashParams() : cc->GetIdleParams();
 
-    cc->currentOffset       = Lerp<3, float>(cc->currentOffset, target.offset, EaseOutCubic(t));
-    cc->currentTargetOffset = Lerp<3, float>(cc->currentTargetOffset, target.targetOffset, EaseOutCubic(t));
+    cc->SetCurrentOffset(Lerp<3, float>(cc->GetCurrentOffset(), target.offset, EaseOutCubic(t)));
+    cc->SetCurrentTargetOffset(Lerp<3, float>(cc->GetCurrentTargetOffset(), target.targetOffset, EaseOutCubic(t)));
 
     // ターゲットの左右ズレに応じたZ回転(ロール)
-    auto* targetTransform = scene_->GetComponent<Transform>(cc->followTargetEntity);
+    auto* targetTransform = scene_->GetComponent<Transform>(cc->GetFollowTargetEntity());
     auto* cameraTransform = scene_->GetComponent<CameraTransform>(cameraEntityHandle_);
     if (targetTransform && cameraTransform) {
         Vec3f toTarget = Vec3f::Normalize(targetTransform->GetWorldTranslate() - cameraTransform->translate);
-        Vec3f forward  = cc->baseRotate.RotateVector(axisZ);
-        Vec3f right    = cc->baseRotate.RotateVector(axisX);
+        Vec3f forward  = cc->GetBaseRotate().RotateVector(axisZ);
+        Vec3f right    = cc->GetBaseRotate().RotateVector(axisX);
 
         // カメラ正面とターゲット方向の内積で前方にいるか判定
         float forwardDot = Vec3f::Dot(forward, toTarget);
 
-        if (forwardDot >= cc->tiltDotOnFollow) {
+        if (forwardDot >= cc->GetTiltDotOnFollow()) {
             // right方向への射影で左右のズレ量を取得 (-1 ~ 1)
-            float rightDot     = std::clamp(Vec3f::Dot(right, toTarget), -1.f, 1.f);
-            cc->currentRotateZ = -rightDot * cc->maxRollAngleOnFollow;
+            float rightDot = std::clamp(Vec3f::Dot(right, toTarget), -1.f, 1.f);
+            cc->SetCurrentRotateZ(-rightDot * cc->GetMaxRollAngleOnFollow());
         } else {
-            cc->currentRotateZ = 0.f;
+            cc->SetCurrentRotateZ(0.f);
         }
     }
 }

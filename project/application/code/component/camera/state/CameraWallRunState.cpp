@@ -36,9 +36,9 @@ void CameraWallRunState::Initialize() {
     isRightWall_ = PlayerMoveUtils::IsWallRight(direction, wallNormal);
 
     // 左壁想定のオフセットを取得
-    targetOffsetOnWallRun_     = cc->wallRunParams.targetOffset;
-    minTargetOffsetXOnWallRun_ = cc->minTargetOffsetXOnWallRun;
-    offsetOnWallRun_           = cc->wallRunParams.offset;
+    targetOffsetOnWallRun_     = cc->GetWallRunParams().targetOffset;
+    minTargetOffsetXOnWallRun_ = cc->GetMinTargetOffsetXOnWallRun();
+    offsetOnWallRun_           = cc->GetWallRunParams().offset;
 
     // 右壁なら左右反転
     if (!isRightWall_) {
@@ -61,11 +61,11 @@ void CameraWallRunState::Update() {
     float t = lerpTimer_ / kLerpTime_;
 
     if (t <= 1.0f) {
-        cc->currentOffset       = Lerp<3, float>(cc->currentOffset, offsetOnWallRun_, EaseOutCubic(t));
-        cc->currentTargetOffset = Lerp<3, float>(cc->currentTargetOffset, targetOffsetOnWallRun_, EaseOutCubic(t));
+        cc->SetCurrentOffset(Lerp<3, float>(cc->GetCurrentOffset(), offsetOnWallRun_, EaseOutCubic(t)));
+        cc->SetCurrentTargetOffset(Lerp<3, float>(cc->GetCurrentTargetOffset(), targetOffsetOnWallRun_, EaseOutCubic(t)));
     } else {
-        cc->currentOffset       = offsetOnWallRun_;
-        cc->currentTargetOffset = targetOffsetOnWallRun_;
+        cc->SetCurrentOffset(offsetOnWallRun_);
+        cc->SetCurrentTargetOffset(targetOffsetOnWallRun_);
     }
 
     // 移動方向に応じて、カメラのオフセットのX成分の目標値を変える
@@ -77,14 +77,16 @@ void CameraWallRunState::Update() {
         }
         inputXNormalized = EasingFunctions[static_cast<int>(EaseType::EaseInCubic)](inputXNormalized);
 
-        cc->currentTargetOffset[X] = std::lerp(minTargetOffsetXOnWallRun_, targetOffsetOnWallRun_[X], inputXNormalized);
+        Vec3f currentTargetOffset    = cc->GetCurrentTargetOffset();
+        currentTargetOffset[X]       = std::lerp(minTargetOffsetXOnWallRun_, targetOffsetOnWallRun_[X], inputXNormalized);
+        cc->SetCurrentTargetOffset(currentTargetOffset);
     }
 }
 
 void CameraWallRunState::Finalize() {
     CameraController* cc = scene_->GetComponent<CameraController>(cameraEntityHandle_);
     if (cc) {
-        cc->currentOffset       = cc->wallRunParams.offset;
-        cc->currentTargetOffset = cc->dashParams.targetOffset;
+        cc->SetCurrentOffset(cc->GetWallRunParams().offset);
+        cc->SetCurrentTargetOffset(cc->GetDashParams().targetOffset);
     }
 }

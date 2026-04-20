@@ -58,7 +58,7 @@ void OnCollisionModifierTargetSystem::UpdateEntity(OriGine::EntityHandle _handle
     collectStates(aabbColliders);
     collectStates(obbColliders);
 
-    const bool isWhileColliding = (speedModifiers->triggerMode == SpeedModifiers::TriggerMode::WhileColliding);
+    const bool isWhileColliding = (speedModifiers->GetTriggerMode() == SpeedModifierTriggerMode::WhileColliding);
 
     // --- Enter 処理 ---
     for (const auto& otherHandle : enterEntities) {
@@ -79,15 +79,15 @@ void OnCollisionModifierTargetSystem::UpdateEntity(OriGine::EntityHandle _handle
         ComponentHandle modifier   = AddComponent<SpeedModifiers>(createdEntity);
         auto* modifierComp         = GetComponent<SpeedModifiers>(modifier);
         if (modifierComp) {
-            *modifierComp                       = *speedModifiers;
-            modifierComp->targetRigidbodyHandle = rigidbodyComp->GetHandle();
-            modifierComp->beforeSpeed           = rigidbodyComp->GetVelocity().length();
+            *modifierComp = *speedModifiers;
+            modifierComp->SetTargetRigidbodyHandle(rigidbodyComp->GetHandle());
+            modifierComp->SetBeforeSpeed(rigidbodyComp->GetVelocity().length());
 
             // WhileCollidingモードではdurationを無限にしてHoldフェーズに留まらせる
             if (isWhileColliding) {
-                modifierComp->additiveDuration   = FLT_MAX;
-                modifierComp->multiplierDuration = FLT_MAX;
-                modifierComp->isAutoDestroyed    = true;
+                modifierComp->SetAdditiveDuration(FLT_MAX);
+                modifierComp->SetMultiplierDuration(FLT_MAX);
+                modifierComp->SetIsAutoDestroyed(true);
 
                 activeModifiers_[std::make_pair(_handle, otherHandle)] = createdEntity;
             }
@@ -109,8 +109,8 @@ void OnCollisionModifierTargetSystem::UpdateEntity(OriGine::EntityHandle _handle
             // ModifierエンティティのタイマーをFadeOutフェーズに移行させる
             auto& modifiers = GetComponents<SpeedModifiers>(it->second);
             for (auto& mod : modifiers) {
-                mod.additiveTimer   = mod.additiveDuration;
-                mod.multiplierTimer = mod.multiplierDuration;
+                mod.SetAdditiveTimer(mod.GetAdditiveDuration());
+                mod.SetMultiplierTimer(mod.GetMultiplierDuration());
             }
 
             activeModifiers_.erase(it);

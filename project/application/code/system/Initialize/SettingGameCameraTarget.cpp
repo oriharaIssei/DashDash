@@ -24,7 +24,7 @@ void SettingGameCameraTarget::Update() {
     if (!cameraController || !cameraTransform) {
         return;
     }
-    cameraController->followTargetEntity = playerEntityHandle;
+    cameraController->SetFollowTargetEntity(playerEntityHandle);
 
     Transform* playerTransform = GetComponent<OriGine::Transform>(playerEntityHandle);
     if (playerTransform) {

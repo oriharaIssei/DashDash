@@ -174,7 +174,7 @@ void TransitionPlayerState::UpdateEntity(EntityHandle _handle) {
         CameraTransform* cameraTransform = GetComponent<CameraTransform>(gameCamera->GetHandle());
         if (cameraTransform) {
             const float xzSpeed        = Vec2f(rigidbody->GetVelocity(X), rigidbody->GetVelocity(Z)).length();
-            cameraTransform->fovAngleY = std::lerp(cameraTransform->fovAngleY, cameraController->CalculateFovYBySpeed(xzSpeed), cameraController->fovYInterpolate);
+            cameraTransform->fovAngleY = std::lerp(cameraTransform->fovAngleY, cameraController->CalculateFovYBySpeed(xzSpeed), cameraController->GetFovYInterpolate());
         };
     }
 

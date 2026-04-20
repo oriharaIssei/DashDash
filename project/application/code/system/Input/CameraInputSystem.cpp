@@ -35,29 +35,31 @@ void CameraInputSystem::UpdateEntity(OriGine::EntityHandle _handle) {
 }
 
 void CameraInputSystem::InputUpdate(float _deltaTime, MouseInput* _mouseInput, GamepadInput* _padInput, CameraController* _cameraController) {
-    Transform* followTargetTransform  = GetComponent<Transform>(_cameraController->followTargetEntity);
-    OriGine::Vec2f destinationAngleXY = _cameraController->destinationAngleXY;
+    Transform* followTargetTransform  = GetComponent<Transform>(_cameraController->GetFollowTargetEntity());
+    OriGine::Vec2f destinationAngleXY = _cameraController->GetDestinationAngleXY();
 
     if (followTargetTransform) {
         OriGine::Vec2f rotateVelocity = {0.f, 0.f};
         if (_padInput->IsActive()) { /// GamePad
-            rotateVelocity = _padInput->GetRightStick() * _cameraController->rotateSpeedPadStick;
+            rotateVelocity = _padInput->GetRightStick() * _cameraController->GetRotateSpeedPadStick();
             // input の x,yをそれぞれの角度に変換
             rotateVelocity = OriGine::Vec2f(-rotateVelocity[Y], rotateVelocity[X]);
         } else { /// Mouse
-            rotateVelocity = _mouseInput->GetVelocity() * _cameraController->rotateSpeedMouse;
+            rotateVelocity = _mouseInput->GetVelocity() * _cameraController->GetRotateSpeedMouse();
             // input の x,yをそれぞれの角度に変換
             rotateVelocity = OriGine::Vec2f(rotateVelocity[Y], rotateVelocity[X]);
         }
         rotateVelocity *= _deltaTime;
 
         // 自動注視は入力があったら解除
-        _cameraController->isAutoLookAtPlayer = rotateVelocity.lengthSq() <= kEpsilon;
+        _cameraController->SetIsAutoLookAtPlayer(rotateVelocity.lengthSq() <= kEpsilon);
 
-        _cameraController->destinationAngleXY += rotateVelocity;
-        _cameraController->destinationAngleXY[Y] = std::fmod(_cameraController->destinationAngleXY[Y], kTau); // Y軸は360度回転可能
+        destinationAngleXY += rotateVelocity;
+        destinationAngleXY[Y] = std::fmod(destinationAngleXY[Y], kTau); // Y軸は360度回転可能
 
         // 角度制限を適用
-        _cameraController->destinationAngleXY[X] = std::clamp(_cameraController->destinationAngleXY[X], _cameraController->minRotateX, _cameraController->maxRotateX);
+        destinationAngleXY[X] = std::clamp(destinationAngleXY[X], _cameraController->GetMinRotateX(), _cameraController->GetMaxRotateX());
+
+        _cameraController->SetDestinationAngleXY(destinationAngleXY);
     }
 }

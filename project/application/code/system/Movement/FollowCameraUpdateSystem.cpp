@@ -48,78 +48,84 @@ void FollowCameraUpdateSystem::UpdateEntity(EntityHandle _handle) {
     /// プレイヤーの状態変化イベントがあれば、カメラステートを切り替える
     CameraStateTransition(_handle, cameraController);
 
-    if (cameraController->cameraState_) {
-        cameraController->cameraState_->Update();
+    if (cameraController->GetCameraState()) {
+        cameraController->GetCameraState()->Update();
     } else {
-        cameraController->cameraState_ = CreateCameraState(
+        cameraController->SetCameraState(CreateCameraState(
             ConvertToCameraState(latestPlayerStateChangedEvent_.currentMoveState),
             GetScene(),
             _handle,
-            latestPlayerStateChangedEvent_.playerEntityHandle);
+            latestPlayerStateChangedEvent_.playerEntityHandle));
     }
 
-    auto* targetTranslate = GetComponent<Transform>(cameraController->followTargetEntity);
+    auto* targetTranslate = GetComponent<Transform>(cameraController->GetFollowTargetEntity());
     if (targetTranslate) {
         // 自動注視処理
-        if (cameraController->isAutoLookAtPlayer) {
+        if (cameraController->GetIsAutoLookAtPlayer()) {
             Vec3f toTarget     = Vec3f::Normalize(targetTranslate->GetWorldTranslate() - cameraTransform->translate);
             float targetAngleY = std::atan2(toTarget[X], toTarget[Z]);
 
-            float currentY                          = cameraController->destinationAngleXY[Y];
-            cameraController->destinationAngleXY[Y] = LerpAngleByDeltaTime(currentY, targetAngleY, deltaTime, cameraController->interTargetInterpolation[Y]);
+            Vec2f angleXY = cameraController->GetDestinationAngleXY();
+            angleXY[Y]    = LerpAngleByDeltaTime(angleXY[Y], targetAngleY, deltaTime, cameraController->GetInterTargetInterpolation()[Y]);
+            cameraController->SetDestinationAngleXY(angleXY);
         }
 
-        Matrix4x4 cameraRotateMat = MakeMatrix4x4::RotateX(cameraController->destinationAngleXY[X]) * MakeMatrix4x4::RotateY(cameraController->destinationAngleXY[Y]);
+        Vec2f destAngle         = cameraController->GetDestinationAngleXY();
+        Matrix4x4 cameraRotateMat = MakeMatrix4x4::RotateX(destAngle[X]) * MakeMatrix4x4::RotateY(destAngle[Y]);
 
         // ======== ターゲット追従補間 ======== //
         Vec3f followTargetPosition = Vec3f(targetTranslate->GetWorldTranslate());
 
-        Vec3f worldDelta = followTargetPosition - cameraController->interTarget;
+        Vec3f interTarget = cameraController->GetInterTarget();
+        Vec3f worldDelta  = followTargetPosition - interTarget;
         // 純回転行列の逆行列 = 転置
         Matrix4x4 invRotateMat = Matrix4x4::Transpose(cameraRotateMat);
         Vec3f localDelta       = worldDelta * invRotateMat;
-        Vec3f followDest       = cameraController->interTarget + (localDelta * cameraRotateMat);
+        Vec3f followDest       = interTarget + (localDelta * cameraRotateMat);
 
         // interTarget・followDest をカメラローカルに変換してLerp し、ワールドに戻す
-        Vec3f localInterTarget  = cameraController->interTarget * invRotateMat;
+        Vec3f localInterTarget  = interTarget * invRotateMat;
         Vec3f localFollowDest   = followDest * invRotateMat;
+        Vec3f interpVec         = cameraController->GetInterTargetInterpolation();
         Vec3f localInterpolated = Vec3f(
-            LerpByDeltaTime(localInterTarget[X], localFollowDest[X], deltaTime, cameraController->interTargetInterpolation[X]),
-            LerpByDeltaTime(localInterTarget[Y], localFollowDest[Y], deltaTime, cameraController->interTargetInterpolation[Y]),
-            LerpByDeltaTime(localInterTarget[Z], localFollowDest[Z], deltaTime, cameraController->interTargetInterpolation[Z]));
-        cameraController->interTarget = localInterpolated * cameraRotateMat;
+            LerpByDeltaTime(localInterTarget[X], localFollowDest[X], deltaTime, interpVec[X]),
+            LerpByDeltaTime(localInterTarget[Y], localFollowDest[Y], deltaTime, interpVec[Y]),
+            LerpByDeltaTime(localInterTarget[Z], localFollowDest[Z], deltaTime, interpVec[Z]));
+        cameraController->SetInterTarget(localInterpolated * cameraRotateMat);
 
         // ======== 注視XY補間: ローカル空間で補間してからワールドに戻す ======== //
-        Vec3f localInterLookAtTarget  = cameraController->interLookAtTarget * invRotateMat;
+        Vec3f lookAtInterpVec        = cameraController->GetInterLookAtTargetInterpolation();
+        Vec3f localInterLookAtTarget = cameraController->GetInterLookAtTarget() * invRotateMat;
         Vec3f localFollowLookAtTarget = followTargetPosition * invRotateMat;
         localInterLookAtTarget[X]     = LerpByDeltaTime(
             localInterLookAtTarget[X], localFollowLookAtTarget[X],
-            deltaTime, cameraController->interLookAtTargetInterpolation[X]);
+            deltaTime, lookAtInterpVec[X]);
         localInterLookAtTarget[Y] = LerpByDeltaTime(
             localInterLookAtTarget[Y], localFollowLookAtTarget[Y],
-            deltaTime, cameraController->interLookAtTargetInterpolation[Y]);
-        localInterLookAtTarget[Z]           = localInterpolated[Z];
-        cameraController->interLookAtTarget = localInterLookAtTarget * cameraRotateMat;
+            deltaTime, lookAtInterpVec[Y]);
+        localInterLookAtTarget[Z] = localInterpolated[Z];
+        cameraController->SetInterLookAtTarget(localInterLookAtTarget * cameraRotateMat);
 
         // ======== 注視点 (targetOffset) ======== //
-        Vec3f lookAtBase     = cameraController->interLookAtTarget;
-        Vec3f targetPosition = lookAtBase + (cameraController->currentTargetOffset * cameraRotateMat);
+        Vec3f lookAtBase     = cameraController->GetInterLookAtTarget();
+        Vec3f targetPosition = lookAtBase + (cameraController->GetCurrentTargetOffset() * cameraRotateMat);
 
         // ======== カメラ位置 (offset) ======== //
-        Vec3f cameraPos            = cameraController->interTarget + (cameraController->currentOffset * cameraRotateMat);
+        Vec3f cameraPos            = cameraController->GetInterTarget() + (cameraController->GetCurrentOffset() * cameraRotateMat);
         cameraTransform->translate = cameraPos;
 
         // ======== カメラ回転 ======== //
         Vec3f lookDir                = Vec3f::Normalize(targetPosition - cameraTransform->translate);
         Quaternion targetQuat        = Quaternion::LookAt(lookDir, axisY);
-        cameraController->baseRotate = SlerpByDeltaTime(
-            cameraController->baseRotate,
+        Quaternion newBaseRotate     = SlerpByDeltaTime(
+            cameraController->GetBaseRotate(),
             targetQuat,
             deltaTime,
-            cameraController->rotateSensitivity)
+            cameraController->GetRotateSensitivity())
                                            .normalize();
+        cameraController->SetBaseRotate(newBaseRotate);
 
-        cameraTransform->rotate = cameraController->baseRotate * Quaternion::RotateAxisAngle(axisZ, cameraController->currentRotateZ);
+        cameraTransform->rotate = cameraController->GetBaseRotate() * Quaternion::RotateAxisAngle(axisZ, cameraController->GetCurrentRotateZ());
 
         // transform に同期
         transform->rotate    = cameraTransform->rotate;
@@ -138,7 +144,7 @@ void FollowCameraUpdateSystem::CameraStateTransition(OriGine::EntityHandle _hand
     }
     hasStateChangeRequest_ = false;
 
-    if (_cameraController->followTargetEntity != latestPlayerStateChangedEvent_.playerEntityHandle) {
+    if (_cameraController->GetFollowTargetEntity() != latestPlayerStateChangedEvent_.playerEntityHandle) {
         return;
     }
 
@@ -146,23 +152,23 @@ void FollowCameraUpdateSystem::CameraStateTransition(OriGine::EntityHandle _hand
         latestPlayerStateChangedEvent_.currentMoveState);
 
     // ★ 同じなら何もしない
-    if (nextType == _cameraController->currentCameraStateType_) {
+    if (nextType == _cameraController->GetCurrentCameraStateType()) {
         return;
     }
 
-    _cameraController->currentCameraStateType_ = nextType;
+    _cameraController->SetCurrentCameraStateType(nextType);
 
-    if (_cameraController->cameraState_) {
-        _cameraController->cameraState_->Finalize();
+    if (_cameraController->GetCameraState()) {
+        _cameraController->GetCameraState()->Finalize();
     }
 
-    _cameraController->cameraState_ = CreateCameraState(
+    _cameraController->SetCameraState(CreateCameraState(
         nextType,
         GetScene(),
         _handle,
-        latestPlayerStateChangedEvent_.playerEntityHandle);
+        latestPlayerStateChangedEvent_.playerEntityHandle));
 
-    _cameraController->cameraState_->Initialize();
+    _cameraController->GetCameraState()->Initialize();
 }
 
 CameraMoveState FollowCameraUpdateSystem::ConvertToCameraState(PlayerMoveState _state) {

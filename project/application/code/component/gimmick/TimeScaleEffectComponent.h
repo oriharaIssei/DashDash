@@ -20,15 +20,15 @@ public:
     void Finalize() override;
     void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
 
-private:
-    bool isActive_{false};
-    std::set<std::string> timeScaleTags_{};
-    float timeScale_{1.0f};
-    float timeScaleDuration_{0.0f}; // タイムスケールの効果時間
-public:
     bool IsActive() const { return isActive_; }
     void SetActive(bool _active) { isActive_ = _active; }
     const std::set<std::string>& GetTimeScaleTags() const { return timeScaleTags_; }
     float GetTimeScale() const { return timeScale_; }
     float GetTimeScaleDuration() const { return timeScaleDuration_; }
+
+private:
+    bool isActive_{false};
+    std::set<std::string> timeScaleTags_{};
+    float timeScale_{1.0f};
+    float timeScaleDuration_{0.0f}; // タイムスケールの効果時間
 };

@@ -25,8 +25,8 @@ void CameraIdleState::Update() {
     lerpTimer_ += cameraDeltaTime;
     float t = std::clamp(lerpTimer_ / kLerpTime_, 0.f, 1.f);
 
-    cc->currentOffset       = Lerp<3, float>(cc->currentOffset, cc->idleParams.offset, EaseOutCubic(t));
-    cc->currentTargetOffset = Lerp<3, float>(cc->currentTargetOffset, cc->idleParams.targetOffset, EaseOutCubic(t));
+    cc->SetCurrentOffset(Lerp<3, float>(cc->GetCurrentOffset(), cc->GetIdleParams().offset, EaseOutCubic(t)));
+    cc->SetCurrentTargetOffset(Lerp<3, float>(cc->GetCurrentTargetOffset(), cc->GetIdleParams().targetOffset, EaseOutCubic(t)));
 }
 
 void CameraIdleState::Finalize() {}

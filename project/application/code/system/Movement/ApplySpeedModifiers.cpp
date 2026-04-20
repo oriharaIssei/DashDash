@@ -31,7 +31,7 @@ void ApplySpeedModifiers::UpdateEntity(OriGine::EntityHandle _handle) {
 
     for (auto& speedModifier : speedModifiers) {
         // 対象のRigidbodyコンポーネントを取得
-        auto rigidbodyComp = GetComponent<Rigidbody>(speedModifier.targetRigidbodyHandle);
+        auto rigidbodyComp = GetComponent<Rigidbody>(speedModifier.GetTargetRigidbodyHandle());
         if (!rigidbodyComp) {
             continue;
         }
@@ -46,43 +46,43 @@ void ApplySpeedModifiers::UpdateEntity(OriGine::EntityHandle _handle) {
         float additiveSpeed   = 0.f;
         float multiplierSpeed = 1.f;
 
-        speedModifier.additiveTimer += deltaTime;
-        speedModifier.additiveFadeInTimer += deltaTime;
-        if (speedModifier.additiveFadeInTimer <= speedModifier.additiveFadeInDuration) {
+        speedModifier.SetAdditiveTimer(speedModifier.GetAdditiveTimer() + deltaTime);
+        speedModifier.SetAdditiveFadeInTimer(speedModifier.GetAdditiveFadeInTimer() + deltaTime);
+        if (speedModifier.GetAdditiveFadeInTimer() <= speedModifier.GetAdditiveFadeInDuration()) {
             // FadeIn フェーズ
-            t             = (std::min)(speedModifier.additiveFadeInTimer / speedModifier.additiveFadeInDuration, 1.0f);
-            additiveSpeed = std::lerp(0.f, speedModifier.additiveTarget, EasingFunctions[static_cast<int>(speedModifier.additiveLerpEaseType)](t));
-        } else if (speedModifier.additiveTimer < speedModifier.additiveDuration) {
+            t             = (std::min)(speedModifier.GetAdditiveFadeInTimer() / speedModifier.GetAdditiveFadeInDuration(), 1.0f);
+            additiveSpeed = std::lerp(0.f, speedModifier.GetAdditiveTarget(), EasingFunctions[static_cast<int>(speedModifier.GetAdditiveLerpEaseType())](t));
+        } else if (speedModifier.GetAdditiveTimer() < speedModifier.GetAdditiveDuration()) {
             // Hold フェーズ
-            additiveSpeed = speedModifier.additiveTarget;
+            additiveSpeed = speedModifier.GetAdditiveTarget();
         } else {
             // FadeOut フェーズ
-            if (speedModifier.additiveFadeOutDuration > 0.f) {
-                speedModifier.additiveFadeOutTimer = (std::min)(speedModifier.additiveFadeOutTimer + deltaTime, speedModifier.additiveFadeOutDuration);
-                t                                  = speedModifier.additiveFadeOutTimer / speedModifier.additiveFadeOutDuration;
-                additiveSpeed                      = std::lerp(speedModifier.additiveTarget, 0.f, EasingFunctions[static_cast<int>(speedModifier.additiveFadeOutEaseType)](t));
+            if (speedModifier.GetAdditiveFadeOutDuration() > 0.f) {
+                speedModifier.SetAdditiveFadeOutTimer((std::min)(speedModifier.GetAdditiveFadeOutTimer() + deltaTime, speedModifier.GetAdditiveFadeOutDuration()));
+                t             = speedModifier.GetAdditiveFadeOutTimer() / speedModifier.GetAdditiveFadeOutDuration();
+                additiveSpeed = std::lerp(speedModifier.GetAdditiveTarget(), 0.f, EasingFunctions[static_cast<int>(speedModifier.GetAdditiveFadeOutEaseType())](t));
             } else {
-                additiveSpeed = LerpByDeltaTime(speedModifier.additiveTarget, 0.f, deltaTime, speedModifier.restoreSpeed);
+                additiveSpeed = LerpByDeltaTime(speedModifier.GetAdditiveTarget(), 0.f, deltaTime, speedModifier.GetRestoreSpeed());
             }
         }
 
-        speedModifier.multiplierTimer += deltaTime;
-        speedModifier.multiplierFadeInTimer += deltaTime;
-        if (speedModifier.multiplierFadeInTimer <= speedModifier.multiplierFadeInDuration) {
+        speedModifier.SetMultiplierTimer(speedModifier.GetMultiplierTimer() + deltaTime);
+        speedModifier.SetMultiplierFadeInTimer(speedModifier.GetMultiplierFadeInTimer() + deltaTime);
+        if (speedModifier.GetMultiplierFadeInTimer() <= speedModifier.GetMultiplierFadeInDuration()) {
             // FadeIn フェーズ
-            t               = (std::min)(speedModifier.multiplierFadeInTimer / speedModifier.multiplierFadeInDuration, 1.0f);
-            multiplierSpeed = std::lerp(1.f, speedModifier.multiplierTarget, EasingFunctions[static_cast<int>(speedModifier.multiplierLerpEaseType)](t));
-        } else if (speedModifier.multiplierTimer < speedModifier.multiplierDuration) {
+            t               = (std::min)(speedModifier.GetMultiplierFadeInTimer() / speedModifier.GetMultiplierFadeInDuration(), 1.0f);
+            multiplierSpeed = std::lerp(1.f, speedModifier.GetMultiplierTarget(), EasingFunctions[static_cast<int>(speedModifier.GetMultiplierLerpEaseType())](t));
+        } else if (speedModifier.GetMultiplierTimer() < speedModifier.GetMultiplierDuration()) {
             // Hold フェーズ
-            multiplierSpeed = speedModifier.multiplierTarget;
+            multiplierSpeed = speedModifier.GetMultiplierTarget();
         } else {
             // FadeOut フェーズ
-            if (speedModifier.multiplierFadeOutDuration > 0.f) {
-                speedModifier.multiplierFadeOutTimer = (std::min)(speedModifier.multiplierFadeOutTimer + deltaTime, speedModifier.multiplierFadeOutDuration);
-                t                                    = speedModifier.multiplierFadeOutTimer / speedModifier.multiplierFadeOutDuration;
-                multiplierSpeed                      = std::lerp(speedModifier.multiplierTarget, 1.f, EasingFunctions[static_cast<int>(speedModifier.multiplierFadeOutEaseType)](t));
+            if (speedModifier.GetMultiplierFadeOutDuration() > 0.f) {
+                speedModifier.SetMultiplierFadeOutTimer((std::min)(speedModifier.GetMultiplierFadeOutTimer() + deltaTime, speedModifier.GetMultiplierFadeOutDuration()));
+                t               = speedModifier.GetMultiplierFadeOutTimer() / speedModifier.GetMultiplierFadeOutDuration();
+                multiplierSpeed = std::lerp(speedModifier.GetMultiplierTarget(), 1.f, EasingFunctions[static_cast<int>(speedModifier.GetMultiplierFadeOutEaseType())](t));
             } else {
-                multiplierSpeed = LerpByDeltaTime(speedModifier.multiplierTarget, 1.f, deltaTime, speedModifier.restoreSpeed);
+                multiplierSpeed = LerpByDeltaTime(speedModifier.GetMultiplierTarget(), 1.f, deltaTime, speedModifier.GetRestoreSpeed());
             }
         }
 
@@ -92,7 +92,7 @@ void ApplySpeedModifiers::UpdateEntity(OriGine::EntityHandle _handle) {
 
         Vec3f effectiveSpeed;
 
-        if (speedModifier.axesSpace == SpeedModifiers::AxesSpace::Velocity) {
+        if (speedModifier.GetAxesSpace() == SpeedModifierAxesSpace::Velocity) {
             // --- 速度相対空間 (Front, Side, Up) ---
             // Front = 速度方向, Side = 水平垂直, Up = 右手系完成方向
             if (velLen < kEpsilon) {
@@ -113,10 +113,13 @@ void ApplySpeedModifiers::UpdateEntity(OriGine::EntityHandle _handle) {
                 float comps[3]           = {vel.dot(front), vel.dot(side), vel.dot(up)};
                 const Vec3f basisVecs[3] = {front, side, up};
 
+                const auto& mulAxes = speedModifier.GetMultiplierAxes();
+                const auto& addAxes = speedModifier.GetAdditiveAxes();
+
                 for (int i = 0; i < 3; ++i) {
-                    float base  = speedModifier.multiplierAxes[i] ? speedModifier.beforeSpeed : comps[i];
-                    float mul   = speedModifier.multiplierAxes[i] ? multiplierSpeed : 1.f;
-                    float add   = speedModifier.additiveAxes[i] ? additiveSpeed : 0.f;
+                    float base  = mulAxes[i] ? speedModifier.GetBeforeSpeed() : comps[i];
+                    float mul   = mulAxes[i] ? multiplierSpeed : 1.f;
+                    float add   = addAxes[i] ? additiveSpeed : 0.f;
                     float scale = base * mul + add;
                     for (int k = 0; k < 3; ++k) {
                         effectiveSpeed[k] += scale * basisVecs[i][k];
@@ -125,10 +128,13 @@ void ApplySpeedModifiers::UpdateEntity(OriGine::EntityHandle _handle) {
             }
         } else {
             // --- ワールド空間 (X, Y, Z) ---
+            const auto& mulAxes = speedModifier.GetMultiplierAxes();
+            const auto& addAxes = speedModifier.GetAdditiveAxes();
+
             for (int i = 0; i < 3; ++i) {
-                float base        = speedModifier.multiplierAxes[i] ? speedModifier.beforeSpeed : velLen;
-                float mul         = speedModifier.multiplierAxes[i] ? multiplierSpeed : 1.f;
-                float add         = speedModifier.additiveAxes[i] ? additiveSpeed : 0.f;
+                float base        = mulAxes[i] ? speedModifier.GetBeforeSpeed() : velLen;
+                float mul         = mulAxes[i] ? multiplierSpeed : 1.f;
+                float add         = addAxes[i] ? additiveSpeed : 0.f;
                 effectiveSpeed[i] = (base * mul + add) * velNorm[i];
             }
         }
@@ -138,7 +144,7 @@ void ApplySpeedModifiers::UpdateEntity(OriGine::EntityHandle _handle) {
         rigidbodyComp->SetVelocity(effectiveSpeed);
 
         // 自動削除
-        if (speedModifier.isAutoDestroyed) {
+        if (speedModifier.GetIsAutoDestroyed()) {
             if (!speedModifier.IsAdditiveEffectActive() && !speedModifier.IsMultiplierEffectActive()) {
                 GetScene()->AddDeleteEntity(_handle);
             }
