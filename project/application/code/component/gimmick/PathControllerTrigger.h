@@ -1,29 +1,15 @@
 #pragma once
 
-/// stl
-#include <vector>
-
-/// engine
-#include "component/IComponent.h"
-#include "entity/EntityHandle.h"
+#include "component/gimmick/ICollisionTriggerComponent.h"
 
 /// <summary>
 /// 衝突をトリガーにして、指定した Entity の PathController を
 /// アクティブ化 または 非アクティブ化 するコンポーネント。
 /// </summary>
 class PathControllerTrigger
-    : public OriGine::IComponent {
+    : public ICollisionTriggerComponent {
     friend void to_json(nlohmann::json& _j, const PathControllerTrigger& _c);
     friend void from_json(const nlohmann::json& _j, PathControllerTrigger& _c);
-
-public:
-    /// <summary>
-    /// トリガー発火時の動作モード
-    /// </summary>
-    enum class Mode {
-        Activate,   // PathController を isPlaying = true にする
-        Deactivate, // PathController を isPlaying = false にする
-    };
 
 public:
     PathControllerTrigger()           = default;
@@ -32,21 +18,6 @@ public:
     void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
     void Finalize() override;
     void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
-
-private:
-    Mode mode_ = Mode::Activate;
-    std::vector<OriGine::EntityHandle> targetHandles_;
-
-public:
-    Mode GetMode() const { return mode_; }
-    void SetMode(Mode _mode) { mode_ = _mode; }
-
-    const std::vector<OriGine::EntityHandle>& GetTargetHandles() const { return targetHandles_; }
-};
-
-static const char* kPathControllerTriggerModeNames[] = {
-    "Activate",
-    "Deactivate",
 };
 
 inline void to_json(nlohmann::json& _j, const PathControllerTrigger& _c) {

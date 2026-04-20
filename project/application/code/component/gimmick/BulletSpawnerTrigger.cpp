@@ -16,10 +16,10 @@ void BulletSpawnerTrigger::Finalize() {}
 void BulletSpawnerTrigger::Edit([[maybe_unused]] OriGine::Scene* _scene, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     // ── Mode 選択 ──────────────────────────────────────
-    if (ImGui::BeginCombo(("Mode##" + _parentLabel).c_str(), kBulletSpawnerTriggerModeNames[static_cast<int>(mode_)])) {
+    if (ImGui::BeginCombo(("Mode##" + _parentLabel).c_str(), kCollisionTriggerModeNames[static_cast<int>(mode_)])) {
         for (int i = 0; i < 2; ++i) {
             bool isSelected = (mode_ == static_cast<Mode>(i));
-            if (ImGui::Selectable(kBulletSpawnerTriggerModeNames[i], isSelected)) {
+            if (ImGui::Selectable(kCollisionTriggerModeNames[i], isSelected)) {
                 auto command = std::make_unique<SetterCommand<Mode>>(&mode_, static_cast<Mode>(i));
                 OriGine::EditorController::GetInstance()->PushCommand(std::move(command));
             }

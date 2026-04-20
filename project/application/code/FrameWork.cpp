@@ -87,7 +87,7 @@
 #include "system/movement/FollowCameraUpdateSystem.h"
 #include "system/Movement/FollowTransformSystem.h"
 #include "system/Movement/LookAtFromTransformsSystem.h"
-#include "system/movement/PathControllerRenderingSystem.h"
+#include "system/render/PathControllerRenderingSystem.h"
 #include "system/movement/PathControllerSystem.h"
 #include "system/movement/PauseMainSceneSystem.h"
 #include "system/Movement/PlayerFollowSystem.h"
@@ -132,315 +132,315 @@ using namespace OriGine;
 /// =====================================================
 // component
 
-FrameWork::FrameWork() {}
-FrameWork::~FrameWork() {}
+FrameWork::FrameWork(){}
+FrameWork::~FrameWork(){}
 
-void RegisterUsingComponents() {
-    ComponentRegistry* componentRegistry = ComponentRegistry::GetInstance();
+void RegisterUsingComponents(){
+	ComponentRegistry* componentRegistry = ComponentRegistry::GetInstance();
 
-    componentRegistry->RegisterComponent<Audio>();
+	componentRegistry->RegisterComponent<Audio>();
 
-    componentRegistry->RegisterComponent<MouseCondition>();
+	componentRegistry->RegisterComponent<MouseCondition>();
 
-    componentRegistry->RegisterComponent<EntityReferenceList>();
-    componentRegistry->RegisterComponent<SubScene>();
+	componentRegistry->RegisterComponent<EntityReferenceList>();
+	componentRegistry->RegisterComponent<SubScene>();
 
-    componentRegistry->RegisterComponent<CameraTransform>();
-    componentRegistry->RegisterComponent<Transform>();
+	componentRegistry->RegisterComponent<CameraTransform>();
+	componentRegistry->RegisterComponent<Transform>();
 
-    componentRegistry->RegisterComponent<LookAtFromTransforms>();
+	componentRegistry->RegisterComponent<LookAtFromTransforms>();
 
-    componentRegistry->RegisterComponent<StageData>();
+	componentRegistry->RegisterComponent<StageData>();
 
-    componentRegistry->RegisterComponent<SplinePoints>();
-    componentRegistry->RegisterComponent<TireSplinePoints>();
+	componentRegistry->RegisterComponent<SplinePoints>();
+	componentRegistry->RegisterComponent<TireSplinePoints>();
 
-    componentRegistry->RegisterComponent<Material>();
-    componentRegistry->RegisterComponent<DirectionalLight>();
-    componentRegistry->RegisterComponent<PointLight>();
-    componentRegistry->RegisterComponent<SpotLight>();
+	componentRegistry->RegisterComponent<Material>();
+	componentRegistry->RegisterComponent<DirectionalLight>();
+	componentRegistry->RegisterComponent<PointLight>();
+	componentRegistry->RegisterComponent<SpotLight>();
 
-    componentRegistry->RegisterComponent<CameraAction>();
-    componentRegistry->RegisterComponent<ModelNodeAnimation>();
-    componentRegistry->RegisterComponent<PrimitiveNodeAnimation>();
-    componentRegistry->RegisterComponent<TransformAnimation>();
-    componentRegistry->RegisterComponent<TransformRateAnimation>();
-    componentRegistry->RegisterComponent<DissolveAnimation>();
-    componentRegistry->RegisterComponent<SkinningAnimationComponent>();
-    componentRegistry->RegisterComponent<SpriteAnimation>();
-    componentRegistry->RegisterComponent<MaterialAnimation>();
+	componentRegistry->RegisterComponent<CameraAction>();
+	componentRegistry->RegisterComponent<ModelNodeAnimation>();
+	componentRegistry->RegisterComponent<PrimitiveNodeAnimation>();
+	componentRegistry->RegisterComponent<TransformAnimation>();
+	componentRegistry->RegisterComponent<TransformRateAnimation>();
+	componentRegistry->RegisterComponent<DissolveAnimation>();
+	componentRegistry->RegisterComponent<SkinningAnimationComponent>();
+	componentRegistry->RegisterComponent<SpriteAnimation>();
+	componentRegistry->RegisterComponent<MaterialAnimation>();
 
-    componentRegistry->RegisterComponent<AABBCollider>();
-    componentRegistry->RegisterComponent<OBBCollider>();
-    componentRegistry->RegisterComponent<SphereCollider>();
-    componentRegistry->RegisterComponent<SegmentCollider>();
-    componentRegistry->RegisterComponent<CapsuleCollider>();
-    componentRegistry->RegisterComponent<RayCollider>();
+	componentRegistry->RegisterComponent<AABBCollider>();
+	componentRegistry->RegisterComponent<OBBCollider>();
+	componentRegistry->RegisterComponent<SphereCollider>();
+	componentRegistry->RegisterComponent<SegmentCollider>();
+	componentRegistry->RegisterComponent<CapsuleCollider>();
+	componentRegistry->RegisterComponent<RayCollider>();
 
-    componentRegistry->RegisterComponent<CollisionPushBackInfo>();
+	componentRegistry->RegisterComponent<CollisionPushBackInfo>();
 
-    componentRegistry->RegisterComponent<SpeedModifiers>();
-    componentRegistry->RegisterComponent<Rigidbody>();
+	componentRegistry->RegisterComponent<SpeedModifiers>();
+	componentRegistry->RegisterComponent<Rigidbody>();
 
-    componentRegistry->RegisterComponent<ParticleSystem>();
-    componentRegistry->RegisterComponent<GpuParticleEmitter>();
-    componentRegistry->RegisterComponent<EntitySpawner>();
+	componentRegistry->RegisterComponent<ParticleSystem>();
+	componentRegistry->RegisterComponent<GpuParticleEmitter>();
+	componentRegistry->RegisterComponent<EntitySpawner>();
 
-    componentRegistry->RegisterComponent<SquashStretchComponent>();
-    componentRegistry->RegisterComponent<DissolveEffectParam>();
-    componentRegistry->RegisterComponent<DistortionEffectParam>();
-    componentRegistry->RegisterComponent<RadialBlurParam>();
-    componentRegistry->RegisterComponent<RandomEffectParam>();
-    componentRegistry->RegisterComponent<VignetteParam>();
-    componentRegistry->RegisterComponent<SpeedlineEffectParam>();
-    componentRegistry->RegisterComponent<MaterialEffectPipeLine>();
-    componentRegistry->RegisterComponent<GradationComponent>();
-    componentRegistry->RegisterComponent<GrayscaleComponent>();
+	componentRegistry->RegisterComponent<SquashStretchComponent>();
+	componentRegistry->RegisterComponent<DissolveEffectParam>();
+	componentRegistry->RegisterComponent<DistortionEffectParam>();
+	componentRegistry->RegisterComponent<RadialBlurParam>();
+	componentRegistry->RegisterComponent<RandomEffectParam>();
+	componentRegistry->RegisterComponent<VignetteParam>();
+	componentRegistry->RegisterComponent<SpeedlineEffectParam>();
+	componentRegistry->RegisterComponent<MaterialEffectPipeLine>();
+	componentRegistry->RegisterComponent<GradationComponent>();
+	componentRegistry->RegisterComponent<GrayscaleComponent>();
 
-    componentRegistry->RegisterComponent<ModelMeshRenderer>();
-    componentRegistry->RegisterComponent<LineRenderer>();
-    componentRegistry->RegisterComponent<PlaneRenderer>();
-    componentRegistry->RegisterComponent<RingRenderer>();
-    componentRegistry->RegisterComponent<BoxRenderer>();
-    componentRegistry->RegisterComponent<SphereRenderer>();
-    componentRegistry->RegisterComponent<SkyboxRenderer>();
-    componentRegistry->RegisterComponent<SpriteRenderer>();
-    componentRegistry->RegisterComponent<CylinderRenderer>();
+	componentRegistry->RegisterComponent<ModelMeshRenderer>();
+	componentRegistry->RegisterComponent<LineRenderer>();
+	componentRegistry->RegisterComponent<PlaneRenderer>();
+	componentRegistry->RegisterComponent<RingRenderer>();
+	componentRegistry->RegisterComponent<BoxRenderer>();
+	componentRegistry->RegisterComponent<SphereRenderer>();
+	componentRegistry->RegisterComponent<SkyboxRenderer>();
+	componentRegistry->RegisterComponent<SpriteRenderer>();
+	componentRegistry->RegisterComponent<CylinderRenderer>();
 
-    componentRegistry->RegisterComponent<TimerComponent>();
-    componentRegistry->RegisterComponent<TimerForSpriteComponent>();
+	componentRegistry->RegisterComponent<TimerComponent>();
+	componentRegistry->RegisterComponent<TimerForSpriteComponent>();
 
-    componentRegistry->RegisterComponent<SpeedFor3dUIComponent>();
+	componentRegistry->RegisterComponent<SpeedFor3dUIComponent>();
 
-    componentRegistry->RegisterComponent<CameraController>();
-    componentRegistry->RegisterComponent<CameraShakeSourceComponent>();
-    componentRegistry->RegisterComponent<CameraMotionBob>();
+	componentRegistry->RegisterComponent<CameraController>();
+	componentRegistry->RegisterComponent<CameraShakeSourceComponent>();
+	componentRegistry->RegisterComponent<CameraMotionBob>();
 
-    componentRegistry->RegisterComponent<PlayerInput>();
-    componentRegistry->RegisterComponent<PlayerStatus>();
-    componentRegistry->RegisterComponent<PlayerState>();
-    componentRegistry->RegisterComponent<PlayerEffectControlParam>();
+	componentRegistry->RegisterComponent<PlayerInput>();
+	componentRegistry->RegisterComponent<PlayerStatus>();
+	componentRegistry->RegisterComponent<PlayerState>();
+	componentRegistry->RegisterComponent<PlayerEffectControlParam>();
 
-    componentRegistry->RegisterComponent<Button>();
-    componentRegistry->RegisterComponent<ButtonGroup>();
-    componentRegistry->RegisterComponent<SceneChanger>();
+	componentRegistry->RegisterComponent<Button>();
+	componentRegistry->RegisterComponent<ButtonGroup>();
+	componentRegistry->RegisterComponent<SceneChanger>();
 
-    componentRegistry->RegisterComponent<PlayerStateOverrideCondition>();
+	componentRegistry->RegisterComponent<PlayerStateOverrideCondition>();
 
-    componentRegistry->RegisterComponent<BillboardComponent>();
+	componentRegistry->RegisterComponent<BillboardComponent>();
 
-    componentRegistry->RegisterComponent<FollowTransformComponent>();
+	componentRegistry->RegisterComponent<FollowTransformComponent>();
 
-    // ギミック系
-    componentRegistry->RegisterComponent<RailPoints>();
-    componentRegistry->RegisterComponent<PathController>();
-    componentRegistry->RegisterComponent<Obstacle>();
-    componentRegistry->RegisterComponent<TimeScaleEffectComponent>();
-    componentRegistry->RegisterComponent<VelocityOverrideComponent>();
-    componentRegistry->RegisterComponent<AddForceComponent>();
-    componentRegistry->RegisterComponent<ObstacleShieldComponent>();
-    componentRegistry->RegisterComponent<WallRunnableComponent>();
-    componentRegistry->RegisterComponent<BulletSpawner>();
-    componentRegistry->RegisterComponent<ObstacleSpawnGroupComponent>();
-    componentRegistry->RegisterComponent<BulletSpawnerTrigger>();
-    componentRegistry->RegisterComponent<PathControllerTrigger>();
+	// ギミック系
+	componentRegistry->RegisterComponent<RailPoints>();
+	componentRegistry->RegisterComponent<PathController>();
+	componentRegistry->RegisterComponent<Obstacle>();
+	componentRegistry->RegisterComponent<TimeScaleEffectComponent>();
+	componentRegistry->RegisterComponent<VelocityOverrideComponent>();
+	componentRegistry->RegisterComponent<AddForceComponent>();
+	componentRegistry->RegisterComponent<ObstacleShieldComponent>();
+	componentRegistry->RegisterComponent<WallRunnableComponent>();
+	componentRegistry->RegisterComponent<BulletSpawner>();
+	componentRegistry->RegisterComponent<ObstacleSpawnGroupComponent>();
+	componentRegistry->RegisterComponent<BulletSpawnerTrigger>();
+	componentRegistry->RegisterComponent<PathControllerTrigger>();
 }
 
-void RegisterUsingSystems() {
-    SystemRegistry* systemRegistry = SystemRegistry::GetInstance();
+void RegisterUsingSystems(){
+	SystemRegistry* systemRegistry = SystemRegistry::GetInstance();
 
-    /// ====================================================================================================
-    // Initialize
-    /// ====================================================================================================
-    systemRegistry->RegisterSystem<SettingGameCameraTarget>();
-    systemRegistry->RegisterSystem<GpuParticleInitialize>();
-    systemRegistry->RegisterSystem<ResolveEntityReferences>();
-    systemRegistry->RegisterSystem<CreateSpriteFromTimer>();
-    systemRegistry->RegisterSystem<Ui3dObjectInitialize>();
-    systemRegistry->RegisterSystem<GetClearTime>();
-    systemRegistry->RegisterSystem<CameraInitialize>();
-    systemRegistry->RegisterSystem<RegisterWindowResizeEvent>();
-    systemRegistry->RegisterSystem<InitializeMouseCondition>();
+	/// ====================================================================================================
+	// Initialize
+	/// ====================================================================================================
+	systemRegistry->RegisterSystem<SettingGameCameraTarget>();
+	systemRegistry->RegisterSystem<GpuParticleInitialize>();
+	systemRegistry->RegisterSystem<ResolveEntityReferences>();
+	systemRegistry->RegisterSystem<CreateSpriteFromTimer>();
+	systemRegistry->RegisterSystem<Ui3dObjectInitialize>();
+	systemRegistry->RegisterSystem<GetClearTime>();
+	systemRegistry->RegisterSystem<CameraInitialize>();
+	systemRegistry->RegisterSystem<RegisterWindowResizeEvent>();
+	systemRegistry->RegisterSystem<InitializeMouseCondition>();
 
-    systemRegistry->RegisterSystem<StartTimerInitialize>();
+	systemRegistry->RegisterSystem<StartTimerInitialize>();
 
-    systemRegistry->RegisterSystem<BackFireInitialize>();
+	systemRegistry->RegisterSystem<BackFireInitialize>();
 
-    systemRegistry->RegisterSystem<SelectPreviewSceneInitialize>();
+	systemRegistry->RegisterSystem<SelectPreviewSceneInitialize>();
 
-    systemRegistry->RegisterSystem<TakePlayerToStartPosition>();
-    systemRegistry->RegisterSystem<TakeToGoalPosition>();
-    systemRegistry->RegisterSystem<CreatePlaneFromSpeed>();
+	systemRegistry->RegisterSystem<TakePlayerToStartPosition>();
+	systemRegistry->RegisterSystem<TakeToGoalPosition>();
+	systemRegistry->RegisterSystem<CreatePlaneFromSpeed>();
 
-    systemRegistry->RegisterSystem<RailInitializeSystem>();
+	systemRegistry->RegisterSystem<RailInitializeSystem>();
 
-    systemRegistry->RegisterSystem<ClearSceneRankingBuildSystem>();
+	systemRegistry->RegisterSystem<ClearSceneRankingBuildSystem>();
 
-    /// ===================================================================================================
-    // Input
-    /// ===================================================================================================
-    systemRegistry->RegisterSystem<ButtonInputSystem>();
-    systemRegistry->RegisterSystem<CameraInputSystem>();
-    systemRegistry->RegisterSystem<PlayerInputSystem>();
+	/// ===================================================================================================
+	// Input
+	/// ===================================================================================================
+	systemRegistry->RegisterSystem<ButtonInputSystem>();
+	systemRegistry->RegisterSystem<CameraInputSystem>();
+	systemRegistry->RegisterSystem<PlayerInputSystem>();
 
-    /// ===================================================================================================
-    // StateTransition
-    /// ===================================================================================================
-    systemRegistry->RegisterSystem<EffectAutoDestroySystem>();
-    systemRegistry->RegisterSystem<TimerAutoDestroySystem>();
-    systemRegistry->RegisterSystem<ChangeSceneByButton>();
-    systemRegistry->RegisterSystem<FallToFailedSystem>();
-    systemRegistry->RegisterSystem<FallToRestartSystem>();
-    systemRegistry->RegisterSystem<SceneTransition>();
-    systemRegistry->RegisterSystem<TransitionPlayerState>();
-    systemRegistry->RegisterSystem<UpdateButtonColorByState>();
-    systemRegistry->RegisterSystem<ButtonGroupSystem>();
-    systemRegistry->RegisterSystem<TimerCountUp>();
-    systemRegistry->RegisterSystem<TimerCountDown>();
-    systemRegistry->RegisterSystem<TimeLimitJudgeSystem>();
-    systemRegistry->RegisterSystem<ShowGameUIByInputDevice>();
-    systemRegistry->RegisterSystem<ApplyMouseConditionSystem>();
-    systemRegistry->RegisterSystem<SubSceneActivateByButton>();
-    systemRegistry->RegisterSystem<SubSceneDeactivateByButton>();
-    systemRegistry->RegisterSystem<ExitApplicationByButton>();
-    systemRegistry->RegisterSystem<PenaltySystem>();
-    systemRegistry->RegisterSystem<CameraMotionBobSystem>();
+	/// ===================================================================================================
+	// StateTransition
+	/// ===================================================================================================
+	systemRegistry->RegisterSystem<EffectAutoDestroySystem>();
+	systemRegistry->RegisterSystem<TimerAutoDestroySystem>();
+	systemRegistry->RegisterSystem<ChangeSceneByButton>();
+	systemRegistry->RegisterSystem<FallToFailedSystem>();
+	systemRegistry->RegisterSystem<FallToRestartSystem>();
+	systemRegistry->RegisterSystem<SceneTransition>();
+	systemRegistry->RegisterSystem<TransitionPlayerState>();
+	systemRegistry->RegisterSystem<UpdateButtonColorByState>();
+	systemRegistry->RegisterSystem<ButtonGroupSystem>();
+	systemRegistry->RegisterSystem<TimerCountUp>();
+	systemRegistry->RegisterSystem<TimerCountDown>();
+	systemRegistry->RegisterSystem<TimeLimitJudgeSystem>();
+	systemRegistry->RegisterSystem<ShowGameUIByInputDevice>();
+	systemRegistry->RegisterSystem<ApplyMouseConditionSystem>();
+	systemRegistry->RegisterSystem<SubSceneActivateByButton>();
+	systemRegistry->RegisterSystem<SubSceneDeactivateByButton>();
+	systemRegistry->RegisterSystem<ExitApplicationByButton>();
+	systemRegistry->RegisterSystem<PenaltySystem>();
+	systemRegistry->RegisterSystem<CameraMotionBobSystem>();
 
-    systemRegistry->RegisterSystem<GameFailedSceneLaunchSystem>();
+	systemRegistry->RegisterSystem<GameFailedSceneLaunchSystem>();
 
-    systemRegistry->RegisterSystem<RestartOnButtonPressSystem>();
+	systemRegistry->RegisterSystem<RestartOnButtonPressSystem>();
 
-    systemRegistry->RegisterSystem<ButtonScenePreviewSystem>();
+	systemRegistry->RegisterSystem<ButtonScenePreviewSystem>();
 
-    systemRegistry->RegisterSystem<PlayerStateOverrideSystem>();
+	systemRegistry->RegisterSystem<PlayerStateOverrideSystem>();
 
-    /// =================================================================================================
-    // Movement
-    /// =================================================================================================
-    systemRegistry->RegisterSystem<BillboardTransform>();
+	/// =================================================================================================
+	// Movement
+	/// =================================================================================================
+	systemRegistry->RegisterSystem<BillboardTransform>();
 
-    systemRegistry->RegisterSystem<MoveSystemByRigidBody>();
-    systemRegistry->RegisterSystem<FollowCameraUpdateSystem>();
-    systemRegistry->RegisterSystem<PlayerMoveSystem>();
+	systemRegistry->RegisterSystem<MoveSystemByRigidBody>();
+	systemRegistry->RegisterSystem<FollowCameraUpdateSystem>();
+	systemRegistry->RegisterSystem<PlayerMoveSystem>();
 
-    systemRegistry->RegisterSystem<PlayerPathSplineGenerator>();
-    // systemRegistry->RegisterSystem<TireTrailGenerateSystem>();
-    systemRegistry->RegisterSystem<PlayerUpdateOnTitle>();
+	systemRegistry->RegisterSystem<PlayerPathSplineGenerator>();
+	// systemRegistry->RegisterSystem<TireTrailGenerateSystem>();
+	systemRegistry->RegisterSystem<PlayerUpdateOnTitle>();
 
-    systemRegistry->RegisterSystem<StartSequenceSystem>();
+	systemRegistry->RegisterSystem<StartSequenceSystem>();
 
-    systemRegistry->RegisterSystem<SceneTransitionRequestSenderSystem>();
-    systemRegistry->RegisterSystem<SceneTransitionRequestReceiverSystem>();
+	systemRegistry->RegisterSystem<SceneTransitionRequestSenderSystem>();
+	systemRegistry->RegisterSystem<SceneTransitionRequestReceiverSystem>();
 
-    systemRegistry->RegisterSystem<ApplySpeedModifiers>();
-    systemRegistry->RegisterSystem<ApplyAddForceSystem>();
-    systemRegistry->RegisterSystem<VelocityOverrideSystem>();
+	systemRegistry->RegisterSystem<ApplySpeedModifiers>();
+	systemRegistry->RegisterSystem<ApplyAddForceSystem>();
+	systemRegistry->RegisterSystem<VelocityOverrideSystem>();
 
-    systemRegistry->RegisterSystem<PathControllerSystem>();
+	systemRegistry->RegisterSystem<PathControllerSystem>();
 
-    systemRegistry->RegisterSystem<SubSceneUpdate>();
-    systemRegistry->RegisterSystem<RestartSystem>();
-    systemRegistry->RegisterSystem<PauseMainSceneSystem>();
+	systemRegistry->RegisterSystem<SubSceneUpdate>();
+	systemRegistry->RegisterSystem<RestartSystem>();
+	systemRegistry->RegisterSystem<PauseMainSceneSystem>();
 
-    systemRegistry->RegisterSystem<FollowTransformSystem>();
-    systemRegistry->RegisterSystem<PlayerFollowSystem>();
-    systemRegistry->RegisterSystem<LookAtFromTransformsSystem>();
-    systemRegistry->RegisterSystem<Ui3dUpdateSystem>();
+	systemRegistry->RegisterSystem<FollowTransformSystem>();
+	systemRegistry->RegisterSystem<PlayerFollowSystem>();
+	systemRegistry->RegisterSystem<LookAtFromTransformsSystem>();
+	systemRegistry->RegisterSystem<Ui3dUpdateSystem>();
 
-    /// =================================================================================================
-    // Collision
-    /// =================================================================================================
-    systemRegistry->RegisterSystem<CollisionCheckSystem>();
-    systemRegistry->RegisterSystem<CollisionPushBackSystem>();
+	/// =================================================================================================
+	// Collision
+	/// =================================================================================================
+	systemRegistry->RegisterSystem<CollisionCheckSystem>();
+	systemRegistry->RegisterSystem<CollisionPushBackSystem>();
 
-    systemRegistry->RegisterSystem<CollisionTriggeredSceneTransition>();
+	systemRegistry->RegisterSystem<CollisionTriggeredSceneTransition>();
 
-    systemRegistry->RegisterSystem<ObstacleSpawnEventTriggerSystem>();
-    systemRegistry->RegisterSystem<BulletSpawnerTriggerSystem>();
-    systemRegistry->RegisterSystem<PathControllerTriggerSystem>();
+	systemRegistry->RegisterSystem<ObstacleSpawnEventTriggerSystem>();
+	systemRegistry->RegisterSystem<BulletSpawnerTriggerSystem>();
+	systemRegistry->RegisterSystem<PathControllerTriggerSystem>();
 
-    systemRegistry->RegisterSystem<PlayerOnCollision>();
-    systemRegistry->RegisterSystem<TutorialColliderOnCollision>();
-    systemRegistry->RegisterSystem<VelocityOverrideTriggerSystem>();
-    systemRegistry->RegisterSystem<AddForceTriggerSystem>();
-    systemRegistry->RegisterSystem<OnCollisionModifierTargetSystem>();
-    systemRegistry->RegisterSystem<PlayerAheadCollisionReactionSystem>();
+	systemRegistry->RegisterSystem<PlayerOnCollision>();
+	systemRegistry->RegisterSystem<TutorialColliderOnCollision>();
+	systemRegistry->RegisterSystem<VelocityOverrideTriggerSystem>();
+	systemRegistry->RegisterSystem<AddForceTriggerSystem>();
+	systemRegistry->RegisterSystem<OnCollisionModifierTargetSystem>();
+	systemRegistry->RegisterSystem<PlayerAheadCollisionReactionSystem>();
 
-    /// =================================================================================================
-    // Effect
-    /// =================================================================================================
-    systemRegistry->RegisterSystem<ParticleSystemWorkSystem>();
-    systemRegistry->RegisterSystem<GpuParticleEmitterWorkSystem>();
+	/// =================================================================================================
+	// Effect
+	/// =================================================================================================
+	systemRegistry->RegisterSystem<ParticleSystemWorkSystem>();
+	systemRegistry->RegisterSystem<GpuParticleEmitterWorkSystem>();
 
-    systemRegistry->RegisterSystem<EntitySpawnerWorkSystem>();
-    systemRegistry->RegisterSystem<BulletSpawnerWorkSystem>();
+	systemRegistry->RegisterSystem<EntitySpawnerWorkSystem>();
+	systemRegistry->RegisterSystem<BulletSpawnerWorkSystem>();
 
-    systemRegistry->RegisterSystem<PrimitiveNodeAnimationWorkSystem>();
-    systemRegistry->RegisterSystem<SkinningAnimationSystem>();
-    systemRegistry->RegisterSystem<SpriteAnimationSystem>();
-    systemRegistry->RegisterSystem<MaterialAnimationWorkSystem>();
-    systemRegistry->RegisterSystem<CameraActionSystem>();
-    systemRegistry->RegisterSystem<TransformAnimationWorkSystem>();
-    systemRegistry->RegisterSystem<TransformRateAnimationWorkSystem>();
-    systemRegistry->RegisterSystem<LightTransformSyncSystem>();
-    systemRegistry->RegisterSystem<DissolveAnimationSystem>();
+	systemRegistry->RegisterSystem<PrimitiveNodeAnimationWorkSystem>();
+	systemRegistry->RegisterSystem<SkinningAnimationSystem>();
+	systemRegistry->RegisterSystem<SpriteAnimationSystem>();
+	systemRegistry->RegisterSystem<MaterialAnimationWorkSystem>();
+	systemRegistry->RegisterSystem<CameraActionSystem>();
+	systemRegistry->RegisterSystem<TransformAnimationWorkSystem>();
+	systemRegistry->RegisterSystem<TransformRateAnimationWorkSystem>();
+	systemRegistry->RegisterSystem<LightTransformSyncSystem>();
+	systemRegistry->RegisterSystem<DissolveAnimationSystem>();
 
-    systemRegistry->RegisterSystem<CameraShake>();
-    systemRegistry->RegisterSystem<TimeScaleEffectSystem>();
+	systemRegistry->RegisterSystem<CameraShake>();
+	systemRegistry->RegisterSystem<TimeScaleEffectSystem>();
 
-    systemRegistry->RegisterSystem<ScaleDeformSystem>();
+	systemRegistry->RegisterSystem<ScaleDeformSystem>();
 
-    systemRegistry->RegisterSystem<MaterialEffect>();
-    systemRegistry->RegisterSystem<CreateMeshFromSpline>();
-    // systemRegistry->RegisterSystem<CreateMeshFromTireSpline>();
-    systemRegistry->RegisterSystem<CreateRailMesh>();
+	systemRegistry->RegisterSystem<MaterialEffect>();
+	systemRegistry->RegisterSystem<CreateMeshFromSpline>();
+	// systemRegistry->RegisterSystem<CreateMeshFromTireSpline>();
+	systemRegistry->RegisterSystem<CreateRailMesh>();
 
-    systemRegistry->RegisterSystem<PlayerSpeedFor3dUI>();
-    systemRegistry->RegisterSystem<TimerForSprite>();
+	systemRegistry->RegisterSystem<PlayerSpeedFor3dUI>();
+	systemRegistry->RegisterSystem<TimerForSprite>();
 
-    systemRegistry->RegisterSystem<EffectOnPlayerGearup>();
-    systemRegistry->RegisterSystem<EffectOnPlayerRun>();
+	systemRegistry->RegisterSystem<EffectOnPlayerGearup>();
+	systemRegistry->RegisterSystem<EffectOnPlayerRun>();
 
-    systemRegistry->RegisterSystem<PenaltyTimeSpriteUpdate>();
-    systemRegistry->RegisterSystem<TimeStopEffect>();
+	systemRegistry->RegisterSystem<PenaltyTimeSpriteUpdate>();
+	systemRegistry->RegisterSystem<TimeStopEffect>();
 
-    systemRegistry->RegisterSystem<AttractModeSystem>();
+	systemRegistry->RegisterSystem<AttractModeSystem>();
 
-    systemRegistry->RegisterSystem<PlayerExplosionEffectSystem>();
+	systemRegistry->RegisterSystem<PlayerExplosionEffectSystem>();
 
-    /// =================================================================================================
-    // Render
-    /// =================================================================================================
-    systemRegistry->RegisterSystem<SkyboxRender>();
-    systemRegistry->RegisterSystem<SpriteRenderSystem>();
-    systemRegistry->RegisterSystem<BackGroundSpriteRenderSystem>();
-    systemRegistry->RegisterSystem<ParticleRenderSystem>();
-    systemRegistry->RegisterSystem<TexturedMeshRenderSystem>();
-    systemRegistry->RegisterSystem<OverlayRenderSystem>();
-    systemRegistry->RegisterSystem<SkinningMeshRenderSystem>();
-    systemRegistry->RegisterSystem<LineRenderSystem>();
-    systemRegistry->RegisterSystem<GpuParticleRenderSystem>();
+	/// =================================================================================================
+	// Render
+	/// =================================================================================================
+	systemRegistry->RegisterSystem<SkyboxRender>();
+	systemRegistry->RegisterSystem<SpriteRenderSystem>();
+	systemRegistry->RegisterSystem<BackGroundSpriteRenderSystem>();
+	systemRegistry->RegisterSystem<ParticleRenderSystem>();
+	systemRegistry->RegisterSystem<TexturedMeshRenderSystem>();
+	systemRegistry->RegisterSystem<OverlayRenderSystem>();
+	systemRegistry->RegisterSystem<SkinningMeshRenderSystem>();
+	systemRegistry->RegisterSystem<LineRenderSystem>();
+	systemRegistry->RegisterSystem<GpuParticleRenderSystem>();
 
 #ifndef _RELEASE
-    systemRegistry->RegisterSystem<SkeletonRenderSystem>();
-    systemRegistry->RegisterSystem<ColliderRenderingSystem>();
-    systemRegistry->RegisterSystem<EmitterShapeRenderingSystem>();
-    systemRegistry->RegisterSystem<VelocityRenderingSystem>();
-    systemRegistry->RegisterSystem<LightDebugRenderingSystem>();
-    systemRegistry->RegisterSystem<PathControllerRenderingSystem>();
+	systemRegistry->RegisterSystem<SkeletonRenderSystem>();
+	systemRegistry->RegisterSystem<ColliderRenderingSystem>();
+	systemRegistry->RegisterSystem<EmitterShapeRenderingSystem>();
+	systemRegistry->RegisterSystem<VelocityRenderingSystem>();
+	systemRegistry->RegisterSystem<LightDebugRenderingSystem>();
+	systemRegistry->RegisterSystem<PathControllerRenderingSystem>();
 #endif // _RELEASE
 
-    /// =================================================================================================
-    // PostRender
-    /// =================================================================================================
-    systemRegistry->RegisterSystem<GrayscaleEffect>();
-    systemRegistry->RegisterSystem<SmoothingEffect>();
-    systemRegistry->RegisterSystem<VignetteEffect>();
-    systemRegistry->RegisterSystem<DistortionEffect>();
-    systemRegistry->RegisterSystem<DissolveEffect>();
-    systemRegistry->RegisterSystem<RandomEffect>();
-    systemRegistry->RegisterSystem<RadialBlurEffect>();
-    systemRegistry->RegisterSystem<SubSceneRender>();
-    systemRegistry->RegisterSystem<SpeedlineEffect>();
-    systemRegistry->RegisterSystem<GradationEffect>();
+	/// =================================================================================================
+	// PostRender
+	/// =================================================================================================
+	systemRegistry->RegisterSystem<GrayscaleEffect>();
+	systemRegistry->RegisterSystem<SmoothingEffect>();
+	systemRegistry->RegisterSystem<VignetteEffect>();
+	systemRegistry->RegisterSystem<DistortionEffect>();
+	systemRegistry->RegisterSystem<DissolveEffect>();
+	systemRegistry->RegisterSystem<RandomEffect>();
+	systemRegistry->RegisterSystem<RadialBlurEffect>();
+	systemRegistry->RegisterSystem<SubSceneRender>();
+	systemRegistry->RegisterSystem<SpeedlineEffect>();
+	systemRegistry->RegisterSystem<GradationEffect>();
 }
