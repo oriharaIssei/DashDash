@@ -17,8 +17,8 @@ public:
     void Initialize() override;
     void Update(float _deltaTime) override;
     void Finalize() override;
-
     PlayerMoveState TransitionState() const override;
+    JumpInputResponse OnJumpTriggered() const override { return {.railJump = true}; }
 
 private:
     bool isOutOfRail_               = false;

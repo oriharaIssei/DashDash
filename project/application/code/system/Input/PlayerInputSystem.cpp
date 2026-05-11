@@ -12,6 +12,7 @@
 /// component
 #include "component/player/PlayerInput.h"
 #include "component/player/PlayerInputDevice.h"
+#include "component/player/state/IPlayerMoveState.h"
 #include "component/player/state/PlayerState.h"
 
 using namespace OriGine;
@@ -72,19 +73,21 @@ void PlayerInputSystem::HandleJump(
     PlayerState* state,
     IPlayerInputDevice* device) {
 
-    // wallJumpは 常にTrigger
     input->SetWallJumpInput(false);
     input->SetRailJumpInput(false);
 
+    auto moveState = state->GetPlayerMoveState();
+    if (!moveState) {
+        return;
+    }
+
     if (input->IsJumpInput()) {
-        // JUMP 状態以外は押しっぱなし無効
-        if (state->GetStateEnum() != PlayerMoveState::JUMP || state->GetStateEnum() != PlayerMoveState::WALL_JUMP) {
+        if (!moveState->CanHoldJump()) {
             input->SetJumpInput(false);
             input->SetJumpInputTime(0.0f);
             return;
         }
 
-        // 押され続けている
         if (device->IsJumpPress()) {
             input->SetJumpInput(true);
             input->SetJumpInputTime(
@@ -100,15 +103,12 @@ void PlayerInputSystem::HandleJump(
         }
 
     } else {
-        // 最初の押し
         if (device->IsJumpTrigger()) {
             input->SetJumpInput(true);
 
-            // wallJump 判定
-            bool hitWall = state->GetStateEnum() == PlayerMoveState::WALL_RUN;
-            input->SetWallJumpInput(hitWall);
-            bool railJump = (state->GetStateEnum() == PlayerMoveState::RUN_ON_RAIL);
-            input->SetRailJumpInput(railJump);
+            JumpInputResponse response = moveState->OnJumpTriggered();
+            input->SetWallJumpInput(response.wallJump);
+            input->SetRailJumpInput(response.railJump);
         }
     }
 }

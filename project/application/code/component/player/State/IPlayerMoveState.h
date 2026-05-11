@@ -18,6 +18,14 @@
 #include "math/Vector3.h"
 
 /// <summary>
+/// ジャンプ入力に対する応答
+/// </summary>
+struct JumpInputResponse {
+    bool wallJump = false;
+    bool railJump = false;
+};
+
+/// <summary>
 /// Playerの移動状態を表すインターフェース
 /// </summary>
 class IPlayerMoveState {
@@ -32,8 +40,17 @@ public:
     /// <summary>
     /// Playerの状態遷移を行う(遷移条件,遷移先は派生クラスで実装)
     /// </summary>
-    /// <returns></returns>
     virtual PlayerMoveState TransitionState() const = 0;
+
+    /// <summary>
+    /// ジャンプボタン長押しを許可するか (デフォルト: false)
+    /// </summary>
+    virtual bool CanHoldJump() const { return false; }
+
+    /// <summary>
+    /// ジャンプボタンが押された瞬間の応答 (デフォルト: 通常ジャンプ)
+    /// </summary>
+    virtual JumpInputResponse OnJumpTriggered() const { return {}; }
 
 protected:
     OriGine::Scene* scene_           = nullptr; // シーンへのポインタ

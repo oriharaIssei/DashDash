@@ -29,8 +29,8 @@ public:
     void Initialize() override;
     void Update(float _deltaTime) override;
     void Finalize() override;
-
     PlayerMoveState TransitionState() const override;
+    JumpInputResponse OnJumpTriggered() const override { return {.wallJump = true}; }
 
 protected:
     OriGine::EntityHandle pathEntityHandle_ = OriGine::EntityHandle(); // 壁走り軌道エンティティハンドル

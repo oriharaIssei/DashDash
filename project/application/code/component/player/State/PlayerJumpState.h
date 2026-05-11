@@ -15,6 +15,7 @@ public:
     void Update(float _deltaTime) override;
     void Finalize() override;
     PlayerMoveState TransitionState() const override;
+    bool CanHoldJump() const override { return true; }
 
 private:
     float chargePower_      = 0.0f; // ジャンプ力の蓄積量

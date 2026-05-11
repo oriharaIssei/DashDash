@@ -19,8 +19,8 @@ public:
     void Initialize() override;
     void Update(float _deltaTime) override;
     void Finalize() override;
-
     PlayerMoveState TransitionState() const override;
+    bool CanHoldJump() const override { return true; }
 
 protected:
     OriGine::Vec3f velo_ = OriGine::Vec3f(0.0f, 0.0f, 0.0f); // 壁ジャンプの速度
