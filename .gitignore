@@ -3,6 +3,7 @@
 
 # AssetCooker 成果物 (resource/ から生成されるのでローカル管理)
 /project/application/cookedResource/
+/project/engine/cookedResource/
 /project/*.sln
 /project/*.slnx
 /project/*.vcxproj
