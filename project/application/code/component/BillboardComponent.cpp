@@ -23,7 +23,7 @@ void BillboardComponent::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] E
 
     ImGui::Text("Billboard Axis :");
 
-    EnumBitmask<BillboardComponent::BillboardAxis> newAxis = axis;
+    EnumBitmask<BillboardComponent::BillboardAxis> newAxis = axis_;
 
     const std::pair<BillboardAxis, const char*> flags[] = {
         {BillboardAxis::X, "X"},
@@ -33,7 +33,7 @@ void BillboardComponent::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] E
 
     for (auto& [flag, name] : flags) {
         std::string label = std::string(name) + "##BillboardComponent" + _parentLabel;
-        bool checked      = axis.HasFlag(flag);
+        bool checked      = axis_.HasFlag(flag);
         ImGui::Checkbox(label.c_str(), &checked);
         if (checked) {
             newAxis.SetFlag(flag);
@@ -42,9 +42,9 @@ void BillboardComponent::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] E
         }
     }
 
-    if (axis != newAxis) {
+    if (axis_ != newAxis) {
         auto command = std::make_unique<SetterCommand<EnumBitmask<BillboardComponent::BillboardAxis>>>(
-            &axis,
+            &axis_,
             newAxis);
         EditorController::GetInstance()->PushCommand(std::move(command));
     }
@@ -54,10 +54,10 @@ void BillboardComponent::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] E
 
 void to_json(nlohmann::json& _j, const BillboardComponent& _c) {
     _j = nlohmann::json{
-        {"axis", _c.axis.ToUnderlying()},
+        {"axis", _c.axis_.ToUnderlying()},
     };
 }
 
 void from_json(const nlohmann::json& _j, BillboardComponent& _c) {
-    _c.axis = EnumBitmask<BillboardComponent::BillboardAxis>(_j.at("axis").get<int32_t>());
+    _c.axis_ = EnumBitmask<BillboardComponent::BillboardAxis>(_j.at("axis").get<int32_t>());
 }

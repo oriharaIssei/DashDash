@@ -30,15 +30,15 @@ void CameraMotionBobSystem::UpdateEntity(OriGine::EntityHandle _handle) {
     // カメラの揺れをするかどうか
     for (auto& motionBob : motionBobComps) {
         // shakesource を取得
-        int32_t shakeSourceCompIndex = motionBob.cameraShakeSourceComponentId;
+        int32_t shakeSourceCompIndex = motionBob.GetCameraShakeSourceComponentId();
         auto* shakeSourceComp        = GetComponent<CameraShakeSourceComponent>(_handle, shakeSourceCompIndex);
         if (!shakeSourceComp) {
             continue;
         }
 
-        int32_t playerGearLevel   = playerState->GetGearLevel();
-        bool isShake              = motionBob.thresholdGearLevel < playerGearLevel;
-        shakeSourceComp->isActive = isShake;
+        int32_t playerGearLevel = playerState->GetGearLevel();
+        bool isShake            = motionBob.GetThresholdGearLevel() < playerGearLevel;
+        shakeSourceComp->SetActive(isShake);
 
         // カメラシェイクしないなら スキップ
         if (!isShake) {
@@ -46,14 +46,14 @@ void CameraMotionBobSystem::UpdateEntity(OriGine::EntityHandle _handle) {
         }
 
         // 線形補間
-        float levelT             = EaseOutQuad(static_cast<float>(playerGearLevel - motionBob.thresholdGearLevel) / static_cast<float>(kMaxPlayerGearLevel - motionBob.thresholdGearLevel));
-        OriGine::Vec3f amplitude = Lerp<3, float>(motionBob.minAmplitude, motionBob.maxAmplitude, levelT);
-        OriGine::Vec3f frequency = Lerp<3, float>(motionBob.minFrequency, motionBob.maxFrequency, levelT);
+        float levelT             = EaseOutQuad(static_cast<float>(playerGearLevel - motionBob.GetThresholdGearLevel()) / static_cast<float>(kMaxPlayerGearLevel - motionBob.GetThresholdGearLevel()));
+        OriGine::Vec3f amplitude = Lerp<3, float>(motionBob.GetMinAmplitude(), motionBob.GetMaxAmplitude(), levelT);
+        OriGine::Vec3f frequency = Lerp<3, float>(motionBob.GetMinFrequency(), motionBob.GetMaxFrequency(), levelT);
 
         // 適応
         for (size_t i = 0; i < 3; ++i) {
-            shakeSourceComp->axisParameters[i].amplitude = amplitude[i];
-            shakeSourceComp->axisParameters[i].frequency = frequency[i];
+            shakeSourceComp->GetAxisParameters()[i].amplitude = amplitude[i];
+            shakeSourceComp->GetAxisParameters()[i].frequency = frequency[i];
         }
     }
 }

@@ -8,7 +8,7 @@
 /// <summary>
 /// Rigidbodyを持つエンティティが触れると加速する
 /// </summary>
-struct AddForceComponent
+class AddForceComponent
     : public OriGine::IComponent {
     /// <summary>
     /// JSON 変換用
@@ -44,6 +44,15 @@ public:
         OnEnter        = 0, ///< 衝突開始時に1回だけ力を加える (インパルス)
         WhileColliding = 1, ///< 衝突中は毎フレーム力を加え続ける (継続力)
     };
+
+public:
+    TriggerMode GetTriggerMode() const { return triggerMode_; }
+    void SetTriggerMode(TriggerMode _triggerMode) { triggerMode_ = _triggerMode; }
+
+    const OriGine::Vec3f& GetAddForce() const { return addForce_; }
+    void SetAddForce(const OriGine::Vec3f& _addForce) { addForce_ = _addForce; }
+
+private:
     TriggerMode triggerMode_ = TriggerMode::OnEnter;
 
     // 追加する力

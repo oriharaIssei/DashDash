@@ -32,7 +32,7 @@ void AddForceTriggerSystem::UpdateEntity(OriGine::EntityHandle _handle) {
         return;
     }
 
-    const bool isWhileColliding = (addForceComp->triggerMode_ == AddForceComponent::TriggerMode::WhileColliding);
+    const bool isWhileColliding = (addForceComp->GetTriggerMode() == AddForceComponent::TriggerMode::WhileColliding);
 
     // コライダーから衝突エンティティを収集
     auto& sphereColliders = GetComponents<SphereCollider>(_handle);
@@ -59,7 +59,7 @@ void AddForceTriggerSystem::UpdateEntity(OriGine::EntityHandle _handle) {
     for (const auto& otherHandle : collidedEntities) {
         auto rigidbodyComp = GetComponent<Rigidbody>(otherHandle);
         if (rigidbodyComp) {
-            Vec3f force = addForceComp->addForce_;
+            Vec3f force = addForceComp->GetAddForce();
 
             // WhileCollidingモードでは継続力なので deltaTime を掛ける
             if (isWhileColliding) {

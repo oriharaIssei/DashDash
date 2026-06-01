@@ -24,9 +24,9 @@ void BillboardTransform::UpdateEntity(EntityHandle _handle) {
 
     // 全軸が有効かどうか（フルビルボード）
     using BillboardAxis = BillboardComponent::BillboardAxis;
-    const bool enableX  = billboard.axis.HasFlag(BillboardAxis::X);
-    const bool enableY  = billboard.axis.HasFlag(BillboardAxis::Y);
-    const bool enableZ  = billboard.axis.HasFlag(BillboardAxis::Z);
+    const bool enableX  = billboard.GetAxis().HasFlag(BillboardAxis::X);
+    const bool enableY  = billboard.GetAxis().HasFlag(BillboardAxis::Y);
+    const bool enableZ  = billboard.GetAxis().HasFlag(BillboardAxis::Z);
     const bool allAxes  = enableX && enableY && enableZ;
 
     // 有効な軸が一つも無ければスキップ

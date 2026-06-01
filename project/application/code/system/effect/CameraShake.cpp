@@ -55,24 +55,24 @@ void CameraShake::UpdateEntity(OriGine::EntityHandle _handle) {
         return;
     }
     for (auto& cameraShakeSource : cameraShakeSources) {
-        auto cameraTransform = GetComponent<CameraTransform>(_handle, cameraShakeSource.cameraTransformIndex);
+        auto cameraTransform = GetComponent<CameraTransform>(_handle, cameraShakeSource.GetCameraTransformIndex());
         if (!cameraTransform) {
             continue;
         }
 
-        if (!cameraShakeSource.isActive) {
+        if (!cameraShakeSource.IsActive()) {
             continue;
         }
 
-        cameraShakeSource.elapsedTime += deltaTime;
-        if (!cameraShakeSource.isLoop) {
-            if (cameraShakeSource.duration <= cameraShakeSource.elapsedTime) {
-                cameraShakeSource.isActive = false;
+        cameraShakeSource.AddElapsedTime(deltaTime);
+        if (!cameraShakeSource.IsLoop()) {
+            if (cameraShakeSource.GetDuration() <= cameraShakeSource.GetElapsedTime()) {
+                cameraShakeSource.SetActive(false);
                 continue;
             }
         }
 
-        IShakeStrategy* strategy = GetShakeStrategy(cameraShakeSource.type);
+        IShakeStrategy* strategy = GetShakeStrategy(cameraShakeSource.GetType());
         if (!strategy) {
             continue;
         }

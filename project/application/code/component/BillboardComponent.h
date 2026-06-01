@@ -8,7 +8,7 @@
 /// BillboardTransformシステムの対象になるコンポーネント。
 /// ビルボードを適用する軸をビットマスクで保持する。
 /// </summary>
-struct BillboardComponent
+class BillboardComponent
     : public OriGine::IComponent {
     friend void to_json(nlohmann::json& _j, const BillboardComponent& _c);
     friend void from_json(const nlohmann::json& _j, BillboardComponent& _c);
@@ -31,7 +31,11 @@ public:
     };
 
 public:
+    const EnumBitmask<BillboardAxis>& GetAxis() const { return axis_; }
+    void SetAxis(const EnumBitmask<BillboardAxis>& _axis) { axis_ = _axis; }
+
+private:
     /// ビルボードを適用する軸のビットマスク（デフォルト: XYZ すべて）
-    EnumBitmask<BillboardAxis> axis =
+    EnumBitmask<BillboardAxis> axis_ =
         static_cast<int32_t>(BillboardAxis::X) | static_cast<int32_t>(BillboardAxis::Y) | static_cast<int32_t>(BillboardAxis::Z);
 };

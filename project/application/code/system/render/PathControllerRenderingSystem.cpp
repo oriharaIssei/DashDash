@@ -131,11 +131,11 @@ void PathControllerRenderingSystem::CreateRenderMesh() {
         }
 
         PathController* pathCtrl = GetComponent<PathController>(slot.owner);
-        if (!pathCtrl || !pathCtrl->isActive) {
+        if (!pathCtrl || !pathCtrl->IsActive()) {
             continue;
         }
 
-        const auto& pts     = pathCtrl->points;
+        const auto& pts     = pathCtrl->GetPoints();
         const int32_t n     = static_cast<int32_t>(pts.size());
         if (n < 1) {
             continue;

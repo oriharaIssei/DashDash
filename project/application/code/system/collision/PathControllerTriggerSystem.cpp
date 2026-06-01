@@ -11,12 +11,12 @@ ICollisionTriggerComponent* PathControllerTriggerSystem::GetTrigger(EntityHandle
 
 void PathControllerTriggerSystem::ApplyActivate(EntityHandle _targetHandle) {
     for (auto& pc : GetComponents<PathController>(_targetHandle)) {
-        pc.isPlaying = true;
+        pc.SetPlaying(true);
     }
 }
 
 void PathControllerTriggerSystem::ApplyDeactivate(EntityHandle _targetHandle) {
     for (auto& pc : GetComponents<PathController>(_targetHandle)) {
-        pc.isPlaying = false;
+        pc.SetPlaying(false);
     }
 }

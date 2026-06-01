@@ -193,7 +193,7 @@ void TransitionPlayerState::UpdateEntity(EntityHandle _handle) {
                 return;
             }
             shakeSource->StartShake();
-            shakeSource->springVelocity[Y] = -deltaY * kShakeScale;
+            shakeSource->GetSpringVelocity()[Y] = -deltaY * kShakeScale;
         }
     }
 }

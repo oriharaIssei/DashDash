@@ -114,11 +114,11 @@ void PathControllerSystem::UpdateEntity(OriGine::EntityHandle _handle) {
     if (!transform || !pathController) {
         return;
     }
-    if (!pathController->isActive || !pathController->isPlaying) {
+    if (!pathController->IsActive() || !pathController->IsPlaying()) {
         return;
     }
 
-    const auto& pts      = pathController->points;
+    const auto& pts      = pathController->GetPoints();
     const int32_t n      = static_cast<int32_t>(pts.size());
     const int32_t maxIdx = n - 2; // 有効な区間インデックスの最大値
 
@@ -129,106 +129,118 @@ void PathControllerSystem::UpdateEntity(OriGine::EntityHandle _handle) {
     // --- 進行度を更新 ---
     const float deltaTime = Engine::GetInstance()->GetDeltaTime();
 
-    // 現在区間の長さを求めて、速度を距離ベースに変換
-    const float segmentLength = Vec3f(pts[pathController->currentIndex + 1] - pts[pathController->currentIndex]).length();
-    const float step          = (segmentLength > kEpsilon) ? (pathController->speed * deltaTime / segmentLength) : 0.0f;
+    // 内部状態をローカルにコピーして更新し、最後に書き戻す
+    int32_t currentIndex = pathController->GetCurrentIndex();
+    float progress       = pathController->GetProgress();
+    bool isReversed      = pathController->IsReversed();
+    bool isPlaying       = pathController->IsPlaying();
 
-    if (pathController->isReversed) {
-        pathController->progress -= step;
+    // 現在区間の長さを求めて、速度を距離ベースに変換
+    const float segmentLength = Vec3f(pts[currentIndex + 1] - pts[currentIndex]).length();
+    const float step          = (segmentLength > kEpsilon) ? (pathController->GetSpeed() * deltaTime / segmentLength) : 0.0f;
+
+    if (isReversed) {
+        progress -= step;
     } else {
-        pathController->progress += step;
+        progress += step;
     }
 
     // --- 区間オーバーフロー処理 ---
-    if (pathController->progress >= 1.0f) {
-        const float overflow = pathController->progress - 1.0f;
-        pathController->currentIndex++;
+    if (progress >= 1.0f) {
+        const float overflow = progress - 1.0f;
+        currentIndex++;
 
-        if (pathController->currentIndex > maxIdx) {
+        if (currentIndex > maxIdx) {
             // パス終端に到達
-            switch (pathController->playOption) {
+            switch (pathController->GetPlayOption()) {
             case PathController::PlayOptions::Once:
-                pathController->currentIndex = maxIdx;
-                pathController->progress     = 1.0f;
-                pathController->isPlaying    = false;
+                currentIndex = maxIdx;
+                progress     = 1.0f;
+                isPlaying    = false;
                 break;
             case PathController::PlayOptions::Loop:
-                pathController->currentIndex = 0;
-                pathController->progress     = overflow;
+                currentIndex = 0;
+                progress     = overflow;
                 break;
             case PathController::PlayOptions::PingPong:
-                pathController->currentIndex = maxIdx;
-                pathController->progress     = 1.0f - overflow;
-                pathController->isReversed   = true;
+                currentIndex = maxIdx;
+                progress     = 1.0f - overflow;
+                isReversed   = true;
                 break;
             }
         } else {
-            pathController->progress = overflow;
+            progress = overflow;
         }
     }
 
     // --- 区間アンダーフロー処理（PingPong の逆再生時） ---
-    if (pathController->progress < 0.0f) {
-        const float underflow = -pathController->progress;
-        pathController->currentIndex--;
+    if (progress < 0.0f) {
+        const float underflow = -progress;
+        currentIndex--;
 
-        if (pathController->currentIndex < 0) {
+        if (currentIndex < 0) {
             // パス始端に到達
-            switch (pathController->playOption) {
+            switch (pathController->GetPlayOption()) {
             case PathController::PlayOptions::Once:
-                pathController->currentIndex = 0;
-                pathController->progress     = 0.0f;
-                pathController->isPlaying    = false;
+                currentIndex = 0;
+                progress     = 0.0f;
+                isPlaying    = false;
                 break;
             case PathController::PlayOptions::Loop:
-                pathController->currentIndex = maxIdx;
-                pathController->progress     = 1.0f - underflow;
+                currentIndex = maxIdx;
+                progress     = 1.0f - underflow;
                 break;
             case PathController::PlayOptions::PingPong:
-                pathController->currentIndex = 0;
-                pathController->progress     = underflow;
-                pathController->isReversed   = false;
+                currentIndex = 0;
+                progress     = underflow;
+                isReversed   = false;
                 break;
             }
         } else {
-            pathController->progress = 1.0f - underflow;
+            progress = 1.0f - underflow;
         }
     }
 
     // 安全クランプ
-    pathController->currentIndex = std::clamp(pathController->currentIndex, 0, maxIdx);
-    pathController->progress     = std::clamp(pathController->progress, 0.0f, 1.0f);
+    currentIndex = std::clamp(currentIndex, 0, maxIdx);
+    progress     = std::clamp(progress, 0.0f, 1.0f);
+
+    // 更新した内部状態を書き戻す
+    pathController->SetCurrentIndex(currentIndex);
+    pathController->SetProgress(progress);
+    pathController->SetReversed(isReversed);
+    pathController->SetPlaying(isPlaying);
 
     // --- 座標を計算して Transform に反映 ---
     transform->translate = CalcPosition(
         pts,
-        pathController->currentIndex,
-        pathController->progress,
-        pathController->interpolation);
+        currentIndex,
+        progress,
+        pathController->GetInterpolation());
 
     // --- 回転を計算して Transform に反映 ---
-    if (pathController->rotationMode != PathController::RotationMode::Fixed) {
+    if (pathController->GetRotationMode() != PathController::RotationMode::Fixed) {
         Vec3f forward = CalcForwardDirection(
             pts,
-            pathController->currentIndex,
-            pathController->progress,
-            pathController->interpolation);
+            currentIndex,
+            progress,
+            pathController->GetInterpolation());
 
         // 逆再生中は進行方向を反転
-        if (pathController->isReversed) {
+        if (isReversed) {
             forward = forward * -1.0f;
         }
 
         const Quaternion targetRotation = Quaternion::LookAt(forward, axisY);
 
-        if (pathController->rotationMode == PathController::RotationMode::FaceForward) {
+        if (pathController->GetRotationMode() == PathController::RotationMode::FaceForward) {
             transform->rotate = targetRotation;
         } else { // FaceForwardSmooth
             transform->rotate = SlerpByDeltaTime(
                 transform->rotate,
                 targetRotation,
                 deltaTime,
-                pathController->rotationSmoothSpeed);
+                pathController->GetRotationSmoothSpeed());
         }
     }
 }

@@ -17,7 +17,7 @@ enum class ShakeSourceType {
 /// <summary>
 /// カメラシェイクの発生源コンポーネント
 /// </summary>
-struct CameraShakeSourceComponent
+class CameraShakeSourceComponent
     : public OriGine::IComponent {
     friend void to_json(nlohmann::json& _j, const CameraShakeSourceComponent& _c);
     friend void from_json(const nlohmann::json& _j, CameraShakeSourceComponent& _c);
@@ -44,21 +44,49 @@ public:
     };
 
 public:
-    bool isActive                = true; // シェイクの有効無効
-    ShakeSourceType type         = ShakeSourceType::SinCurve; // シェイクの種類
-    int32_t cameraTransformIndex = -1; // シェイクを適用するカメラのTransformコンポーネントインデックス
+    bool IsActive() const { return isActive_; }
+    void SetActive(bool _isActive) { isActive_ = _isActive; }
 
-    OriGine::Vec3<ShakeParameters> axisParameters = {
+    ShakeSourceType GetType() const { return type_; }
+    void SetType(ShakeSourceType _type) { type_ = _type; }
+
+    int32_t GetCameraTransformIndex() const { return cameraTransformIndex_; }
+    void SetCameraTransformIndex(int32_t _index) { cameraTransformIndex_ = _index; }
+
+    OriGine::Vec3<ShakeParameters>& GetAxisParameters() { return axisParameters_; }
+    const OriGine::Vec3<ShakeParameters>& GetAxisParameters() const { return axisParameters_; }
+
+    bool IsLoop() const { return isLoop_; }
+    void SetLoop(bool _isLoop) { isLoop_ = _isLoop; }
+
+    float GetDuration() const { return duration_; }
+    void SetDuration(float _duration) { duration_ = _duration; }
+
+    float GetElapsedTime() const { return elapsedTime_; }
+    void SetElapsedTime(float _elapsedTime) { elapsedTime_ = _elapsedTime; }
+    void AddElapsedTime(float _deltaTime) { elapsedTime_ += _deltaTime; }
+
+    OriGine::Vec3f& GetSpringPosition() { return springPosition_; }
+    const OriGine::Vec3f& GetSpringPosition() const { return springPosition_; }
+    OriGine::Vec3f& GetSpringVelocity() { return springVelocity_; }
+    const OriGine::Vec3f& GetSpringVelocity() const { return springVelocity_; }
+
+private:
+    bool isActive_                = true; // シェイクの有効無効
+    ShakeSourceType type_         = ShakeSourceType::SinCurve; // シェイクの種類
+    int32_t cameraTransformIndex_ = -1; // シェイクを適用するカメラのTransformコンポーネントインデックス
+
+    OriGine::Vec3<ShakeParameters> axisParameters_ = {
         {1.0f, 1.0f}, // X軸のパラメータ
         {1.0f, 1.0f}, // Y軸のパラメータ
         {1.0f, 1.0f} // Z軸のパラメータ
     };
 
-    bool isLoop       = true; // シェイクのループ有無
-    float duration    = 1.0f; // シェイクの継続時間
-    float elapsedTime = 0.0f; // 経過時間
+    bool isLoop_       = true; // シェイクのループ有無
+    float duration_    = 1.0f; // シェイクの継続時間
+    float elapsedTime_ = 0.0f; // 経過時間
 
     // Spring 用の状態 (ランタイムのみ・シリアライズ不要)
-    OriGine::Vec3f springPosition = OriGine::Vec3f(0.0f, 0.0f, 0.0f); // バネの現在変位
-    OriGine::Vec3f springVelocity = OriGine::Vec3f(0.0f, 0.0f, 0.0f); // バネの現在速度
+    OriGine::Vec3f springPosition_ = OriGine::Vec3f(0.0f, 0.0f, 0.0f); // バネの現在変位
+    OriGine::Vec3f springVelocity_ = OriGine::Vec3f(0.0f, 0.0f, 0.0f); // バネの現在速度
 };
