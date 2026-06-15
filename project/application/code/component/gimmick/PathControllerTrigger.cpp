@@ -9,11 +9,11 @@
 #include "myGui/MyGui.h"
 #endif // _DEBUG
 
-void PathControllerTrigger::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/) {}
+void PathControllerTrigger::Initialize(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/) {}
 
 void PathControllerTrigger::Finalize() {}
 
-void PathControllerTrigger::Edit([[maybe_unused]] OriGine::Scene* _scene, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void PathControllerTrigger::Edit([[maybe_unused]] OriGine::Scene* _scene, const OriGine::EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     // ── Mode 選択 ──────────────────────────────────────
     if (ImGui::BeginCombo(("Mode##" + _parentLabel).c_str(), kCollisionTriggerModeNames[static_cast<int>(mode_)])) {
@@ -72,7 +72,7 @@ void PathControllerTrigger::Edit([[maybe_unused]] OriGine::Scene* _scene, OriGin
     ImGui::Spacing();
 
     if (ImGui::Button(("Add##pct" + _parentLabel).c_str())) {
-        auto command = std::make_unique<AddElementCommand<std::vector<OriGine::EntityHandle>>>(&targetHandles_, OriGine::EntityHandle{});
+        auto command = std::make_unique<AddElementCommand<std::vector<OriGine::EntityHandle>>>(&targetHandles_,OriGine::EntityHandle{});
         OriGine::EditorController::GetInstance()->PushCommand(std::move(command));
     }
 #endif // _DEBUG

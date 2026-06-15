@@ -39,7 +39,7 @@ struct SplineCommonSettings {
 /// <summary>
 /// Splineの制御点を管理するコンポーネント
 /// </summary>
-struct SplinePoints
+class SplinePoints
     : public OriGine::IComponent {
     friend void to_json(nlohmann::json& j, const SplinePoints& c);
     friend void from_json(const nlohmann::json& j, SplinePoints& c);
@@ -48,22 +48,34 @@ public:
     SplinePoints();
     ~SplinePoints() override;
 
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
     void Finalize() override;
 
+    /// <summary>
+    /// 制御点を追加する(capacityを超過した場合,popfrontされる)
+    /// </summary>
+    /// <param name="_point"></param>
+    void PushPoint(const OriGine::Vec3f& _pos);
+
 public:
+    SplineCommonSettings& GetCommonSettings() { return commonSettings; }
+    const SplineCommonSettings& GetCommonSettings() const { return commonSettings; }
+
+    int32_t GetCapacity() const { return capacity; }
+    void SetCapacity(int32_t _capacity) { capacity = _capacity; }
+
+    int32_t GetSegmentDivide() const { return segmentDivide; }
+    void SetSegmentDivide(int32_t _segmentDivide) { segmentDivide = _segmentDivide; }
+
+    std::deque<OriGine::Vec3f>& GetPoints() { return points; }
+    const std::deque<OriGine::Vec3f>& GetPoints() const { return points; }
+
+private:
     SplineCommonSettings commonSettings;
 
     int32_t capacity      = 100;
     int32_t segmentDivide = 16;
 
     std::deque<OriGine::Vec3f> points;
-
-public:
-    /// <summary>
-    /// 制御点を追加する(capacityを超過した場合,popfrontされる)
-    /// </summary>
-    /// <param name="_point"></param>
-    void PushPoint(const OriGine::Vec3f& _pos);
 };

@@ -24,7 +24,7 @@ using namespace OriGine;
 PlayerStatus::PlayerStatus() {}
 PlayerStatus::~PlayerStatus() {}
 
-void PlayerStatus::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
+void PlayerStatus::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
     gearUpCoolTime_  = baseGearupCoolTime_;
     currentMaxSpeed_ = baseSpeed_;
 
@@ -32,7 +32,7 @@ void PlayerStatus::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
     currentRailInterval_    = 0.f;
 }
 
-void PlayerStatus::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] EntityHandle _owner, [[maybe_unused]] const std::string& _parentLabel) {
+void PlayerStatus::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] const EntityHandle& _owner, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     DragGuiCommand("Deceleration Factor##" + _parentLabel, decelerationFactor_, 0.01f, 0.f, 1.f);
@@ -187,7 +187,7 @@ void PlayerStatus::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] EntityH
 #endif // _DEBUG
 }
 
-void PlayerStatus::Debug(Scene* /*_scene*/, EntityHandle /*_handle*/, const std::string& /*_parentLabel*/) {
+void PlayerStatus::Debug(Scene* /*_scene*/, const EntityHandle& /*_handle*/, const std::string& /*_parentLabel*/) {
 #ifdef _DEBUG
 
     ImGui::Text("Base Gear Up Cool Time : %.2f", baseGearupCoolTime_);

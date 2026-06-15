@@ -13,7 +13,7 @@ class Scene;
 /// <summary>
 /// スプライト表示用のタイマーコンポーネント
 /// </summary>
-struct TimerForSpriteComponent
+class TimerForSpriteComponent
     : public OriGine::IComponent {
     friend void to_json(nlohmann::json& j, const TimerForSpriteComponent& c);
     friend void from_json(const nlohmann::json& j, TimerForSpriteComponent& c);
@@ -22,8 +22,8 @@ public:
     TimerForSpriteComponent()           = default;
     ~TimerForSpriteComponent() override = default;
 
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
     void Finalize() override {}
 
     /// <summary>
@@ -38,9 +38,52 @@ public:
     /// <param name="_scene"></param>
     void RelocationSprites(OriGine::Scene* _scene);
 
+public:
+    OriGine::EntityHandle GetSpritesEntityHandle() const { return spriteEntityHandle_; }
+    void SetSpritesEntityHandle(const OriGine::EntityHandle& _handle) { spriteEntityHandle_ = _handle; }
+
+    int32_t GetDigitInteger() const { return digitInteger; }
+    void SetDigitInteger(int32_t _digitInteger) { digitInteger = _digitInteger; }
+
+    int32_t GetDigitDecimal() const { return digitDecimal; }
+    void SetDigitDecimal(int32_t _digitDecimal) { digitDecimal = _digitDecimal; }
+
+    size_t GetTextureIndex() const { return textureIndex; }
+    void SetTextureIndex(size_t _textureIndex) { textureIndex = _textureIndex; }
+
+    const std::string& GetNumbersTexturePath() const { return numbersTexturePath; }
+    void SetNumbersTexturePath(const std::string& _numbersTexturePath) { numbersTexturePath = _numbersTexturePath; }
+
+    const OriGine::Vec2f& GetNumbersTextureSize() const { return numbersTextureSize; }
+    void SetNumbersTextureSize(const OriGine::Vec2f& _numbersTextureSize) { numbersTextureSize = _numbersTextureSize; }
+
+    const OriGine::Vec2f& GetNumberTileSize() const { return numberTileSize; }
+    void SetNumberTileSize(const OriGine::Vec2f& _numberTileSize) { numberTileSize = _numberTileSize; }
+
+    const OriGine::Vec2f& GetAnchorOnWindow() const { return anchorOnWindow; }
+    void SetAnchorOnWindow(const OriGine::Vec2f& _anchorOnWindow) { anchorOnWindow = _anchorOnWindow; }
+
+    const OriGine::Vec2f& GetOffset() const { return offset; }
+    void SetOffset(const OriGine::Vec2f& _offset) { offset = _offset; }
+
+    const OriGine::Vec2f& GetSpriteSizeInteger() const { return spriteSizeInteger; }
+    void SetSpriteSizeInteger(const OriGine::Vec2f& _spriteSizeInteger) { spriteSizeInteger = _spriteSizeInteger; }
+
+    const OriGine::Vec2f& GetSpriteSizeDecimal() const { return spriteSizeDecimal; }
+    void SetSpriteSizeDecimal(const OriGine::Vec2f& _spriteSizeDecimal) { spriteSizeDecimal = _spriteSizeDecimal; }
+
+    const OriGine::Vec2f& GetSpriteMarginInteger() const { return spriteMarginInteger; }
+    void SetSpriteMarginInteger(const OriGine::Vec2f& _spriteMarginInteger) { spriteMarginInteger = _spriteMarginInteger; }
+
+    const OriGine::Vec2f& GetSpriteMarginDecimal() const { return spriteMarginDecimal; }
+    void SetSpriteMarginDecimal(const OriGine::Vec2f& _spriteMarginDecimal) { spriteMarginDecimal = _spriteMarginDecimal; }
+
+    const OriGine::Vec2f& GetMarginBetweenIntegerAndDecimal() const { return marginBetweenIntegerAndDecimal; }
+    void SetMarginBetweenIntegerAndDecimal(const OriGine::Vec2f& _marginBetweenIntegerAndDecimal) { marginBetweenIntegerAndDecimal = _marginBetweenIntegerAndDecimal; }
+
 private:
     OriGine::EntityHandle spriteEntityHandle_ = OriGine::EntityHandle(); // スプライトを持つエンティティID
-public:
+
     int32_t digitInteger = 0; // 整数部の桁数
     int32_t digitDecimal = 0; // 小数部の桁数
 
@@ -62,8 +105,4 @@ public:
 
     // 整数部と小数部の間のスペース
     OriGine::Vec2f marginBetweenIntegerAndDecimal = {0.f, 0.f}; // 整数部と小数部の間のスペース
-
-public:
-    OriGine::EntityHandle GetSpritesEntityHandle() const { return spriteEntityHandle_; }
-    void SetSpritesEntityHandle(OriGine::EntityHandle _handle) { spriteEntityHandle_ = _handle; }
 };

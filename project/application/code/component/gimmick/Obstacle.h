@@ -14,9 +14,9 @@ public:
     Obstacle()           = default;
     ~Obstacle() override = default;
 
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
     void Finalize() override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
 private:
     float penaltyTime_                  = 1.5f;

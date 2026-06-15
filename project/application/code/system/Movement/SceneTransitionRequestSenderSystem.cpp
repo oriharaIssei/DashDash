@@ -19,7 +19,7 @@ SceneTransitionRequestSenderSystem::~SceneTransitionRequestSenderSystem() {}
 void SceneTransitionRequestSenderSystem::Initialize() {}
 void SceneTransitionRequestSenderSystem::Finalize() {}
 
-void SceneTransitionRequestSenderSystem::UpdateEntity(EntityHandle _handle) {
+void SceneTransitionRequestSenderSystem::UpdateEntity(const EntityHandle& _handle) {
     auto& sceneChangerComps = GetComponents<SceneChanger>(_handle);
 
     if (sceneChangerComps.empty()) {

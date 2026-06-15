@@ -11,14 +11,14 @@
 
 using namespace OriGine;
 
-void BulletSpawner::Initialize(Scene* _scene, EntityHandle /*_entity*/) {
+void BulletSpawner::Initialize(Scene* _scene, const EntityHandle& /*_entity*/) {
     emitter_.Initialize();
     emitter_.ResolveParent(_scene);
 }
 
 void BulletSpawner::Finalize() {}
 
-void BulletSpawner::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] EntityHandle _entity, [[maybe_unused]] const std::string& _parentLabel) {
+void BulletSpawner::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] const EntityHandle& _entity, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     // ── テンプレート選択 ──────────────────────────────────────
     ImGui::SeparatorText("Bullet Template");

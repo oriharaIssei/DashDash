@@ -17,7 +17,7 @@ PlayerSpeedFor3dUI::~PlayerSpeedFor3dUI() {}
 void PlayerSpeedFor3dUI::Initialize() {}
 void PlayerSpeedFor3dUI::Finalize() {}
 
-void PlayerSpeedFor3dUI::UpdateEntity(EntityHandle _handle) {
+void PlayerSpeedFor3dUI::UpdateEntity(const EntityHandle& _handle) {
     auto playerEnt = GetUniqueEntity("Player");
     if (!playerEnt.IsValid()) {
         return;
@@ -38,11 +38,11 @@ void PlayerSpeedFor3dUI::UpdateEntity(EntityHandle _handle) {
     // 各桁の数字を抽出
     std::vector<int> digits = CalculateDigitsFromFloat(
         speed,
-        speedUIComp->digitInteger,
-        speedUIComp->digitDecimal);
+        speedUIComp->GetDigitInteger(),
+        speedUIComp->GetDigitDecimal());
 
     // uv を設定
-    for (int32_t i = 0; i < speedUIComp->digitInteger + speedUIComp->digitDecimal; ++i) {
+    for (int32_t i = 0; i < speedUIComp->GetDigitInteger() + speedUIComp->GetDigitDecimal(); ++i) {
         auto material = GetComponent<Material>(ui3dEntityHandle, i);
         if (!material) {
             continue; // Materialがない場合は何もしない

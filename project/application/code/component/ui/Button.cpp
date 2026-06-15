@@ -80,9 +80,9 @@ void from_json(const nlohmann::json& j, Button& r) {
 Button::Button() {}
 Button::~Button() {}
 
-void Button::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {}
+void Button::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {}
 
-void Button::Edit(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_OriGine::Entity*/, [[maybe_unused]] const std::string& _parentLabel) {
+void Button::Edit(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_OriGine::Entity*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     std::string label = "Button Colors" + _parentLabel;
     if (ImGui::TreeNode(label.c_str())) {

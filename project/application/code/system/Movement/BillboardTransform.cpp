@@ -14,7 +14,7 @@ using namespace OriGine;
 void BillboardTransform::Initialize() {}
 void BillboardTransform::Finalize() {}
 
-void BillboardTransform::UpdateEntity(EntityHandle _handle) {
+void BillboardTransform::UpdateEntity(const EntityHandle& _handle) {
     // BillboardComponent がなければスキップ
     auto& billboards = GetComponents<BillboardComponent>(_handle);
     if (billboards.empty()) {

@@ -36,7 +36,7 @@ EffectOnPlayerRun::~EffectOnPlayerRun() {}
 void EffectOnPlayerRun::Initialize() {}
 void EffectOnPlayerRun::Finalize() {}
 
-void EffectOnPlayerRun::UpdateEntity(EntityHandle _entity) {
+void EffectOnPlayerRun::UpdateEntity(const EntityHandle& _entity) {
     auto state              = GetComponent<PlayerState>(_entity);
     auto status             = GetComponent<PlayerStatus>(_entity);
     auto effectControlParam = GetComponent<PlayerEffectControlParam>(_entity);

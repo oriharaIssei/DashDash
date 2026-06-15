@@ -11,7 +11,7 @@ PlayerFollowSystem::PlayerFollowSystem() : ISystem(SystemCategory::Movement) {}
 void PlayerFollowSystem::Initialize() {}
 void PlayerFollowSystem::Finalize() {}
 
-void PlayerFollowSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void PlayerFollowSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     Transform* transform = GetComponent<Transform>(_handle);
     if (!transform) {
         LOG_ERROR("Transform component is not found.");

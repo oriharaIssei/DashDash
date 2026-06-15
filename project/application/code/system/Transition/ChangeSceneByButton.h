@@ -14,5 +14,5 @@ public:
     virtual void Finalize() override;
 
 protected:
-    virtual void UpdateEntity(OriGine::EntityHandle _handle) override;
+    virtual void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 };

@@ -29,13 +29,13 @@ public:
     void Finalize() override;
 
 protected:
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
     /// <summary>
     /// プレイヤーの状態変化イベントに応じて、カメラの状態を切り替える
     /// </summary>
     /// <param name="cameraController"></param>
-    void CameraStateTransition(OriGine::EntityHandle _handle, CameraController* _cameraController);
+    void CameraStateTransition(const OriGine::EntityHandle& _handle, CameraController* _cameraController);
 
     /// <summary>
     /// プレイヤーの移動状態をカメラの移動状態に変換する
@@ -56,8 +56,8 @@ protected:
     std::shared_ptr<ICameraState> CreateCameraState(
         CameraMoveState type,
         OriGine::Scene* scene,
-        OriGine::EntityHandle camera,
-        OriGine::EntityHandle player);
+        const OriGine::EntityHandle& camera,
+        const OriGine::EntityHandle& player);
 
 private:
     size_t playerStateChangedEventId_ = 0; ///< プレイヤーの状態変化イベントID

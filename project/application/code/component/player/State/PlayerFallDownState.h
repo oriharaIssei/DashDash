@@ -9,7 +9,7 @@
 class PlayerFallDownState
     : public IPlayerMoveState {
 public:
-    PlayerFallDownState(OriGine::Scene* _scene, OriGine::EntityHandle _playerEntityHandle) : IPlayerMoveState(_scene, _playerEntityHandle, PlayerMoveState::FALL_DOWN) {}
+    PlayerFallDownState(OriGine::Scene* _scene, const OriGine::EntityHandle& _playerEntityHandle) : IPlayerMoveState(_scene, _playerEntityHandle, PlayerMoveState::FALL_DOWN) {}
     ~PlayerFallDownState() override {};
     void Initialize() override;
     void Update(float _deltaTime) override;

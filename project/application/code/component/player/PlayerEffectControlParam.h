@@ -22,8 +22,8 @@ class PlayerEffectControlParam
 public:
     PlayerEffectControlParam();
     ~PlayerEffectControlParam() override;
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
     void Finalize() override;
 
     /// <summary>
@@ -115,7 +115,7 @@ public:
     OriGine::EntityHandle GetTireTrailSplineEntityHandle() const {
         return tireTrailSplineEntityHandle_;
     }
-    void SetTireTrailSplineEntityId(OriGine::EntityHandle _handle) {
+    void SetTireTrailSplineEntityId(const OriGine::EntityHandle& _handle) {
         tireTrailSplineEntityHandle_ = _handle;
     }
 

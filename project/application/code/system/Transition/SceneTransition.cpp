@@ -70,7 +70,7 @@ void SceneTransition::Update() {
 #endif
 }
 
-void SceneTransition::UpdateEntity(EntityHandle _handle) {
+void SceneTransition::UpdateEntity(const EntityHandle& _handle) {
     auto& sceneChangers = GetComponents<SceneChanger>(_handle);
     if (sceneChangers.empty()) {
         return;

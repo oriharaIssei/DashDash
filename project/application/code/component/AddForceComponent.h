@@ -26,7 +26,7 @@ public:
     /// <summary>
     /// 初期化処理
     /// </summary>
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
     /// <summary>
     /// 終了処理
     /// </summary>
@@ -34,7 +34,7 @@ public:
     /// <summary>
     /// エディタ用編集UI
     /// </summary>
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
 public:
     /// <summary>

@@ -13,7 +13,7 @@ class StageWall;
 class PlayerWallJumpState
     : public IPlayerMoveState {
 public:
-    PlayerWallJumpState(OriGine::Scene* _scene, OriGine::EntityHandle _playerEntityHandle) : IPlayerMoveState(_scene, _playerEntityHandle, PlayerMoveState::WALL_JUMP) {}
+    PlayerWallJumpState(OriGine::Scene* _scene, const OriGine::EntityHandle& _playerEntityHandle) : IPlayerMoveState(_scene, _playerEntityHandle, PlayerMoveState::WALL_JUMP) {}
     ~PlayerWallJumpState() override {};
 
     void Initialize() override;

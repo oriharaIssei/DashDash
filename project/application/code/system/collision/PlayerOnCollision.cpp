@@ -45,7 +45,7 @@ constexpr float kCrashNormalSpeedThreshold = 40.0f;
 void PlayerOnCollision::Initialize() {}
 void PlayerOnCollision::Finalize() {}
 
-void PlayerOnCollision::UpdateEntity(OriGine::EntityHandle _handle) {
+void PlayerOnCollision::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto* state          = GetComponent<PlayerState>(_handle);
     auto* status         = GetComponent<PlayerStatus>(_handle);
     auto* pushBackInfo   = GetComponent<CollisionPushBackInfo>(_handle);

@@ -9,7 +9,7 @@
 ExitApplicationByButton::ExitApplicationByButton() : ISystem(OriGine::SystemCategory::StateTransition) {}
 ExitApplicationByButton::~ExitApplicationByButton() {}
 
-void ExitApplicationByButton::UpdateEntity(OriGine::EntityHandle _handle) {
+void ExitApplicationByButton::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& buttons = GetComponents<Button>(_handle);
     if (buttons.empty()) {
         return;

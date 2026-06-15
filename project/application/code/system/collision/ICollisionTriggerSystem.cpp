@@ -10,7 +10,7 @@
 
 using namespace OriGine;
 
-void ICollisionTriggerSystem::UpdateEntity(OriGine::EntityHandle _handle){
+void ICollisionTriggerSystem::UpdateEntity(const OriGine::EntityHandle& _handle){
 	auto* trigger  = GetTrigger(_handle);
 	auto* collider = GetComponent<AABBCollider>(_handle);
 

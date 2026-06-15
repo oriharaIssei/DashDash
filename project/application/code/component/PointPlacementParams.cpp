@@ -21,7 +21,7 @@
 
 using namespace OriGine;
 
-void PointPlacementParams::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
+void PointPlacementParams::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
     auto& device = Engine::GetInstance()->GetDxDevice()->device_;
     paramData_.CreateBuffer(device);
     paramData_.ConvertToBuffer();
@@ -46,7 +46,7 @@ void PointPlacementParams::Finalize() {
     outputPoints_.Finalize();
 }
 
-void PointPlacementParams::Edit(Scene* /*_scene*/, EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void PointPlacementParams::Edit(Scene* /*_scene*/, const EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     ImGui::Text("OriginalEntity \n Directory : %s \n FileName  : %s", originalEntityFilePath_.first.c_str(), originalEntityFilePath_.second.c_str());

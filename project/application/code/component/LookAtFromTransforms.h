@@ -7,7 +7,7 @@
 /// <summary>
 /// 2つの Transformコンポーネントを参照し、1つ目のTransformの位置から2つ目のTransformの位置を向くように設定するコンポーネント
 /// </summary>
-struct LookAtFromTransforms
+class LookAtFromTransforms
     : public OriGine::IComponent {
     friend void to_json(nlohmann::json& _j, const LookAtFromTransforms& _c);
     friend void from_json(const nlohmann::json& _j, LookAtFromTransforms& _c);
@@ -15,8 +15,8 @@ struct LookAtFromTransforms
 public:
     LookAtFromTransforms();
     ~LookAtFromTransforms() override;
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
     void Finalize() override;
 
 public:
@@ -27,6 +27,16 @@ public:
     };
 
 public:
+    const EnumBitmask<RotateAxis>& GetRotateAxis() const { return rotateAxis; }
+    void SetRotateAxis(const EnumBitmask<RotateAxis>& _rotateAxis) { rotateAxis = _rotateAxis; }
+
+    const OriGine::ComponentHandle& GetFromTransformComp() const { return fromTransformComp; }
+    void SetFromTransformComp(const OriGine::ComponentHandle& _fromTransformComp) { fromTransformComp = _fromTransformComp; }
+
+    const OriGine::ComponentHandle& GetToTransformComp() const { return toTransformComp; }
+    void SetToTransformComp(const OriGine::ComponentHandle& _toTransformComp) { toTransformComp = _toTransformComp; }
+
+private:
     EnumBitmask<LookAtFromTransforms::RotateAxis> rotateAxis = 0; // 回転を許可する軸のビットマスク
 
     OriGine::ComponentHandle fromTransformComp = {}; // 視点のTransformコンポーネント

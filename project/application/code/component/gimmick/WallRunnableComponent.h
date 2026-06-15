@@ -11,7 +11,7 @@
 /// <summary>
 /// 壁走り可能オブジェクトに付与するコンポーネント
 /// </summary>
-struct WallRunnableComponent
+class WallRunnableComponent
     : public OriGine::IComponent {
     friend void to_json(nlohmann::json& _j, const WallRunnableComponent& _c);
     friend void from_json(const nlohmann::json& _j, WallRunnableComponent& _c);
@@ -20,9 +20,9 @@ public:
     WallRunnableComponent();
     ~WallRunnableComponent() override;
 
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
     void Finalize() override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
     /// <summary>
     /// 衝突法線が壁走り許可方向かどうかを判定する
@@ -32,9 +32,17 @@ public:
     bool IsNormalAllowed(const OriGine::Vec3f& _collisionNormal) const;
 
 public:
+    const std::vector<OriGine::Vec3f>& GetAllowedNormals() const { return allowedNormals_; }
+    std::vector<OriGine::Vec3f>& GetAllowedNormals() { return allowedNormals_; }
+    void SetAllowedNormals(const std::vector<OriGine::Vec3f>& _allowedNormals) { allowedNormals_ = _allowedNormals; }
+
+    float GetAngleTolerance() const { return angleTolerance_; }
+    void SetAngleTolerance(float _angleTolerance) { angleTolerance_ = _angleTolerance; }
+
+private:
     /// 壁走りを許可する面の法線方向 (空の場合は全方向許可)
-    std::vector<OriGine::Vec3f> allowedNormals;
+    std::vector<OriGine::Vec3f> allowedNormals_;
 
     /// 許容角度 (degrees)
-    float angleTolerance = 180.0f;
+    float angleTolerance_ = 180.0f;
 };

@@ -20,7 +20,7 @@ PlayerPathSplineGenerator::~PlayerPathSplineGenerator() {}
 void PlayerPathSplineGenerator::Initialize() {}
 void PlayerPathSplineGenerator::Finalize() {}
 
-bool PlayerPathSplineGenerator::TryGetContext(EntityHandle _handle, Context& _outContext) {
+bool PlayerPathSplineGenerator::TryGetContext(const EntityHandle& _handle, Context& _outContext) {
     _outContext.splinePoints = GetComponent<SplinePoints>(_handle);
     if (!_outContext.splinePoints) {
         return false;
@@ -44,7 +44,7 @@ void PlayerPathSplineGenerator::ProcessMovement(Context& _ctx) {
     SplinePoints* splinePoints = _ctx.splinePoints;
 
     // 設定値の安全チェック
-    if (splinePoints->commonSettings.segmentLength <= kEpsilon) {
+    if (splinePoints->GetCommonSettings().segmentLength <= kEpsilon) {
         return;
     }
 
@@ -56,25 +56,25 @@ void PlayerPathSplineGenerator::ProcessMovement(Context& _ctx) {
     RefineSplinePoints(splinePoints);
 
     // 3. 容量制限
-    while (splinePoints->points.size() > splinePoints->capacity) {
-        splinePoints->points.pop_front();
+    while (splinePoints->GetPoints().size() > splinePoints->GetCapacity()) {
+        splinePoints->GetPoints().pop_front();
     }
 
     // 4. フェードアウトタイマーのリセット
-    splinePoints->commonSettings.fadeoutTimer = splinePoints->commonSettings.fadeoutTime;
+    splinePoints->GetCommonSettings().fadeoutTimer = splinePoints->GetCommonSettings().fadeoutTime;
 }
 
 void PlayerPathSplineGenerator::AppendNewPoints(SplinePoints* _splinePoints, const Vec3f& _targetPos) {
     // 最低4点確保
-    if (_splinePoints->points.size() < 4) {
-        int32_t diff = 4 - static_cast<int32_t>(_splinePoints->points.size());
+    if (_splinePoints->GetPoints().size() < 4) {
+        int32_t diff = 4 - static_cast<int32_t>(_splinePoints->GetPoints().size());
         for (int32_t i = 0; i < diff; ++i) {
             _splinePoints->PushPoint(_targetPos);
         }
     }
 
-    const float segLen     = _splinePoints->commonSettings.segmentLength;
-    const Vec3f& lastPoint = _splinePoints->points.back();
+    const float segLen     = _splinePoints->GetCommonSettings().segmentLength;
+    const Vec3f& lastPoint = _splinePoints->GetPoints().back();
     Vec3f distanceVec      = _targetPos - lastPoint;
     float distLen          = distanceVec.length();
 
@@ -97,18 +97,18 @@ void PlayerPathSplineGenerator::AppendNewPoints(SplinePoints* _splinePoints, con
 }
 
 void PlayerPathSplineGenerator::RefineSplinePoints(SplinePoints* _splinePoints) {
-    if (_splinePoints->points.empty()) {
+    if (_splinePoints->GetPoints().empty()) {
         return;
     }
 
     std::deque<Vec3f> newPoints;
-    const float segLen                      = _splinePoints->commonSettings.segmentLength;
+    const float segLen                      = _splinePoints->GetCommonSettings().segmentLength;
     constexpr float kThresholdSplitOrMerger = 0.3f;
 
     // 既存のポイントを走査して再構築
-    for (int32_t i = 0; i < static_cast<int32_t>(_splinePoints->points.size()) - 1; ++i) {
-        Vec3f current = _splinePoints->points[i];
-        Vec3f next    = _splinePoints->points[i + 1];
+    for (int32_t i = 0; i < static_cast<int32_t>(_splinePoints->GetPoints().size()) - 1; ++i) {
+        Vec3f current = _splinePoints->GetPoints()[i];
+        Vec3f next    = _splinePoints->GetPoints()[i + 1];
         Vec3f delta   = next - current;
         float len     = delta.length();
 
@@ -123,7 +123,7 @@ void PlayerPathSplineGenerator::RefineSplinePoints(SplinePoints* _splinePoints) 
             for (int j = 1; j < divs; ++j) {
                 newPoints.push_back(current + dir * (segLen * static_cast<float>(j)));
             }
-        } else if (len - segLen < segLen * kThresholdSplitOrMerger && (i + 1) < static_cast<int>(_splinePoints->points.size() - 1)) {
+        } else if (len - segLen < segLen * kThresholdSplitOrMerger && (i + 1) < static_cast<int>(_splinePoints->GetPoints().size() - 1)) {
             // 短すぎる → 統合（次の点を飛ばして平均位置にするなど）
             // 元コードのロジック: 現在点と次点の平均で現在点を更新し、次点をスキップ
             Vec3f merged     = (current + next) * 0.5f;
@@ -133,27 +133,27 @@ void PlayerPathSplineGenerator::RefineSplinePoints(SplinePoints* _splinePoints) 
     }
 
     // 最後の点を追加
-    newPoints.push_back(_splinePoints->points.back());
+    newPoints.push_back(_splinePoints->GetPoints().back());
 
     // リストを差し替え
-    _splinePoints->points = std::move(newPoints);
+    _splinePoints->GetPoints() = std::move(newPoints);
 }
 
 void PlayerPathSplineGenerator::ProcessIdle(Context& _ctx) {
     SplinePoints* splinePoints = _ctx.splinePoints;
 
-    if (!splinePoints->points.empty()) {
+    if (!splinePoints->GetPoints().empty()) {
         float deltaTime = Engine::GetInstance()->GetDeltaTimer()->GetScaledDeltaTime("World");
-        splinePoints->commonSettings.fadeoutTimer += deltaTime;
+        splinePoints->GetCommonSettings().fadeoutTimer += deltaTime;
 
-        if (splinePoints->commonSettings.fadeoutTimer >= splinePoints->commonSettings.fadeoutTime) {
-            splinePoints->commonSettings.fadeoutTimer = 0.0f;
-            splinePoints->points.pop_front();
+        if (splinePoints->GetCommonSettings().fadeoutTimer >= splinePoints->GetCommonSettings().fadeoutTime) {
+            splinePoints->GetCommonSettings().fadeoutTimer = 0.0f;
+            splinePoints->GetPoints().pop_front();
         }
     }
 }
 
-void PlayerPathSplineGenerator::UpdateEntity(EntityHandle _handle) {
+void PlayerPathSplineGenerator::UpdateEntity(const EntityHandle& _handle) {
     Context ctx;
     if (!TryGetContext(_handle, ctx)) {
         return;

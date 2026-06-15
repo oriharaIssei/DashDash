@@ -21,7 +21,7 @@ using namespace OriGine;
 void CameraInputSystem::Initialize() {}
 void CameraInputSystem::Finalize() {}
 
-void CameraInputSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void CameraInputSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     GamepadInput* padInput = GetScene()->GetGamepadInput();
     MouseInput* mouseInput = GetScene()->GetMouseInput();
 

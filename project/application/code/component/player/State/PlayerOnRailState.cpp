@@ -21,7 +21,7 @@
 
 using namespace OriGine;
 
-PlayerOnRailState::PlayerOnRailState(OriGine::Scene* _scene, OriGine::EntityHandle _playerEntityHandle)
+PlayerOnRailState::PlayerOnRailState(OriGine::Scene* _scene, const OriGine::EntityHandle& _playerEntityHandle)
     : IPlayerMoveState(_scene, _playerEntityHandle, PlayerMoveState::RUN_ON_RAIL) {}
 PlayerOnRailState::~PlayerOnRailState() {}
 
@@ -42,20 +42,20 @@ void PlayerOnRailState::Initialize() {
 
     // 事前に必要な情報を計算する
     Vec3f playerPosOnRail                           = transform->translate * railTransform->worldMat.inverse();
-    std::pair<uint32_t, uint32_t> firstSegmentPoint = CalcPointSegmentIndex(railPoints->points, playerPosOnRail);
+    std::pair<uint32_t, uint32_t> firstSegmentPoint = CalcPointSegmentIndex(railPoints->GetPoints(), playerPosOnRail);
     currentRailPointIndex_                          = firstSegmentPoint.first;
     nextRailPointIndex_                             = firstSegmentPoint.second;
 
-    railTotalLength_ = CalcSplineLength(railPoints->points);
+    railTotalLength_ = CalcSplineLength(railPoints->GetPoints());
 
     // 正確な距離を計算：最も近いセグメントまでの累積距離 + セグメント内の射影距離
     float accumulatedLength = 0.0f;
     for (uint32_t i = 0; i < currentRailPointIndex_; ++i) {
-        accumulatedLength += Vec3f(railPoints->points[i + 1] - railPoints->points[i]).length();
+        accumulatedLength += Vec3f(railPoints->GetPoints()[i + 1] - railPoints->GetPoints()[i]).length();
     }
     // 現在のセグメント内での射影位置を計算
-    const Vec3f& p1    = railPoints->points[currentRailPointIndex_];
-    const Vec3f& p2    = railPoints->points[nextRailPointIndex_];
+    const Vec3f& p1    = railPoints->GetPoints()[currentRailPointIndex_];
+    const Vec3f& p2    = railPoints->GetPoints()[nextRailPointIndex_];
     Vec3f lineDir      = p2 - p1;
     float lineLengthSq = lineDir.lengthSq();
     float t            = (lineLengthSq > 0.0f) ? std::clamp(Vec3f(playerPosOnRail - p1).dot(lineDir) / lineLengthSq, 0.0f, 1.0f) : 0.0f;
@@ -79,14 +79,14 @@ void PlayerOnRailState::Update(float _deltaTime) {
         return;
     }
 
-    if (currentRailPointIndex_ > railPoints->points.size()) {
+    if (currentRailPointIndex_ > railPoints->GetPoints().size()) {
         isOutOfRail_ = false;
         return;
     }
 
     // 使用する一時変数
-    const Vec3f& currentPoint = railPoints->points[currentRailPointIndex_];
-    const Vec3f& nextPoint    = railPoints->points[nextRailPointIndex_];
+    const Vec3f& currentPoint = railPoints->GetPoints()[currentRailPointIndex_];
+    const Vec3f& nextPoint    = railPoints->GetPoints()[nextRailPointIndex_];
     currentDirection_         = nextPoint - currentPoint;
     Vec3f front               = currentDirection_.normalize();
 
@@ -98,12 +98,12 @@ void PlayerOnRailState::Update(float _deltaTime) {
     // 現在地の更新
     traveledDistance_ += currentSpeed_ * _deltaTime;
     traveledDistance_                               = (std::min)(railTotalLength_, traveledDistance_);
-    std::pair<uint32_t, uint32_t> movedSegmentPoint = CalcDistanceSegmentIndex(railPoints->points, traveledDistance_);
+    std::pair<uint32_t, uint32_t> movedSegmentPoint = CalcDistanceSegmentIndex(railPoints->GetPoints(), traveledDistance_);
     currentRailPointIndex_                          = movedSegmentPoint.first;
     nextRailPointIndex_                             = movedSegmentPoint.second;
 
     // transform の更新
-    transform->translate = CalcPointOnSplineByDistance(railPoints->points, traveledDistance_) * railTransform->worldMat;
+    transform->translate = CalcPointOnSplineByDistance(railPoints->GetPoints(), traveledDistance_) * railTransform->worldMat;
     transform->rotate    = Quaternion::LookAt(front, axisY);
     // 傾きの補正
     auto* effectControlParam = scene_->GetComponent<PlayerEffectControlParam>(playerEntityHandle_);

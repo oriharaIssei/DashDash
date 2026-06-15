@@ -9,11 +9,11 @@
 #include "myGui/MyGui.h"
 #endif // _DEBUG
 
-void ObstacleSpawnGroupComponent::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/) {}
+void ObstacleSpawnGroupComponent::Initialize(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/) {}
 
 void ObstacleSpawnGroupComponent::Finalize() {}
 
-void ObstacleSpawnGroupComponent::Edit([[maybe_unused]] OriGine::Scene* _scene, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void ObstacleSpawnGroupComponent::Edit([[maybe_unused]] OriGine::Scene* _scene, const OriGine::EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     // Obstacleコンポーネントを持つEntity一覧を収集
     std::vector<OriGine::EntityHandle> obstacleEntityIds;

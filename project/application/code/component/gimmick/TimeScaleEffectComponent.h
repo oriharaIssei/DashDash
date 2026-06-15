@@ -16,9 +16,9 @@ class TimeScaleEffectComponent
 public:
     TimeScaleEffectComponent();
     ~TimeScaleEffectComponent() override;
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
     void Finalize() override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
     bool IsActive() const { return isActive_; }
     void SetActive(bool _active) { isActive_ = _active; }

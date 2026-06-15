@@ -15,7 +15,7 @@ ShowGameUIByInputDevice::ShowGameUIByInputDevice() : ISystem(OriGine::SystemCate
 void ShowGameUIByInputDevice::Initialize() {}
 void ShowGameUIByInputDevice::Finalize() {}
 
-void ShowGameUIByInputDevice::UpdateEntity(EntityHandle _handle) {
+void ShowGameUIByInputDevice::UpdateEntity(const EntityHandle& _handle) {
     bool isGamePad = GetScene()->GetGamepadInput()->IsActive();
 
     // ui Entity は keyUI, padUI の2つの SpriteRenderer を持っている

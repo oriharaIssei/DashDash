@@ -23,7 +23,7 @@ public:
 
 private:
     void Update() override;
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
 private:
     static constexpr float kAttractModeThreshold_     = 30.0f;

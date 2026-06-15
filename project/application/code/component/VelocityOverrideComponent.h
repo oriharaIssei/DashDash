@@ -11,7 +11,7 @@
 /// <summary>
 /// 速度を強制的に上書きするコンポーネント
 /// </summary>
-struct VelocityOverrideComponent
+class VelocityOverrideComponent
     : public OriGine::IComponent {
     /// <summary>
     /// JSON 変換用
@@ -28,7 +28,7 @@ public:
     /// <summary>
     /// 初期化処理
     /// </summary>
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
     /// <summary>
     /// 終了処理
     /// </summary>
@@ -36,9 +36,19 @@ public:
     /// <summary>
     /// エディタ用編集UI
     /// </summary>
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
 public:
+    const OriGine::Vec3f& GetForcedMovementVector() const { return forcedMovementVector_; }
+    void SetForcedMovementVector(const OriGine::Vec3f& _forcedMovementVector) { forcedMovementVector_ = _forcedMovementVector; }
+
+    const std::array<bool, OriGine::Vec3f::dim>& GetIsOverrideAxis() const { return isOverrideAxis_; }
+    void SetIsOverrideAxis(const std::array<bool, OriGine::Vec3f::dim>& _isOverrideAxis) { isOverrideAxis_ = _isOverrideAxis; }
+
+    float GetStunTime() const { return stunTime_; }
+    void SetStunTime(float _stunTime) { stunTime_ = _stunTime; }
+
+private:
     // 強制移動ベクトル
     OriGine::Vec3f forcedMovementVector_ = OriGine::Vec3f();
 

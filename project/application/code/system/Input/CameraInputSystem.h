@@ -26,6 +26,6 @@ public:
 	void Initialize() override;
 	void Finalize() override;
 
-	void UpdateEntity(OriGine::EntityHandle _handle);
+	void UpdateEntity(const OriGine::EntityHandle& _handle);
 	void InputUpdate(float _deltaTime,OriGine::MouseInput* _mouseInput,OriGine::GamepadInput* _padInput,CameraController* _cameraController);
 };

@@ -14,7 +14,7 @@ public:
     void Finalize() override;
 
 protected:
-    void UpdateEntity(OriGine::EntityHandle _entity) override;
+    void UpdateEntity(const OriGine::EntityHandle& _entity) override;
 
 private:
     const float kMaxIntensity_         = 3.8f;

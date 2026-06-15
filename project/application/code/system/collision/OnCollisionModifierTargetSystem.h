@@ -30,7 +30,7 @@ private:
     /// <summary>
     /// エンティティの更新処理
     /// </summary>
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
     /// <summary>
     /// WhileCollidingモードで生成したModifierエンティティを追跡するマップ
@@ -38,14 +38,14 @@ private:
     /// value: 生成したModifierエンティティ
     /// </summary>
     struct PairHash {
-        size_t operator()(const std::pair<OriGine::EntityHandle, OriGine::EntityHandle>& _p) const {
+        size_t operator()(const std::pair<OriGine::EntityHandle, const OriGine::EntityHandle&>& _p) const {
             auto h1 = std::hash<OriGine::EntityHandle>{}(_p.first);
             auto h2 = std::hash<OriGine::EntityHandle>{}(_p.second);
             return h1 ^ (h2 << 16);
         }
     };
     std::unordered_map<
-        std::pair<OriGine::EntityHandle, OriGine::EntityHandle>,
+        std::pair<OriGine::EntityHandle, const OriGine::EntityHandle&>,
         OriGine::EntityHandle,
         PairHash>
         activeModifiers_;

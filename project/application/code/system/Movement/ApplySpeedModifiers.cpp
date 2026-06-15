@@ -23,7 +23,7 @@ ApplySpeedModifiers::~ApplySpeedModifiers() {}
 void ApplySpeedModifiers::Initialize() {}
 void ApplySpeedModifiers::Finalize() {}
 
-void ApplySpeedModifiers::UpdateEntity(OriGine::EntityHandle _handle) {
+void ApplySpeedModifiers::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& speedModifiers = GetComponents<SpeedModifiers>(_handle);
 
     float deltaTime    = 0.f;

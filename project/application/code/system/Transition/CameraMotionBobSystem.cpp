@@ -13,7 +13,7 @@ CameraMotionBobSystem::CameraMotionBobSystem() : ISystem(OriGine::SystemCategory
 void CameraMotionBobSystem::Initialize() {}
 void CameraMotionBobSystem::Finalize() {}
 
-void CameraMotionBobSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void CameraMotionBobSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     OriGine::EntityHandle playerEnt = GetUniqueEntity("Player");
     auto* playerState               = GetComponent<PlayerState>(playerEnt);
     // Player の Stateがなければ 実行しない

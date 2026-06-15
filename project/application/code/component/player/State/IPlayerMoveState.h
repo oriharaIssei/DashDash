@@ -30,7 +30,7 @@ struct JumpInputResponse {
 /// </summary>
 class IPlayerMoveState {
 public:
-    IPlayerMoveState(OriGine::Scene* _scene, OriGine::EntityHandle _playerEntityHandle, PlayerMoveState _state);
+    IPlayerMoveState(OriGine::Scene* _scene, const OriGine::EntityHandle& _playerEntityHandle, PlayerMoveState _state);
     virtual ~IPlayerMoveState();
 
     virtual void Initialize()             = 0;

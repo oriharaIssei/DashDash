@@ -21,7 +21,7 @@ using namespace OriGine;
 CameraShakeSourceComponent::CameraShakeSourceComponent() : IComponent() {}
 CameraShakeSourceComponent::~CameraShakeSourceComponent() {}
 
-void CameraShakeSourceComponent::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
+void CameraShakeSourceComponent::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
     if (isActive_) {
         StartShake();
     }
@@ -45,7 +45,7 @@ void CameraShakeSourceComponent::StopShake() {
     isActive_ = false;
 }
 
-void CameraShakeSourceComponent::Edit([[maybe_unused]] OriGine::Scene* _scene, [[maybe_unused]] EntityHandle _owner, [[maybe_unused]] const std::string& _parentLabel) {
+void CameraShakeSourceComponent::Edit([[maybe_unused]] OriGine::Scene* _scene, [[maybe_unused]] const EntityHandle& _owner, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     std::string label = "";

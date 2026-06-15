@@ -10,13 +10,13 @@
 
 using namespace OriGine;
 
-void PathController::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/) {
+void PathController::Initialize(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/) {
     currentIndex_ = startIndex_;
     progress_     = startProgress_;
 }
 void PathController::Finalize() {}
 
-void PathController::Edit(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void PathController::Edit(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     CheckBoxCommand("Is Active##" + _parentLabel, isActive_);

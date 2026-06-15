@@ -15,5 +15,5 @@ public:
     void Finalize() override;
 
 private:
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 };

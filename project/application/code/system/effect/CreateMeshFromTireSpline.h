@@ -19,7 +19,7 @@ public:
     void Finalize() override;
 
 private:
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
     void CreateCrossPlaneMesh(OriGine::PlaneRenderer* _planeRendererComp, TireSplinePoints* _splinePointsComp);
     void CreateLinePlaneMesh(OriGine::PlaneRenderer* _planeRendererComp, TireSplinePoints* _splinePointsComp);

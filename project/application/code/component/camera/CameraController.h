@@ -34,15 +34,15 @@ public:
     CameraController() {}
     ~CameraController() override {}
 
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
     void Finalize() override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
     float CalculateFovYBySpeed(float _xzSpeed) const;
 
     // --- Follow Target ---
     OriGine::EntityHandle GetFollowTargetEntity() const { return followTargetEntity_; }
-    void SetFollowTargetEntity(OriGine::EntityHandle _entity) { followTargetEntity_ = _entity; }
+    void SetFollowTargetEntity(const OriGine::EntityHandle& _entity) { followTargetEntity_ = _entity; }
 
     // --- Base Rotation ---
     const OriGine::Quaternion& GetBaseRotate() const { return baseRotate_; }

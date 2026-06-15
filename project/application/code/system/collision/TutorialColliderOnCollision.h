@@ -16,7 +16,7 @@ public:
     void Update() override;
 
 protected:
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
 protected:
     OriGine::EntityHandle playerEntityHandle_ = OriGine::EntityHandle();

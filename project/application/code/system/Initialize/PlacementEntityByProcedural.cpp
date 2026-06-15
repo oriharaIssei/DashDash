@@ -148,7 +148,7 @@ void PlacementEntityByProcedural::CreatePSO() {
     pso_ = shaderManager->CreatePso(psoKey, shaderInfo, dxDevice->device_);
 }
 
-void PlacementEntityByProcedural::UpdateEntity(OriGine::EntityHandle _handle) {
+void PlacementEntityByProcedural::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& commandList = dxCommand_->GetCommandList();
 
     auto* entityTransform         = GetComponent<Transform>(_handle);

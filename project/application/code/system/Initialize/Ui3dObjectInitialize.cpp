@@ -11,7 +11,7 @@ Ui3dObjectInitialize::Ui3dObjectInitialize() : ISystem(SystemCategory::Initializ
 void Ui3dObjectInitialize::Initialize() {}
 void Ui3dObjectInitialize::Finalize() {}
 
-void Ui3dObjectInitialize::UpdateEntity(EntityHandle _handle) {
+void Ui3dObjectInitialize::UpdateEntity(const EntityHandle& _handle) {
     // カメラエンティティ取得
     EntityHandle cameraHandle = GetUniqueEntity("GameCamera");
     if (!cameraHandle.IsValid()) {

@@ -18,7 +18,7 @@ enum class CameraMoveState {
 /// </summary>
 class ICameraState {
 public:
-    ICameraState(OriGine::Scene* _scene, OriGine::EntityHandle _cameraEntityHandle, OriGine::EntityHandle _playerEntityHandle)
+    ICameraState(OriGine::Scene* _scene, const OriGine::EntityHandle& _cameraEntityHandle, const OriGine::EntityHandle& _playerEntityHandle)
         : scene_(_scene)
         , cameraEntityHandle_(_cameraEntityHandle)
         , playerEntityHandle_(_playerEntityHandle) {}

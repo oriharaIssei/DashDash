@@ -34,7 +34,7 @@ public:
     void Finalize() override;
 
 private:
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
     /// <summary>
     /// ステージ紹介シーケンス の開始処理
@@ -56,7 +56,7 @@ private:
     /// <param name="handle"></param>
     void ChangeState(
         StartSequenceStateType _type,
-        OriGine::EntityHandle _handle);
+        const OriGine::EntityHandle& _handle);
 
     /// <summary>
     /// ゲームカメラを無効化する
@@ -83,13 +83,13 @@ private:
     /// </summary>
     /// <param name="_handle"></param>
     /// <param name="_visible"></param>
-    void SetStartSpriteVisible(OriGine::EntityHandle _handle, bool _visible);
+    void SetStartSpriteVisible(const OriGine::EntityHandle& _handle, bool _visible);
 
     /// <summary>
     /// 不要なエンティティのクリーンアップ処理
     /// </summary>
     /// <param name="handle"></param>
-    void CleanupEntities(OriGine::EntityHandle handle);
+    void CleanupEntities(const OriGine::EntityHandle& handle);
 
 private:
     /// <summary>
@@ -99,8 +99,8 @@ private:
     public:
         virtual ~IStartSequenceState() = default;
 
-        virtual void Enter(StartSequenceSystem& /*_system*/, OriGine::EntityHandle /*_handle*/) {}
-        virtual void Update(StartSequenceSystem& _system, OriGine::EntityHandle _handle) = 0;
+        virtual void Enter(StartSequenceSystem& /*_system*/, const OriGine::EntityHandle& /*_handle*/) {}
+        virtual void Update(StartSequenceSystem& _system, const OriGine::EntityHandle& _handle) = 0;
     };
 
     /// <summary>
@@ -109,8 +109,8 @@ private:
     class IntroductionState final
         : public IStartSequenceState {
     public:
-        void Enter(StartSequenceSystem& _system, OriGine::EntityHandle _handle) override;
-        void Update(StartSequenceSystem& _system, OriGine::EntityHandle _handle) override;
+        void Enter(StartSequenceSystem& _system, const OriGine::EntityHandle& _handle) override;
+        void Update(StartSequenceSystem& _system, const OriGine::EntityHandle& _handle) override;
     };
 
     /// <summary>
@@ -119,7 +119,7 @@ private:
     class StartTimerState final
         : public IStartSequenceState {
     public:
-        void Update(StartSequenceSystem& system, OriGine::EntityHandle handle) override;
+        void Update(StartSequenceSystem& system, const OriGine::EntityHandle& handle) override;
     };
 
     /// <summary>
@@ -128,8 +128,8 @@ private:
     class GameStartState final
         : public IStartSequenceState {
     public:
-        void Enter(StartSequenceSystem& _system, OriGine::EntityHandle _handle) override;
-        void Update(StartSequenceSystem&, OriGine::EntityHandle) override {}
+        void Enter(StartSequenceSystem& _system, const OriGine::EntityHandle& _handle) override;
+        void Update(StartSequenceSystem&, const OriGine::EntityHandle&) override {}
     };
 
 private:

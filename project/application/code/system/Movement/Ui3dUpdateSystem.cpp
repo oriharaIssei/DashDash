@@ -12,7 +12,7 @@ Ui3dUpdateSystem::~Ui3dUpdateSystem() {}
 void Ui3dUpdateSystem::Initialize() {}
 void Ui3dUpdateSystem::Finalize() {}
 
-void Ui3dUpdateSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void Ui3dUpdateSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto playerHandle = GetUniqueEntity("Player");
     if (!playerHandle.IsValid()) {
         return;

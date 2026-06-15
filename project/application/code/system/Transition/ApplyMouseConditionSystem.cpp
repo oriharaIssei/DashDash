@@ -16,7 +16,7 @@ ApplyMouseConditionSystem::~ApplyMouseConditionSystem() = default;
 void ApplyMouseConditionSystem::Initialize() {}
 void ApplyMouseConditionSystem::Finalize() {}
 
-void ApplyMouseConditionSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void ApplyMouseConditionSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& conditions = GetComponents<MouseCondition>(_handle);
     if (conditions.empty()) {
         return;

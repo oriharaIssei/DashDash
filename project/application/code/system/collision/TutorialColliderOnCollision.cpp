@@ -24,7 +24,7 @@ void TutorialColliderOnCollision::Update() {
     ISystem::Update();
 }
 
-void TutorialColliderOnCollision::UpdateEntity(OriGine::EntityHandle _handle) {
+void TutorialColliderOnCollision::UpdateEntity(const OriGine::EntityHandle& _handle) {
     if (!_handle.IsValid()) {
         return;
     }

@@ -109,7 +109,7 @@ CreateMeshFromSpline::~CreateMeshFromSpline() {}
 void CreateMeshFromSpline::Initialize() {}
 void CreateMeshFromSpline::Finalize() {}
 
-void CreateMeshFromSpline::UpdateEntity(OriGine::EntityHandle _handle) {
+void CreateMeshFromSpline::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto planeRendererComp = GetComponent<PlaneRenderer>(_handle);
     if (planeRendererComp == nullptr) {
         return;
@@ -123,7 +123,7 @@ void CreateMeshFromSpline::UpdateEntity(OriGine::EntityHandle _handle) {
     planeRendererComp->SetIsCulling(true);
     planeRendererComp->SetInstancing(false); // インスタンシングは使用しない
     for (auto& splinePointsComp : splinePointsComps) {
-        if (splinePointsComp.commonSettings.isCrossMesh) {
+        if (splinePointsComp.GetCommonSettings().isCrossMesh) {
             CreateCrossPlaneMesh(planeRendererComp, &splinePointsComp);
         } else {
             CreateLinePlaneMesh(planeRendererComp, &splinePointsComp);
@@ -137,25 +137,25 @@ void CreateMeshFromSpline::CreateLinePlaneMesh(
     std::vector<TextureColorVertexData> vertices;
     std::vector<uint32_t> indices;
 
-    const int32_t segmentCount = static_cast<int32_t>(spline->points.size() - 1);
+    const int32_t segmentCount = static_cast<int32_t>(spline->GetPoints().size() - 1);
     float allLength            = 0.f;
 
     for (int32_t i = 0; i < segmentCount; ++i) {
-        allLength += Vec3f(spline->points[i + 1] - spline->points[i]).length();
+        allLength += Vec3f(spline->GetPoints()[i + 1] - spline->GetPoints()[i]).length();
     }
 
     float totalLength = 0.f;
     float prevTotal   = 0.f;
 
     for (int32_t i = 0; i < segmentCount; ++i) {
-        const auto& p0 = spline->points[i];
-        const auto& p1 = spline->points[i + 1];
+        const auto& p0 = spline->GetPoints()[i];
+        const auto& p1 = spline->GetPoints()[i + 1];
 
         prevTotal = totalLength;
         totalLength += Vec3f(p1 - p0).length();
 
         const auto seg = BuildSplineSegment(
-            p0, p1, prevTotal, totalLength, allLength, spline->commonSettings);
+            p0, p1, prevTotal, totalLength, allLength, spline->GetCommonSettings());
 
         AppendPlaneSegment(
             vertices, indices,
@@ -181,25 +181,25 @@ void CreateMeshFromSpline::CreateCrossPlaneMesh(
     std::vector<TextureColorVertexData> horizontal;
     std::vector<uint32_t> indices;
 
-    const int32_t segmentCount = static_cast<int32_t>(spline->points.size() - 1);
+    const int32_t segmentCount = static_cast<int32_t>(spline->GetPoints().size() - 1);
 
     float allLength = 0.f;
     for (int32_t i = 0; i < segmentCount; ++i) {
-        allLength += Vec3f(spline->points[i + 1] - spline->points[i]).length();
+        allLength += Vec3f(spline->GetPoints()[i + 1] - spline->GetPoints()[i]).length();
     }
 
     float totalLength = 0.f;
     float prevTotal   = 0.f;
 
     for (int32_t i = 0; i < segmentCount; ++i) {
-        const auto& p0 = spline->points[i];
-        const auto& p1 = spline->points[i + 1];
+        const auto& p0 = spline->GetPoints()[i];
+        const auto& p1 = spline->GetPoints()[i + 1];
 
         prevTotal = totalLength;
         totalLength += Vec3f(p1 - p0).length();
 
         const auto seg = BuildSplineSegment(
-            p0, p1, prevTotal, totalLength, allLength, spline->commonSettings);
+            p0, p1, prevTotal, totalLength, allLength, spline->GetCommonSettings());
 
         AppendPlaneSegment(vertical, indices, seg, seg.right, seg.up, i == 0);
         AppendPlaneSegment(horizontal, indices, seg, seg.up, seg.right, i == 0);

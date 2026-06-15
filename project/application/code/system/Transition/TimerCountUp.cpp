@@ -18,7 +18,7 @@ TimerCountUp::~TimerCountUp() {}
 void TimerCountUp::Initialize() {}
 void TimerCountUp::Finalize() {}
 
-void TimerCountUp::UpdateEntity(OriGine::EntityHandle _handle) {
+void TimerCountUp::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& timerComponents = GetComponents<TimerComponent>(_handle);
     // タイマーコンポーネントがない場合は何もしない
     if (timerComponents.empty()) {

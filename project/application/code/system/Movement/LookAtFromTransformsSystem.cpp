@@ -13,7 +13,7 @@ LookAtFromTransformsSystem::~LookAtFromTransformsSystem() {}
 void LookAtFromTransformsSystem::Initialize() {}
 void LookAtFromTransformsSystem::Finalize() {}
 
-void LookAtFromTransformsSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void LookAtFromTransformsSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& lookAtComps = GetComponents<LookAtFromTransforms>(_handle);
     if (lookAtComps.empty()) {
         return;
@@ -23,8 +23,8 @@ void LookAtFromTransformsSystem::UpdateEntity(OriGine::EntityHandle _handle) {
     auto transform = GetComponent<OriGine::Transform>(_handle);
 
     for (auto& lookAtComp : lookAtComps) {
-        auto fromTransformComp = GetComponent<OriGine::Transform>(lookAtComp.fromTransformComp);
-        auto toTransformComp   = GetComponent<OriGine::Transform>(lookAtComp.toTransformComp);
+        auto fromTransformComp = GetComponent<OriGine::Transform>(lookAtComp.GetFromTransformComp());
+        auto toTransformComp   = GetComponent<OriGine::Transform>(lookAtComp.GetToTransformComp());
         if (!fromTransformComp || !toTransformComp) {
             continue;
         }
@@ -36,13 +36,13 @@ void LookAtFromTransformsSystem::UpdateEntity(OriGine::EntityHandle _handle) {
         Quaternion lookAtRotate    = Quaternion::LookAt(direction, axisY);
         OriGine::Vec3f eulerAngles = lookAtRotate.ToEulerAngles();
 
-        if (!lookAtComp.rotateAxis.HasFlag(LookAtFromTransforms::RotateAxis::X)) {
+        if (!lookAtComp.GetRotateAxis().HasFlag(LookAtFromTransforms::RotateAxis::X)) {
             eulerAngles[X] = 0.f;
         }
-        if (!lookAtComp.rotateAxis.HasFlag(LookAtFromTransforms::RotateAxis::Y)) {
+        if (!lookAtComp.GetRotateAxis().HasFlag(LookAtFromTransforms::RotateAxis::Y)) {
             eulerAngles[Y] = 0.f;
         }
-        if (!lookAtComp.rotateAxis.HasFlag(LookAtFromTransforms::RotateAxis::Z)) {
+        if (!lookAtComp.GetRotateAxis().HasFlag(LookAtFromTransforms::RotateAxis::Z)) {
             eulerAngles[Z] = 0.f;
         }
 

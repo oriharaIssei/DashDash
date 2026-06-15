@@ -15,7 +15,7 @@ ClearSceneRankingBuildSystem::~ClearSceneRankingBuildSystem() {}
 void ClearSceneRankingBuildSystem::Initialize() {}
 void ClearSceneRankingBuildSystem::Finalize() {}
 
-void ClearSceneRankingBuildSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void ClearSceneRankingBuildSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     int32_t stageNumber          = 0;
     StageProgress* stageProgress = nullptr;
 

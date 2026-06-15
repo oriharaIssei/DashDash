@@ -11,7 +11,7 @@ public:
     ObstacleShieldComponent();
     ~ObstacleShieldComponent();
 
-    void Initialize(OriGine::Scene* scene, OriGine::EntityHandle owner) override;
-    void Edit(OriGine::Scene* scene, OriGine::EntityHandle owner, const std::string& parentLabel) override;
+    void Initialize(OriGine::Scene* scene, const OriGine::EntityHandle& owner) override;
+    void Edit(OriGine::Scene* scene, const OriGine::EntityHandle& owner, const std::string& parentLabel) override;
     void Finalize() override;
 };

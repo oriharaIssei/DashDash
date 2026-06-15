@@ -9,10 +9,10 @@ using namespace OriGine;
 PlayerStateOverrideCondition::PlayerStateOverrideCondition() {}
 PlayerStateOverrideCondition::~PlayerStateOverrideCondition() {}
 
-void PlayerStateOverrideCondition::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/) {}
+void PlayerStateOverrideCondition::Initialize(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/) {}
 void PlayerStateOverrideCondition::Finalize() {}
 
-void PlayerStateOverrideCondition::Edit(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const ::std::string& _parentLabel) {
+void PlayerStateOverrideCondition::Edit(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/, [[maybe_unused]] const ::std::string& _parentLabel) {
 #ifdef _DEBUG
     int32_t bitmask = static_cast<int32_t>(overrideConditions.ToUnderlying());
 

@@ -13,7 +13,7 @@ BackFireInitialize::~BackFireInitialize() {}
 void BackFireInitialize::Initialize() {}
 void BackFireInitialize::Finalize() {}
 
-void BackFireInitialize::UpdateEntity(OriGine::EntityHandle _handle) {
+void BackFireInitialize::UpdateEntity(const OriGine::EntityHandle& _handle) {
     /// Transform
     Transform* playerTransform   = GetComponent<OriGine::Transform>(GetUniqueEntity("Player"));
     Transform* backFirTrans      = GetComponent<OriGine::Transform>(_handle);

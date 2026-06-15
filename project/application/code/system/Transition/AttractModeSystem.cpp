@@ -41,7 +41,7 @@ void AttractModeSystem::Update() {
     ISystem::Update();
 }
 
-void AttractModeSystem::UpdateEntity(EntityHandle _handle) {
+void AttractModeSystem::UpdateEntity(const EntityHandle& _handle) {
     constexpr int32_t kEnterSpriteAnimationIndex = 0;
     constexpr int32_t kExitSpriteAnimationIndex  = 1;
     auto* enterAnim                              = GetComponent<SpriteAnimation>(_handle, kEnterSpriteAnimationIndex);

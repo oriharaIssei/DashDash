@@ -18,7 +18,7 @@ SelectPreviewSceneInitialize::~SelectPreviewSceneInitialize() {}
 void SelectPreviewSceneInitialize::Initialize() {}
 void SelectPreviewSceneInitialize::Finalize() {}
 
-void SelectPreviewSceneInitialize::UpdateEntity(EntityHandle _handle) {
+void SelectPreviewSceneInitialize::UpdateEntity(const EntityHandle& _handle) {
     auto& subScenes = GetComponents<SubScene>(_handle);
 
     if (subScenes.empty()) {

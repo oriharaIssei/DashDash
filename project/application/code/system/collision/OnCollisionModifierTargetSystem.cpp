@@ -28,7 +28,7 @@ OnCollisionModifierTargetSystem::~OnCollisionModifierTargetSystem() {}
 void OnCollisionModifierTargetSystem::Initialize() {}
 void OnCollisionModifierTargetSystem::Finalize() {}
 
-void OnCollisionModifierTargetSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void OnCollisionModifierTargetSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto speedModifiers = GetComponent<SpeedModifiers>(_handle);
     if (!speedModifiers) {
         return;

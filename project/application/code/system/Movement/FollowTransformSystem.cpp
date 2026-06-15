@@ -18,7 +18,7 @@ FollowTransformSystem::FollowTransformSystem() : ISystem(SystemCategory::Movemen
 void FollowTransformSystem::Initialize() {}
 void FollowTransformSystem::Finalize() {}
 
-void FollowTransformSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void FollowTransformSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto* follow = GetComponent<FollowTransformComponent>(_handle);
     if (!follow || !follow->IsActive()) {
         return;

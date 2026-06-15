@@ -20,10 +20,10 @@ using namespace OriGine;
 LookAtFromTransforms::LookAtFromTransforms() {}
 LookAtFromTransforms::~LookAtFromTransforms() {}
 
-void LookAtFromTransforms::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {}
+void LookAtFromTransforms::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {}
 void LookAtFromTransforms::Finalize() {}
 
-void LookAtFromTransforms::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] EntityHandle _owner, [[maybe_unused]] const std::string& _parentLabel) {
+void LookAtFromTransforms::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] const EntityHandle& _owner, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     ImGui::Text("Rotate Axis :");

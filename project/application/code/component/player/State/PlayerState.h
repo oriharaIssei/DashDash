@@ -77,11 +77,11 @@ public:
     /// <summary>
     /// 初期化処理
     /// </summary>
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
     /// <summary>
     /// エディタ用編集UI
     /// </summary>
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
     /// <summary>
     /// 終了処理
     /// </summary>
@@ -92,13 +92,13 @@ public:
     /// </summary>
     /// <param name="_collisionNormal">衝突法線</param>
     /// <param name="_entityHandle">衝突相手のエンティティハンドル</param>
-    void OnCollisionWall(const OriGine::Vec3f& _collisionNormal, OriGine::EntityHandle _entityHandle);
+    void OnCollisionWall(const OriGine::Vec3f& _collisionNormal, const OriGine::EntityHandle& _entityHandle);
     /// <summary>
     /// 壁との接触がなくなったときの処理
     /// </summary>
     void OffCollisionWall();
 
-    void OnCollisionRail(OriGine::EntityHandle _entityHandle);
+    void OnCollisionRail(const OriGine::EntityHandle& _entityHandle);
     void OffCollisionRail();
 
     /// <summary>
@@ -155,7 +155,7 @@ public:
     OriGine::EntityHandle GetCameraEntityHandle() const {
         return followCameraEntityHandle_;
     }
-    void SetCameraEntityHandle(OriGine::EntityHandle _handle) {
+    void SetCameraEntityHandle(const OriGine::EntityHandle& _handle) {
         followCameraEntityHandle_ = _handle;
     }
 

@@ -27,25 +27,25 @@ RailInitializeSystem::~RailInitializeSystem() {}
 void RailInitializeSystem::Initialize() {}
 void RailInitializeSystem::Finalize() {}
 
-void RailInitializeSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void RailInitializeSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     // RailPoints コンポーネントを取得
     auto* railPoints = GetComponent<RailPoints>(_handle);
     if (railPoints == nullptr) {
         return;
     }
-    if (railPoints->points.size() < 2) {
+    if (railPoints->GetPoints().size() < 2) {
         return;
     }
 
     // CapsuleCollider コンポーネントを追加
     auto& colliders          = GetComponents<CapsuleCollider>(_handle);
-    std::deque<Vec3f> points = railPoints->points;
+    std::deque<Vec3f> points = railPoints->GetPoints();
 
     int32_t segmentCount = 0;
-    if (railPoints->points.size() >= 4) {
+    if (railPoints->GetPoints().size() >= 4) {
         constexpr int32_t kMinDivision = 6;
         constexpr int32_t kDivider     = 4;
-        points                         = CatmullRomSpline(points, (std::max)(railPoints->segmentDivide / kDivider, kMinDivision));
+        points                         = CatmullRomSpline(points, (std::max)(railPoints->GetSegmentDivide() / kDivider, kMinDivision));
     }
     segmentCount = static_cast<int32_t>(points.size()) - 1;
 
@@ -72,7 +72,7 @@ void RailInitializeSystem::UpdateEntity(OriGine::EntityHandle _handle) {
         if (capsuleCollider) {
             capsuleCollider->SetLocalStart(segmentStart);
             capsuleCollider->SetLocalEnd(segmentEnd);
-            capsuleCollider->SetLocalRadius(railPoints->radius + railPoints->collisionRadiusOffset);
+            capsuleCollider->SetLocalRadius(railPoints->GetRadius() + railPoints->GetCollisionRadiusOffset());
             capsuleCollider->CalculateWorldShape();
 
             // 衝突カテゴリを設定

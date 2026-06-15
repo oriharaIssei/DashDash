@@ -14,7 +14,7 @@ InitializeMouseCondition::InitializeMouseCondition() : ISystem(OriGine::SystemCa
 void InitializeMouseCondition::Initialize() {}
 void InitializeMouseCondition::Finalize() {}
 
-void InitializeMouseCondition::UpdateEntity(OriGine::EntityHandle _handle) {
+void InitializeMouseCondition::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& conditions = GetComponents<MouseCondition>(_handle);
     if (conditions.empty()) {
         return;

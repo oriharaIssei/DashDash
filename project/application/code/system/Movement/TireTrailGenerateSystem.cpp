@@ -26,7 +26,7 @@ TireTrailGenerateSystem::~TireTrailGenerateSystem() {}
 void TireTrailGenerateSystem::Initialize() {}
 void TireTrailGenerateSystem::Finalize() {}
 
-void TireTrailGenerateSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void TireTrailGenerateSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     TireSplinePoints* spline = GetComponent<TireSplinePoints>(_handle);
     if (!spline) {
         return;
@@ -43,30 +43,30 @@ void TireTrailGenerateSystem::UpdateEntity(OriGine::EntityHandle _handle) {
     ResamplePoints(*spline);
 
     // capacity超過分を削除
-    while (spline->points.size() > spline->capacity) {
-        spline->points.pop_front();
+    while (spline->GetPoints().size() > spline->GetCapacity()) {
+        spline->GetPoints().pop_front();
     }
 
-    spline->commonSettings.fadeoutTimer = spline->commonSettings.fadeoutTime;
+    spline->GetCommonSettings().fadeoutTimer = spline->GetCommonSettings().fadeoutTime;
 }
 
 bool TireTrailGenerateSystem::BuildGenerateContext(
     TireSplinePoints& spline,
     GenerateContext& out) {
-    auto* player = GetEntity(spline.commonSettings.playerEntityHandle);
+    auto* player = GetEntity(spline.GetCommonSettings().playerEntityHandle);
     if (!player) {
-        spline.commonSettings.playerEntityHandle = EntityHandle();
+        spline.GetCommonSettings().playerEntityHandle = EntityHandle();
         return false;
     }
 
-    auto* transform   = GetComponent<OriGine::Transform>(spline.commonSettings.playerEntityHandle);
-    auto* state       = GetComponent<PlayerState>(spline.commonSettings.playerEntityHandle);
-    auto* effectParam = GetComponent<PlayerEffectControlParam>(spline.commonSettings.playerEntityHandle);
-    auto* rigidBody   = GetComponent<OriGine::Rigidbody>(spline.commonSettings.playerEntityHandle);
+    auto* transform   = GetComponent<OriGine::Transform>(spline.GetCommonSettings().playerEntityHandle);
+    auto* state       = GetComponent<PlayerState>(spline.GetCommonSettings().playerEntityHandle);
+    auto* effectParam = GetComponent<PlayerEffectControlParam>(spline.GetCommonSettings().playerEntityHandle);
+    auto* rigidBody   = GetComponent<OriGine::Rigidbody>(spline.GetCommonSettings().playerEntityHandle);
 
     // コンポーネントが揃っていない場合は処理しない
     if (!transform || !state || !rigidBody || !effectParam) {
-        spline.commonSettings.playerEntityHandle = EntityHandle();
+        spline.GetCommonSettings().playerEntityHandle = EntityHandle();
         if (effectParam) {
             // エフェクトパラメータが存在する場合は、スプラインの紐付けを解除する
             effectParam->SetTireTrailSplineEntityId(EntityHandle());
@@ -77,33 +77,33 @@ bool TireTrailGenerateSystem::BuildGenerateContext(
     if (!state->IsOnGround() || rigidBody->GetVelocity().lengthSq() < kEpsilon) {
         // 地上にいない、または停止中は処理しない
         // スプラインの紐付けも解除する
-        spline.commonSettings.playerEntityHandle = EntityHandle();
+        spline.GetCommonSettings().playerEntityHandle = EntityHandle();
         effectParam->SetTireTrailSplineEntityId(EntityHandle());
         return false;
     }
 
     out.position      = transform->GetWorldTranslate();
-    out.segmentLength = spline.commonSettings.segmentLength;
+    out.segmentLength = spline.GetCommonSettings().segmentLength;
 
     // ---- alpha 計算 ----
     float gearT =
         static_cast<float>(state->GetGearLevel()) / static_cast<float>(kMaxPlayerGearLevel);
 
-    gearT = EasingFunctions[static_cast<int>(spline.speedIntensityEaseType)](gearT);
+    gearT = EasingFunctions[static_cast<int>(spline.GetSpeedIntensityEaseType())](gearT);
 
     float speedFactor =
-        1.f + std::lerp(spline.minSpeedFactor, spline.maxSpeedFactor, gearT);
+        1.f + std::lerp(spline.GetMinSpeedFactor(), spline.GetMaxSpeedFactor(), gearT);
 
     float bank = std::abs(transform->rotate[Z]);
-    if (bank >= spline.thresholdBankAngle) {
+    if (bank >= spline.GetThresholdBankAngle()) {
         constexpr float kMaxBankAngle = EffectConfig::TireTrail::kMaxBankAngle;
-        float bankT                   = (bank - spline.thresholdBankAngle) / kMaxBankAngle;
+        float bankT                   = (bank - spline.GetThresholdBankAngle()) / kMaxBankAngle;
         out.alpha +=
-            std::lerp(spline.minBankFactor, spline.maxBankFactor, bankT) * speedFactor;
+            std::lerp(spline.GetMinBankFactor(), spline.GetMaxBankFactor(), bankT) * speedFactor;
     }
 
     if (state->IsGearUp()) {
-        out.alpha += spline.gearupFactor * speedFactor;
+        out.alpha += spline.GetGearupFactor() * speedFactor;
     }
 
     out.alpha = (std::min)(out.alpha, 1.f);
@@ -116,22 +116,22 @@ void TireTrailGenerateSystem::EnsureMinimumControlPoints(
     const GenerateContext& ctx) {
     constexpr int32_t kMinPoints = EffectConfig::TireSpline::kMinPoints;
 
-    if (spline.points.size() >= kMinPoints) {
+    if (spline.GetPoints().size() >= kMinPoints) {
         return;
     }
 
     const int32_t need =
-        kMinPoints - static_cast<int32_t>(spline.points.size());
+        kMinPoints - static_cast<int32_t>(spline.GetPoints().size());
 
     for (int i = 0; i < need; ++i) {
-        spline.PushPoint(ctx.position, spline.groundedFactor);
+        spline.PushPoint(ctx.position, spline.GetGroundedFactor());
     }
 }
 
 void TireTrailGenerateSystem::AppendNewPoints(
     TireSplinePoints& spline,
     const GenerateContext& ctx) {
-    const auto& last = spline.points.back();
+    const auto& last = spline.GetPoints().back();
     Vec3f delta      = ctx.position - last.position;
     float dist       = delta.length();
 
@@ -160,14 +160,14 @@ void TireTrailGenerateSystem::AppendNewPoints(
 
 void TireTrailGenerateSystem::ResamplePoints(TireSplinePoints& spline) {
     std::deque<TireSplinePoints::ControlPoint> result;
-    const float segLen         = spline.commonSettings.segmentLength;
+    const float segLen         = spline.GetCommonSettings().segmentLength;
     constexpr float kThreshold = 0.3f;
 
     TireSplinePoints::ControlPoint point;
 
-    for (int32_t i = 0; i < static_cast<int32_t>(spline.points.size()) - 1; ++i) {
-        auto& current        = spline.points[i];
-        auto& next           = spline.points[i + 1];
+    for (int32_t i = 0; i < static_cast<int32_t>(spline.GetPoints().size()) - 1; ++i) {
+        auto& current        = spline.GetPoints()[i];
+        auto& next           = spline.GetPoints()[i + 1];
         OriGine::Vec3f delta = next.position - current.position;
         float len            = delta.length();
 
@@ -188,7 +188,7 @@ void TireTrailGenerateSystem::ResamplePoints(TireSplinePoints& spline) {
                 point.alpha    = std::lerp(current.alpha, next.alpha, static_cast<float>(j) / static_cast<float>(divs));
                 result.push_back(point);
             }
-        } else if (len - segLen < segLen * kThreshold && (i + 1) < static_cast<int>(spline.points.size() - 1)) {
+        } else if (len - segLen < segLen * kThreshold && (i + 1) < static_cast<int>(spline.GetPoints().size() - 1)) {
             // 短すぎる → 統合
             point.position = (current.position + next.position) * 0.5f;
             point.alpha    = (current.alpha + next.alpha) * 0.5f;
@@ -197,24 +197,24 @@ void TireTrailGenerateSystem::ResamplePoints(TireSplinePoints& spline) {
         }
     }
 
-    result.push_back(spline.points.back());
-    spline.points = std::move(result);
+    result.push_back(spline.GetPoints().back());
+    spline.GetPoints() = std::move(result);
 }
 
 void TireTrailGenerateSystem::UpdateFadeOut(
     TireSplinePoints& _spline,
-    EntityHandle _handle) {
+    const EntityHandle& _handle) {
     constexpr int32_t kMinPoints = 4;
     float deltaTime              = Engine::GetInstance()->GetDeltaTime();
 
-    if (_spline.points.size() < kMinPoints) {
+    if (_spline.GetPoints().size() < kMinPoints) {
         GetScene()->AddDeleteEntity(_handle);
         return;
     }
 
-    _spline.commonSettings.fadeoutTimer += deltaTime;
-    if (_spline.commonSettings.fadeoutTimer >= _spline.commonSettings.fadeoutTime) {
-        _spline.commonSettings.fadeoutTimer = 0.f;
-        _spline.points.pop_front();
+    _spline.GetCommonSettings().fadeoutTimer += deltaTime;
+    if (_spline.GetCommonSettings().fadeoutTimer >= _spline.GetCommonSettings().fadeoutTime) {
+        _spline.GetCommonSettings().fadeoutTimer = 0.f;
+        _spline.GetPoints().pop_front();
     }
 }

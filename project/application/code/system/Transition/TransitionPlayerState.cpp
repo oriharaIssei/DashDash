@@ -40,7 +40,7 @@
 
 using namespace OriGine;
 
-void TransitionPlayerState::UpdateEntity(EntityHandle _handle) {
+void TransitionPlayerState::UpdateEntity(const EntityHandle& _handle) {
     PlayerState* state   = GetComponent<PlayerState>(_handle);
     PlayerStatus* status = GetComponent<PlayerStatus>(_handle);
     Rigidbody* rigidbody = GetComponent<Rigidbody>(_handle);
@@ -116,7 +116,7 @@ void TransitionPlayerState::UpdateEntity(EntityHandle _handle) {
             if (tierTrail) {
                 auto tireSplinePoints = GetComponent<TireSplinePoints>(tierTrail->GetHandle());
                 if (tireSplinePoints) {
-                    tireSplinePoints->commonSettings.playerEntityHandle = _handle;
+                    tireSplinePoints->GetCommonSettings().playerEntityHandle = _handle;
                     effectParam->SetTireTrailSplineEntityId(tierTrail->GetHandle());
                 }
             }

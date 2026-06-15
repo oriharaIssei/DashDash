@@ -38,7 +38,7 @@ void FollowCameraUpdateSystem::Finalize() {
     MessageBus::GetInstance()->Unsubscribe<PlayerStateChangedEvent>(playerStateChangedEventId_);
 }
 
-void FollowCameraUpdateSystem::UpdateEntity(EntityHandle _handle) {
+void FollowCameraUpdateSystem::UpdateEntity(const EntityHandle& _handle) {
     auto* cameraController = GetComponent<CameraController>(_handle);
     auto* cameraTransform  = GetComponent<CameraTransform>(_handle);
     auto* transform        = GetComponent<Transform>(_handle);
@@ -138,7 +138,7 @@ void FollowCameraUpdateSystem::UpdateEntity(EntityHandle _handle) {
     CameraManager::GetInstance()->DataConvertToBuffer(GetScene());
 }
 
-void FollowCameraUpdateSystem::CameraStateTransition(OriGine::EntityHandle _handle, CameraController* _cameraController) {
+void FollowCameraUpdateSystem::CameraStateTransition(const OriGine::EntityHandle& _handle, CameraController* _cameraController) {
     if (!hasStateChangeRequest_) {
         return;
     }
@@ -193,8 +193,8 @@ CameraMoveState FollowCameraUpdateSystem::ConvertToCameraState(PlayerMoveState _
 std::shared_ptr<ICameraState> FollowCameraUpdateSystem::CreateCameraState(
     CameraMoveState _type,
     Scene* _scene,
-    EntityHandle _camera,
-    EntityHandle _player) {
+    const EntityHandle& _camera,
+    const EntityHandle& _player) {
     switch (_type) {
     case CameraMoveState::IDLE:
         return std::make_unique<CameraIdleState>(_scene, _camera, _player);

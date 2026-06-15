@@ -54,7 +54,7 @@ void PlayerExplosionEffectSystem::Update() {
     MyRandom::Float rotateSpeedRand(kMinRotateSpeed, kMaxRotateSpeed);
 
     // パーツにランダムな初期回転とランダムな回転速度を設定するヘルパー
-    auto applyRandomSpin = [&](EntityHandle _handle) {
+    auto applyRandomSpin = [&](const EntityHandle& _handle) {
         Transform* trans = GetComponent<Transform>(_handle);
         if (trans) {
             trans->rotate = Quaternion::FromEulerAngles(

@@ -11,7 +11,7 @@
 class PlayerOnRailState
     : public IPlayerMoveState {
 public:
-    PlayerOnRailState(OriGine::Scene* _scene, OriGine::EntityHandle _playerEntityHandle);
+    PlayerOnRailState(OriGine::Scene* _scene, const OriGine::EntityHandle& _playerEntityHandle);
     ~PlayerOnRailState() override;
 
     void Initialize() override;

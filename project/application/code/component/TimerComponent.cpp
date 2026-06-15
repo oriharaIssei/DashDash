@@ -9,7 +9,7 @@ using namespace OriGine;
 TimerComponent::TimerComponent() {}
 TimerComponent::~TimerComponent() {}
 
-void TimerComponent::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
+void TimerComponent::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
     if (isStarted_) {
         currentTime_ = maxTime_;
     } else {
@@ -18,7 +18,7 @@ void TimerComponent::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
 }
 void TimerComponent::Finalize() {}
 
-void TimerComponent::Edit(Scene* /*_scene*/, EntityHandle /* _handle */, [[maybe_unused]] const std::string& _parentLabel) {
+void TimerComponent::Edit(Scene* /*_scene*/, const EntityHandle& /* _handle */, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef DEBUG
     CheckBoxCommand("IsStarted For Using System##" + _parentLabel, isStarted_);
     DragGuiCommand("Max Time (s)##" + _parentLabel, maxTime_, 0.1f);

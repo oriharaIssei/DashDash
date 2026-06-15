@@ -34,7 +34,7 @@ public:
 
 public:
     // ヘルパー関数群
-    bool TryGetContext(OriGine::EntityHandle _handle, Context& _outContext);
+    bool TryGetContext(const OriGine::EntityHandle& _handle, Context& _outContext);
     void ProcessMovement(Context& _ctx);
     void ProcessIdle(Context& _ctx);
 
@@ -43,5 +43,5 @@ public:
     void RefineSplinePoints(SplinePoints* _splinePoints);
 
 private:
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 };

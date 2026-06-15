@@ -22,7 +22,7 @@ TimeLimitJudgeSystem::~TimeLimitJudgeSystem() {}
 void TimeLimitJudgeSystem::Initialize() {}
 void TimeLimitJudgeSystem::Finalize() {}
 
-void TimeLimitJudgeSystem::UpdateEntity(EntityHandle _handle) {
+void TimeLimitJudgeSystem::UpdateEntity(const EntityHandle& _handle) {
     auto timerComp = GetComponent<TimerComponent>(_handle);
     if (!timerComp) {
         return;

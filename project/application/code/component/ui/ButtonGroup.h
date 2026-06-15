@@ -19,8 +19,8 @@ public:
     ButtonGroup()           = default;
     ~ButtonGroup() override = default;
 
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
     void Finalize() override;
 
 private:
@@ -47,7 +47,7 @@ public:
 
     std::vector<OriGine::EntityHandle>& GetButtonEntityHandles() { return buttonEntityHandles_; }
 
-    int32_t GetButtonNumber(OriGine::EntityHandle _entityId) const {
+    int32_t GetButtonNumber(const OriGine::EntityHandle& _entityId) const {
         int32_t index = 0;
         for (const auto& handle : buttonEntityHandles_) {
             if (handle == _entityId) {

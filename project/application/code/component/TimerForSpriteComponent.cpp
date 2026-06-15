@@ -50,14 +50,14 @@ void from_json(const nlohmann::json& j, TimerForSpriteComponent& c) {
     j.at("digitDecimal").get_to(c.digitDecimal);
 }
 
-void TimerForSpriteComponent::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
+void TimerForSpriteComponent::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
     if (!this->numbersTexturePath.empty()) {
         textureIndex = AssetSystem::GetInstance()->GetManager<TextureAsset>()->LoadAsset(this->numbersTexturePath);
         this->SettingOnLoadTexture(textureIndex);
     }
 }
 
-void TimerForSpriteComponent::Edit([[maybe_unused]] Scene* _scene, EntityHandle /*_owner*/, [[maybe_unused]] const std::string& parentLabel) {
+void TimerForSpriteComponent::Edit([[maybe_unused]] Scene* _scene, const EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& parentLabel) {
 
 #ifdef DEBUG
     ImGui::Text("Sprite");

@@ -49,7 +49,7 @@ void StartSequenceSystem::Initialize() {
 
 void StartSequenceSystem::Finalize() {}
 
-void StartSequenceSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void StartSequenceSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     if (!isInitializeState_) {
         // ステージ紹介シーケンスを開始する
         ChangeState(stateType_, _handle);
@@ -94,7 +94,7 @@ void StartSequenceSystem::GameStartSequence() {
     }
 }
 
-void StartSequenceSystem::ChangeState(StartSequenceStateType _type, OriGine::EntityHandle _handle) {
+void StartSequenceSystem::ChangeState(StartSequenceStateType _type, const OriGine::EntityHandle& _handle) {
     stateType_ = _type;
 
     switch (_type) {
@@ -147,7 +147,7 @@ bool StartSequenceSystem::IsIntroductionCameraEnd() {
     return false;
 }
 
-void StartSequenceSystem::SetStartSpriteVisible(OriGine::EntityHandle _handle, bool _visible) {
+void StartSequenceSystem::SetStartSpriteVisible(const OriGine::EntityHandle& _handle, bool _visible) {
     auto* timer4Sprite = GetComponent<TimerForSpriteComponent>(_handle);
     if (!timer4Sprite) {
         return;
@@ -174,7 +174,7 @@ void StartSequenceSystem::SetStartSpriteVisible(OriGine::EntityHandle _handle, b
     }
 }
 
-void StartSequenceSystem::CleanupEntities(OriGine::EntityHandle _handle) {
+void StartSequenceSystem::CleanupEntities(const OriGine::EntityHandle& _handle) {
     GetScene()->AddDeleteEntity(_handle);
 
     if (auto* timer4Sprite = GetComponent<TimerForSpriteComponent>(_handle)) {
@@ -182,12 +182,12 @@ void StartSequenceSystem::CleanupEntities(OriGine::EntityHandle _handle) {
     }
 }
 
-void StartSequenceSystem::IntroductionState::Enter(StartSequenceSystem& _system, OriGine::EntityHandle _handle) {
+void StartSequenceSystem::IntroductionState::Enter(StartSequenceSystem& _system, const OriGine::EntityHandle& _handle) {
     _system.DisableGameCamera();
     _system.SetStartSpriteVisible(_handle, false);
 }
 
-void StartSequenceSystem::IntroductionState::Update(StartSequenceSystem& _system, OriGine::EntityHandle _handle) {
+void StartSequenceSystem::IntroductionState::Update(StartSequenceSystem& _system, const OriGine::EntityHandle& _handle) {
     auto* timer = _system.GetComponent<TimerComponent>(_handle);
     if (!timer) {
         return;
@@ -215,7 +215,7 @@ void StartSequenceSystem::IntroductionState::Update(StartSequenceSystem& _system
     _system.ChangeState(StartSequenceStateType::StartTimer, _handle);
 }
 
-void StartSequenceSystem::StartTimerState::Update(StartSequenceSystem& system, OriGine::EntityHandle _handle) {
+void StartSequenceSystem::StartTimerState::Update(StartSequenceSystem& system, const OriGine::EntityHandle& _handle) {
     auto* timer = system.GetComponent<TimerComponent>(_handle);
     if (!timer || timer->GetTime() > 0.f) {
         return;
@@ -225,7 +225,7 @@ void StartSequenceSystem::StartTimerState::Update(StartSequenceSystem& system, O
     system.ChangeState(StartSequenceStateType::GameStart, _handle);
 }
 
-void StartSequenceSystem::GameStartState::Enter(StartSequenceSystem& _system, OriGine::EntityHandle _handle) {
+void StartSequenceSystem::GameStartState::Enter(StartSequenceSystem& _system, const OriGine::EntityHandle& _handle) {
     if (auto* gameTimer = _system.GetComponent<TimerComponent>(
             _system.GetUniqueEntity("Timer"))) {
         gameTimer->SetStarted(true);

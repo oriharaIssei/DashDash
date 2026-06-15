@@ -9,9 +9,9 @@ using namespace OriGine;
 FollowTransformComponent::FollowTransformComponent() {}
 FollowTransformComponent::~FollowTransformComponent() {}
 
-void FollowTransformComponent::Initialize(OriGine::Scene* /*scene*/, OriGine::EntityHandle /*owner*/) {}
+void FollowTransformComponent::Initialize(OriGine::Scene* /*scene*/, const OriGine::EntityHandle& /*owner*/) {}
 
-void FollowTransformComponent::Edit(OriGine::Scene* /*scene*/, OriGine::EntityHandle /*owner*/, [[maybe_unused]] const std::string& parentLabel) {
+void FollowTransformComponent::Edit(OriGine::Scene* /*scene*/, const OriGine::EntityHandle& /*owner*/, [[maybe_unused]] const std::string& parentLabel) {
 #ifdef DEBUG
     DragGuiVectorCommand("Offset##" + parentLabel, offset_, 0.01f);
     DragGuiCommand("Sensitivity##" + parentLabel, sensitivity_, 0.1f, 0.0f, 100.0f);

@@ -16,6 +16,6 @@ public:
     // virtual void Edit();
     void Finalize();
 
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
-    void CreatePlanesFromComponent(OriGine::EntityHandle _handle, SpeedFor3dUIComponent* _speedFor3dUI);
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
+    void CreatePlanesFromComponent(const OriGine::EntityHandle& _handle, SpeedFor3dUIComponent* _speedFor3dUI);
 };

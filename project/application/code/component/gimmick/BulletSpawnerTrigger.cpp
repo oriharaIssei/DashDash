@@ -9,11 +9,11 @@
 #include "myGui/MyGui.h"
 #endif // _DEBUG
 
-void BulletSpawnerTrigger::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/) {}
+void BulletSpawnerTrigger::Initialize(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/) {}
 
 void BulletSpawnerTrigger::Finalize() {}
 
-void BulletSpawnerTrigger::Edit([[maybe_unused]] OriGine::Scene* _scene, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void BulletSpawnerTrigger::Edit([[maybe_unused]] OriGine::Scene* _scene, const OriGine::EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     // ── Mode 選択 ──────────────────────────────────────
     if (ImGui::BeginCombo(("Mode##" + _parentLabel).c_str(), kCollisionTriggerModeNames[static_cast<int>(mode_)])) {

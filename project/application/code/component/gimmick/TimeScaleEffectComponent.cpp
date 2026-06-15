@@ -13,13 +13,13 @@ TimeScaleEffectComponent::TimeScaleEffectComponent() {}
 
 TimeScaleEffectComponent::~TimeScaleEffectComponent() {}
 
-void TimeScaleEffectComponent::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/) {
+void TimeScaleEffectComponent::Initialize(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/) {
 }
 
 void TimeScaleEffectComponent::Finalize() {
 }
 
-void TimeScaleEffectComponent::Edit(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void TimeScaleEffectComponent::Edit(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     CheckBoxCommand("IsActive##" + _parentLabel, isActive_);

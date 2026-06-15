@@ -71,21 +71,21 @@ CreateRailMesh::~CreateRailMesh() {}
 void CreateRailMesh::Initialize() {}
 void CreateRailMesh::Finalize() {}
 
-void CreateRailMesh::UpdateEntity(EntityHandle _handle) {
+void CreateRailMesh::UpdateEntity(const EntityHandle& _handle) {
     auto cylinderRenderer = GetComponent<CylinderRenderer>(_handle);
     if (cylinderRenderer == nullptr) {
         return;
     }
 
     auto railPointsComp = GetComponent<RailPoints>(_handle);
-    if (!railPointsComp || (railPointsComp->points.size() < 2)) {
+    if (!railPointsComp || (railPointsComp->GetPoints().size() < 2)) {
         return;
     }
 
     CreateCylinderMeshFromRail(cylinderRenderer, railPointsComp);
 
-    const Vec3f& firstPoint = railPointsComp->points.front();
-    const Vec3f& lastPoint  = railPointsComp->points.back();
+    const Vec3f& firstPoint = railPointsComp->GetPoints().front();
+    const Vec3f& lastPoint  = railPointsComp->GetPoints().back();
 
     auto firstPointRenderer = GetComponent<SphereRenderer>(_handle, 0);
     if (!firstPointRenderer) {
@@ -104,9 +104,9 @@ void CreateRailMesh::CreateCylinderMeshFromRail(
     CylinderRenderer* _renderer,
     const RailPoints* _railPoints) {
 
-    const auto& originalPoints  = _railPoints->points;
-    const float radius          = _railPoints->radius;
-    const int32_t segmentDivide = _railPoints->segmentDivide;
+    const auto& originalPoints  = _railPoints->GetPoints();
+    const float radius          = _railPoints->GetRadius();
+    const int32_t segmentDivide = _railPoints->GetSegmentDivide();
 
     // CylinderRendererのPrimitiveから分割数を取得
     const auto& cylinderPrimitive   = _renderer->GetPrimitive();

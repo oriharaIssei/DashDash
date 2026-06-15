@@ -12,9 +12,9 @@
 
 using namespace OriGine;
 
-void ButtonGroup::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {}
+void ButtonGroup::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {}
 
-void ButtonGroup::Edit([[maybe_unused]] OriGine::Scene* _scene, [[maybe_unused]] EntityHandle _owner, [[maybe_unused]] const std::string& _parentLabel) {
+void ButtonGroup::Edit([[maybe_unused]] OriGine::Scene* _scene, [[maybe_unused]] const EntityHandle& _owner, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     auto componentArray = _scene->GetComponentRepositoryRef()->GetComponentArray<Button>();
     if (!componentArray) {

@@ -11,7 +11,7 @@
 void PlayerMoveSystem::Initialize() {}
 void PlayerMoveSystem::Finalize() {}
 
-void PlayerMoveSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void PlayerMoveSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     PlayerState* state = GetComponent<PlayerState>(_handle);
 
     const float deltaTime = OriGine::Engine::GetInstance()->GetDeltaTimer()->GetScaledDeltaTime("Player");

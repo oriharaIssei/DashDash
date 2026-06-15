@@ -49,7 +49,7 @@ void PlayerStateOverrideSystem::Update() {
     }
 }
 
-void PlayerStateOverrideSystem::UpdateEntity(EntityHandle _handle) {
+void PlayerStateOverrideSystem::UpdateEntity(const EntityHandle& _handle) {
     auto pushBackInfo      = GetComponent<CollisionPushBackInfo>(_handle);
     auto overrideCondition = GetComponent<PlayerStateOverrideCondition>(_handle);
 
@@ -73,7 +73,7 @@ void PlayerStateOverrideSystem::UpdateEntity(EntityHandle _handle) {
         }
 
         // 状態が一致しなければ、時間を止める
-        if (!overrideCondition->overrideConditions.HasFlag(playerState->GetStateEnum())) {
+        if (!overrideCondition->GetOverrideConditions().HasFlag(playerState->GetStateEnum())) {
             isTimeScaled_ = true;
 
             // 対応した spriteを表示

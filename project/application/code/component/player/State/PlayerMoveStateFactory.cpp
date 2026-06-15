@@ -8,7 +8,7 @@
 #include "PlayerWallJumpState.h"
 #include "PlayerWallRunState.h"
 
-std::shared_ptr<IPlayerMoveState> CreatePlayerMoveStateByEnum(PlayerMoveState _state, OriGine::Scene* _scene, OriGine::EntityHandle _playerEntityHandle) {
+std::shared_ptr<IPlayerMoveState> CreatePlayerMoveStateByEnum(PlayerMoveState _state, OriGine::Scene* _scene, const OriGine::EntityHandle& _playerEntityHandle) {
     switch (_state) {
     case PlayerMoveState::IDLE:
         return std::make_shared<PlayerIdleState>(_scene, _playerEntityHandle);

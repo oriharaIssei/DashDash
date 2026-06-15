@@ -44,14 +44,14 @@ void from_json(const nlohmann::json& j, SpeedFor3dUIComponent& c) {
     j.at("digitDecimal").get_to(c.digitDecimal);
 }
 
-void SpeedFor3dUIComponent::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
+void SpeedFor3dUIComponent::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
     if (!this->numbersTexturePath.empty()) {
         textureIndex = AssetSystem::GetInstance()->GetManager<TextureAsset>()->LoadAsset(this->numbersTexturePath);
         this->SettingOnLoadTexture(textureIndex);
     }
 }
 
-void SpeedFor3dUIComponent::Edit(OriGine::Scene* /*scene*/, OriGine::EntityHandle /*OriGine::Entity*/, [[maybe_unused]] const std::string& parentLabel) {
+void SpeedFor3dUIComponent::Edit(OriGine::Scene* /*scene*/, const OriGine::EntityHandle& /*OriGine::Entity*/, [[maybe_unused]] const std::string& parentLabel) {
 
 #ifdef DEBUG
     ImGui::Text("Sprite");

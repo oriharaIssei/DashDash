@@ -12,9 +12,9 @@ using namespace OriGine;
 TireSplinePoints::TireSplinePoints() {}
 TireSplinePoints::~TireSplinePoints() {}
 
-void TireSplinePoints::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {}
+void TireSplinePoints::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {}
 
-void TireSplinePoints::Edit(Scene* /*_scene*/, EntityHandle /*_handle*/, [[maybe_unused]] const std::string& _parentLabel) {
+void TireSplinePoints::Edit(Scene* /*_scene*/, const EntityHandle& /*_handle*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     CheckBoxCommand("IsCrossMesh##" + _parentLabel, commonSettings.isCrossMesh);
 

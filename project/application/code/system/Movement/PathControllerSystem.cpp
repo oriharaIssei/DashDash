@@ -107,7 +107,7 @@ PathControllerSystem::PathControllerSystem() : ISystem(SystemCategory::Movement)
 void PathControllerSystem::Initialize() {}
 void PathControllerSystem::Finalize() {}
 
-void PathControllerSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void PathControllerSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     Transform* transform           = GetComponent<Transform>(_handle);
     PathController* pathController = GetComponent<PathController>(_handle);
 

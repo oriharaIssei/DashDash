@@ -18,10 +18,10 @@ using namespace OriGine;
 CameraMotionBob::CameraMotionBob() {}
 CameraMotionBob::~CameraMotionBob() {}
 
-void CameraMotionBob::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {}
+void CameraMotionBob::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {}
 void CameraMotionBob::Finalize() {}
 
-void CameraMotionBob::Edit([[maybe_unused]] OriGine::Scene* _scene, [[maybe_unused]] EntityHandle _owner, [[maybe_unused]] const std::string& _parentLabel) {
+void CameraMotionBob::Edit([[maybe_unused]] OriGine::Scene* _scene, [[maybe_unused]] const EntityHandle& _owner, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     auto& cameraShakeSourceComponents = _scene->GetComponents<CameraShakeSourceComponent>(_owner);

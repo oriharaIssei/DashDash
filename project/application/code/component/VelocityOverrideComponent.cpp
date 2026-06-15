@@ -9,10 +9,10 @@ using namespace OriGine;
 VelocityOverrideComponent::VelocityOverrideComponent() {}
 VelocityOverrideComponent::~VelocityOverrideComponent() {}
 
-void VelocityOverrideComponent::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/) {}
+void VelocityOverrideComponent::Initialize(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/) {}
 void VelocityOverrideComponent::Finalize() {}
 
-void VelocityOverrideComponent::Edit(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void VelocityOverrideComponent::Edit(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     DragGuiVectorCommand("Forced Movement Vector##" + _parentLabel, forcedMovementVector_, 0.01f);
     DragGuiCommand("Stun Time##" + _parentLabel, stunTime_, 0.01f);

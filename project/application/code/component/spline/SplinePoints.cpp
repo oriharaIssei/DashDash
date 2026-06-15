@@ -12,10 +12,10 @@ using namespace OriGine;
 SplinePoints::SplinePoints() {}
 SplinePoints::~SplinePoints() {}
 
-void SplinePoints::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {}
+void SplinePoints::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {}
 void SplinePoints::Finalize() {}
 
-void SplinePoints::Edit(Scene* /*_scene*/, EntityHandle /*_OriGine::Entity*/, [[maybe_unused]] const std::string& _parentLabel) {
+void SplinePoints::Edit(Scene* /*_scene*/, const EntityHandle& /*_OriGine::Entity*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     CheckBoxCommand("Is cross mesh##" + _parentLabel, commonSettings.isCrossMesh);
 

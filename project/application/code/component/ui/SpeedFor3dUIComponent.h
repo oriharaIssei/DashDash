@@ -8,7 +8,7 @@
 /// <summary>
 /// 速度を 3D UI（Plane）で表示するための設定コンポーネント
 /// </summary>
-struct SpeedFor3dUIComponent
+class SpeedFor3dUIComponent
     : public OriGine::IComponent {
     friend void to_json(nlohmann::json& j, const SpeedFor3dUIComponent& c);
     friend void from_json(const nlohmann::json& j, SpeedFor3dUIComponent& c);
@@ -17,8 +17,8 @@ public:
     SpeedFor3dUIComponent()           = default;
     ~SpeedFor3dUIComponent() override = default;
 
-    void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
-    void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
     void Finalize() override {}
 
     /// <summary>
@@ -26,10 +26,52 @@ public:
     /// </summary>
     void SettingOnLoadTexture(size_t _texIdx);
 
+public:
+    OriGine::EntityHandle GetPlaneEntityHandle() const { return planeEntityHandle; }
+    void SetPlaneEntityHandle(OriGine::EntityHandle id) { planeEntityHandle = id; }
+
+    int32_t GetDigitInteger() const { return digitInteger; }
+    void SetDigitInteger(int32_t _digitInteger) { digitInteger = _digitInteger; }
+
+    int32_t GetDigitDecimal() const { return digitDecimal; }
+    void SetDigitDecimal(int32_t _digitDecimal) { digitDecimal = _digitDecimal; }
+
+    size_t GetTextureIndex() const { return textureIndex; }
+    void SetTextureIndex(size_t _textureIndex) { textureIndex = _textureIndex; }
+
+    const std::string& GetNumbersTexturePath() const { return numbersTexturePath; }
+    void SetNumbersTexturePath(const std::string& _numbersTexturePath) { numbersTexturePath = _numbersTexturePath; }
+
+    const OriGine::Vec2f& GetNumbersTextureSize() const { return numbersTextureSize; }
+    void SetNumbersTextureSize(const OriGine::Vec2f& _numbersTextureSize) { numbersTextureSize = _numbersTextureSize; }
+
+    const OriGine::Vec2f& GetNumberTileSize() const { return numberTileSize; }
+    void SetNumberTileSize(const OriGine::Vec2f& _numberTileSize) { numberTileSize = _numberTileSize; }
+
+    const OriGine::Vec3f& GetWorldPosition() const { return worldPosition; }
+    void SetWorldPosition(const OriGine::Vec3f& _worldPosition) { worldPosition = _worldPosition; }
+
+    const OriGine::Vec3f& GetOffset() const { return offset; }
+    void SetOffset(const OriGine::Vec3f& _offset) { offset = _offset; }
+
+    const OriGine::Vec2f& GetPlaneScaleInteger() const { return planeScaleInteger; }
+    void SetPlaneScaleInteger(const OriGine::Vec2f& _planeScaleInteger) { planeScaleInteger = _planeScaleInteger; }
+
+    const OriGine::Vec2f& GetPlaneScaleDecimal() const { return planeScaleDecimal; }
+    void SetPlaneScaleDecimal(const OriGine::Vec2f& _planeScaleDecimal) { planeScaleDecimal = _planeScaleDecimal; }
+
+    const OriGine::Vec2f& GetPlaneMarginInteger() const { return planeMarginInteger; }
+    void SetPlaneMarginInteger(const OriGine::Vec2f& _planeMarginInteger) { planeMarginInteger = _planeMarginInteger; }
+
+    const OriGine::Vec2f& GetPlaneMarginDecimal() const { return planeMarginDecimal; }
+    void SetPlaneMarginDecimal(const OriGine::Vec2f& _planeMarginDecimal) { planeMarginDecimal = _planeMarginDecimal; }
+
+    const OriGine::Vec2f& GetMarginBetweenIntegerAndDecimal() const { return marginBetweenIntegerAndDecimal; }
+    void SetMarginBetweenIntegerAndDecimal(const OriGine::Vec2f& _marginBetweenIntegerAndDecimal) { marginBetweenIntegerAndDecimal = _marginBetweenIntegerAndDecimal; }
+
 private:
     OriGine::EntityHandle planeEntityHandle = OriGine::EntityHandle(); // 速度表示PlaneのエンティティID
 
-public:
     //
     // --- 数値表示パラメータ ---
     //
@@ -64,8 +106,4 @@ public:
 
     // 整数と小数の間のスペース
     OriGine::Vec2f marginBetweenIntegerAndDecimal = {0.f, 0.f};
-
-public:
-    OriGine::EntityHandle GetPlaneEntityHandle() const { return planeEntityHandle; }
-    void SetPlaneEntityHandle(OriGine::EntityHandle id) { planeEntityHandle = id; }
 };

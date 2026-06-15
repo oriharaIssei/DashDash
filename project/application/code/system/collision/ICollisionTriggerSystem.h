@@ -19,9 +19,9 @@ public:
 	void Finalize() override{}
 
 protected:
-	virtual ICollisionTriggerComponent* GetTrigger(OriGine::EntityHandle _handle) = 0;
-	virtual void ApplyActivate(OriGine::EntityHandle _targetHandle) = 0;
-	virtual void ApplyDeactivate(OriGine::EntityHandle _targetHandle) = 0;
+	virtual ICollisionTriggerComponent* GetTrigger(const OriGine::EntityHandle& _handle) = 0;
+	virtual void ApplyActivate(const OriGine::EntityHandle& _targetHandle) = 0;
+	virtual void ApplyDeactivate(const OriGine::EntityHandle& _targetHandle) = 0;
 
-	void UpdateEntity(OriGine::EntityHandle _handle) override;
+	void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 };

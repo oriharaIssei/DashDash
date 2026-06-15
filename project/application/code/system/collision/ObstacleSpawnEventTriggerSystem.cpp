@@ -17,7 +17,7 @@ ObstacleSpawnEventTriggerSystem::~ObstacleSpawnEventTriggerSystem() {}
 void ObstacleSpawnEventTriggerSystem::Initialize() {}
 void ObstacleSpawnEventTriggerSystem::Finalize() {}
 
-void ObstacleSpawnEventTriggerSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void ObstacleSpawnEventTriggerSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto* obstacleGroup = GetComponent<ObstacleSpawnGroupComponent>(_handle);
     auto* collider      = GetComponent<AABBCollider>(_handle);
 

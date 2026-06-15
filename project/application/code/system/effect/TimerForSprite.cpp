@@ -22,7 +22,7 @@ TimerForSprite::~TimerForSprite() {}
 void TimerForSprite::Initialize() {}
 void TimerForSprite::Finalize() {}
 
-void TimerForSprite::UpdateEntity(OriGine::EntityHandle _handle) {
+void TimerForSprite::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& timerComponents          = GetComponents<TimerComponent>(_handle);
     auto& timerForSpriteComponents = GetComponents<TimerForSpriteComponent>(_handle);
     if (timerComponents.empty() || timerForSpriteComponents.empty()) {
@@ -43,13 +43,13 @@ void TimerForSprite::UpdateEntity(OriGine::EntityHandle _handle) {
         // 浮動小数点数から各桁の数字を抽出
         std::vector<int> digits = CalculateDigitsFromFloat(
             timerComp.GetTime(),
-            timerForSpriteComp.digitInteger,
-            timerForSpriteComp.digitDecimal);
+            timerForSpriteComp.GetDigitInteger(),
+            timerForSpriteComp.GetDigitDecimal());
 
         OriGine::Vec2f windowSize = Engine::GetInstance()->GetWinApp()->GetWindowSize();
 
         // 各スプライトに数字を適用
-        for (int32_t j = 0; j < timerForSpriteComp.digitInteger + timerForSpriteComp.digitDecimal; ++j) {
+        for (int32_t j = 0; j < timerForSpriteComp.GetDigitInteger() + timerForSpriteComp.GetDigitDecimal(); ++j) {
             if (int32_t(digits.size()) <= j) {
                 break;
             }

@@ -9,10 +9,10 @@ using namespace OriGine;
 AddForceComponent::AddForceComponent() {}
 AddForceComponent::~AddForceComponent() {}
 
-void AddForceComponent::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {}
+void AddForceComponent::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {}
 void AddForceComponent::Finalize() {}
 
-void AddForceComponent::Edit(Scene* /*_scene*/, EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void AddForceComponent::Edit(Scene* /*_scene*/, const EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     // Trigger Mode
     {

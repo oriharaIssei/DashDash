@@ -76,7 +76,7 @@ void PauseMainSceneSystem::Update() {
     }
 }
 
-void PauseMainSceneSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void PauseMainSceneSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto subScene = GetComponent<SubScene>(_handle);
     if (!subScene) {
         return;

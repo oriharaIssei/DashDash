@@ -13,7 +13,7 @@ void SubSceneActivateByButton::Initialize() {}
 
 void SubSceneActivateByButton::Finalize() {}
 
-void SubSceneActivateByButton::UpdateEntity(EntityHandle _handle) {
+void SubSceneActivateByButton::UpdateEntity(const EntityHandle& _handle) {
     auto* subScene = GetComponent<SubScene>(_handle);
     if (!subScene) {
         return;

@@ -5,17 +5,17 @@
 
 using namespace OriGine;
 
-ICollisionTriggerComponent* PathControllerTriggerSystem::GetTrigger(EntityHandle _handle) {
+ICollisionTriggerComponent* PathControllerTriggerSystem::GetTrigger(const EntityHandle& _handle) {
     return GetComponent<PathControllerTrigger>(_handle);
 }
 
-void PathControllerTriggerSystem::ApplyActivate(EntityHandle _targetHandle) {
+void PathControllerTriggerSystem::ApplyActivate(const EntityHandle& _targetHandle) {
     for (auto& pc : GetComponents<PathController>(_targetHandle)) {
         pc.SetPlaying(true);
     }
 }
 
-void PathControllerTriggerSystem::ApplyDeactivate(EntityHandle _targetHandle) {
+void PathControllerTriggerSystem::ApplyDeactivate(const EntityHandle& _targetHandle) {
     for (auto& pc : GetComponents<PathController>(_targetHandle)) {
         pc.SetPlaying(false);
     }

@@ -22,7 +22,7 @@ public:
     void Finalize() override;
 
 protected:
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
 protected:
     std::unique_ptr<CreateSpriteFromTimer> createSpriteFromTimerSystem_ = nullptr;

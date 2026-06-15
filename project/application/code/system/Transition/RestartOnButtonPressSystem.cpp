@@ -18,7 +18,7 @@ RestartOnButtonPressSystem::~RestartOnButtonPressSystem() {}
 void RestartOnButtonPressSystem::Initialize() {}
 void RestartOnButtonPressSystem::Finalize() {}
 
-void RestartOnButtonPressSystem::UpdateEntity(EntityHandle _handle) {
+void RestartOnButtonPressSystem::UpdateEntity(const EntityHandle& _handle) {
     // リスタートボタンが押されたらRestartEventを飛ばす
     auto& buttonComps = GetComponents<Button>(_handle);
     if (buttonComps.empty()) {

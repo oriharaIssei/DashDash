@@ -17,7 +17,7 @@ using namespace OriGine;
 void ButtonInputSystem::Initialize() {}
 void ButtonInputSystem::Finalize() {}
 
-void ButtonInputSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void ButtonInputSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     OriGine::KeyboardInput* keyInput = GetScene()->GetKeyboardInput();
     MouseInput* mouseInput           = GetScene()->GetMouseInput();
     OriGine::GamepadInput* padInput  = GetScene()->GetGamepadInput();

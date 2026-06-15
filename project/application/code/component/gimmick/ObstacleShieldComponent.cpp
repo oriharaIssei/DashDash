@@ -5,9 +5,10 @@ using namespace OriGine;
 ObstacleShieldComponent::ObstacleShieldComponent() {}
 ObstacleShieldComponent::~ObstacleShieldComponent() {}
 
-void ObstacleShieldComponent::Initialize(OriGine::Scene* /*scene*/, OriGine::EntityHandle /*owner*/) {}
+void ObstacleShieldComponent::Initialize(OriGine::Scene* /*scene*/,const OriGine::EntityHandle& /*owner*/){
+}
 
-void ObstacleShieldComponent::Edit(OriGine::Scene* /*scene*/, OriGine::EntityHandle /*owner*/, [[maybe_unused]] const std::string& parentLabel) {}
+void ObstacleShieldComponent::Edit(OriGine::Scene* /*scene*/, const OriGine::EntityHandle& /*owner*/, [[maybe_unused]] const std::string& parentLabel) {}
 
 void ObstacleShieldComponent::Finalize() {}
 

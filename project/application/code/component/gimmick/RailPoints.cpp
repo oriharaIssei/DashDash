@@ -43,7 +43,7 @@ void from_json(const nlohmann::json& _j, RailPoints& _c) {
 RailPoints::RailPoints() : IComponent() {}
 RailPoints::~RailPoints() {}
 
-void RailPoints::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/) {
+void RailPoints::Initialize(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/) {
     totalLength = CalcSplineLength(points);
     if (!texturePath.empty()) {
         textureIndex = AssetSystem::GetInstance()->GetManager<TextureAsset>()->LoadAsset(texturePath);
@@ -51,7 +51,7 @@ void RailPoints::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*
 }
 void RailPoints::Finalize() {}
 
-void RailPoints::Edit(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void RailPoints::Edit(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     DragGuiCommand<float>("Radius##" + _parentLabel, radius, 0.01f);

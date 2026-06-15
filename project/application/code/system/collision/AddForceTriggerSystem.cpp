@@ -26,7 +26,7 @@ AddForceTriggerSystem::~AddForceTriggerSystem() {}
 void AddForceTriggerSystem::Initialize() {}
 void AddForceTriggerSystem::Finalize() {}
 
-void AddForceTriggerSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void AddForceTriggerSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto addForceComp = GetComponent<AddForceComponent>(_handle);
     if (!addForceComp) {
         return;

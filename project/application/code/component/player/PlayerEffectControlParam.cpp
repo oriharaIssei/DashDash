@@ -9,7 +9,7 @@ using namespace OriGine;
 PlayerEffectControlParam::PlayerEffectControlParam() {}
 PlayerEffectControlParam::~PlayerEffectControlParam() {}
 
-void PlayerEffectControlParam::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
+void PlayerEffectControlParam::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
     if (trailColorByGearLevel_.empty()) {
         trailColorByGearLevel_ = std::vector<OriGine::Vec4f>(kMaxPlayerGearLevel, OriGine::Vec4f(1.f, 1.f, 1.f, 1.f));
     }
@@ -42,7 +42,7 @@ float PlayerEffectControlParam::CalculateWheelTiltAngle(const OriGine::Vec3f& _i
     return result;
 }
 
-void PlayerEffectControlParam::Edit(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_handle*/, [[maybe_unused]] const std::string& _parentLabel) {
+void PlayerEffectControlParam::Edit(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_handle*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     // ギアレベルに応じたトレイルカラー
     std::string label = "";

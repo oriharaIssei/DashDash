@@ -11,7 +11,7 @@
 class CameraFollowState
     : public ICameraState {
 public:
-    CameraFollowState(OriGine::Scene* _scene, OriGine::EntityHandle _cameraEntityHandle, OriGine::EntityHandle _playerEntityHandle)
+    CameraFollowState(OriGine::Scene* _scene, const OriGine::EntityHandle& _cameraEntityHandle, const OriGine::EntityHandle& _playerEntityHandle)
         : ICameraState(_scene, _cameraEntityHandle, _playerEntityHandle) {}
     ~CameraFollowState() override = default;
 

@@ -19,7 +19,7 @@ ButtonGroupSystem::ButtonGroupSystem() : ISystem(SystemCategory::StateTransition
 void ButtonGroupSystem::Initialize() {}
 void ButtonGroupSystem::Finalize() {}
 
-void ButtonGroupSystem::UpdateEntity(EntityHandle _handle) {
+void ButtonGroupSystem::UpdateEntity(const EntityHandle& _handle) {
     KeyboardInput* keyInput    = GetScene()->GetKeyboardInput();
     GamepadInput* gamePadInput = GetScene()->GetGamepadInput();
 

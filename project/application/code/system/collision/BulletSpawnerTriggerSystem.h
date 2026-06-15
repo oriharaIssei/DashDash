@@ -13,7 +13,7 @@ public:
     ~BulletSpawnerTriggerSystem() override = default;
 
 protected:
-    ICollisionTriggerComponent* GetTrigger(OriGine::EntityHandle _handle) override;
-    void ApplyActivate(OriGine::EntityHandle _targetHandle) override;
-    void ApplyDeactivate(OriGine::EntityHandle _targetHandle) override;
+    ICollisionTriggerComponent* GetTrigger(const OriGine::EntityHandle& _handle) override;
+    void ApplyActivate(const OriGine::EntityHandle& _targetHandle) override;
+    void ApplyDeactivate(const OriGine::EntityHandle& _targetHandle) override;
 };

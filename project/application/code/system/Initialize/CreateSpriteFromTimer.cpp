@@ -24,7 +24,7 @@ CreateSpriteFromTimer::~CreateSpriteFromTimer() {}
 void CreateSpriteFromTimer::Initialize() {}
 void CreateSpriteFromTimer::Finalize() {}
 
-void CreateSpriteFromTimer::UpdateEntity(OriGine::EntityHandle _handle) {
+void CreateSpriteFromTimer::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& timerForSpriteComponents   = GetComponents<TimerForSpriteComponent>(_handle);
 
     if (timerForSpriteComponents.empty()) {
@@ -42,7 +42,7 @@ void CreateSpriteFromTimer::UpdateEntity(OriGine::EntityHandle _handle) {
     }
 }
 
-void CreateSpriteFromTimer::CreateSprites(OriGine::EntityHandle _handle, TimerForSpriteComponent* _forSpriteComp) {
+void CreateSpriteFromTimer::CreateSprites(const OriGine::EntityHandle& _handle, TimerForSpriteComponent* _forSpriteComp) {
     // Sprite用のEntityを作成
     GetScene()->GetSystemRunnerRef()->GetSystemRef<SpriteRenderSystem>()->AddEntity(_handle);
 

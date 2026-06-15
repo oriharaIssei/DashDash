@@ -19,7 +19,7 @@ void ChangeSceneByButton::Initialize() {}
 
 void ChangeSceneByButton::Finalize() {}
 
-void ChangeSceneByButton::UpdateEntity(OriGine::EntityHandle _handle) {
+void ChangeSceneByButton::UpdateEntity(const OriGine::EntityHandle& _handle) {
     Button* button = GetComponent<Button>(_handle);
 
     if (button->IsReleased()) {

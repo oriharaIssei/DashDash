@@ -13,14 +13,14 @@
 
 using namespace OriGine;
 
-void CameraController::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {
+void CameraController::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
     currentOffset_       = idleParams_.offset;
     currentTargetOffset_ = idleParams_.targetOffset;
 
     currentCameraStateType_ = CameraMoveState::IDLE;
 }
 
-void CameraController::Edit(Scene* /*_scene*/, EntityHandle /*_OriGine::Entity*/, [[maybe_unused]] const std::string& _parentLabel) {
+void CameraController::Edit(Scene* /*_scene*/, const EntityHandle& /*_OriGine::Entity*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     auto editStateParams = [&](const std::string& _name, CameraStateParams& _params) {

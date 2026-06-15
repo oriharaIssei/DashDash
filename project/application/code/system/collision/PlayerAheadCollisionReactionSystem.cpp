@@ -23,7 +23,7 @@ PlayerAheadCollisionReactionSystem::PlayerAheadCollisionReactionSystem() : ISyst
 void PlayerAheadCollisionReactionSystem::Initialize() {}
 void PlayerAheadCollisionReactionSystem::Finalize() {}
 
-void PlayerAheadCollisionReactionSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void PlayerAheadCollisionReactionSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     EntityHandle playerHandle                    = GetUniqueEntity("Player");
     PlayerState* playerState                     = GetComponent<PlayerState>(playerHandle);
     SphereCollider* playerCollider               = GetComponent<SphereCollider>(playerHandle);

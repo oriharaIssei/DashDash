@@ -18,7 +18,7 @@ void BulletSpawnerWorkSystem::Finalize() {
     entities_.clear();
 }
 
-void BulletSpawnerWorkSystem::UpdateEntity(EntityHandle _handle) {
+void BulletSpawnerWorkSystem::UpdateEntity(const EntityHandle& _handle) {
     const float deltaTime = Engine::GetInstance()->GetDeltaTime();
 
     auto& spawners = GetComponents<BulletSpawner>(_handle);

@@ -25,7 +25,7 @@ void StartTimerInitialize::Initialize() {
 }
 void StartTimerInitialize::Finalize() {}
 
-void StartTimerInitialize::UpdateEntity(OriGine::EntityHandle _handle) {
+void StartTimerInitialize::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto timerComp    = GetComponent<TimerComponent>(_handle);
     auto timer4Sprite = GetComponent<TimerForSpriteComponent>(_handle);
     if (!timerComp || !timer4Sprite) {

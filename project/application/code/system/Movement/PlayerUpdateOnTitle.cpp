@@ -27,7 +27,7 @@ void PlayerUpdateOnTitle::Finalize() {
     // 特に終了処理は不要
 }
 
-void PlayerUpdateOnTitle::UpdateEntity(OriGine::EntityHandle _handle) {
+void PlayerUpdateOnTitle::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto* playerInput = GetComponent<PlayerInput>(_handle);
     if (playerInput == nullptr) {
         LOG_ERROR("PlayerInput component is missing.");

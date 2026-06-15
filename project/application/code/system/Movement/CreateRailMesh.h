@@ -30,7 +30,7 @@ private:
     /// <summary>
     /// エンティティごとの更新処理
     /// </summary>
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
     /// <summary>
     /// RailPointsからシリンダーメッシュを生成する

@@ -17,7 +17,7 @@ void TimerCountDown::Initialize() {}
 
 void TimerCountDown::Finalize() {}
 
-void TimerCountDown::UpdateEntity(EntityHandle _handle) {
+void TimerCountDown::UpdateEntity(const EntityHandle& _handle) {
     auto& timerComponents = GetComponents<TimerComponent>(_handle);
     const float deltaTime = Engine::GetInstance()->GetDeltaTimer()->GetScaledDeltaTime("Timer");
     for (auto& timerComponent : timerComponents) {

@@ -15,5 +15,5 @@ public:
     void Finalize();
 
 protected:
-    void UpdateEntity(OriGine::EntityHandle _handle);
+    void UpdateEntity(const OriGine::EntityHandle& _handle);
 };

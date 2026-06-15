@@ -4,10 +4,10 @@
 #include "myGui/MyGui.h"
 #endif // _DEBUG
 
-void Obstacle::Initialize(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/) {}
+void Obstacle::Initialize(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/) {}
 void Obstacle::Finalize() {}
 
-void Obstacle::Edit(OriGine::Scene* /*_scene*/, OriGine::EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void Obstacle::Edit(OriGine::Scene* /*_scene*/, const OriGine::EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     DragGuiCommand("PenaltyTime##" + _parentLabel, penaltyTime_, 0.1f);
     DragGuiCommand("InvincibilityTimeOnCollision##" + _parentLabel, invincibilityTimeOnCollision_, 0.1f);

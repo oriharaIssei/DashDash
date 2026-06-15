@@ -41,7 +41,7 @@ void PenaltySystem::Finalize() {
     createSpriteFromTimerSystem_.reset();
 }
 
-void PenaltySystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void PenaltySystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto* playerState = GetComponent<PlayerState>(_handle);
 
     // ペナルティ状態でなければ 処理しない
@@ -90,8 +90,8 @@ void PenaltySystem::UpdateEntity(OriGine::EntityHandle _handle) {
     timer4SpriteComp.SetSpritesEntityHandle(penaltyTimeUIEntityHandle);
 
     // 桁数を設定
-    timer4SpriteComp.digitInteger = (std::max)(CountIntegralDigits<float, int>(penaltyTime), timer4SpriteComp.digitInteger);
-    timer4SpriteComp.digitDecimal = (std::max)(CountDecimalDigits<float, int>(penaltyTime), timer4SpriteComp.digitDecimal);
+    timer4SpriteComp.SetDigitInteger((std::max)(CountIntegralDigits<float, int>(penaltyTime), timer4SpriteComp.GetDigitInteger()));
+    timer4SpriteComp.SetDigitDecimal((std::max)(CountDecimalDigits<float, int>(penaltyTime), timer4SpriteComp.GetDigitDecimal()));
 
     /// コンポーネントを追加
     ComponentHandle timerHandle = AddComponent<TimerComponent>(penaltyTimeUIEntityHandle);

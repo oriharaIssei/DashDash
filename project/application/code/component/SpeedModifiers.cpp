@@ -20,11 +20,11 @@ using namespace OriGine;
 SpeedModifiers::SpeedModifiers() {}
 SpeedModifiers::~SpeedModifiers() {}
 
-void SpeedModifiers::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {}
+void SpeedModifiers::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {}
 
 void SpeedModifiers::Finalize() {}
 
-void SpeedModifiers::Edit(Scene* /*_scene*/, EntityHandle /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
+void SpeedModifiers::Edit(Scene* /*_scene*/, const EntityHandle& /*_owner*/, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     CheckBoxCommand("Is Auto Destroyed##" + _parentLabel, isAutoDestroyed_);

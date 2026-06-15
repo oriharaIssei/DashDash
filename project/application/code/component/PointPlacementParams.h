@@ -76,9 +76,9 @@ class PointPlacementParams
 public:
     PointPlacementParams()          = default;
     virtual ~PointPlacementParams() = default;
-    virtual void Initialize(OriGine::Scene* _scene, OriGine::EntityHandle _owner) override;
+    virtual void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
     virtual void Finalize() override;
-    virtual void Edit(OriGine::Scene* _scene, OriGine::EntityHandle _owner, const std::string& _parentLabel) override;
+    virtual void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
 private:
     /// <summary>

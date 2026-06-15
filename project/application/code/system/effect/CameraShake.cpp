@@ -46,7 +46,7 @@ CameraShake::~CameraShake() {}
 void CameraShake::Initialize() {}
 void CameraShake::Finalize() {}
 
-void CameraShake::UpdateEntity(OriGine::EntityHandle _handle) {
+void CameraShake::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& cameraShakeSources = GetComponents<CameraShakeSourceComponent>(_handle);
 
     const float deltaTime = Engine::GetInstance()->GetDeltaTimer()->GetScaledDeltaTime("Effect");

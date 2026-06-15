@@ -12,7 +12,7 @@ TimerAutoDestroySystem::~TimerAutoDestroySystem() {}
 void TimerAutoDestroySystem::Initialize() {}
 void TimerAutoDestroySystem::Finalize() {}
 
-void TimerAutoDestroySystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void TimerAutoDestroySystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& timers = GetComponents<TimerComponent>(_handle);
     for (auto& timer : timers) {
         if (timer.IsStarted() && timer.GetTime() <= 0.0f) {

@@ -21,7 +21,7 @@ public:
     void CreatePSO();
 
 protected:
-    void UpdateEntity(OriGine::EntityHandle _handle) override;
+    void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
     void StartCS();
     void ExecuteCS();

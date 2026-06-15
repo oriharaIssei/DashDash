@@ -11,9 +11,9 @@
 
 using namespace OriGine;
 
-void PlayerInput::Initialize(Scene* /*_scene*/, EntityHandle /* _handle */) {}
+void PlayerInput::Initialize(Scene* /*_scene*/, const EntityHandle& /* _handle */) {}
 
-void PlayerInput::Edit(Scene* /*_scene*/, EntityHandle /* _handle */, [[maybe_unused]] const std::string& _parentLabel) {
+void PlayerInput::Edit(Scene* /*_scene*/, const EntityHandle& /* _handle */, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
     DragGuiCommand("MaxJumpInputTime##" + _parentLabel, maxJumpTime_, 0.01f, 0.01f);
 #endif // _DEBUG

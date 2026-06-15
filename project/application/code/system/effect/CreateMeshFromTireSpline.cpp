@@ -118,21 +118,21 @@ CreateMeshFromTireSpline::~CreateMeshFromTireSpline() {}
 void CreateMeshFromTireSpline::Initialize() {}
 void CreateMeshFromTireSpline::Finalize() {}
 
-void CreateMeshFromTireSpline::UpdateEntity(OriGine::EntityHandle _handle) {
+void CreateMeshFromTireSpline::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto splineComp        = GetComponent<TireSplinePoints>(_handle);
     auto planeRendererComp = GetComponent<PlaneRenderer>(_handle);
     if (!splineComp || !planeRendererComp) {
         return;
     }
 
-    if (splineComp->points.size() < EffectConfig::TireSpline::kMinPoints) {
+    if (splineComp->GetPoints().size() < EffectConfig::TireSpline::kMinPoints) {
         planeRendererComp->SetIsRender(false);
         return;
     }
 
     planeRendererComp->SetIsRender(true);
     planeRendererComp->SetInstancing(false); // インスタンシングは使用しない
-    if (splineComp->commonSettings.isCrossMesh) {
+    if (splineComp->GetCommonSettings().isCrossMesh) {
         CreateCrossPlaneMesh(planeRendererComp, splineComp);
     } else {
         CreateLinePlaneMesh(planeRendererComp, splineComp);
@@ -146,17 +146,17 @@ void CreateMeshFromTireSpline::CreateLinePlaneMesh(
     std::vector<uint32_t> indices;
 
     const int32_t segmentCount =
-        static_cast<int32_t>(spline->points.size() - 1);
+        static_cast<int32_t>(spline->GetPoints().size() - 1);
 
     const float allLength =
-        spline->commonSettings.segmentLength * spline->capacity;
+        spline->GetCommonSettings().segmentLength * spline->GetCapacity();
 
     float totalLength = 0.f;
     float prevTotal   = 0.f;
 
     for (int32_t i = 0; i < segmentCount; ++i) {
-        const auto& p0 = spline->points[i];
-        const auto& p1 = spline->points[i + 1];
+        const auto& p0 = spline->GetPoints()[i];
+        const auto& p1 = spline->GetPoints()[i + 1];
 
         prevTotal = totalLength;
         totalLength += Vec3f(p1.position - p0.position).length();
@@ -165,7 +165,7 @@ void CreateMeshFromTireSpline::CreateLinePlaneMesh(
             p0, p1,
             prevTotal, totalLength,
             allLength,
-            spline->commonSettings);
+            spline->GetCommonSettings());
 
         AppendPlaneSegment(
             vertices, indices,
@@ -191,25 +191,25 @@ void CreateMeshFromTireSpline::CreateCrossPlaneMesh(
     std::vector<TextureColorVertexData> horizontal;
     std::vector<uint32_t> indices;
 
-    const int32_t segmentCount = static_cast<int32_t>(spline->points.size() - 1);
+    const int32_t segmentCount = static_cast<int32_t>(spline->GetPoints().size() - 1);
 
     float allLength = 0.f;
     for (int32_t i = 0; i < segmentCount; ++i) {
-        allLength += Vec3f(spline->points[i + 1].position - spline->points[i].position).length();
+        allLength += Vec3f(spline->GetPoints()[i + 1].position - spline->GetPoints()[i].position).length();
     }
 
     float totalLength = 0.f;
     float prevTotal   = 0.f;
 
     for (int32_t i = 0; i < segmentCount; ++i) {
-        const auto& p0 = spline->points[i];
-        const auto& p1 = spline->points[i + 1];
+        const auto& p0 = spline->GetPoints()[i];
+        const auto& p1 = spline->GetPoints()[i + 1];
 
         prevTotal = totalLength;
         totalLength += Vec3f(p1.position - p0.position).length();
 
         const auto seg = BuildTireSplineSegment(
-            p0, p1, prevTotal, totalLength, allLength, spline->commonSettings);
+            p0, p1, prevTotal, totalLength, allLength, spline->GetCommonSettings());
 
         AppendPlaneSegment(vertical, indices, seg, seg.right, seg.up, i == 0);
         AppendPlaneSegment(horizontal, indices, seg, seg.up, seg.right, i == 0);

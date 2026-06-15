@@ -15,10 +15,10 @@ using namespace OriGine;
 BillboardComponent::BillboardComponent() {}
 BillboardComponent::~BillboardComponent() {}
 
-void BillboardComponent::Initialize(Scene* /*_scene*/, EntityHandle /*_owner*/) {}
+void BillboardComponent::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {}
 void BillboardComponent::Finalize() {}
 
-void BillboardComponent::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] EntityHandle _owner, [[maybe_unused]] const std::string& _parentLabel) {
+void BillboardComponent::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]] const EntityHandle& _owner, [[maybe_unused]] const std::string& _parentLabel) {
 #ifdef _DEBUG
 
     ImGui::Text("Billboard Axis :");

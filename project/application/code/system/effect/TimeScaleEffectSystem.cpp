@@ -34,7 +34,7 @@ void TimeScaleEffectSystem::Initialize() {
 }
 void TimeScaleEffectSystem::Finalize() {}
 
-void TimeScaleEffectSystem::UpdateEntity(OriGine::EntityHandle _handle) {
+void TimeScaleEffectSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto* timeScaleEffect = GetComponent<TimeScaleEffectComponent>(_handle);
     if (!timeScaleEffect || !timeScaleEffect->IsActive()) {
         return;
