@@ -40,6 +40,8 @@ using namespace OriGine;
 namespace {
 /// 壁・床への衝突でゲームオーバーになる法線方向速度の閾値（m/s）
 constexpr float kCrashNormalSpeedThreshold = 40.0f;
+/// ゲームオーバー関連イベントの発火遅延時間（秒）。爆発演出の再生を待つための遅延
+constexpr float kGameOverEventDelay = 1.5f;
 } // namespace
 
 void PlayerOnCollision::Initialize() {}
@@ -140,9 +142,9 @@ void PlayerOnCollision::UpdateEntity(const OriGine::EntityHandle& _handle) {
 
                     // ゲームオーバーシーンが存在する場合はゲームオーバーシーンへ、存在しない場合はリスタートへ遷移する
                     if (failedSceneEntity.IsValid()) {
-                        MessageBus::GetInstance()->EmitDelayed<GamefailedEvent>(GamefailedEvent(), 1.5f);
+                        MessageBus::GetInstance()->EmitDelayed<GamefailedEvent>(GamefailedEvent(), kGameOverEventDelay);
                     } else {
-                        MessageBus::GetInstance()->EmitDelayed<RestartEvent>(RestartEvent(), 1.5f);
+                        MessageBus::GetInstance()->EmitDelayed<RestartEvent>(RestartEvent(), kGameOverEventDelay);
                     }
 
                     // プレイヤーを削除
@@ -235,9 +237,9 @@ void PlayerOnCollision::UpdateEntity(const OriGine::EntityHandle& _handle) {
 
                     // ゲームオーバーシーンが存在する場合はゲームオーバーシーンへ、存在しない場合はリスタートへ遷移する
                     if (failedSceneEntity.IsValid()) {
-                        MessageBus::GetInstance()->EmitDelayed<GamefailedEvent>(GamefailedEvent(), 1.5f);
+                        MessageBus::GetInstance()->EmitDelayed<GamefailedEvent>(GamefailedEvent(), kGameOverEventDelay);
                     } else {
-                        MessageBus::GetInstance()->EmitDelayed<RestartEvent>(RestartEvent(), 1.5f);
+                        MessageBus::GetInstance()->EmitDelayed<RestartEvent>(RestartEvent(), kGameOverEventDelay);
                     }
 
                     GetScene()->AddDeleteEntity(_handle);

@@ -19,6 +19,7 @@
 #include "component/physics/Rigidbody.h"
 #include "component/transform/Transform.h" 
 
+#include "component/player/PlayerConfig.h"
 #include "component/player/PlayerInput.h"
 #include "component/player/PlayerStatus.h"
 #include "component/player/state/PlayerState.h"
@@ -152,7 +153,7 @@ void EffectOnPlayerRun::UpdateEntity(const EntityHandle& _entity) {
     auto& speedlineParams                 = GetComponents<SpeedlineEffectParam>(speedlineEntity);
 
     // プレイヤーが止まっているか, ギアレベルが低い場合は エフェクトを停止
-    if (state->GetStateEnum() == PlayerMoveState::IDLE || state->GetGearLevel() < 2) {
+    if (state->GetStateEnum() == PlayerMoveState::IDLE || state->GetGearLevel() < AppConfig::Player::kRunEffectThresholdGearLevel) {
         for (auto& speedlineParam : speedlineParams) {
             speedlineParam.Stop();
         }

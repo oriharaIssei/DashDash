@@ -21,6 +21,11 @@
 
 using namespace OriGine;
 
+namespace {
+/// 入力方向を左/中央/右に3分割する閾値
+constexpr float kInputDirThird = 1.0f / 3.0f;
+} // namespace
+
 PlayerOnRailState::PlayerOnRailState(OriGine::Scene* _scene, const OriGine::EntityHandle& _playerEntityHandle)
     : IPlayerMoveState(_scene, _playerEntityHandle, PlayerMoveState::RUN_ON_RAIL) {}
 PlayerOnRailState::~PlayerOnRailState() {}
@@ -142,9 +147,9 @@ void PlayerOnRailState::Finalize() {
     // -1$ ～ -0.333... の範囲なら 補正を左に
     // -0.333... ～ 0.333...の範囲なら 補正を正面に
     // 0.333... ～ 1 の範囲なら 補正を右に(通常状態)
-    if (inputX >= -1.f && inputX <= -0.3333f) {
+    if (inputX >= -1.f && inputX <= -kInputDirThird) {
         jumpVelo[X] *= -1.f;
-    } else if (inputX > -0.333f && inputX <= 0.3333f) {
+    } else if (inputX > -kInputDirThird && inputX <= kInputDirThird) {
         jumpVelo += Vec3f(0.f, 0.5f, 0.5f) * jumpVelo[X];
         jumpVelo[X] = 0.f;
     }

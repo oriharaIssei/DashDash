@@ -6,6 +6,7 @@
 // component
 #include "component/physics/Rigidbody.h"
 #include "component/player/state/PlayerState.h"
+#include "component/spline/SplineConfig.h"
 #include "component/spline/SplinePoints.h"
 #include "component/transform/Transform.h"
 
@@ -13,6 +14,11 @@
 #include <math/MathEnv.h>
 
 using namespace OriGine;
+
+namespace {
+/// 分割・統合を行うかどうかの判定に使う距離差の閾値
+constexpr float kThresholdSplitOrMerger = 0.3f;
+} // namespace
 
 PlayerPathSplineGenerator::PlayerPathSplineGenerator() : ISystem(SystemCategory::Movement) {}
 PlayerPathSplineGenerator::~PlayerPathSplineGenerator() {}
@@ -66,8 +72,8 @@ void PlayerPathSplineGenerator::ProcessMovement(Context& _ctx) {
 
 void PlayerPathSplineGenerator::AppendNewPoints(SplinePoints* _splinePoints, const Vec3f& _targetPos) {
     // 最低4点確保
-    if (_splinePoints->GetPoints().size() < 4) {
-        int32_t diff = 4 - static_cast<int32_t>(_splinePoints->GetPoints().size());
+    if (_splinePoints->GetPoints().size() < AppConfig::Spline::kMinCatmullRomPoints) {
+        int32_t diff = AppConfig::Spline::kMinCatmullRomPoints - static_cast<int32_t>(_splinePoints->GetPoints().size());
         for (int32_t i = 0; i < diff; ++i) {
             _splinePoints->PushPoint(_targetPos);
         }
@@ -77,8 +83,6 @@ void PlayerPathSplineGenerator::AppendNewPoints(SplinePoints* _splinePoints, con
     const Vec3f& lastPoint = _splinePoints->GetPoints().back();
     Vec3f distanceVec      = _targetPos - lastPoint;
     float distLen          = distanceVec.length();
-
-    constexpr float kThresholdSplitOrMerger = 0.3f;
 
     // 距離が離れていたら補間して点を追加
     if (distLen - segLen >= kThresholdSplitOrMerger) {
@@ -102,8 +106,7 @@ void PlayerPathSplineGenerator::RefineSplinePoints(SplinePoints* _splinePoints) 
     }
 
     std::deque<Vec3f> newPoints;
-    const float segLen                      = _splinePoints->GetCommonSettings().segmentLength;
-    constexpr float kThresholdSplitOrMerger = 0.3f;
+    const float segLen = _splinePoints->GetCommonSettings().segmentLength;
 
     // 既存のポイントを走査して再構築
     for (int32_t i = 0; i < static_cast<int32_t>(_splinePoints->GetPoints().size()) - 1; ++i) {

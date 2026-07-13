@@ -16,6 +16,9 @@ constexpr int32_t kDashCameraOffsetThresholdGearLevel = 2;
 constexpr float kDashCameraOffsetLerpTime             = 2.3f;
 constexpr float kDashFallDownThresholdTime            = 0.3f;
 
+// Run
+constexpr int32_t kRunEffectThresholdGearLevel = 2; // 走行エフェクトを出す最小ギアレベル
+
 // Status Defaults
 constexpr float kDefaultGravityApplyDelayOnWallRun = 0.2f;
 constexpr float kDefaultWallRunDetachSpeed         = 5.0f;

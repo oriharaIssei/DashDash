@@ -9,6 +9,7 @@
 #include "component/collision/collider/CapsuleCollider.h"
 #include "component/collision/CollisionPushBackInfo.h"
 #include "component/gimmick/RailPoints.h"
+#include "component/spline/SplineConfig.h"
 // system
 #include "system/collision/CollisionCheckSystem.h"
 
@@ -33,7 +34,7 @@ void RailInitializeSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     if (railPoints == nullptr) {
         return;
     }
-    if (railPoints->GetPoints().size() < 2) {
+    if (railPoints->GetPoints().size() < AppConfig::Spline::kMinLinePoints) {
         return;
     }
 
@@ -42,7 +43,7 @@ void RailInitializeSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     std::deque<Vec3f> points = railPoints->GetPoints();
 
     int32_t segmentCount = 0;
-    if (railPoints->GetPoints().size() >= 4) {
+    if (railPoints->GetPoints().size() >= AppConfig::Spline::kMinCatmullRomPoints) {
         constexpr int32_t kMinDivision = 6;
         constexpr int32_t kDivider     = 4;
         points                         = CatmullRomSpline(points, (std::max)(railPoints->GetSegmentDivide() / kDivider, kMinDivision));

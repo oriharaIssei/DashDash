@@ -3,6 +3,7 @@
 /// ECS
 // component
 #include "component/renderer/primitive/SphereRenderer.h"
+#include "component/spline/SplineConfig.h"
 
 /// math
 #include "math/MathEnv.h"
@@ -20,7 +21,7 @@ namespace {
 /// <returns>方向ベクトル</returns>
 static Vec3f CalculateSegmentDirection(const std::deque<Vec3f>& _points, size_t _index) {
     const size_t count = _points.size();
-    if (count < 2) {
+    if (count < AppConfig::Spline::kMinLinePoints) {
         return Vec3f(0.f, 0.f, 1.f);
     }
 
@@ -78,7 +79,7 @@ void CreateRailMesh::UpdateEntity(const EntityHandle& _handle) {
     }
 
     auto railPointsComp = GetComponent<RailPoints>(_handle);
-    if (!railPointsComp || (railPointsComp->GetPoints().size() < 2)) {
+    if (!railPointsComp || (railPointsComp->GetPoints().size() < AppConfig::Spline::kMinLinePoints)) {
         return;
     }
 
@@ -113,13 +114,13 @@ void CreateRailMesh::CreateCylinderMeshFromRail(
     const uint32_t _radialDivisions = cylinderPrimitive.radialDivisions;
 
     // 最低2点が必要
-    if (originalPoints.size() < 2) {
+    if (originalPoints.size() < AppConfig::Spline::kMinLinePoints) {
         return;
     }
 
     // 4点以上ならCatmull-Romスプラインで補間、それ未満なら直線接続
     std::deque<Vec3f> points;
-    if (originalPoints.size() >= 4) {
+    if (originalPoints.size() >= AppConfig::Spline::kMinCatmullRomPoints) {
         // 端点を複製して追加することで、最初と最後の制御点も補間範囲に含める
         // Catmull-Romは4点(p0,p1,p2,p3)でp1-p2間を補間するため
         std::deque<Vec3f> extendedPoints = originalPoints;

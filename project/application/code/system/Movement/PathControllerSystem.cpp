@@ -9,6 +9,7 @@
 /// ECS
 // component
 #include "component/gimmick/PathController.h"
+#include "component/spline/SplineConfig.h"
 #include "component/transform/Transform.h"
 
 /// math
@@ -122,7 +123,7 @@ void PathControllerSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     const int32_t n      = static_cast<int32_t>(pts.size());
     const int32_t maxIdx = n - 2; // 有効な区間インデックスの最大値
 
-    if (n < 2) {
+    if (n < AppConfig::Spline::kMinLinePoints) {
         return;
     }
 
