@@ -1,7 +1,7 @@
 #pragma once
 #include "system/ISystem.h"
 
-struct SpeedFor3dUIComponent;
+class SpeedFor3dUIComponent;
 
 /// <summary>
 /// Timerの数字をSpriteとして表示するためにSpriteを生成するシステム

@@ -1,7 +1,7 @@
 #pragma once
 #include "system/ISystem.h"
 
-struct TimerForSpriteComponent;
+class TimerForSpriteComponent;
 
 /// <summary>
 /// Timerの数字をSpriteとして表示するためにSpriteを生成するシステム
