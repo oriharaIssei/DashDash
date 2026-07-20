@@ -38,6 +38,7 @@ void AttractActiveState::Update(float /*_deltaTime*/) {
     KeyboardInput* keyboardInput = scene_->GetKeyboardInput();
     MouseInput* mouseInput       = scene_->GetMouseInput();
 
+    // gamepad/keyboard/mouse いずれかに入力があれば hasInput_ を立てる
     hasInput_ = (gamepadInput && gamepadInput->IsActive() && gamepadInput->IsPressAny())
                 || (keyboardInput && keyboardInput->IsPressAnyKey())
                 || (mouseInput && mouseInput->IsPressAnyButton() && (mouseInput->GetVelocity().lengthSq() > kEpsilon));
@@ -65,10 +66,12 @@ void AttractIdleState::Update(float _deltaTime) {
     KeyboardInput* keyboardInput = scene_->GetKeyboardInput();
     MouseInput* mouseInput       = scene_->GetMouseInput();
 
+    // gamepad/keyboard/mouse いずれかに入力があれば hasInput_ を立てる
     hasInput_ = (gamepadInput && gamepadInput->IsActive() && gamepadInput->IsPressAny())
                 || (keyboardInput && keyboardInput->IsPressAnyKey())
                 || (mouseInput && mouseInput->IsPressAnyButton() && (mouseInput->GetVelocity().lengthSq() > kEpsilon));
 
+    // 入力があれば未入力タイマーをリセット、なければ加算し続ける
     if (hasInput_) {
         idleTimer_ = 0.0f;
     } else {

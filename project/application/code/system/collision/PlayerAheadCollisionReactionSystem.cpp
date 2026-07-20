@@ -37,6 +37,7 @@ void PlayerAheadCollisionReactionSystem::UpdateEntity(const OriGine::EntityHandl
         return;
     }
 
+    // 落下中/ジャンプ中以外は壁傾きリアクションの対象外
     auto state = playerState->GetStateEnum();
     if (state != PlayerMoveState::FALL_DOWN && state != PlayerMoveState::JUMP) {
         return;
@@ -52,6 +53,7 @@ void PlayerAheadCollisionReactionSystem::UpdateEntity(const OriGine::EntityHandl
     float radiusDiff       = collider->GetWorldRadius() - playerCollider->GetWorldRadius();
     float penetrationDepth = 0.f;
     Vec3f collNormal       = Vec3f();
+    // 押し戻し情報から、地面以外との衝突のうち最も深い(押し戻し量が大きい)ものを壁として採用する
     for (const auto& [handle, info] : pushBackInfo->GetCollisionInfoMap()) {
         if (info.pushBackType == CollisionPushBackType::None || PlayerMoveUtils::IsHitGround(info.collFaceNormal)) {
             continue;
@@ -85,10 +87,12 @@ void PlayerAheadCollisionReactionSystem::UpdateEntity(const OriGine::EntityHandl
     bool isRightWall   = PlayerMoveUtils::IsWallRight(wallFrontDir, collNormal);
 
     if (penetrationDepth >= OriGine::kEpsilon) {
+        // 押し戻し量から目標傾き角への補間係数を求め、壁が右/左どちらにあるかで傾く方向を決める
         float t = std::clamp(penetrationDepth / radiusDiff, 0.f, 1.f);
         // wallRunの時の処理
         afterAngle = std::lerp(currAngle, isRightWall ? maxAngle : -maxAngle, EaseOutCubic(t));
     }
+    // 1フレームでの傾き変化量をtiltSpeedで制限し、急激な回転を防ぐ
     deltaAngle = std::clamp(afterAngle - currAngle, -tiltSpeed, tiltSpeed);
     currAngle += deltaAngle;
     effectControlParam->SetAheadCollisionCurrentAngle(currAngle);

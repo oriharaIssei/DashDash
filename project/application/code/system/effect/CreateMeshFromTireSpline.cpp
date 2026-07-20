@@ -30,6 +30,7 @@ struct TireSplineSegment {
     float alpha0; // p0 側
     float alpha1; // p1 側
 };
+// タイヤスプラインの1区間(p0->p1)について、進行方向・法線・幅・UV・アルファを計算しTireSplineSegmentとして返す
 static TireSplineSegment BuildTireSplineSegment(
     const TireSplinePoints::ControlPoint& p0,
     const TireSplinePoints::ControlPoint& p1,
@@ -84,6 +85,8 @@ static TireSplineSegment BuildTireSplineSegment(
     return seg;
 }
 
+// TireSplineSegment1区間分の頂点・インデックスをプレーンメッシュとして追加する
+// isFirstがtrueのときのみ始端側の頂点も追加し、2区間目以降は直前に追加した終端頂点を始端として再利用する
 static void AppendPlaneSegment(
     std::vector<TextureColorVertexData>& vertices,
     std::vector<uint32_t>& indices,
@@ -125,6 +128,7 @@ void CreateMeshFromTireSpline::UpdateEntity(const OriGine::EntityHandle& _handle
         return;
     }
 
+    // メッシュを構成するのに必要な制御点数が無い場合は非表示にする
     if (splineComp->GetPoints().size() < EffectConfig::TireSpline::kMinPoints) {
         planeRendererComp->SetIsRender(false);
         return;
@@ -148,6 +152,7 @@ void CreateMeshFromTireSpline::CreateLinePlaneMesh(
     const int32_t segmentCount =
         static_cast<int32_t>(spline->GetPoints().size() - 1);
 
+    // タイヤの軌跡は一定間隔(segmentLength)で点が積まれる想定のため、実測ではなく容量から全長を概算する
     const float allLength =
         spline->GetCommonSettings().segmentLength * spline->GetCapacity();
 
@@ -211,6 +216,7 @@ void CreateMeshFromTireSpline::CreateCrossPlaneMesh(
         const auto seg = BuildTireSplineSegment(
             p0, p1, prevTotal, totalLength, allLength, spline->GetCommonSettings());
 
+        // 縦面(right軸を幅方向・up軸を法線)と横面(up軸を幅方向・right軸を法線)を別々の頂点列として積み上げ、十字に交差させる
         AppendPlaneSegment(vertical, indices, seg, seg.right, seg.up, i == 0);
         AppendPlaneSegment(horizontal, indices, seg, seg.up, seg.right, i == 0);
     }

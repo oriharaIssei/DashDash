@@ -30,6 +30,7 @@ struct SplineSegment {
     OriGine::Vec2f uv[4];
 };
 
+// スプラインの1区間(p0->p1)について、進行方向・法線・幅・UVを計算しSplineSegmentとして返す
 static SplineSegment BuildSplineSegment(
     const OriGine::Vec3f& p0,
     const OriGine::Vec3f& p1,
@@ -77,6 +78,8 @@ static SplineSegment BuildSplineSegment(
     return seg;
 }
 
+// SplineSegment1区間分の頂点・インデックスをプレーンメッシュとして追加する
+// isFirstがtrueのときのみ始端側の頂点も追加し、2区間目以降は直前に追加した終端頂点を始端として再利用する
 static void AppendPlaneSegment(
     std::vector<TextureColorVertexData>& vertices,
     std::vector<uint32_t>& indices,
@@ -140,6 +143,7 @@ void CreateMeshFromSpline::CreateLinePlaneMesh(
     const int32_t segmentCount = static_cast<int32_t>(spline->GetPoints().size() - 1);
     float allLength            = 0.f;
 
+    // UV/幅の補間比率を求めるため、スプライン全長を事前に計算しておく
     for (int32_t i = 0; i < segmentCount; ++i) {
         allLength += Vec3f(spline->GetPoints()[i + 1] - spline->GetPoints()[i]).length();
     }
@@ -151,6 +155,7 @@ void CreateMeshFromSpline::CreateLinePlaneMesh(
         const auto& p0 = spline->GetPoints()[i];
         const auto& p1 = spline->GetPoints()[i + 1];
 
+        // 区間の始点/終点までの累積距離を更新
         prevTotal = totalLength;
         totalLength += Vec3f(p1 - p0).length();
 
@@ -201,6 +206,7 @@ void CreateMeshFromSpline::CreateCrossPlaneMesh(
         const auto seg = BuildSplineSegment(
             p0, p1, prevTotal, totalLength, allLength, spline->GetCommonSettings());
 
+        // 縦面(right軸を幅方向・up軸を法線)と横面(up軸を幅方向・right軸を法線)を別々の頂点列として積み上げ、十字に交差させる
         AppendPlaneSegment(vertical, indices, seg, seg.right, seg.up, i == 0);
         AppendPlaneSegment(horizontal, indices, seg, seg.up, seg.right, i == 0);
     }

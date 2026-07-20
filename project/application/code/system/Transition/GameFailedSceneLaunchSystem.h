@@ -11,13 +11,21 @@ public:
     GameFailedSceneLaunchSystem();
     ~GameFailedSceneLaunchSystem() override;
 
+    /// <summary>
+    /// GamefailedEventの購読を開始する。
+    /// </summary>
     void Initialize() override;
+    /// <summary>
+    /// GamefailedEventの購読を解除する。
+    /// </summary>
     void Finalize() override;
 
 protected:
     void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
 protected:
+    // GamefailedEvent購読解除用のID
     size_t gameFailedEventId_ = 0;
+    // ゲーム失敗イベントを受信済みか(1度だけ起動処理を行うためのフラグ)
     bool isLaunched_          = false;
 };

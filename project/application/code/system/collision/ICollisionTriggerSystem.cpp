@@ -18,6 +18,7 @@ void ICollisionTriggerSystem::UpdateEntity(const OriGine::EntityHandle& _handle)
 		return;
 	}
 
+	// いずれかの相手とEnter状態（衝突した瞬間）であればトリガー成立とみなす
 	bool isTriggered = false;
 	for(const auto& [handle,state] : collider->GetCollisionStateMap()){
 		if(state == CollisionState::Enter){
@@ -30,6 +31,7 @@ void ICollisionTriggerSystem::UpdateEntity(const OriGine::EntityHandle& _handle)
 		return;
 	}
 
+	// トリガーが登録する全ターゲットに対し、モードに応じてActivate/Deactivateを適用する
 	for(OriGine::EntityHandle targetHandle : trigger->GetTargetHandles()){
 		switch(trigger->GetMode()){
 			case ICollisionTriggerComponent::Mode::Activate:

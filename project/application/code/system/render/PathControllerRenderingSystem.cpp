@@ -207,12 +207,14 @@ void PathControllerRenderingSystem::CreatePSO() {
     shaderInfo.vsKey = "ColoredVertex.VS";
     shaderInfo.psKey = "ColoredVertex.PS";
 
+    // ルートパラメータ0: トランスフォーム用定数バッファ（RenderCall で b0 にバインド）
     D3D12_ROOT_PARAMETER rootParameter[2]{};
     rootParameter[0].ParameterType             = D3D12_ROOT_PARAMETER_TYPE_CBV;
     rootParameter[0].ShaderVisibility          = D3D12_SHADER_VISIBILITY_VERTEX;
     rootParameter[0].Descriptor.ShaderRegister = 0;
     shaderInfo.pushBackRootParameter(rootParameter[0]);
 
+    // ルートパラメータ1: カメラ用定数バッファ（StartRender で b1 にバインド）
     rootParameter[1].ParameterType             = D3D12_ROOT_PARAMETER_TYPE_CBV;
     rootParameter[1].ShaderVisibility          = D3D12_SHADER_VISIBILITY_VERTEX;
     rootParameter[1].Descriptor.ShaderRegister = 1;

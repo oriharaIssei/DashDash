@@ -22,6 +22,10 @@
 /// <returns></returns>
 std::vector<std::string> ParseCommandLine();
 
+/// <summary>
+/// アプリケーションのエントリポイント。
+/// ビルド構成に応じて MyEditor / MyGame を生成し、初期化・実行・終了処理を行う。
+/// </summary>
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #if defined(_DEBUG) || defined(DEBUG_REPLAY)
     OriGine::DxDebug::GetInstance()->InitializeDebugger();

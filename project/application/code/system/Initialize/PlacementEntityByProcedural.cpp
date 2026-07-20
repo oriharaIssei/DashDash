@@ -184,6 +184,7 @@ void PlacementEntityByProcedural::UpdateEntity(const OriGine::EntityHandle& _han
         // Dispatch
         uint32_t res = pointPlacementParams.GetParamData().openData_.placementResolution;
 
+        // スレッドグループサイズ32x32を前提に、解像度を切り上げてグループ数を算出
         uint32_t groupX = (res + 31) / 32;
         uint32_t groupY = (res + 31) / 32;
 
@@ -205,6 +206,7 @@ void PlacementEntityByProcedural::UpdateEntity(const OriGine::EntityHandle& _han
             for (const auto& point : pointPlacementParams.GetOutputPoints().GetOpenData()) {
                 Entity* cloneEntity = factory.BuildEntityFromTemplate(scene, originalEntityFileName);
                 if (!cloneEntity) {
+                    // テンプレートが未登録の場合はファイルから読み込んでから再度複製を試みる
                     if (!SceneJsonRegistry::GetInstance()->LoadEntityTemplate(pointPlacementParams.GetOriginalEntityDirectory(), originalEntityFileName)) {
                         LOG_ERROR("Failed to load entity template from file '{}/{}'.", pointPlacementParams.GetOriginalEntityDirectory(), originalEntityFileName);
                         break;
@@ -220,6 +222,7 @@ void PlacementEntityByProcedural::UpdateEntity(const OriGine::EntityHandle& _han
                     break;
                 }
 
+                // 出力点のvolume値を一様スケールとして基準スケールに乗算する
                 transform->scale = Vec3f(point.volume, point.volume, point.volume) * defaultScale;
 
                 transform->translate = point.pos;

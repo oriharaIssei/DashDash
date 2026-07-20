@@ -25,11 +25,13 @@ void PlayerJumpState::Initialize() {
 
     rigidbody->SetUseGravity(false);
 
+    // ギアレベルの割合をイージングで補正し、ジャンプ初速(ホールド速度)を算出
     float t      = static_cast<float>(playerState->GetGearLevel()) / static_cast<float>(kMaxPlayerGearLevel);
     float easedT = EasingFunctions[static_cast<int32_t>(playerStatus->GetJumpHoldVelocityEaseType())](t);
 
     rigidbody->SetVelocity(Y, std::lerp(playerStatus->GetMinJumpHoldVelocity(), playerStatus->GetMaxJumpHoldVelocity(), t)); // ジャンプパワーをY軸に設定
 
+    // ジャンプボタン長押し時のチャージ速度も同様にイージングで算出
     easedT       = EasingFunctions[static_cast<int32_t>(playerStatus->GetJumpChargeRateEaseType())](t);
     chargePower_ = std::lerp(playerStatus->GetMinJumpChargeRate(), playerStatus->GetMaxJumpChargeRate(), easedT);
 

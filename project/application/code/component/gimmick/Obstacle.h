@@ -19,7 +19,7 @@ public:
     void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
 private:
-    float penaltyTime_                  = 1.5f;
+    float penaltyTime_                  = 1.5f; // 障害物衝突時に加算されるペナルティ時間 /sec
     float invincibilityTimeOnCollision_ = 1.0f; // 障害物と衝突した際の無敵時間 /sec
 
 public:

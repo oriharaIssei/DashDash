@@ -38,6 +38,11 @@ public:
     void Finalize() override;
     void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
+    /// <summary>
+    /// XZ平面上の移動速度からイージングを介してFovYを算出する。
+    /// </summary>
+    /// <param name="_xzSpeed">XZ平面上の速度</param>
+    /// <returns>速度に応じて補間されたFovY</returns>
     float CalculateFovYBySpeed(float _xzSpeed) const;
 
     // --- Follow Target ---
@@ -114,6 +119,7 @@ private:
     OriGine::Vec3f currentTargetOffset_ = {0.0f, 0.0f, 0.0f};
     OriGine::Vec3f currentOffset_       = {0.0f, 0.0f, 0.0f};
 
+    // 各カメラ状態（Idle/Dash/WallRun）ごとのオフセット・追従補間パラメータ
     CameraStateParams idleParams_{
         AppConfig::Camera::kFirstTargetOffset,
         AppConfig::Camera::kFirstOffset,
@@ -130,9 +136,12 @@ private:
         AppConfig::Camera::kDefaultInterTargetInterpolation,
         AppConfig::Camera::kDefaultInterTargetInterpolation};
 
+    // WallRun中のtargetOffset.Xの下限値
     float minTargetOffsetXOnWallRun_ = 0.0f;
 
+    // Follow状態で傾き（ロール）を発生させる進行方向との内積のしきい値
     float tiltDotOnFollow_      = 0.f;
+    // Follow状態で許容する最大ロール角
     float maxRollAngleOnFollow_ = 0.f;
 
     OriGine::Vec3f interTarget_                    = {0.0f, 0.0f, 0.0f};
@@ -153,6 +162,7 @@ private:
     float fovMinSpeed_             = AppConfig::Camera::kDefaultFovMinSpeed;
     float fovMaxSpeed_             = AppConfig::Camera::kDefaultFovMaxSpeed;
     OriGine::EaseType fovEaseType_ = OriGine::EaseType::Linear;
+    // 前進速度の補正に用いる基準速度値
     float fixForForwardSpeed_      = AppConfig::Camera::kFixForForwardSpeed;
 
     std::shared_ptr<ICameraState> cameraState_ = nullptr;

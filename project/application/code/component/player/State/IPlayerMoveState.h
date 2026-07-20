@@ -21,8 +21,8 @@
 /// ジャンプ入力に対する応答
 /// </summary>
 struct JumpInputResponse {
-    bool wallJump = false;
-    bool railJump = false;
+    bool wallJump = false; // 壁ジャンプとして扱うか
+    bool railJump = false; // レールジャンプとして扱うか
 };
 
 /// <summary>
@@ -33,9 +33,18 @@ public:
     IPlayerMoveState(OriGine::Scene* _scene, const OriGine::EntityHandle& _playerEntityHandle, PlayerMoveState _state);
     virtual ~IPlayerMoveState();
 
-    virtual void Initialize()             = 0;
+    /// <summary>
+    /// 状態開始時の初期化処理(派生クラスで実装)
+    /// </summary>
+    virtual void Initialize() = 0;
+    /// <summary>
+    /// 毎フレームの更新処理(派生クラスで実装)
+    /// </summary>
     virtual void Update(float _deltaTime) = 0;
-    virtual void Finalize()               = 0;
+    /// <summary>
+    /// 状態終了時の終了処理(派生クラスで実装)
+    /// </summary>
+    virtual void Finalize() = 0;
 
     /// <summary>
     /// Playerの状態遷移を行う(遷移条件,遷移先は派生クラスで実装)

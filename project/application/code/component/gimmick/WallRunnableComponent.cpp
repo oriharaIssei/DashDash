@@ -46,6 +46,7 @@ bool WallRunnableComponent::IsNormalAllowed(const Vec3f& _collisionNormal) const
         return true;
     }
 
+    // 許容角度をコサイン値に変換し、内積との比較で角度判定する（acosを避けるため）
     float cosThreshold = std::cos(angleTolerance_ * OriGine::kDeg2Rad);
 
     for (const auto& allowed : allowedNormals_) {

@@ -29,6 +29,7 @@ public:
     // デバイスが有効かどうか（パッド優先にする時に使う）
     virtual bool IsActive() const = 0;
 
+    // 移動入力かジャンプ入力のいずれかがあるか
     virtual bool IsAnyInput() const {
         return GetMoveDirection().lengthSq() > 0.0f || IsJumpPress();
     }

@@ -35,10 +35,13 @@ public:
     void Run();
 
 private:
+    // シーン全体の管理
     std::unique_ptr<OriGine::SceneManager> sceneManager_ = nullptr;
 
 #ifdef _DEVELOP
+    // リプレイ録画中かどうか
     bool isRecording_                                  = false;
+    // 入力リプレイの録画・再生を担う
     std::unique_ptr<OriGine::ReplayRecorder> recorder_ = nullptr;
 #endif // _DEVELOP
 };

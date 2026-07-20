@@ -27,8 +27,8 @@ public:
     float GetTimeScaleDuration() const { return timeScaleDuration_; }
 
 private:
-    bool isActive_{false};
-    std::set<std::string> timeScaleTags_{};
-    float timeScale_{1.0f};
+    bool isActive_{false}; // 効果が発動中かどうか
+    std::set<std::string> timeScaleTags_{}; // 効果の対象を絞り込むためのタグ集合
+    float timeScale_{1.0f}; // DeltaTimeに乗算するスケール値
     float timeScaleDuration_{0.0f}; // タイムスケールの効果時間
 };

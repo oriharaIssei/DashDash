@@ -52,6 +52,7 @@ private:
     bool isUsingLocalDeltaTime_ = false; // ローカルデルタタイムを使用するかどうか
     std::string timerTag_; // タイマーのタグ名
 
+    // タイマーの最大時間と現在の経過時間
     float maxTime_     = 0.f;
     float currentTime_ = 0.f;
 

@@ -30,7 +30,13 @@ public:
     void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
     void Finalize() override;
 
+    /// <summary>
+    /// シェイクを開始する。経過時間とSpring用状態をリセットする。
+    /// </summary>
     void StartShake();
+    /// <summary>
+    /// シェイクを停止する（非アクティブ化）。
+    /// </summary>
     void StopShake();
 
 public:

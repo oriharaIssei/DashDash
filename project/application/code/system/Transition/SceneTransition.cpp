@@ -46,6 +46,7 @@ void SceneTransition::Update() {
 
     EraseDeadEntity();
 
+    // enterScene_ / exitScene_ / 通常更新 の優先順で排他的に処理する
     // シーンに入るエフェクトの更新
     if (enterScene_) {
         EntityHandle enterSceneEntityHandle = GetUniqueEntity("EnterScene");

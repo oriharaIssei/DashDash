@@ -16,17 +16,22 @@
 /// 点群配置をプロシージャルで設定するためのパラメータ構造体
 /// </summary>
 struct PointPlacementParamsData {
+    // 点群配置に使用する乱数シード
     uint32_t seed = 0;
 
+    // 点同士の最小衝突半径（この距離未満には配置しない）
     float collisionRadius = 0.f;
 
+    // 密度・ボリューム・マスクの各テクスチャによる配置可否判定の閾値
     float densityThreshold = 0.f;
     float volumeThreshold  = 0.f;
     float maskThreshold    = 0.f;
 
+    // 配置サンプリングの解像度とサンプリング回数
     uint32_t placementResolution = 0;
     uint32_t sampleCount         = 0;
 
+    // 配置範囲のワールド座標最小値・最大値(XZ)
     OriGine::Vec2f worldMinXZ = OriGine::Vec2f(0.f, 0.f);
     OriGine::Vec2f worldMaxXZ = OriGine::Vec2f(0.f, 0.f);
 
@@ -76,8 +81,17 @@ class PointPlacementParams
 public:
     PointPlacementParams()          = default;
     virtual ~PointPlacementParams() = default;
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     virtual void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    /// <summary>
+    /// 終了処理
+    /// </summary>
     virtual void Finalize() override;
+    /// <summary>
+    /// エディタ用編集UI
+    /// </summary>
     virtual void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
 private:

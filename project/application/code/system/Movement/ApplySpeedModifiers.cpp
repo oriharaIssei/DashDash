@@ -23,6 +23,9 @@ ApplySpeedModifiers::~ApplySpeedModifiers() {}
 void ApplySpeedModifiers::Initialize() {}
 void ApplySpeedModifiers::Finalize() {}
 
+// エンティティが持つ全てのSpeedModifiersを走査し、それぞれの加算/乗算速度を
+// フェードイン→保持→フェードアウトの3フェーズで計算したうえでRigidbodyの速度に適用する。
+// 効果が終了し自動削除フラグが立っているものは、対象エンティティを削除する。
 void ApplySpeedModifiers::UpdateEntity(const OriGine::EntityHandle& _handle) {
     auto& speedModifiers = GetComponents<SpeedModifiers>(_handle);
 

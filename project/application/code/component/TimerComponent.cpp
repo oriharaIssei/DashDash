@@ -10,6 +10,7 @@ TimerComponent::TimerComponent() {}
 TimerComponent::~TimerComponent() {}
 
 void TimerComponent::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
+    // 開始済みなら最大時間から、未開始なら0からカウントを始める
     if (isStarted_) {
         currentTime_ = maxTime_;
     } else {

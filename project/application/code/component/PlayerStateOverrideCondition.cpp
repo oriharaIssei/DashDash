@@ -16,6 +16,7 @@ void PlayerStateOverrideCondition::Edit(OriGine::Scene* /*_scene*/, const OriGin
 #ifdef _DEBUG
     int32_t bitmask = static_cast<int32_t>(overrideConditions.ToUnderlying());
 
+    // PlayerMoveState の各ビットをチェックボックスとして表示し、フラグのON/OFFを切り替える
     for (int32_t i = 0; i < static_cast<int32_t>(PlayerMoveState::Count); ++i) {
         std::string label = moveStateName[static_cast<PlayerMoveState>(1 << i)];
         label += "##" + _parentLabel;

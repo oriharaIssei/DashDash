@@ -34,6 +34,8 @@ void TimeScaleEffectComponent::Edit(OriGine::Scene* /*_scene*/, const OriGine::E
 
     std::string label = "TimeScaleTags##" + _parentLabel;
     if (ImGui::TreeNode(label.c_str())) {
+        // DeltaTimerに登録済みの全タグをチェックボックスで一覧表示し、
+        // ON/OFFに応じてtimeScaleTags_への追加・削除を行う
         DeltaTimer* deltaTimer = Engine::GetInstance()->GetDeltaTimer();
         for (const auto& [key, scale] : deltaTimer->GetDeltaTimeScaleMap()) {
             bool isActive = timeScaleTags_.end() != std::find(timeScaleTags_.begin(), timeScaleTags_.end(), key);

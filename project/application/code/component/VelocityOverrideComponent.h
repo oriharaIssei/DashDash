@@ -52,6 +52,7 @@ private:
     // 強制移動ベクトル
     OriGine::Vec3f forcedMovementVector_ = OriGine::Vec3f();
 
+    // 各軸(X, Y, Z)を上書き対象とするかどうかのフラグ
     std::array<bool, OriGine::Vec3f::dim> isOverrideAxis_ = {false, false, false};
 
     // 硬直時間

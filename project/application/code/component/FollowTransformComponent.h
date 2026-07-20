@@ -17,8 +17,17 @@ public:
 	FollowTransformComponent();
 	~FollowTransformComponent() override;
 
+	/// <summary>
+	/// 初期化処理
+	/// </summary>
 	void Initialize(OriGine::Scene* scene,const OriGine::EntityHandle& owner) override;
+	/// <summary>
+	/// エディタ用編集UI
+	/// </summary>
 	void Edit(OriGine::Scene* scene,const OriGine::EntityHandle& owner,const std::string& parentLabel) override;
+	/// <summary>
+	/// 終了処理
+	/// </summary>
 	void Finalize() override;
 
 	/// <summary>

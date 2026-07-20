@@ -45,18 +45,58 @@ public:
     SpeedModifiers();
     ~SpeedModifiers();
 
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    /// <summary>
+    /// 終了処理
+    /// </summary>
     void Finalize() override;
+    /// <summary>
+    /// エディタ用編集UI
+    /// </summary>
     void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
+    /// <summary>
+    /// Additive/Multiplier両効果のパラメータをすべて初期値に戻す
+    /// </summary>
     void Reset();
 
+    /// <summary>
+    /// 加算(Additive)による速度補正効果を開始する
+    /// </summary>
+    /// <param name="_target">加算する速度の目標値</param>
+    /// <param name="_lerpDuration">目標値まで補間する時間</param>
+    /// <param name="_effectDuration">効果を維持する時間</param>
+    /// <param name="_easeType">補間に使用するイージング種別</param>
+    /// <param name="_beforeSpeed">効果適用前の速度</param>
+    /// <param name="_restoreSpeed">効果終了後に復元する速度</param>
+    /// <param name="_fadeOutDuration">フェードアウトにかける時間</param>
+    /// <param name="_fadeOutEaseType">フェードアウトに使用するイージング種別</param>
     void StartAdditiveEffect(float _target, float _lerpDuration, float _effectDuration, OriGine::EaseType _easeType, float _beforeSpeed, float _restoreSpeed, float _fadeOutDuration = 0.f, OriGine::EaseType _fadeOutEaseType = OriGine::EaseType::Linear);
+    /// <summary>
+    /// 乗算(Multiplier)による速度補正効果を開始する
+    /// </summary>
+    /// <param name="_target">乗算する速度係数の目標値</param>
+    /// <param name="_lerpDuration">目標値まで補間する時間</param>
+    /// <param name="_effectDuration">効果を維持する時間</param>
+    /// <param name="_easeType">補間に使用するイージング種別</param>
+    /// <param name="_beforeSpeed">効果適用前の速度</param>
+    /// <param name="_restoreSpeed">効果終了後に復元する速度</param>
+    /// <param name="_fadeOutDuration">フェードアウトにかける時間</param>
+    /// <param name="_fadeOutEaseType">フェードアウトに使用するイージング種別</param>
     void StartMultiplierEffect(float _target, float _lerpDuration, float _effectDuration, OriGine::EaseType _easeType, float _beforeSpeed, float _restoreSpeed, float _fadeOutDuration = 0.f, OriGine::EaseType _fadeOutEaseType = OriGine::EaseType::Linear);
 
+    /// <summary>
+    /// Additive効果が持続中またはフェードアウト中かどうか
+    /// </summary>
     bool IsAdditiveEffectActive() const {
         return additiveTimer_ < additiveDuration_ || additiveFadeOutTimer_ < additiveFadeOutDuration_;
     }
+    /// <summary>
+    /// Multiplier効果が持続中またはフェードアウト中かどうか
+    /// </summary>
     bool IsMultiplierEffectActive() const {
         return multiplierTimer_ < multiplierDuration_ || multiplierFadeOutTimer_ < multiplierFadeOutDuration_;
     }

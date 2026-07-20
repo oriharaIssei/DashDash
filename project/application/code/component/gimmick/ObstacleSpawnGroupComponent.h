@@ -25,7 +25,9 @@ public:
     void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
 
 private:
+    // 既に出現イベントが発火済みかどうか（多重発火防止）
     bool isTriggered_ = false;
+    // 一括出現の対象となる Obstacle Entity のハンドル一覧
     std::vector<OriGine::EntityHandle> obstacleHandles_;
 
 public:

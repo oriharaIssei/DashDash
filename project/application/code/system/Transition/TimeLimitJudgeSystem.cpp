@@ -27,6 +27,7 @@ void TimeLimitJudgeSystem::UpdateEntity(const EntityHandle& _handle) {
     if (!timerComp) {
         return;
     }
+    // 残り時間が0を下回った(浮動小数点誤差を考慮しkEpsilon分のマージンを持たせる)らゲーム失敗
     if (timerComp->GetTime() <= -kEpsilon) {
         MessageBus::GetInstance()->Emit<GamefailedEvent>(GamefailedEvent());
         return;

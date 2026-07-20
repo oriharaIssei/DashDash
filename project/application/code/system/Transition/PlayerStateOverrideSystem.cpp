@@ -66,6 +66,7 @@ void PlayerStateOverrideSystem::UpdateEntity(const EntityHandle& _handle) {
         return;
     }
 
+    // 押し戻し中の衝突相手(Player)を走査し、指定条件外の状態であれば時間を止める
     for (auto& [id, info] : pushBackInfo->GetCollisionInfoMap()) {
         auto playerState = GetComponent<PlayerState>(id);
         if (!playerState) {

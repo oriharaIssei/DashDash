@@ -29,9 +29,11 @@ void AttractModeSystem::Finalize() {}
 
 void AttractModeSystem::Update() {
     const float deltaTime = Engine::GetInstance()->GetDeltaTime();
+    // 現在の状態を更新
     currentState_->Update(deltaTime);
 
     previousState_ = currentState_;
+    // 遷移条件を満たしていれば次の状態へ切り替える
     IAttractModeState* next = currentState_->Transition();
     if (next) {
         currentState_ = next;

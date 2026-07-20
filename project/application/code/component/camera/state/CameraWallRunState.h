@@ -19,12 +19,13 @@ public:
     void Finalize() override;
 
 private:
+    // 壁の左右に応じて反転済みの、補間先targetOffset/minTargetOffsetX/offset
     OriGine::Vec3f targetOffsetOnWallRun_     = {0.0f, 0.0f, 0.0f};
     float minTargetOffsetXOnWallRun_          = 0.0f;
     OriGine::Vec3f offsetOnWallRun_           = {0.0f, 0.0f, 0.0f};
 
-    bool isRightWall_ = false;
+    bool isRightWall_ = false; // 右壁を走っているかどうか
 
-    const float kLerpTime_ = 1.8f;
-    float lerpTimer_       = 0.0f;
+    const float kLerpTime_ = 1.8f; // wallRunParamsへの補間にかける時間
+    float lerpTimer_       = 0.0f; // 補間の経過時間
 };

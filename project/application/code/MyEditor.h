@@ -31,6 +31,7 @@ public:
 
 protected:
     bool isEndRequest_                           = false;
+    // エディタ制御を担うコントローラ
     OriGine::EditorController* editorController_ = nullptr;
 
 public:

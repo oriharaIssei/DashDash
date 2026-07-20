@@ -58,6 +58,8 @@ void PlayerInputSystem::InputUpdate(float _deltaTime, OriGine::KeyboardInput* _k
 
 IPlayerInputDevice* PlayerInputSystem::SelectActiveDevice(bool _preUsingGamepad, IPlayerInputDevice* _padDevice, IPlayerInputDevice* _keyDevice) {
     if (_padDevice->IsActive()) {
+        // 直前がゲームパッド操作中でも、キー入力があればキーボードへ切り替える（逆も同様）
+        // これにより、両デバイスが同時に有効でもチラつきなく片方に確定できる
         if (_preUsingGamepad) {
             return _keyDevice->IsAnyInput() ? _keyDevice : _padDevice;
         } else {
@@ -82,30 +84,37 @@ void PlayerInputSystem::HandleJump(
     }
 
     if (input->IsJumpInput()) {
+        // --- ジャンプ長押し中の処理 ---
         if (!moveState->CanHoldJump()) {
+            // 現在の状態がジャンプ継続を許可しない場合は強制的に終了する
             input->SetJumpInput(false);
             input->SetJumpInputTime(0.0f);
             return;
         }
 
         if (device->IsJumpPress()) {
+            // 押し続けている間は入力時間を加算し、可変ジャンプ力の判定に使う
             input->SetJumpInput(true);
             input->SetJumpInputTime(
                 input->GetJumpInputTime() + _deltaTime);
 
+            // 最大保持時間に達したら強制的に入力を終了する
             if (input->GetJumpInputTime() >= input->GetMaxJumpTime()) {
                 input->SetJumpInput(false);
                 input->SetJumpInputTime(0.0f);
             }
         } else {
+            // ボタンが離されたら入力状態をリセットする
             input->SetJumpInput(false);
             input->SetJumpInputTime(0.0f);
         }
 
     } else {
+        // --- ジャンプ開始トリガーの処理 ---
         if (device->IsJumpTrigger()) {
             input->SetJumpInput(true);
 
+            // 現在の状態に応じて壁ジャンプ/レールジャンプかどうかを判定する
             JumpInputResponse response = moveState->OnJumpTriggered();
             input->SetWallJumpInput(response.wallJump);
             input->SetRailJumpInput(response.railJump);

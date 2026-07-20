@@ -22,6 +22,7 @@ void FollowTransformComponent::Finalize() {}
 
 void FollowTransformComponent::SetTarget(const OriGine::EntityHandle& targetHandle) {
     targetHandle_ = targetHandle;
+    // 追従対象を設定すると同時に追従を有効化する
     isActive_     = true;
 }
 

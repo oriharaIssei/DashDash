@@ -23,8 +23,17 @@ public:
     TireSplinePoints();
     ~TireSplinePoints() override;
 
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    /// <summary>
+    /// エディタ用編集UI
+    /// </summary>
     void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
+    /// <summary>
+    /// 終了処理
+    /// </summary>
     void Finalize() override;
 
 public:
@@ -84,15 +93,19 @@ private:
 
     int32_t capacity = 100;
 
+    // 速度に応じた効果強度の補間に使用するイージング種別
     OriGine::EaseType speedIntensityEaseType =
         OriGine::EaseType::EaseInOutSine;
 
+    // 移動開始時に適用する効果係数
     float startMoveFactor = 1.0f;
 
+    // 速度に応じた効果係数の最小値・最大値
     float minSpeedFactor = 0.1f;
     float maxSpeedFactor = 1.0f;
 
     float thresholdBankAngle = 0.f; // この角度を超えたらバンクとして、効果を適用する
+    // バンク時に適用する効果係数の最小値・最大値
     float minBankFactor      = 1.0f;
     float maxBankFactor      = 1.0f;
     float groundedFactor     = 1.0f; // 着地時の効果倍率

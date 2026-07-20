@@ -98,7 +98,13 @@ public:
     /// </summary>
     void OffCollisionWall();
 
+    /// <summary>
+    /// レールと接触したときの処理
+    /// </summary>
     void OnCollisionRail(const OriGine::EntityHandle& _entityHandle);
+    /// <summary>
+    /// レールとの接触がなくなったときの処理
+    /// </summary>
     void OffCollisionRail();
 
     /// <summary>
@@ -138,15 +144,15 @@ private:
     // TransitionPlayerState で更新される
     std::shared_ptr<IPlayerMoveState> moveState_ = nullptr;
 
-    DiffValue<EnumBitmask<PlayerMoveState>> moveStateEnum_;
-    DiffValue<EnumBitmask<PlayerStateFlag>> stateFlag_ = EnumBitmask<PlayerStateFlag>(0);
+    DiffValue<EnumBitmask<PlayerMoveState>> moveStateEnum_; // 現在/直前の移動状態(ビットマスク)
+    DiffValue<EnumBitmask<PlayerStateFlag>> stateFlag_ = EnumBitmask<PlayerStateFlag>(0); // 現在/直前の状態フラグ(ビットマスク)
 
-    OriGine::Vec3f wallCollisionNormal_ = {0.f, 0.f, 0.f};
+    OriGine::Vec3f wallCollisionNormal_ = {0.f, 0.f, 0.f}; // 現在 接触している壁 の法線
 
     OriGine::EntityHandle wallEntityHandle_ = OriGine::EntityHandle(); // 現在 接触している壁 のエンティティID
 
-    int32_t gearLevel_    = 0;
-    float gearUpCoolTime_ = 0.0f;
+    int32_t gearLevel_    = 0; // 現在のギアレベル
+    float gearUpCoolTime_ = 0.0f; // ギアアップまでのクールタイム
 
     float penaltyTime_   = 0.0f; // ペナルティ時間 /sec (制限時間から マイナスする時間)
     float invincibility_ = 0.0f; // ペナルティ無敵時間

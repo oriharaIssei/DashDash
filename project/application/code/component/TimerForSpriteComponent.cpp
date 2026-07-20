@@ -51,6 +51,7 @@ void from_json(const nlohmann::json& j, TimerForSpriteComponent& c) {
 }
 
 void TimerForSpriteComponent::Initialize(Scene* /*_scene*/, const EntityHandle& /*_owner*/) {
+    // テクスチャパスが設定済みなら読み込んでタイル情報を設定する
     if (!this->numbersTexturePath.empty()) {
         textureIndex = AssetSystem::GetInstance()->GetManager<TextureAsset>()->LoadAsset(this->numbersTexturePath);
         this->SettingOnLoadTexture(textureIndex);

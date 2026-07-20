@@ -15,5 +15,9 @@ public:
     virtual void Finalize();
 
 protected:
+    /// <summary>
+    /// Buttonの状態(Released/Pressed/Hovered/Normal)に応じた目標色へ、
+    /// SpriteRendererの色を線形補間しながら近づける。
+    /// </summary>
     virtual void UpdateEntity(const OriGine::EntityHandle& _handle);
 };

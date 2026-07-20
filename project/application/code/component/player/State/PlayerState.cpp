@@ -89,6 +89,7 @@ void PlayerState::OffCollisionGround() {
 }
 
 void PlayerState::OnCollisionObstacle(float _penaltyTime, float _invincibility) {
+    // 無敵時間中は再度ペナルティを受けない
     if (invincibility_ > 0.f) {
         return;
     }

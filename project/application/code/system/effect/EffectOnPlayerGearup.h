@@ -20,12 +20,27 @@ public:
     EffectOnPlayerGearup();
     ~EffectOnPlayerGearup();
 
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     void Initialize() override;
+    /// <summary>
+    /// 終了処理
+    /// </summary>
     void Finalize() override;
 
 protected:
+    /// <summary>
+    /// PlayerのGearup状態を監視し、Emitter再生やtrail色の変更、衝撃波リングの更新を行う
+    /// </summary>
+    /// <param name="_handle">エフェクト側のエンティティハンドル</param>
     void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
+    /// <summary>
+    /// 衝撃波リングの位置・半径をイージングしながら更新し、再生終了後は見えない位置へ隠す
+    /// </summary>
+    /// <param name="_handle">エフェクト側のエンティティハンドル</param>
+    /// <param name="_playerTransform">基準となるPlayerのTransform</param>
     void UpdateShockWaveRing(const OriGine::EntityHandle& _handle, OriGine::Transform* _playerTransform);
 
 protected:
@@ -38,8 +53,8 @@ protected:
         AnimationState(bool _playState, float _currentTime, float _maxTime)
             : playState(_playState), currentTime(_currentTime), maxTime(_maxTime) {}
         DiffValue<bool> playState = false; // 再生中かどうか
-        float currentTime         = 0.f;
-        float maxTime             = 1.f;
+        float currentTime         = 0.f; // 再生からの経過時間
+        float maxTime             = 1.f; // 再生にかかる時間（この値でcurrentTimeを正規化する）
     };
     /// ==========================================
     // ShockWave Ring

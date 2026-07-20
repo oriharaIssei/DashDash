@@ -20,8 +20,8 @@
 using namespace OriGine;
 
 namespace {
-constexpr float kMinScatterSpeed    = 10.0f;
-constexpr float kMaxScatterSpeed    = 30.0f;
+constexpr float kMinScatterSpeed    = 10.0f; // 破片パーツが飛散する最低速度
+constexpr float kMaxScatterSpeed    = 30.0f; // 破片パーツが飛散する最大速度
 constexpr float kMinRotateSpeed     = kPi;        // 最低回転速度（rad/s）= 180°/s
 constexpr float kMaxRotateSpeed     = kTau * 2.0f; // 最大回転速度（rad/s）= 720°/s
 constexpr float kFullRotationRange  = kTau;        // 初期回転のランダム範囲（0 ~ 2π）
@@ -31,6 +31,8 @@ PlayerExplosionEffectSystem::PlayerExplosionEffectSystem() : ISystem(SystemCateg
 PlayerExplosionEffectSystem::~PlayerExplosionEffectSystem() {}
 
 void PlayerExplosionEffectSystem::Initialize() {
+    // コールバックがシステム破棄後も生き残るケースに備え、weak_ptrで自身を弱参照させる
+    // （イベント発生時にlock()できた場合のみpendingEvents_へ積む）
     auto shared                                         = shared_from_this();
     std::weak_ptr<PlayerExplosionEffectSystem> weakSelf = shared;
     eventSubscriptionId_ =

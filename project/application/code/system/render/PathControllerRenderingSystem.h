@@ -27,12 +27,27 @@ public:
     PathControllerRenderingSystem();
     ~PathControllerRenderingSystem() override;
 
+    /// <summary>
+    /// ラインレンダラーとメッシュバッファを初期化する
+    /// </summary>
     void Initialize() override;
+    /// <summary>
+    /// 毎フレームの更新。描画不要な場合はスキップし、それ以外はメッシュ生成と描画を行う
+    /// </summary>
     void Update() override;
+    /// <summary>
+    /// ラインレンダラーとコマンドを解放する
+    /// </summary>
     void Finalize() override;
 
 private:
+    /// <summary>
+    /// デバッグライン描画用のPSO（パイプラインステートオブジェクト）を生成する
+    /// </summary>
     void CreatePSO() override;
+    /// <summary>
+    /// 描画コマンドリストにPSO・ルートシグネチャ・トポロジ・カメラ用バッファを設定する
+    /// </summary>
     void StartRender() override;
 
     /// <summary>
@@ -45,7 +60,14 @@ private:
     /// </summary>
     void RenderCall();
 
+    /// <summary>
+    /// 描画処理本体。StartRender と RenderCall を順に実行する
+    /// </summary>
     void Rendering() override;
+    /// <summary>
+    /// 描画をスキップすべきか判定する（PathController が存在しない場合は true）
+    /// </summary>
+    /// <returns>スキップすべきなら true</returns>
     bool ShouldSkipRender() const override;
 
 private:

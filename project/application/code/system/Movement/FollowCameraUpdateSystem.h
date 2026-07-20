@@ -29,6 +29,9 @@ public:
     void Finalize() override;
 
 protected:
+    /// <summary>
+    /// カメラの状態遷移・追従補間・注視回転を毎フレーム計算し、カメラの Transform に反映する
+    /// </summary>
     void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 
     /// <summary>

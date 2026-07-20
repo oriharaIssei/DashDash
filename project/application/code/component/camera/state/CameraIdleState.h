@@ -13,10 +13,13 @@ public:
     ~CameraIdleState() override = default;
 
     void Initialize() override;
+    /// <summary>
+    /// 現在のオフセット・注視点オフセットをidleParamsへイージング補間する。
+    /// </summary>
     void Update() override;
     void Finalize() override;
 
 private:
-    const float kLerpTime_ = 0.7f;
-    float lerpTimer_       = 0.0f;
+    const float kLerpTime_ = 0.7f; // idleParamsへの補間にかける時間
+    float lerpTimer_       = 0.0f; // 補間の経過時間
 };

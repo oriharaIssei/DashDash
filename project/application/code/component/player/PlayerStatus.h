@@ -94,8 +94,8 @@ private:
     float decelerationFactor_        = 0.f; // 減速の係数 (0以上1以下の値で、1に近いほど減速しにくい)
     float baseGearupCoolTime_        = AppConfig::Player::kDefaultBaseGearupCoolTime; // ギアアップの基本クールタイム (秒単位)
     float gearUpCoolTime_            = 0.0f; // ギアレベルが上がるまでの時間
-    float coolTimeAddRateBase_       = 1.0f;
-    float coolTimeAddRateCommonRate_ = 1.f;
+    float coolTimeAddRateBase_       = 1.0f; // ギアアップ時のクールタイム増加率の基本値
+    float coolTimeAddRateCommonRate_ = 1.f; // ギアアップ時のクールタイム増加率の共通値
 
     // 速度
     float baseSpeed_             = 0.0f; // 基本速度 (ギアレベル0の時の速度)
@@ -124,7 +124,7 @@ private:
     float wallRunRate_                = 0.0f; // 壁走りの速度倍率
     float wallRunRampUpTime_          = AppConfig::Player::kDefaultWallRunRampUpTime; // 壁走りの速度倍率が最大になるまでの時間
     float minWallJumpOffsetX_         = 0.0f; // 壁走りのオフセットのXの最小値 (X軸は、入力によって minWallJumpOffsetX_ から wallJumpOffset_[X]のなかから決まる)
-    OriGine::Vec3f wallJumpOffset_    = {0.0f, 1.0f, 0.0f};
+    OriGine::Vec3f wallJumpOffset_    = {0.0f, 1.0f, 0.0f}; // 壁ジャンプ時のオフセット
     float wallJumpRate_               = 0.0f; // 壁ジャンプ(壁から地面に行くとき)の速度倍率
     float gravityApplyDelayOnWallRun_ = AppConfig::Player::kDefaultGravityApplyDelayOnWallRun; // 壁走り開始時に重力を適用し始めるまでの遅延時間
     float wallRunDetachSpeed_         = AppConfig::Player::kDefaultWallRunDetachSpeed; // 壁走りから離脱する時の速度
@@ -132,7 +132,7 @@ private:
     // rail
     float railSpeedRate_           = 1.0f; // レール上の速度倍率
     float railRampUpTime_          = 0.f; // レール上の速度倍率が最大になるまでの時間
-    OriGine::Vec3f railJumpOffset_ = {0.f, 1.f, 0.f};
+    OriGine::Vec3f railJumpOffset_ = {0.f, 1.f, 0.f}; // レールジャンプ時のオフセット
 
     OriGine::EaseType jumpHoldVelocityEaseType_ = OriGine::EaseType::Linear;
     OriGine::EaseType jumpChargeRateEaseType_   = OriGine::EaseType::Linear;
@@ -141,7 +141,7 @@ private:
     float minJumpChargeRate_                    = 0.0f; // 最低落下のパワー
     float maxJumpChargeRate_                    = 0.0f; // 最大落下のパワー
 
-    float directionInterpolateRate_ = 0.1f;
+    float directionInterpolateRate_ = 0.1f; // 移動方向を滑らかにする際の補間率
 
     float invincibilityTime_ = AppConfig::Player::kDefaultInvincibilityTime; // 障害物に当たったときの無敵時間 /sec
 
@@ -151,7 +151,7 @@ private:
     float wallRunInterval_        = AppConfig::Player::kDefaultWallRunInterval; // 壁走り&ウィリーが可能になるまでのインターバル時間
     float currentWallRunInterval_ = 0.0f; // 現在の壁走りインターバル時間
     float railInterval_           = 0.f; // 再びレールに乗れるまでのインターバル(定数)
-    float currentRailInterval_    = 0.f;
+    float currentRailInterval_    = 0.f; // 現在のレールインターバル時間
 
 public:
     float GetDecelerationFactor() const { return decelerationFactor_; }
@@ -241,17 +241,30 @@ public:
         currentWallRunInterval_ = 0.f;
     }
 
+    /// <summary>
+    /// 壁走りインターバル時間の設定（壁走り終了時に開始）
+    /// </summary>
     void SetupWallRunInterval() {
         currentWallRunInterval_ = wallRunInterval_;
     }
 
+    /// <summary>
+    /// レールインターバル時間の更新
+    /// </summary>
+    /// <param name="_deltaTime"></param>
     void UpdateRailInterval(float _deltaTime) {
         currentRailInterval_ -= _deltaTime;
         currentRailInterval_ = (std::max)(currentRailInterval_, 0.f);
     }
+    /// <summary>
+    /// レールインターバル時間の設定（レールから離脱した時に開始）
+    /// </summary>
     void SetupRailInterval() {
         currentRailInterval_ = railInterval_;
     }
+    /// <summary>
+    /// レールインターバル時間のリセット
+    /// </summary>
     void ResetRailInterval() {
         currentRailInterval_ = 0.f;
     }

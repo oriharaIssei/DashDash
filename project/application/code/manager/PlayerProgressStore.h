@@ -20,6 +20,9 @@ struct ClearTimeRanking {
     std::array<std::optional<float>, kTopClearTimeCount> times;
 };
 
+/// <summary>
+/// ClearTimeRanking を json へ変換する
+/// </summary>
 inline void to_json(nlohmann::json& j, const ClearTimeRanking& ranking) {
     j = nlohmann::json::object();
     for (size_t i = 0; i < ClearTimeRanking::kTopClearTimeCount; ++i) {
@@ -30,6 +33,9 @@ inline void to_json(nlohmann::json& j, const ClearTimeRanking& ranking) {
         }
     }
 }
+/// <summary>
+/// json から ClearTimeRanking を復元する
+/// </summary>
 inline void from_json(const nlohmann::json& j, ClearTimeRanking& ranking) {
     for (size_t i = 0; i < ClearTimeRanking::kTopClearTimeCount; ++i) {
         std::string key = "Time" + std::to_string(i + 1);
@@ -46,6 +52,7 @@ inline void from_json(const nlohmann::json& j, ClearTimeRanking& ranking) {
 /// </summary>
 struct StageProgress {
     bool isCleared = false; // クリアしたかどうか
+    /// このステージのクリアタイムランキング
     ClearTimeRanking ranking;
 };
 
@@ -55,6 +62,9 @@ struct StageProgress {
 class PlayerProgressStore {
 private:
 public:
+    /// <summary>
+    /// シングルトンインスタンスを取得する。初回呼び出し時に自動で初期化される。
+    /// </summary>
     static PlayerProgressStore* GetInstance() {
         static PlayerProgressStore instance;
 
@@ -66,7 +76,13 @@ public:
         return &instance;
     }
 
+    /// <summary>
+    /// 初期化処理。進行状況データマップをクリアする。
+    /// </summary>
     void Initialize();
+    /// <summary>
+    /// 終了処理。進行状況データマップをクリアする。
+    /// </summary>
     void Finalize();
 
     /// <summary>

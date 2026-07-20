@@ -14,5 +14,8 @@ public:
     void Finalize() override;
 
 protected:
+    /// <summary>
+    /// ButtonGroupで現在選択されているボタンに対応するSubSceneのみをアクティブにする。
+    /// </summary>
     void UpdateEntity(const OriGine::EntityHandle& _handle) override;
 };

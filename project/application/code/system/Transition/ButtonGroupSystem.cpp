@@ -136,6 +136,7 @@ void ButtonGroupSystem::UpdateEntity(const EntityHandle& _handle) {
     }
 
     if (delta != 0) {
+        // 複数方向のキーが同時に入力されても 1回のUpdateで1つ分だけ移動させる
         delta = std::clamp(delta, -1, 1);
 
         // 初期化

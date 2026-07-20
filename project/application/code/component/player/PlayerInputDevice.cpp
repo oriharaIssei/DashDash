@@ -33,6 +33,7 @@ OriGine::Vec2f KeyboardInputDevice::GetMoveDirection() const {
     float x = 0.0f;
     float y = 0.0f;
 
+    // 各方向キーの押下状態からXY成分を合成し、最後に正規化する
     for (auto k : player_->GetMoveRightKeys())
         if (key_->IsPress(k))
             x += 1.0f;

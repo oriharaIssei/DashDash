@@ -54,6 +54,8 @@ void PenaltySystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     float penaltyTime = playerState->SufferPenalty();
 
     // ギアレベルを下げる
+    // 現在値が閾値より高ければ閾値まで、閾値以下ならkPenaltyGearLevelDivisorで割った値まで下げる
+    // (下げ過ぎを防ぎつつ、閾値超え時は確実にペナルティを与える)
     int32_t newGearLevel = playerState->GetGearLevel();
     newGearLevel         = (std::max)((std::min)(newGearLevel, AppConfig::Player::kPenaltyThresholdGearLevel), newGearLevel / AppConfig::Player::kPenaltyGearLevelDivisor);
     playerState->SetGearLevel(newGearLevel);

@@ -105,6 +105,7 @@ void SpeedModifiers::Edit(Scene* /*_scene*/, const EntityHandle& /*_owner*/, [[m
 }
 
 void SpeedModifiers::Reset() {
+    // Additive効果のパラメータを初期化
     additiveTarget_          = 0.f;
     additiveDuration_        = 0.0f;
     additiveTimer_           = 0.0f;
@@ -114,6 +115,7 @@ void SpeedModifiers::Reset() {
     additiveFadeOutTimer_    = 0.0f;
     additiveAxes_            = {true, true, true};
 
+    // Multiplier効果のパラメータを初期化
     multiplierTarget_          = 0.f;
     multiplierDuration_        = 0.0f;
     multiplierTimer_           = 0.0f;

@@ -22,8 +22,17 @@ class PlayerEffectControlParam
 public:
     PlayerEffectControlParam();
     ~PlayerEffectControlParam() override;
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    /// <summary>
+    /// エディタ用編集UI
+    /// </summary>
     void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
+    /// <summary>
+    /// 終了処理
+    /// </summary>
     void Finalize() override;
 
     /// <summary>
@@ -40,10 +49,10 @@ public:
 
 private:
     std::vector<OriGine::Vec4f> trailColorByGearLevel_ = std::vector<OriGine::Vec4f>(kMaxPlayerGearLevel, OriGine::Vec4f(1.f, 1.f, 1.f, 1.f));
-    float rotateOffsetOnWallRun_                       = 0.0f;
-    float maxWheelSpinSpeed_                           = 0.001f;
-    float wheelTiltAngleRate_                          = 0.0f;
-    float preWheelTiltAngle_                           = 0.0f;
+    float rotateOffsetOnWallRun_                       = 0.0f; // 壁走り時の回転オフセット
+    float maxWheelSpinSpeed_                           = 0.001f; // 移動時のホイール回転速度率
+    float wheelTiltAngleRate_                          = 0.0f; // 移動時のホイール傾き角度の係数
+    float preWheelTiltAngle_                           = 0.0f; // 前フレームのホイール傾き角度
 
     // 障害物衝突時のホイールの傾き角度と傾き速度
     float aheadCollisionCurrentAngle_ = 0.f;
@@ -54,8 +63,8 @@ private:
     float wheelTiltAngleMaxAccel_ = 0.0f;
     float maxWheelTiltAngle_      = 0.0f; // ホイールの最大傾き角度
 
-    float maxTiltOnRailRun_   = 0.f;
-    float tiltSpeedOnRailRun_ = 0.f;
+    float maxTiltOnRailRun_   = 0.f; // レール走行時の最大傾き角度
+    float tiltSpeedOnRailRun_ = 0.f; // レール走行時の傾き速度
 
     // 無敵時点滅エフェクトの基本振幅（開始時の点滅速度）
     float invincibleBlinkBaseAmplitude_ = 8.0f;
@@ -65,7 +74,7 @@ private:
     // 速度線エフェクトの表示開始速度
     float thresholdSpeedlineParticle_ = 0.f;
 
-    OriGine::EntityHandle tireTrailSplineEntityHandle_ = OriGine::EntityHandle();
+    OriGine::EntityHandle tireTrailSplineEntityHandle_ = OriGine::EntityHandle(); // タイヤ軌跡表示用スプラインのエンティティハンドル
 
 public:
     const OriGine::Vec4f& GetTrailColorByGearLevel(int32_t _level) const {

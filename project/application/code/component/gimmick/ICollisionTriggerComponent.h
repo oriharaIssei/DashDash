@@ -14,6 +14,9 @@
 class ICollisionTriggerComponent
     : public OriGine::IComponent {
 public:
+    /// <summary>
+    /// 衝突発生時にターゲットへ適用する動作の種別。
+    /// </summary>
     enum class Mode {
         Activate,
         Deactivate,
@@ -29,10 +32,13 @@ public:
     const std::vector<OriGine::EntityHandle>& GetTargetHandles() const { return targetHandles_; }
 
 protected:
+    // 衝突時に適用する動作モード（デフォルト: Activate）
     Mode mode_ = Mode::Activate;
+    // 動作対象となる Entity のハンドル一覧
     std::vector<OriGine::EntityHandle> targetHandles_;
 };
 
+// Mode の値に対応するUI表示用の名称一覧
 static const char* kCollisionTriggerModeNames[] = {
     "Activate",
     "Deactivate",

@@ -64,6 +64,7 @@ void ButtonInputSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
             const OriGine::Vec2f& buttonSize = buttonSprite->GetSpriteBuff()->scale_;
             const OriGine::Vec2f& anchor     = buttonSprite->GetAnchorPoint();
 
+            // アンカー位置を基準に、ボタンのAABB（左上・右下）を算出する
             OriGine::Vec2f buttonLeftTop     = buttonPos - buttonSize * anchor;
             OriGine::Vec2f buttonRightBottom = buttonPos + buttonSize * (OriGine::Vec2f(1.0f, 1.0f) - anchor);
 

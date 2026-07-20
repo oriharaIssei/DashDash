@@ -26,6 +26,7 @@ void PointPlacementParams::Initialize(Scene* /*_scene*/, const EntityHandle& /*_
     paramData_.CreateBuffer(device);
     paramData_.ConvertToBuffer();
 
+    // 出力バッファの容量は配置解像度の2乗（解像度×解像度のグリッド分の点数）
     size_t outputCapacity = static_cast<size_t>(paramData_.openData_.placementResolution * paramData_.openData_.placementResolution);
     outputPoints_.CreateBuffer(device, outputCapacity);
 

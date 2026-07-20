@@ -73,6 +73,7 @@ void LookAtFromTransforms::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]]
         }
     }
 
+    // From対象（視点）のエンティティを選択するコンボボックス
     std::string entityLabel = fromEntity != nullptr ? fromEntity->GetUniqueID() : "NULL";
     label                   = "FromTransformEntity##" + _parentLabel;
     if (ImGui::BeginCombo(label.c_str(), entityLabel.c_str())) {
@@ -97,6 +98,7 @@ void LookAtFromTransforms::Edit([[maybe_unused]] Scene* _scene, [[maybe_unused]]
         ImGui::EndCombo();
     }
 
+    // To対象（注視点）のエンティティを選択するコンボボックス
     Entity* toEntity = nullptr;
     if (toTransformComp.IsValid()) {
         const auto& currentLocationItr = componentLocationMap.find(toTransformComp.uuid);

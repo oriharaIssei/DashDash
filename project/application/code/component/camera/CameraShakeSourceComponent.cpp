@@ -36,6 +36,7 @@ void CameraShakeSourceComponent::StartShake() {
     // Spring 用初期化
     springVelocity_ = Vec3f(0.0f, 0.0f, 0.0f);
     for (size_t i = 0; i < 3; ++i) {
+        // 軸ごとに正負をランダムに決定し、初期変位を振幅分だけずらす
         float sign         = MyRandom::Float(-1.f, 1.f).Get() >= 0.f ? 1.f : -1.f;
         springPosition_[i] = sign * axisParameters_[i].amplitude;
     }

@@ -77,9 +77,11 @@ void CameraController::Finalize() {
 }
 
 float CameraController::CalculateFovYBySpeed(float _xzSpeed) const {
+    // 速度レンジが不正な場合は最小FOVを返す
     if (fovMaxSpeed_ <= fovMinSpeed_) {
         return fovMin_;
     }
+    // 速度をfovMinSpeed_〜fovMaxSpeed_の範囲で0〜1に正規化し、イージングをかけてからFOVを補間する
     float t      = std::clamp((_xzSpeed - fovMinSpeed_) / (fovMaxSpeed_ - fovMinSpeed_), 0.f, 1.f);
     float easedT = EasingFunctions[static_cast<int>(fovEaseType_)](t);
     return std::lerp(fovMin_, fovMax_, easedT);

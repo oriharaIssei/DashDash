@@ -53,10 +53,10 @@ protected:
 
     OriGine::Vec3f wallNormal_ = OriGine::Vec3f(0.0f, 0.0f, 0.0f); // 壁の法線
 
-    OriGine::Vec3f cameraTargetOffsetOnWallRun_ = OriGine::Vec3f(0.0f, 0.0f, 0.0f);
-    float minCameraTargetOffsetXOnWallRun_      = 0.f;
-    OriGine::Vec3f cameraOffsetOnWallRun_       = OriGine::Vec3f(0.0f, 0.0f, 0.0f);
+    OriGine::Vec3f cameraTargetOffsetOnWallRun_ = OriGine::Vec3f(0.0f, 0.0f, 0.0f); // 壁走り中のカメラ注視点オフセット
+    float minCameraTargetOffsetXOnWallRun_      = 0.f; // 壁走り中のカメラ注視点オフセットのXの最小値
+    OriGine::Vec3f cameraOffsetOnWallRun_       = OriGine::Vec3f(0.0f, 0.0f, 0.0f); // 壁走り中のカメラ位置オフセット
 
-    const float kCameraAngleLerpTime_ = 1.8f;
-    float cameraAngleLerpTimer_       = 0.0f;
+    const float kCameraAngleLerpTime_ = 1.8f; // カメラ角度の補間にかかる時間
+    float cameraAngleLerpTimer_       = 0.0f; // カメラ角度補間の経過時間
 };

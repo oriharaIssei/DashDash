@@ -133,12 +133,18 @@ private:
     };
 
 private:
+    // ゲームが開始済みかどうか
     bool isStarted_                                   = false;
+    // 初回の状態遷移(Enter)を実行済みかどうか
     bool isInitializeState_                           = false;
+    // ステージ紹介〜ゲーム開始までの間、停止しておくシステム名の一覧
     std::vector<std::string> stopSystems_             = {};
+    // スタートタイマー中のみ停止しておくシステム名の一覧
     std::vector<std::string> stopSystemsInStartTimer_ = {};
 
+    // 現在の開始シーケンスの状態
     StartSequenceStateType stateType_                  = StartSequenceStateType::Introduction;
+    // 現在の状態を表すステートオブジェクト
     std::unique_ptr<IStartSequenceState> currentState_ = nullptr;
 
 public:

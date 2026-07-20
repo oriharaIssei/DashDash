@@ -25,8 +25,11 @@ public:
     IAttractModeState* Transition() override;
 
 private:
+    // Active状態へ遷移するまでの初期化待機時間
     float delay_ = 1.0f;
+    // 初期化開始からの経過時間
     float timer_ = 0.0f;
+    // 遷移先のActive状態
     AttractActiveState* activeState_ = nullptr;
 };
 
@@ -47,7 +50,9 @@ public:
 
 private:
     OriGine::Scene* scene_        = nullptr;
+    // 直近のUpdateで何らかの入力を検知したか
     bool hasInput_                = false;
+    // 遷移先のIdle状態
     AttractIdleState* idleState_  = nullptr;
 };
 
@@ -70,8 +75,12 @@ public:
 
 private:
     OriGine::Scene* scene_            = nullptr;
+    // Active状態へ遷移する未入力時間の閾値(秒)
     float threshold_                  = 30.0f;
+    // 未入力状態が続いている時間
     float idleTimer_                  = 0.0f;
+    // 直近のUpdateで何らかの入力を検知したか
     bool hasInput_                    = false;
+    // 遷移先のActive状態
     AttractActiveState* activeState_  = nullptr;
 };

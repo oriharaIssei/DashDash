@@ -25,6 +25,6 @@ public:
 protected:
     OriGine::Vec3f velo_ = OriGine::Vec3f(0.0f, 0.0f, 0.0f); // 壁ジャンプの速度
 
-    const float kForceJumpTime_ = 0.14f;
-    float forceJumpTimer_       = 0.0f;
+    const float kForceJumpTime_ = 0.14f; // 壁ジャンプ状態を強制的に維持する時間(この間は落下状態に遷移しない)
+    float forceJumpTimer_       = 0.0f; // 壁ジャンプ開始からの経過時間
 };

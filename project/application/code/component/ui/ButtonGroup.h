@@ -19,13 +19,23 @@ public:
     ButtonGroup()           = default;
     ~ButtonGroup() override = default;
 
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     void Initialize(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner) override;
+    /// <summary>
+    /// エディタ用編集UI
+    /// </summary>
     void Edit(OriGine::Scene* _scene, const OriGine::EntityHandle& _owner, const std::string& _parentLabel) override;
+    /// <summary>
+    /// 終了処理
+    /// </summary>
     void Finalize() override;
 
 private:
     // ボタンのエンティティID
     std::vector<OriGine::EntityHandle> buttonEntityHandles_;
+    // 初期選択状態にするボタン番号／現在選択中のボタン番号
     int32_t startButtonNumber_   = 0;
     int32_t currentButtonNumber_ = 0;
 
