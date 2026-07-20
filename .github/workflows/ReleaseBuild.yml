@@ -1,0 +1,37 @@
+name: Release Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: release-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build (Release / x64)
+    runs-on: windows-2025
+
+    steps:
+      - name: Checkout (engine submodule 込み)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      # premake5.exe は engine submodule (project/engine/tools/) から供給される。
+      # runner の VS は 2022 なので vs2026 ではなく vs2022 を明示する。
+      - name: Generate solution (premake5 vs2022)
+        shell: pwsh
+        run: ./premake.ps1 vs2022
+
+      - name: Build
+        shell: pwsh
+        run: msbuild project/DashDash.sln /m /nologo /verbosity:minimal /p:Configuration=Release /p:Platform=x64 /p:RunCodeAnalysis=false
