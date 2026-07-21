@@ -76,13 +76,24 @@ void CameraController::Edit(Scene* /*_scene*/, const EntityHandle& /*_OriGine::E
 void CameraController::Finalize() {
 }
 
+/// <summary>
+/// プレイヤーのXZ平面上の速度に応じてカメラのFOV(視野角)を変化させ、速度感を演出する。
+/// 速度が上がるほどFOVを広げることで、実際の移動速度以上のスピード感をプレイヤーに感じさせる。
+/// </summary>
+/// <param name="_xzSpeed">プレイヤーのXZ平面上の速度(スカラー)</param>
+/// <returns>速度に応じて補間されたFOVY(fovMin_〜fovMax_の範囲)</returns>
 float CameraController::CalculateFovYBySpeed(float _xzSpeed) const {
-    // 速度レンジが不正な場合は最小FOVを返す
+    // fovMinSpeed_/fovMaxSpeed_ はGUIから自由に編集できるため、逆転(あるいは同値)した不正な範囲が
+    // 設定される可能性がある。その場合は下のゼロ除算・負の除算を避けるため最小FOVを返す
     if (fovMaxSpeed_ <= fovMinSpeed_) {
         return fovMin_;
     }
     // 速度をfovMinSpeed_〜fovMaxSpeed_の範囲で0〜1に正規化し、イージングをかけてからFOVを補間する
+    // std::clampにより_xzSpeedが範囲外(fovMinSpeed_未満/fovMaxSpeed_超過)でもtは0〜1に収まり、
+    // 結果としてFOVがfovMin_〜fovMax_の範囲を超えて発散しないようにしている
     float t      = std::clamp((_xzSpeed - fovMinSpeed_) / (fovMaxSpeed_ - fovMinSpeed_), 0.f, 1.f);
+    // 速度→FOVの変化を線形のままにせず、fovEaseType_で調整できるイージングを挟むことで
+    // 変化の始まり/終わりの緩急を演出できるようにしている
     float easedT = EasingFunctions[static_cast<int>(fovEaseType_)](t);
     return std::lerp(fovMin_, fovMax_, easedT);
 }
