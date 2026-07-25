@@ -13,7 +13,6 @@ public:
     /// 初期化処理
     /// </summary>
     void Initialize() override;
-    // void Update() override;
     /// <summary>
     /// 終了処理
     /// </summary>

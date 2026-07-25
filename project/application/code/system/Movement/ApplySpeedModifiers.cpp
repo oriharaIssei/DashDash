@@ -39,6 +39,9 @@ void ApplySpeedModifiers::UpdateEntity(const OriGine::EntityHandle& _handle) {
             continue;
         }
 
+        // ヒットストップやスロー演出は特定のRigidbodyにだけ掛かるため、対象が独自のタイムスケールを
+        // 持つ場合はそちらのdeltaTimeを使う。そうしないと減速中でも効果のタイマーだけが等速で進み、
+        // 演出の見た目と効果時間がずれてしまう
         if (rigidbodyComp->IsUsingLocalDeltaTime()) {
             deltaTime = Engine::GetInstance()->GetDeltaTimer()->GetScaledDeltaTime(rigidbodyComp->GetLocalDeltaTimeName());
         } else {
@@ -65,6 +68,9 @@ void ApplySpeedModifiers::UpdateEntity(const OriGine::EntityHandle& _handle) {
                 t             = speedModifier.GetAdditiveFadeOutTimer() / speedModifier.GetAdditiveFadeOutDuration();
                 additiveSpeed = std::lerp(speedModifier.GetAdditiveTarget(), 0.f, EasingFunctions[static_cast<int>(speedModifier.GetAdditiveFadeOutEaseType())](t));
             } else {
+                // フェードアウト時間が未設定(0)の場合は「何秒で戻す」が決められないため、
+                // 代わりにrestoreSpeed_を減衰率とした指数補間で0へ漸近させる。
+                // LerpByDeltaTimeはdeltaTimeを指数に取るのでフレームレートに依存しない
                 additiveSpeed = LerpByDeltaTime(speedModifier.GetAdditiveTarget(), 0.f, deltaTime, speedModifier.GetRestoreSpeed());
             }
         }
@@ -85,6 +91,8 @@ void ApplySpeedModifiers::UpdateEntity(const OriGine::EntityHandle& _handle) {
                 t               = speedModifier.GetMultiplierFadeOutTimer() / speedModifier.GetMultiplierFadeOutDuration();
                 multiplierSpeed = std::lerp(speedModifier.GetMultiplierTarget(), 1.f, EasingFunctions[static_cast<int>(speedModifier.GetMultiplierFadeOutEaseType())](t));
             } else {
+                // additive側と同様、フェードアウト時間未設定なら指数補間で戻す。
+                // 乗算の無効値は0ではなく1なので、収束先は1.f
                 multiplierSpeed = LerpByDeltaTime(speedModifier.GetMultiplierTarget(), 1.f, deltaTime, speedModifier.GetRestoreSpeed());
             }
         }
@@ -119,6 +127,9 @@ void ApplySpeedModifiers::UpdateEntity(const OriGine::EntityHandle& _handle) {
                 const auto& mulAxes = speedModifier.GetMultiplierAxes();
                 const auto& addAxes = speedModifier.GetAdditiveAxes();
 
+                // 乗算対象の軸は現在の速度成分ではなく効果開始時の速度(beforeSpeed_)を基準にする。
+                // 現在値に毎フレーム掛け続けると倍率が累乗されて発散するため、常に開始時の値から
+                // 掛け直すことで「最終的にbeforeSpeed_×targetに落ち着く」挙動を保証している
                 for (int i = 0; i < 3; ++i) {
                     float base  = mulAxes[i] ? speedModifier.GetBeforeSpeed() : comps[i];
                     float mul   = mulAxes[i] ? multiplierSpeed : 1.f;
@@ -142,6 +153,9 @@ void ApplySpeedModifiers::UpdateEntity(const OriGine::EntityHandle& _handle) {
             }
         }
 
+        // 加速効果で通常の最高速度を超える速度を与えても、次のフレームでRigidbody側の速度制限に
+        // 引き戻されて効果が打ち消されてしまう。そのため上限自体を今回の速度まで引き上げておく。
+        // 既存の上限より小さくならないようmaxを取り、他の効果が広げた上限を縮めないようにしている
         float maxSpeed = (std::max)(effectiveSpeed.length(), rigidbodyComp->GetMaxXZSpeed());
         rigidbodyComp->SetMaxXZSpeed(maxSpeed);
         rigidbodyComp->SetVelocity(effectiveSpeed);

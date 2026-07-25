@@ -42,6 +42,9 @@ void StartSequenceSystem::Initialize() {
 
     isInitializeState_ = false;
 
+    // デバッグビルドではステージ紹介演出を丸ごと飛ばす。
+    // 演出中はプレイヤー操作系のシステムが止まるため、動作確認のたびに演出の終了を
+    // 待たされるのを避ける目的。製品ビルドでは必ず実行される
 #ifndef _DEBUG
     StageIntroductionSequence();
 #endif // ! _DEBUG
@@ -59,6 +62,10 @@ void StartSequenceSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
         return;
     }
 
+    // 毎フレーム止め直しているのは、タイマーを進めるシステムがこのシステムとは独立に動いており、
+    // 一度止めるだけではシーン側の初期化やリスタート処理で再開されてしまうため。
+    // スタート演出が終わる(isStarted_が立つ)までは上のreturnに到達しないので、
+    // 計測開始はGameStartState::Enterの1箇所だけになる
     StopGameTimer();
     currentState_->Update(*this, _handle);
 }
@@ -81,6 +88,8 @@ void StartSequenceSystem::TimerStartSequence() {
     auto* systemRunner = GetScene()->GetSystemRunnerRef();
 
     // スタートタイマー中に動かすシステムを再開する
+    // ここはActivateSystem(有効フラグを戻すだけ)を使う。カメラ系は紹介演出中に構築した
+    // 追従状態を保持したまま再開させたいため、Initializeを走らせてはいけない
     for (const auto& systemName : stopSystemsInStartTimer_) {
         systemRunner->ActivateSystem(systemName);
     }
@@ -88,6 +97,9 @@ void StartSequenceSystem::TimerStartSequence() {
 
 void StartSequenceSystem::GameStartSequence() {
     // 停止していたシステムを再開する
+    // TimerStartSequence()と違いRegisterSystem(既定でInitializeも実行)を使うのは、
+    // プレイヤーの操作・移動系を演出前の入力や速度を持ち越さない初期状態から開始させるため。
+    // Activateだけだとカウントダウン中に溜まった入力がスタート直後に反映されてしまう
     auto* systemRunner = GetScene()->GetSystemRunnerRef();
     for (const auto& systemName : stopSystems_) {
         systemRunner->RegisterSystem(systemName);

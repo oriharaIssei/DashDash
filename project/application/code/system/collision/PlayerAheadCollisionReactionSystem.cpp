@@ -50,6 +50,9 @@ void PlayerAheadCollisionReactionSystem::UpdateEntity(const OriGine::EntityHandl
         return;
     }
 
+    // 傾き量を正規化するための基準値。プレイヤーが相手コライダーへ最大どこまで潜り込めるかは
+    // 2つの球の半径差で決まるため、これを「押し戻し量の最大値」とみなして0〜1に割り戻す。
+    // 相手がプレイヤーより小さいと負値になり、下のclampで常にt=0(傾きなし)になる
     float radiusDiff       = collider->GetWorldRadius() - playerCollider->GetWorldRadius();
     float penetrationDepth = 0.f;
     Vec3f collNormal       = Vec3f();
@@ -88,6 +91,9 @@ void PlayerAheadCollisionReactionSystem::UpdateEntity(const OriGine::EntityHandl
 
     if (penetrationDepth >= OriGine::kEpsilon) {
         // 押し戻し量から目標傾き角への補間係数を求め、壁が右/左どちらにあるかで傾く方向を決める
+        // NOTE: radiusDiffが0(両者の半径が同じ)の場合ここはゼロ除算になる。
+        //       結果はinf/NaNだがclampでinfは1.0に丸まるため実害は出ていない。
+        //       NaN(penetrationDepthも0の場合)はこのif文の条件で弾かれている
         float t = std::clamp(penetrationDepth / radiusDiff, 0.f, 1.f);
         // wallRunの時の処理
         afterAngle = std::lerp(currAngle, isRightWall ? maxAngle : -maxAngle, EaseOutCubic(t));

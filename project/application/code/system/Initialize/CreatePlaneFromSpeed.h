@@ -15,8 +15,6 @@ public:
     /// 初期化処理（本システムでは特に処理なし）
     /// </summary>
     void Initialize();
-    // virtual void Update();
-    // virtual void Edit();
     /// <summary>
     /// 終了処理（本システムでは特に処理なし）
     /// </summary>

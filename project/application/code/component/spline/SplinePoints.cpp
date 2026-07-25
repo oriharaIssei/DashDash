@@ -72,6 +72,11 @@ void SplinePoints::Edit(Scene* /*_scene*/, const EntityHandle& /*_OriGine::Entit
 #endif // _DEBUG
 }
 
+/// <summary>
+/// 制御点を末尾に追加する。
+/// 軌跡は「直近capacity個の点」だけを保持したいため、上限に達している場合は
+/// 最も古い点を先頭から捨ててから追加する(常に一定長の帯が描かれるようにするため)
+/// </summary>
 void SplinePoints::PushPoint(const OriGine::Vec3f& _pos) {
     if (points.size() >= static_cast<size_t>(capacity)) {
         points.pop_front();

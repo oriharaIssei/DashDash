@@ -55,7 +55,6 @@
 #include "system/effect/BulletSpawnerWorkSystem.h"
 #include "system/effect/CameraShake.h"
 #include "system/effect/CreateMeshFromSpline.h"
-#include "system/effect/CreateMeshFromTireSpline.h"
 #include "system/effect/EffectOnPlayerGearup.h"
 #include "system/effect/EffectOnPlayerRun.h"
 #include "system/effect/PenaltyTimeSpriteUpdate.h"
@@ -98,7 +97,6 @@
 #include "system/movement/SceneTransitionRequestReceiverSystem.h"
 #include "system/movement/SceneTransitionRequestSenderSystem.h"
 #include "system/movement/StartSequenceSystem.h"
-#include "system/Movement/TireTrailGenerateSystem.h"
 #include "system/Movement/Ui3dUpdateSystem.h"
 #include "system/Movement/VelocityOverrideSystem.h"
 #include "system/transition/ApplyMouseConditionSystem.h"
@@ -324,7 +322,6 @@ void RegisterUsingSystems(){
 	systemRegistry->RegisterSystem<PlayerMoveSystem>();
 
 	systemRegistry->RegisterSystem<PlayerPathSplineGenerator>();
-	// systemRegistry->RegisterSystem<TireTrailGenerateSystem>();
 	systemRegistry->RegisterSystem<PlayerUpdateOnTitle>();
 
 	systemRegistry->RegisterSystem<StartSequenceSystem>();
@@ -392,7 +389,6 @@ void RegisterUsingSystems(){
 
 	systemRegistry->RegisterSystem<MaterialEffect>();
 	systemRegistry->RegisterSystem<CreateMeshFromSpline>();
-	// systemRegistry->RegisterSystem<CreateMeshFromTireSpline>();
 	systemRegistry->RegisterSystem<CreateRailMesh>();
 
 	systemRegistry->RegisterSystem<PlayerSpeedFor3dUI>();

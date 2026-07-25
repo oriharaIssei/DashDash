@@ -26,6 +26,19 @@ TireTrailGenerateSystem::~TireTrailGenerateSystem() {}
 void TireTrailGenerateSystem::Initialize() {}
 void TireTrailGenerateSystem::Finalize() {}
 
+/// <summary>
+/// タイヤ痕(スプライン)の制御点を1フレーム分更新する。
+/// </summary>
+/// <remarks>
+/// 次の順序で処理する。順序に依存関係があるため入れ替えないこと。
+/// ①生成条件(プレイヤーが接地して動いているか)を評価し、満たさなければフェードアウトへ回す
+/// ②スプラインの計算に最低限必要な点数を、現在位置で埋めて確保する
+/// ③前回位置から進んだ距離に応じて新しい点を追加する
+/// ④点の間隔が均一になるよう分割・統合で整える
+/// ⑤capacityを超えた古い点を捨てる
+/// ④を②③の後に行うのは、追加直後は間隔がばらついており、そのままメッシュ化すると
+/// UVが伸縮して痕の模様が歪むため。
+/// </remarks>
 void TireTrailGenerateSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     TireSplinePoints* spline = GetComponent<TireSplinePoints>(_handle);
     if (!spline) {
@@ -91,9 +104,14 @@ bool TireTrailGenerateSystem::BuildGenerateContext(
 
     gearT = EasingFunctions[static_cast<int>(spline.GetSpeedIntensityEaseType())](gearT);
 
+    // 1.fを足しているのは、この値を後段で「濃さの倍率」として掛けるため。
+    // 0始まりだと低ギア時に痕が完全に消えてしまうので、等倍(1.0)を下限にして
+    // ギアが上がるほど上乗せされる形にしている
     float speedFactor =
         1.f + std::lerp(spline.GetMinSpeedFactor(), spline.GetMaxSpeedFactor(), gearT);
 
+    // クォータニオンのZ成分を機体のバンク角(横倒しの度合い)の近似として使う。
+    // 左右どちらに傾いても痕は出したいので絶対値を取る
     float bank = std::abs(transform->rotate[Z]);
     if (bank >= spline.GetThresholdBankAngle()) {
         constexpr float kMaxBankAngle = EffectConfig::TireTrail::kMaxBankAngle;
@@ -145,6 +163,9 @@ void TireTrailGenerateSystem::AppendNewPoints(
         dir = delta / dist;
     }
 
+    // 1フレームで大きく移動した場合は、間を等間隔で埋めるように複数点を打つ。
+    // 1点しか打たないと高速移動時に痕が飛び飛びになるため。
+    // ただしリスポーンやワープで座標が大きく飛ぶと分割数が爆発するので、kMaxSplitで頭打ちにする
     constexpr int32_t kMaxSplit = EffectConfig::TireTrail::kMaxSplit;
     int32_t count =
         static_cast<int32_t>(dist / ctx.segmentLength);
@@ -158,6 +179,15 @@ void TireTrailGenerateSystem::AppendNewPoints(
     }
 }
 
+/// <summary>
+/// 制御点の間隔がsegmentLengthに近づくよう、長すぎる区間は分割し、短すぎる区間は統合する。
+/// </summary>
+/// <remarks>
+/// 間隔がばらついたままメッシュを張ると、区間ごとにUVが引き伸ばされて痕の模様が不均一になり、
+/// 短い区間が密集した箇所ではポリゴンが重なってちらつく。等間隔に整えることでこれを防ぐ。
+/// 判定に使うkThresholdはsegLenに対する相対値(30%)で、絶対値で比較すると
+/// segmentLengthをGUIで変えたときに分割・統合が過敏になったり効かなくなったりするため。
+/// </remarks>
 void TireTrailGenerateSystem::ResamplePoints(TireSplinePoints& spline) {
     std::deque<TireSplinePoints::ControlPoint> result;
     const float segLen         = spline.GetCommonSettings().segmentLength;
@@ -190,6 +220,10 @@ void TireTrailGenerateSystem::ResamplePoints(TireSplinePoints& spline) {
             }
         } else if (len - segLen < segLen * kThreshold && (i + 1) < static_cast<int>(spline.GetPoints().size() - 1)) {
             // 短すぎる → 統合
+            // 2点の中点で置き換える。直前にpush_backしたcurrentを上書きする形なので、
+            // result側の点数は増えないまま間隔だけが広がる。
+            // 条件の後半で末尾から2番目までに限定しているのは、ループを抜けた後に最終点を
+            // 無条件でpush_backするため。最終点を巻き込むと同じ点が2回入り痕の終端が潰れる
             point.position = (current.position + next.position) * 0.5f;
             point.alpha    = (current.alpha + next.alpha) * 0.5f;
             result.back()  = point;
@@ -207,11 +241,15 @@ void TireTrailGenerateSystem::UpdateFadeOut(
     constexpr int32_t kMinPoints = 4;
     float deltaTime              = Engine::GetInstance()->GetDeltaTime();
 
+    // スプライン補間には最低4点必要なので、これを下回ったらもう描画できない。
+    // 痕は消えきったとみなしてエンティティごと破棄し、放置されたスプラインが溜まるのを防ぐ
     if (_spline.GetPoints().size() < kMinPoints) {
         GetScene()->AddDeleteEntity(_handle);
         return;
     }
 
+    // fadeoutTime間隔で古い点を1つずつ捨てることで、痕が根元から順に消えていく見た目を作る。
+    // 一括で消すと痕が瞬間的に消滅して不自然になる
     _spline.GetCommonSettings().fadeoutTimer += deltaTime;
     if (_spline.GetCommonSettings().fadeoutTimer >= _spline.GetCommonSettings().fadeoutTime) {
         _spline.GetCommonSettings().fadeoutTimer = 0.f;

@@ -46,10 +46,17 @@ static TireSplineSegment BuildTireSplineSegment(
     seg.alpha0 = p0.alpha;
     seg.alpha1 = p1.alpha;
 
+    // 帯を張るための直交基底を作る。dir(進行方向)とup(ワールド上方向)の外積で
+    // 進行方向に対して真横を向くrightが得られ、これが帯の幅方向になる。
+    // upをワールド固定にしているのは、タイヤ痕は常に地面に貼り付いていてほしいため
     seg.dir   = Vec3f(seg.p1 - seg.p0).normalize();
     seg.up    = axisY;
     seg.right = seg.dir.cross(seg.up).normalize();
 
+    // UVのV座標をどう割り当てるかの分岐。
+    // ループ有効時は「固定長ごとに1周」させるため一定長で割る。比率が1を超えてもよく、
+    // テクスチャのラップによって痕の長さに関わらず模様の密度が一定に保たれる。
+    // 無効時は全長で割って0〜1に正規化するので、テクスチャが痕全体に1回だけ引き伸ばされる
     float prevRatio, ratio;
     if (commonSettings.isUvLoopEnable) {
         prevRatio = prevLength / commonSettings.uvLoopLength;
@@ -66,6 +73,9 @@ static TireSplineSegment BuildTireSplineSegment(
     const float uvPrev = EasingFunctions[uvEase](prevRatio);
     const float uvNow  = EasingFunctions[uvEase](ratio);
 
+    // U(横)は帯の左右端で固定、V(縦)だけを進行度で補間する。
+    // まず対角のuv[0](始端左)とuv[3](終端右)を求め、残る2隅はその成分の組み合わせで作る。
+    // uv[1]=始端右, uv[2]=終端左 となり、4隅が矩形を成す
     seg.uv[0] = {commonSettings.startUv[X], std::lerp(commonSettings.startUv[Y], commonSettings.endUv[Y], uvPrev)};
     seg.uv[3] = {commonSettings.endUv[X], std::lerp(commonSettings.startUv[Y], commonSettings.endUv[Y], uvNow)};
     seg.uv[1] = {seg.uv[3][X], seg.uv[0][Y]};
@@ -110,6 +120,9 @@ static void AppendPlaneSegment(
     vertices.push_back({Vec4f(p1L, 1.f), seg.uv[2], normal, color1});
     vertices.push_back({Vec4f(p1R, 1.f), seg.uv[3], normal, color1});
 
+    // 今追加した終端2頂点と、その直前にある始端2頂点(初回はこの関数で追加、2回目以降は
+    // 前区間の終端頂点)の計4つで1枚の四角形を張る。末尾から4つ遡ればその先頭になる。
+    // 頂点を共有することで区間の継ぎ目に隙間が出ず、頂点数も半分で済む
     const uint32_t base = static_cast<uint32_t>(vertices.size() - 4);
     indices.insert(indices.end(), {base + 0, base + 1, base + 2,
                                       base + 1, base + 3, base + 2});
@@ -217,6 +230,11 @@ void CreateMeshFromTireSpline::CreateCrossPlaneMesh(
             p0, p1, prevTotal, totalLength, allLength, spline->GetCommonSettings());
 
         // 縦面(right軸を幅方向・up軸を法線)と横面(up軸を幅方向・right軸を法線)を別々の頂点列として積み上げ、十字に交差させる
+        // 幅方向と法線を入れ替えて2回呼ぶことで、同じ区間に直交する2枚の板が張られる。
+        // 十字にするのは、1枚だけだと真横から見たときに厚みが無く痕が消えてしまうため
+        // NOTE: verticalとhorizontalは常に同じ数だけ頂点が増えるため、両者のbaseは一致する。
+        //       その結果この共有indicesには同一の三角形が2回ずつ積まれ、
+        //       各メッシュが同じ面を二重に描画している(見た目は変わらないが無駄がある)
         AppendPlaneSegment(vertical, indices, seg, seg.right, seg.up, i == 0);
         AppendPlaneSegment(horizontal, indices, seg, seg.up, seg.right, i == 0);
     }

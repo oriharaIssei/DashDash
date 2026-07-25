@@ -17,11 +17,19 @@ public:
     SceneTransition();
     ~SceneTransition() override;
 
+    /// <summary>
+    /// 初期化処理。シーン開始演出(EnterScene)から始まるよう状態をリセットする
+    /// </summary>
     virtual void Initialize();
-    // virtual void Update();
-    // virtual void Edit();
+    /// <summary>
+    /// 終了処理
+    /// </summary>
     virtual void Finalize();
 
+    /// <summary>
+    /// 遷移演出の進行を更新する。enterScene_/exitScene_のどちらが立っているかで
+    /// EnterSceneUpdate / ExitSceneUpdate を切り替える
+    /// </summary>
     virtual void Update() override;
 
 protected:

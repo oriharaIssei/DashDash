@@ -69,6 +69,12 @@ Vec3f CalcPosition(
 /// <summary>
 /// 現在位置における進行方向ベクトルを計算する（パスの接線方向）
 /// </summary>
+/// <remarks>
+/// 補間方式ごとに導関数を用意する代わりに、少し先の座標との差分で接線を近似している(数値微分)。
+/// Linear/CatmullRom/Bezierのどれでも同じコードが使え、補間方式を増やしても修正が要らない。
+/// kEpsを大きくすると曲率の高い区間で向きが内側にずれ、小さくすると座標の丸め誤差で
+/// 向きが暴れるため、0.01は両者の折衷値。
+/// </remarks>
 Vec3f CalcForwardDirection(
     const std::vector<Vec3f>& _pts,
     int32_t _index,
@@ -79,6 +85,8 @@ Vec3f CalcForwardDirection(
     const int32_t n      = static_cast<int32_t>(_pts.size());
     const int32_t maxIdx = n - 2;
 
+    // 少し先の位置を取るためtを進めるが、区間端(t=1)を越えた場合は次の区間へ繰り上げる。
+    // 繰り上げないとt>1で補間式が外挿になり、曲線から外れた方向を指してしまう
     float t2     = _t + kEps;
     int32_t idx2 = _index;
     if (t2 > 1.0f) {
@@ -90,6 +98,8 @@ Vec3f CalcForwardDirection(
     const Vec3f p1  = CalcPosition(_pts, idx2, t2, _interp);
     const Vec3f dir = p1 - p0;
 
+    // 制御点が重複している場合など、2点の差がほぼ0になると正規化でNaNが出る。
+    // その場合は近似を諦め、区間の始点→終点という確実に長さのある方向を使う
     if (dir.length() < kEpsilon) {
         // フォールバック: セグメント方向
         return (_pts[std::min(_index + 1, n - 1)] - _pts[_index]).normalize();
@@ -137,6 +147,10 @@ void PathControllerSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     bool isPlaying       = pathController->IsPlaying();
 
     // 現在区間の長さを求めて、速度を距離ベースに変換
+    // progressは区間内の位置を0〜1で表す値なので、進行量をそのまま足すと
+    // 短い区間ほど速く通過してしまう。区間長で割ることで、制御点の間隔が不均一でも
+    // ワールド空間での移動速度が一定に保たれる。
+    // 制御点が重複していると区間長0でゼロ除算するため、その場合は進めない(step=0)
     const float segmentLength = Vec3f(pts[currentIndex + 1] - pts[currentIndex]).length();
     const float step          = (segmentLength > kEpsilon) ? (pathController->GetSpeed() * deltaTime / segmentLength) : 0.0f;
 
@@ -147,6 +161,9 @@ void PathControllerSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     }
 
     // --- 区間オーバーフロー処理 ---
+    // 1.0を超えた分(overflow)を切り捨てず次の区間へ持ち越すことで、
+    // 区間の切り替わりで進行が一瞬止まる(1フレーム分の移動が消える)のを防ぐ。
+    // PingPongでは折り返すため、持ち越し分は終端から引く形になる
     if (progress >= 1.0f) {
         const float overflow = progress - 1.0f;
         currentIndex++;
@@ -203,6 +220,9 @@ void PathControllerSystem::UpdateEntity(const OriGine::EntityHandle& _handle) {
     }
 
     // 安全クランプ
+    // 1フレームの移動量が区間長を超えるほど速度が大きい場合、上の繰り上げ処理1回では
+    // 範囲内に収まりきらずインデックスや進行度が範囲外に残ることがある。
+    // ここで押さえておかないと、直後のpts[currentIndex + 1]で配列外参照になる
     currentIndex = std::clamp(currentIndex, 0, maxIdx);
     progress     = std::clamp(progress, 0.0f, 1.0f);
 

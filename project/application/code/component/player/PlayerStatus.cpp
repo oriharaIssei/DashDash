@@ -229,20 +229,45 @@ void PlayerStatus::Debug(Scene* /*_scene*/, const EntityHandle& /*_handle*/, con
 
 void PlayerStatus::Finalize() {}
 
+/// <summary>
+/// ギアレベルに対応する最高速度を求める。
+/// 単純な等差数列(1段ごとに一定量だけ加速)にすると高ギアでの伸びが物足りないため、
+/// 「1段あたりの加速量」自体もギアレベルに応じて等差で増やす二重の等差数列にしている。
+/// 結果として speed = baseSpeed_ + (gear-1) * (speedUpRateBase_ + (gear-2) * speedUpRateCommonRate_) となり、
+/// ギアを上げるほど1段あたりの伸びが大きくなる
+/// </summary>
+/// <param name="_gearLevel">ギアレベル(1始まり)</param>
+/// <returns>そのギアレベルでの最高速度</returns>
 float PlayerStatus::CalculateSpeedByGearLevel(int32_t _gearLevel) const {
+    // _gearLevel==1 のときは外側の等差数列の係数が0になるため、内側の値(加速量)に関わらずbaseSpeed_が返る
     return ArithmeticSequence<float>(
         baseSpeed_,
         ArithmeticSequence<float>(speedUpRateBase_, speedUpRateCommonRate_, _gearLevel - 1),
         _gearLevel);
 }
 
+/// <summary>
+/// ギアレベルに対応するギアアップのクールタイムを求める。
+/// 高ギアほど次のギアへ上がりにくくしたいので、加算ではなく等比数列(乗算)で伸ばしている。
+/// さらにその公比自体もギアレベルに応じて等差で変化させることで、伸び方をGUIから調整できるようにしている
+/// </summary>
+/// <param name="_gearLevel">ギアレベル(1始まり)</param>
+/// <returns>そのギアレベルでのギアアップクールタイム</returns>
 float PlayerStatus::CalculateCoolTimeByGearLevel(int32_t _gearLevel) const {
+    // _gearLevel==1 のときは公比の指数が0になるため、公比に関わらずbaseGearupCoolTime_が返る
     return GeometricSequence<float>(
         baseGearupCoolTime_,
         ArithmeticSequence<float>(coolTimeAddRateBase_, coolTimeAddRateCommonRate_, _gearLevel - 1),
         _gearLevel);
 }
 
+/// <summary>
+/// ギアレベルに対応する、前後方向・左右方向それぞれの最高速度を求める。
+/// 前後と左右で伸び方を別々に調整したいため、CalculateSpeedByGearLevelと同じ二重の等差数列を
+/// X(前後)・Y(左右)の各成分について個別のパラメータで計算している
+/// </summary>
+/// <param name="_gearLevel">ギアレベル(1始まり)</param>
+/// <returns>X=前後方向の最高速度 / Y=左右方向の最高速度</returns>
 OriGine::Vec2f PlayerStatus::CalculateCurrentMaxDirectionalSpeed(int32_t _gearLevel) const {
     float forwardBackwardSpeed = ArithmeticSequence<float>(
         baseDirectionalSpeed_[X],
@@ -255,6 +280,10 @@ OriGine::Vec2f PlayerStatus::CalculateCurrentMaxDirectionalSpeed(int32_t _gearLe
     return {forwardBackwardSpeed, leftRightSpeed};
 }
 
+/// <summary>
+/// ギアアップ時に、新しいギアレベルに対応する速度・クールタイムをまとめて再計算して反映する
+/// </summary>
+/// <param name="_gearLevel">遷移後のギアレベル</param>
 void PlayerStatus::SetupOnGearUp(int32_t _gearLevel) {
     currentMaxSpeed_            = CalculateSpeedByGearLevel(_gearLevel);
     gearUpCoolTime_             = CalculateCoolTimeByGearLevel(_gearLevel);

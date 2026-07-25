@@ -38,6 +38,20 @@ void FollowCameraUpdateSystem::Finalize() {
     MessageBus::GetInstance()->Unsubscribe<PlayerStateChangedEvent>(playerStateChangedEventId_);
 }
 
+/// <summary>
+/// 追従カメラを1フレーム分更新する。
+/// カメラ位置と注視点をそれぞれ別の速度で遅れて追従させることで、
+/// 硬直した「棒付きカメラ」ではなく、慣性のある滑らかな見え方を作っている。
+/// </summary>
+/// <remarks>
+/// 処理は次の順序で行う。順序には依存関係があるため入れ替えないこと。
+/// ①プレイヤーの状態変化に応じてカメラステートを差し替え、ステートごとのオフセット等を更新する
+/// ②追従位置(interTarget)をカメラローカル空間で補間する
+/// ③注視点(interLookAtTarget)を同じくローカル空間で補間する。②のZ成分を再利用するため②の後
+/// ④②③のオフセットからカメラ位置・注視点を確定し、そこを向く回転をSlerpで求める
+/// 補間をワールドではなくカメラローカルで行うのは、「奥行き方向」と「左右方向」で
+/// 追従の効き具合を別々に調整できるようにするため。
+/// </remarks>
 void FollowCameraUpdateSystem::UpdateEntity(const EntityHandle& _handle) {
     auto* cameraController = GetComponent<CameraController>(_handle);
     auto* cameraTransform  = GetComponent<CameraTransform>(_handle);
@@ -63,6 +77,8 @@ void FollowCameraUpdateSystem::UpdateEntity(const EntityHandle& _handle) {
         // 自動注視処理
         if (cameraController->GetIsAutoLookAtPlayer()) {
             Vec3f toTarget     = Vec3f::Normalize(targetTranslate->GetWorldTranslate() - cameraTransform->translate);
+            // 左手座標系ではヨー角は+Z(前方)を0として測るため、atan2の引数は(Z,X)ではなく(X,Z)の順。
+            // 逆にするとカメラが90度ずれた方向を向く
             float targetAngleY = std::atan2(toTarget[X], toTarget[Z]);
 
             Vec2f angleXY = cameraController->GetDestinationAngleXY();
@@ -79,11 +95,17 @@ void FollowCameraUpdateSystem::UpdateEntity(const EntityHandle& _handle) {
         Vec3f interTarget = cameraController->GetInterTarget();
         Vec3f worldDelta  = followTargetPosition - interTarget;
         // 純回転行列の逆行列 = 転置
+        // (逆行列を解く必要がないので、以降のワールド→カメラローカル変換は全てこれを使い回す)
         Matrix4x4 invRotateMat = Matrix4x4::Transpose(cameraRotateMat);
         Vec3f localDelta       = worldDelta * invRotateMat;
+        // NOTE: invRotateMatで回してcameraRotateMatで戻しているため、この変換は数学的には往復して
+        // 元に戻り、followDest は followTargetPosition と一致する。
+        // 軸ごとに補間の効きを変えるための布石として書かれているが現状は成分の加工をしていない
         Vec3f followDest       = interTarget + (localDelta * cameraRotateMat);
 
-        // interTarget・followDest をカメラローカルに変換してLerp し、ワールドに戻す
+        // 追従の遅れをワールド軸ではなくカメラ軸で効かせたいので、両端点をカメラローカルに変換してから
+        // 軸ごとに別々の補間率でLerpし、最後にワールドへ戻す。
+        // これにより「カメラの奥行き方向はゆっくり、左右方向は素早く」といった調整が可能になる
         Vec3f localInterTarget  = interTarget * invRotateMat;
         Vec3f localFollowDest   = followDest * invRotateMat;
         Vec3f interpVec         = cameraController->GetInterTargetInterpolation();
@@ -103,6 +125,9 @@ void FollowCameraUpdateSystem::UpdateEntity(const EntityHandle& _handle) {
         localInterLookAtTarget[Y] = LerpByDeltaTime(
             localInterLookAtTarget[Y], localFollowLookAtTarget[Y],
             deltaTime, lookAtInterpVec[Y]);
+        // 注視点の奥行き(Z)だけは独自に補間せず、カメラ位置側の補間結果をそのまま流用する。
+        // 別々に補間すると注視点とカメラの前後間隔が伸縮し、画面内のプレイヤーの大きさが
+        // 不規則に変化してしまうため、奥行きは常に同じ量だけ動かして間隔を一定に保つ
         localInterLookAtTarget[Z] = localInterpolated[Z];
         cameraController->SetInterLookAtTarget(localInterLookAtTarget * cameraRotateMat);
 
@@ -115,6 +140,9 @@ void FollowCameraUpdateSystem::UpdateEntity(const EntityHandle& _handle) {
         cameraTransform->translate = cameraPos;
 
         // ======== カメラ回転 ======== //
+        // 角度を直接補間するとジンバルロックや-π/+πの巻き戻りが起きるため、
+        // 目標姿勢をクォータニオンで求めてSlerpする。
+        // Slerpの結果は累積誤差で長さが1からずれていくので、毎フレームnormalizeして正規化を保つ
         Vec3f lookDir                = Vec3f::Normalize(targetPosition - cameraTransform->translate);
         Quaternion targetQuat        = Quaternion::LookAt(lookDir, axisY);
         Quaternion newBaseRotate     = SlerpByDeltaTime(
@@ -125,6 +153,9 @@ void FollowCameraUpdateSystem::UpdateEntity(const EntityHandle& _handle) {
                                            .normalize();
         cameraController->SetBaseRotate(newBaseRotate);
 
+        // Z軸ロール(カーブ時の傾き演出)はbaseRotateの「後ろ」に掛ける。
+        // こうするとロールがカメラのローカルZ軸まわりに適用され、視線方向を保ったまま画面が傾く。
+        // 順序を逆にするとワールドZ軸まわりの回転になり、注視点からずれてしまう
         cameraTransform->rotate = cameraController->GetBaseRotate() * Quaternion::RotateAxisAngle(axisZ, cameraController->GetCurrentRotateZ());
 
         // transform に同期
@@ -144,6 +175,8 @@ void FollowCameraUpdateSystem::CameraStateTransition(const OriGine::EntityHandle
     }
     hasStateChangeRequest_ = false;
 
+    // イベントはMessageBus経由で全カメラに配信されるため、自分が追従していないプレイヤーの
+    // 状態変化で切り替わってしまわないよう、対象が一致するものだけを処理する
     if (_cameraController->GetFollowTargetEntity() != latestPlayerStateChangedEvent_.playerEntityHandle) {
         return;
     }
@@ -152,6 +185,9 @@ void FollowCameraUpdateSystem::CameraStateTransition(const OriGine::EntityHandle
         latestPlayerStateChangedEvent_.currentMoveState);
 
     // ★ 同じなら何もしない
+    // 複数のPlayerMoveStateが同一のCameraMoveStateに写像される(DASHとJUMPはどちらもFOLLOW)ため、
+    // プレイヤー側が遷移してもカメラ側は据え置きになるケースがある。
+    // ここで弾かないとステートを作り直してしまい、補間中のオフセットが初期値に戻ってカメラが飛ぶ
     if (nextType == _cameraController->GetCurrentCameraStateType()) {
         return;
     }

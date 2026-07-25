@@ -45,11 +45,17 @@ static SplineSegment BuildSplineSegment(
 
     Vec3f rawDir = p1 - p0;
 
+    // 進行方向(dir)を軸とした正規直交基底を作る。設定のupVectorはあくまで「おおよその上方向」でしかなく
+    // dirと直交しているとは限らないため、up→rightを求めた後にright→upを取り直して直交化している
+    // (この2段階のcrossにより、upVectorがどんな向きでもdir/right/upが必ず直交する)
     seg.dir   = rawDir.normalize(); // 進行方向
     seg.up    = settings.upVector;
     seg.right = seg.up.cross(seg.dir).normalize();
     seg.up    = seg.dir.cross(seg.right).normalize();
 
+    // UV・幅の補間に使う進行度(0〜1)を求める。
+    // ループ有効時はuvLoopLengthごとにUVを繰り返させたいので「一定距離」で割り、
+    // 無効時はスプライン全体で0〜1に収めたいので「全長」で割る
     float prevRatio, ratio;
     if (settings.isUvLoopEnable) {
         prevRatio = prevLength / settings.uvLoopLength;
@@ -66,6 +72,9 @@ static SplineSegment BuildSplineSegment(
     const float uvPrev = EasingFunctions[uvEase](prevRatio);
     const float uvNow  = EasingFunctions[uvEase](ratio);
 
+    // 区間を四角形として貼るため、四隅のUVを求める。
+    // U(横)は帯の左右端なのでstartUv[X]/endUv[X]で固定し、V(縦)だけを進行度で補間する。
+    // uv[0]=始端左, uv[1]=始端右, uv[2]=終端左, uv[3]=終端右 の並びで、[1]と[2]は[0]/[3]の成分の組み合わせで求まる
     seg.uv[0] = {settings.startUv[X], std::lerp(settings.startUv[Y], settings.endUv[Y], uvPrev)};
     seg.uv[3] = {settings.endUv[X], std::lerp(settings.startUv[Y], settings.endUv[Y], uvNow)};
     seg.uv[1] = {seg.uv[3][X], seg.uv[0][Y]};
@@ -87,6 +96,7 @@ static void AppendPlaneSegment(
     const OriGine::Vec3f& axis,
     const OriGine::Vec3f& normal,
     bool isFirst) {
+    // 始点/終点それぞれで、幅方向(axis)に半分の幅だけ左右へ振って帯の四隅を求める
     OriGine::Vec3f p0L = seg.p0 - axis * seg.minWidthHalf;
     OriGine::Vec3f p0R = seg.p0 + axis * seg.minWidthHalf;
     OriGine::Vec3f p1L = seg.p1 - axis * seg.maxWidthHalf;
@@ -100,6 +110,8 @@ static void AppendPlaneSegment(
     vertices.push_back({OriGine::Vec4f(p1L, 1), seg.uv[2], normal, kWhite});
     vertices.push_back({OriGine::Vec4f(p1R, 1), seg.uv[3], normal, kWhite});
 
+    // 直前に積んだ4頂点(始端左右・終端左右)を先頭として、四角形を2枚の三角形に分割する。
+    // 2区間目以降は始端頂点を追加していないが、前区間の終端頂点がそのまま4頂点前から並ぶため同じ計算で参照できる
     uint32_t base = static_cast<uint32_t>(vertices.size() - 4);
     indices.insert(indices.end(), {base + 0, base + 2, base + 1,
                                       base + 1, base + 2, base + 3});
